@@ -1,0 +1,54 @@
+{
+  "Fluent UI test class": {
+    "prefix": "fluentTestClass",
+    "body": [
+      "import React from 'react';",
+      "import { shallow } from 'enzyme';",
+      "import FluentTest from './Utils/fluent-test';",
+      "import ${1:Component} from './${1:Component}';",
+      "\ndescribe('${1:Component} component', () => {",
+      "\tclass ${1:Component}Test extends FluentTest {",
+      "\t\tisRendered = () => {",
+      "\t\t\tthis.wrapper = shallow(<${1:Component} {...this.props} />);",
+      "\t\t\treturn this;",
+      "\t\t};",
+      "\t}",
+      "\n\tconst when${1:Component} = () => new ${1:Component}Test();",
+      "\n\ttest('should have a <div/>', () => {",
+      "\t\twhen${1:Component}()",
+      "\t\t\t.isRendered()",
+      "\t\t\t.thenElement('div')",
+      "\t\t\t.should()",
+      "\t\t\t.exist();",
+      "\t});",
+      "});"
+    ],
+    "description": ""
+  },
+
+  "React Pure Component class": {
+    "prefix": "reactPureComponentClass",
+    "body": [
+      "import React, { PureComponent } from 'react';",
+      "\nclass ${1:ComponentName} extends PureComponent {",
+      "\trender() {",
+      "\t\treturn <div />;",
+      "\t}",
+      "}",
+      "\nexport default ${1:ComponentName};"
+    ]
+  },
+
+  "React Component class": {
+    "prefix": "reactComponentClass",
+    "body": [
+      "import React, { Component } from 'react';",
+      "\nclass ${1:ComponentName} extends Component {",
+      "\trender() {",
+      "\t\treturn <div />;",
+      "\t}",
+      "}",
+      "\nexport default ${1:ComponentName};"
+    ]
+  }
+}

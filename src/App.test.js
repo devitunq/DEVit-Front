@@ -1,10 +1,9 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import App from './App';
-import FluentTest from './Utils/fluent-test';
+import React from "react";
+import { shallow } from "enzyme";
+import App from "./App";
+import FluentTest from "./Utils/fluent-test";
 
-
-describe('App', () => {
+describe("App", () => {
   class AppTest extends FluentTest {
     constructor() {
       super();
@@ -19,19 +18,11 @@ describe('App', () => {
 
   const whenApp = () => new AppTest();
 
-  test('debe tener un componente Header.', () => {
-    whenApp()
-      .isRendered()
-      .thenElement('Header')
-      .should()
-      .exist();
+  test("debe tener un componente Header.", () => {
+    whenApp().isRendered().thenElement("Header").should().exist();
   });
 
-  test('debe tener un componente About.', () => {
-    whenApp()
-      .isRendered()
-      .thenElement('About')
-      .should()
-      .exist();
+  test("debe tener un componente About.", () => {
+    whenApp().isRendered().thenElement("About").should().exist();
   });
 });

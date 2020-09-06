@@ -1,44 +1,42 @@
-import React, { Component } from 'react';
-import $ from 'jquery';
-import './App.css';
-import Header from './Components/Header';
-import About from './Components/About';
+import React, { Component } from "react";
+import $ from "jquery";
+import "./App.css";
+import Header from "./Components/Header";
+import About from "./Components/About";
 
 class App extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      foo: 'bar',
-      resumeData: {}
+      foo: "bar",
+      resumeData: {},
     };
-
   }
 
-  getResumeData(){
+  getResumeData() {
     $.ajax({
-      url:'./resumeData.json',
-      dataType:'json',
+      url: "./resumeData.json",
+      dataType: "json",
       cache: false,
-      success: function(data){
-        this.setState({resumeData: data});
+      success: function (data) {
+        this.setState({ resumeData: data });
       }.bind(this),
-      error: function(xhr, status, err){
+      error: function (xhr, status, err) {
         console.log(err);
         alert(err);
-      }
+      },
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getResumeData();
   }
 
   render() {
     return (
       <div className="App">
-        <Header data={this.state.resumeData.main}/>
-        <About data={this.state.resumeData.main}/>
+        <Header data={this.state.resumeData.main} />
+        <About data={this.state.resumeData.main} />
       </div>
     );
   }

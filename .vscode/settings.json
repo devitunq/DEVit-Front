@@ -1,0 +1,7 @@
+{
+  // Set editor tab size to 2 as default is 4.
+  "editor.tabSize": 2,
+  // Format the document when it is saved.
+  "editor.formatOnSave": true,
+  "files.autoSave": "off"
+}
