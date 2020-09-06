@@ -4,7 +4,6 @@ import App from './App';
 import FluentTest from './Utils/fluent-test';
 
 
-//Este no estaría funcionando por culpa de ReactGA, revisar...
 describe('App', () => {
   class AppTest extends FluentTest {
     constructor() {

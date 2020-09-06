@@ -26,11 +26,11 @@ class Header extends Component {
       <div className="row banner">
       
          <div className="banner-text">
-            <img className="logo-pic" src={logopic} />
-            <h3>{description}.</h3>
+            <img id="logoDevit" className="logo-pic" src={logopic} />
+            <h3 id="descDevit">{description}.</h3>
             <hr />
             <ul className="social">
-               <a  className="button btn btn-primary"><i className="fa fa-play"></i>Iniciar el juego</a>
+               <a id="playButton" className="button btn btn-primary"><i className="fa fa-play"></i>Iniciar el juego</a>
             </ul>
          </div>
       </div>
