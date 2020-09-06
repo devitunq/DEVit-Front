@@ -6,7 +6,7 @@
       "import { shallow } from 'enzyme';",
       "import FluentTest from './Utils/fluent-test';",
       "import ${1:Component} from './${1:Component}';",
-      "\ndescribe('${1:Component} component', () => {",
+      "\ndescribe('${1:Component}', () => {",
       "\tclass ${1:Component}Test extends FluentTest {",
       "\t\tisRendered = () => {",
       "\t\t\tthis.wrapper = shallow(<${1:Component} {...this.props} />);",
