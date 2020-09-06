@@ -23,8 +23,7 @@ describe("Header", () => {
   const whenHeader = () => new HeaderTest();
 
   test("debe tener un navBar.", () => {
-    const expectedId = "#nav-wrap";
-    whenHeader().isRendered().thenElement(expectedId).should().exist();
+    whenHeader().isRendered().thenElement("Navbar").should().exist();
   });
 
   test("debe tener el logo de DEVit.", () => {
