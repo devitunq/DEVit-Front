@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import BoardCell from "./BoardCell";
 import "./Gameboard.css";
-import Navbarongame from "./Generics/Navbarongame"
+import Water from "../../Assets/test-water.png";
+import Player from "../../Assets/test-player.png";
+import Navbarongame from "../Generics/Navbarongame"
 import ParticlesBg from "particles-bg";
-import AppDragDropDemo from "./Drop&Drag"
+import AppDragDropDemo from "../Drop&Drag"
 
 const BOARD_SIZE = 7;
 class Gameboard extends Component {
@@ -22,15 +24,20 @@ class Gameboard extends Component {
       return (
         <tr key={"row_" + i}>
           {row.map((_, j) => {
-            return <BoardCell key={`cell_${i}_${j}`} />;
+            return (
+              <BoardCell
+                key={`cell_${i}_${j}`}
+                background={Water}
+                img={i === j ? Player : ""}
+                pos={`${i}_${j}`}
+              />
+            );
           })}
         </tr>
       );
     });
-
     return (
       <div>
-
         <ParticlesBg type="circle" bg={true} />
 
         <Navbarongame />
