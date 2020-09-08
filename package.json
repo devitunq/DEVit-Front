@@ -1,6 +1,14 @@
 {
   "name": "personalportfolio",
   "version": "0.1.0",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/*.js",
+      "!src/Utils/fluent-test.js",
+      "!src/Components/Routes.js"
+    ]
+  },
   "homepage": "./",
   "private": true,
   "dependencies": {
@@ -9,6 +17,7 @@
     "particles-bg": "^2.3.12",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "1.0.17"
   },
   "scripts": {

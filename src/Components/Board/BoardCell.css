@@ -5,9 +5,9 @@
   color: gray;
   border-color: black;
   border: 0.5px solid black;
+  background-size: cover;
 }
 .boardCell:after {
   content: "";
-  display: block;
   margin-top: 100%;
 }
