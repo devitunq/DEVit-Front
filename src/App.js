@@ -3,6 +3,7 @@ import $ from "jquery";
 import "./App.css";
 import Header from "./Components/Header";
 import About from "./Components/About";
+import Gameboard from "./Components/Gameboard";
 
 class App extends Component {
   constructor(props) {
@@ -35,6 +36,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div style={{ margin: "auto", width: "50%", height: "50%" }}>
+          <Gameboard />
+        </div>
         <Header data={this.state.resumeData.main} />
         <About data={this.state.resumeData.main} />
       </div>

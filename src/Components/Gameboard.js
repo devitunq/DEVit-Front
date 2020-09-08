@@ -1,36 +1,46 @@
 import React, { Component } from "react";
-import "./Gameboard.css";
-
-const GRID_SIZE = 75;
-
-class BoardIntersection extends Component {
-  render = () => {
-    var style = {
-      top: this.props.row * GRID_SIZE,
-      left: this.props.col * GRID_SIZE,
-    };
-
-    var classes = "intersection black";
-
-    return <div className={classes} style={style}></div>;
-  };
-}
+import BoardCell from "./BoardCell";
 
 class Gameboard extends Component {
-  render() {
-    var intersections = [];
-    for (var i = 0; i < 7; i++)
-      for (var j = 0; j < 7; j++)
-        intersections.push(
-          <BoardIntersection key={`cell_${i}_${j}`} row={i} col={j} />
-        );
-    var style = {
-      width: 7 * GRID_SIZE,
-      height: 7 * GRID_SIZE,
+  constructor(props) {
+    super(props);
+    this.state = {
+      grid: Array(7)
+        .fill()
+        .map((x) => Array(7).fill("+")),
     };
+  }
+
+  render() {
+    const style = {
+      textAlign: "center",
+      margin: "auto",
+      height: "100%",
+      width: "100%",
+      border: "1px solid black",
+      tableLayout: "fixed",
+    };
+    const grid = this.state.grid;
+    const board = grid.map((row, i) => {
+      return (
+        <tr key={"row_" + i}>
+          {row.map((col, j) => {
+            const color_ =
+              grid[i][j] === "+"
+                ? "#e4e4a1"
+                : grid[i][j] === "w"
+                ? "white"
+                : "black";
+            return <BoardCell color={color_} key={i + "_" + j} />;
+          })}
+        </tr>
+      );
+    });
     return (
-      <div style={style} id="gameboard">
-        {intersections}.
+      <div style={{ margin: "auto", width: "75%", height: "75%" }}>
+        <table cellSpacing="0" style={style}>
+          <tbody>{board}</tbody>
+        </table>
       </div>
     );
   }
