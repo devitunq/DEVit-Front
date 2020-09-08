@@ -1,0 +1,13 @@
+.boardCell {
+  overflow: hidden;
+  width: 30%;
+  background-color: gray;
+  color: gray;
+  border-color: black;
+  border: 0.5px solid black;
+}
+.boardCell:after {
+  content: "";
+  display: block;
+  margin-top: 100%;
+}

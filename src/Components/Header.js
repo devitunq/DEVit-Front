@@ -16,7 +16,12 @@ class Header extends Component {
 
         <div className="row banner">
           <div className="banner-text">
-            <img id="logoDevit" className="logo-pic" src={logopic} />
+            <img
+              id="logoDevit"
+              className="logo-pic"
+              src={logopic}
+              alt="logoDevit"
+            />
             <h3 id="descDevit">{description}.</h3>
             <hr />
             <ul className="social">

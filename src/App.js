@@ -36,9 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div style={{ margin: "auto", width: "50%", height: "50%" }}>
-          <Gameboard />
-        </div>
+        <Gameboard />
         <Header data={this.state.resumeData.main} />
         <About data={this.state.resumeData.main} />
       </div>

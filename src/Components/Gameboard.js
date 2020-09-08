@@ -1,44 +1,32 @@
 import React, { Component } from "react";
 import BoardCell from "./BoardCell";
+import "./Gameboard.css";
 
+const BOARD_SIZE = 7;
 class Gameboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      grid: Array(7)
+      grid: Array(BOARD_SIZE)
         .fill()
-        .map((x) => Array(7).fill("+")),
+        .map((_) => Array(BOARD_SIZE).fill()),
     };
   }
 
   render() {
-    const style = {
-      textAlign: "center",
-      margin: "auto",
-      height: "100%",
-      width: "100%",
-      border: "1px solid black",
-      tableLayout: "fixed",
-    };
     const grid = this.state.grid;
     const board = grid.map((row, i) => {
       return (
         <tr key={"row_" + i}>
-          {row.map((col, j) => {
-            const color_ =
-              grid[i][j] === "+"
-                ? "#e4e4a1"
-                : grid[i][j] === "w"
-                ? "white"
-                : "black";
-            return <BoardCell color={color_} key={i + "_" + j} />;
+          {row.map((_, j) => {
+            return <BoardCell key={`cell_${i}_${j}`} />;
           })}
         </tr>
       );
     });
     return (
-      <div style={{ margin: "auto", width: "75%", height: "75%" }}>
-        <table cellSpacing="0" style={style}>
+      <div className="boardContainer">
+        <table cellSpacing="0" className="board">
           <tbody>{board}</tbody>
         </table>
       </div>

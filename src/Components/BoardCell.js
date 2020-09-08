@@ -1,21 +1,9 @@
 import React, { Component } from "react";
+import "./BoardCell.css";
 
 class BoardCell extends Component {
   render() {
-    const color_ = this.props.color;
-    return (
-      <td
-        style={{
-          overflow: "hidden",
-          width: "auto",
-          height: "25px",
-          backgroundColor: "gray",
-          color: color_,
-          boarderColor: "black",
-          border: ".5px solid black",
-        }}
-      />
-    );
+    return <td className="boardCell" />;
   }
 }
 

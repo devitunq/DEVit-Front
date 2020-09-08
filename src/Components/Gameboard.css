@@ -1,0 +1,13 @@
+.boardContainer {
+  margin: auto;
+  width: 35%;
+  height: 35%;
+}
+
+.board {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  border: 1px solid black;
+  table-layout: fixed;
+}
