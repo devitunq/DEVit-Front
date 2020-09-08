@@ -3,6 +3,9 @@ import BoardCell from "./BoardCell";
 import "./Gameboard.css";
 import Water from "../../Assets/test-water.png";
 import Player from "../../Assets/test-player.png";
+import Navbarongame from "../Generics/Navbarongame"
+import ParticlesBg from "particles-bg";
+import AppDragDropDemo from "../Drop&Drag"
 
 const BOARD_SIZE = 7;
 class Gameboard extends Component {
@@ -34,10 +37,18 @@ class Gameboard extends Component {
       );
     });
     return (
-      <div className="boardContainer">
-        <table cellSpacing="0" className="board">
-          <tbody>{board}</tbody>
-        </table>
+      <div>
+        <ParticlesBg type="circle" bg={true} />
+
+        <Navbarongame />
+
+        <AppDragDropDemo />
+
+        <div className="boardContainer">
+          <table cellSpacing="0" className="board">
+            <tbody>{board}</tbody>
+          </table>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,54 @@
+.container-drag {
+  text-align: center;
+  margin: auto;
+  align-content: center;
+  align-items: center;
+}
+
+.instructions-items{
+  width: 200px;
+}
+
+.instrucciones {
+  border: 2px solid rgba(63, 63, 243, 0.692);
+  position: absolute;
+  width: 650px;
+  height: 200px;
+  left: 65px;
+  top: 260px;
+  background-color: #333333;
+}
+
+.header {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background-color: #E0E0E0;
+  width:100%;
+}
+
+.task-header {
+  display: inline-block;
+  background-color: rgb(146, 146, 146);
+  width:100%;
+}
+
+.droppable {
+  border: 2px solid rgba(63, 63, 243, 0.692);
+  position: absolute;
+  width: 650px;
+  height: 200px;
+  left: 65px;
+  top: 480px;
+  background-color: #333333;
+
+}
+
+
+.draggable {
+  width: 120px;
+  height: 35px;
+  background-color: whitesmoke;
+  margin: 3px;
+  line-height: 5em;
+}
