@@ -5,32 +5,36 @@
   align-items: center;
 }
 
-.instructions-items{
-  width: 200px;
-}
 
 .instrucciones {
   border: 2px solid rgba(63, 63, 243, 0.692);
   position: absolute;
   width: 650px;
-  height: 200px;
+  height: 150px;
   left: 65px;
-  top: 260px;
-  background-color: #333333;
+  top: 300px;
+  background-color: transparent;
 }
 
-.header {
+.instructions-header {
   display: inline-block;
-  margin: 0;
-  padding: 0;
-  background-color: #E0E0E0;
+  background-color: rgb(101, 70, 240);
   width:100%;
 }
 
-.task-header {
+
+.board-header {
   display: inline-block;
-  background-color: rgb(146, 146, 146);
+  background-color: rgb(101, 70, 240);
   width:100%;
+}
+
+.text-header{
+  color: white;
+  text-shadow: gray;
+  text-transform: uppercase;
+  font: 14px ;
+  height: 2px;
 }
 
 .droppable {
@@ -40,15 +44,17 @@
   height: 200px;
   left: 65px;
   top: 480px;
-  background-color: #333333;
+
+  background-color: transparent;
 
 }
 
 
 .draggable {
+  text-align: center;
   width: 120px;
   height: 35px;
-  background-color: whitesmoke;
-  margin: 3px;
-  line-height: 5em;
+  background-color: white;
+  margin: 5px;
+
 }

@@ -5,7 +5,8 @@ import Water from "../../Assets/test-water.png";
 import Player from "../../Assets/test-player.png";
 import Navbarongame from "../Generics/Navbarongame"
 import ParticlesBg from "particles-bg";
-import AppDragDropDemo from "../Drop&Drag"
+import AppDragDropDemo from "../Drop&Drag";
+import BoxObjetive from "../Boxobjective"
 
 const BOARD_SIZE = 7;
 class Gameboard extends Component {
@@ -41,6 +42,8 @@ class Gameboard extends Component {
         <ParticlesBg type="circle" bg={true} />
 
         <Navbarongame />
+
+        <BoxObjetive />
 
         <AppDragDropDemo />
 

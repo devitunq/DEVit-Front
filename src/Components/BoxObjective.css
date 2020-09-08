@@ -1,0 +1,33 @@
+.container-objective {
+  text-align: center;
+  margin: auto;
+  align-content: center;
+  align-items: center;
+}
+
+.objective-text{
+  margin-left: 5px;
+  color: white;
+  text-shadow: black;
+  font-size: 17px;
+  justify-self: start;
+}
+
+
+.objective {
+  border: 2px solid rgba(63, 63, 243, 0.692);
+  position: absolute;
+  width: 650px;
+  height: 150px;
+  left: 65px;
+  top: 100px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.objective-header {
+  text-align: center;
+  display: inline-block;
+  background-color: rgb(49, 49, 49);
+  width:100%;
+}
