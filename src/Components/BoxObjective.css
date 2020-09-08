@@ -15,19 +15,25 @@
 
 
 .objective {
-  border: 2px solid rgba(63, 63, 243, 0.692);
+  border-radius: 15px;
+  border: 4px solid rgba(63, 63, 243, 0.692);
   position: absolute;
   width: 650px;
   height: 150px;
   left: 65px;
-  top: 100px;
+  top: 123px;
   background-color: transparent;
   text-align: center;
 }
 
 .objective-header {
+  position: absolute;
+  border-radius: 10px;
   text-align: center;
   display: inline-block;
   background-color: rgb(49, 49, 49);
-  width:100%;
+  width: 650px;
+  height: 27px;
+  left: 65px;
+  top: 93px;
 }

@@ -12,10 +12,10 @@ class BoxObjetive extends Component {
     return (
       <div className="container-objective">
 
+        <span className="objective-header">
+          <p className="text-header">Objetivo</p>
+        </span>
         <div className="objective">
-          <span className="objective-header">
-            <p className="text-header">Objetivo</p>
-          </span>
           <p className="objective-text"> {this.objective} </p>
         </div>
 

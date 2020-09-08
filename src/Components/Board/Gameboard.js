@@ -37,6 +37,7 @@ class Gameboard extends Component {
         </tr>
       );
     });
+
     return (
       <div>
         <ParticlesBg type="circle" bg={true} />

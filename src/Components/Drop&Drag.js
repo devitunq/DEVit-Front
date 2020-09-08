@@ -7,6 +7,7 @@ export default class AppDragDropDemo extends Component {
     actions: [
       { toDo: "Subir", category: "instructions" },
       { toDo: "Bajar", category: "instructions" },
+      { toDo: "Rodrikpo", category: "instructions" },
     ]
   }
 
@@ -46,7 +47,7 @@ export default class AppDragDropDemo extends Component {
         <div
           onDragStart={(e) => this.onDragStart(e, t.toDo)}
           draggable
-          className="draggable"
+          className="action-item"
         >
           {t.toDo}
         </div>
@@ -56,21 +57,22 @@ export default class AppDragDropDemo extends Component {
     return (
       <div className="container-drag">
 
-        <div className="instrucciones"
+
+        <span className="instructions-header">
+          <p className="text-header">Instrucciones</p>
+        </span>
+        <div className="container-instructions"
           onDragOver={(e) => this.onDragOver(e)}
           onDrop={(e) => { this.onDrop(e, "instructions") }}>
-          <span className="instructions-header">
-            <p className="text-header">Instrucciones</p>
-          </span>
           {actions.instructions}
         </div>
 
-        <div className="droppable"
+        <span className="board-header">
+          <p className="text-header">Tablero</p>
+        </span>
+        <div className="container-board "
           onDragOver={(e) => this.onDragOver(e)}
           onDrop={(e) => this.onDrop(e, "tablero")}>
-          <span className="board-header">
-            <p className="text-header">Tablero </p>
-          </span>
           {actions.tablero}
         </div>
 
