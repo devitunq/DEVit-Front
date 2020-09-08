@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ParticlesBg from "particles-bg";
 import Navbar from "../Components/Generics/Navbar";
+import Gameboard from "./Gameboard";
 
 class Header extends Component {
   render() {
@@ -16,6 +17,7 @@ class Header extends Component {
         <Navbar />
 
         <div className="row banner">
+          {/* <Gameboard /> */}
           <div className="banner-text">
             <img id="logoDevit" className="logo-pic" src={logopic} />
             <h3 id="descDevit">{description}.</h3>

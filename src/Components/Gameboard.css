@@ -1,0 +1,15 @@
+.intersection {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  border: 1px solid #000;
+  content: "";
+}
+
+.intersection.black {
+  background-color: #444;
+}
+
+.intersection.white {
+  background-color: #eee;
+}
