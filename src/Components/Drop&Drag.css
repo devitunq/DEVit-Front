@@ -9,11 +9,11 @@
 .container-instructions {
   border-radius: 10px;
   display: grid;
-  grid-template-columns: repeat(5,1fr);
+  grid-template-columns: repeat(7,1fr);
   border: 4px solid rgba(0, 0, 104, 0.692);
   position: absolute;
-  width: 650px;
-  height: 150px;
+  width: 45%;
+  height: 20%;
   left: 65px;
   top: 311px;
   background-color: transparent;
@@ -24,8 +24,8 @@
   border-radius: 10px;
   position: absolute;
   background-color: rgba(0, 0, 104, 0.692);
-  width: 650px;
-  height: 27px;
+  width: 45%;
+  height: 3.7%;
   left: 65px;
   top: 281px;
 }
@@ -35,8 +35,8 @@
   border-radius: 10px;
   position: absolute;
   background-color: rgba(0, 0, 104, 0.692);
-  width: 650px;
-  height: 27px;
+  width: 45%;
+  height: 3.7%;
   left: 65px;
   top: 470px;
 }
@@ -51,10 +51,13 @@
 
 .container-board {
   border-radius: 10px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
   border: 4px solid rgba(0, 0, 104, 0.692);
   position: absolute;
-  width: 650px;
-  height: 150px;
+  width: 45%;
+  height: 20%;
   left: 65px;
   top: 500px;
   background-color: transparent;
@@ -64,8 +67,8 @@
 .action-item {
   border-radius: 10px;
   text-align: center;
-  width: 120px;
-  height: 35px;
+  width: 75%;
+  height: 20%;
   background-color: white;
   margin: 5px;
 
