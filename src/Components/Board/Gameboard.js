@@ -4,10 +4,13 @@ import BoardCell from "./BoardCell";
 import "./Gameboard.css";
 import Water from "../../Assets/test-water.png";
 import Player from "../../Assets/test-player.png";
+import Finish from "../../Assets/test-finish.png";
 import Navbarongame from "../Generics/Navbarongame";
 import ParticlesBg from "particles-bg";
 import AppDragDropDemo from "../Drop&Drag";
 import BoxObjetive from "../Boxobjective";
+
+
 
 const BOARD_SIZE = 7;
 class Gameboard extends Component {
@@ -17,20 +20,41 @@ class Gameboard extends Component {
       grid: Array(BOARD_SIZE)
         .fill()
         .map((_) => Array(BOARD_SIZE).fill()),
+      playerXPos: 1,
+      playerYPos: 4,
+      finishXPos: 6,
+      finishYPos: 0,
     };
+  }
+
+  boardPositions(boardCell) {
+    let playerPosXY = `${this.state.playerXPos}_${this.state.playerYPos}`;
+    let finishPosXY = `${this.state.finishXPos}_${this.state.finishYPos}`;
+
+    switch (boardCell) {
+      case playerPosXY:
+        return (Player);
+        break;
+      case finishPosXY:
+        return (Finish);
+        break;
+      default:
+        return (Water);
+        break;
+    }
   }
 
   render() {
     const grid = this.state.grid;
-    const board = grid.map((row, i) => {
+    const board = grid.map((row, j) => {
       return (
-        <tr key={"row_" + i}>
-          {row.map((_, j) => {
+        <tr key={"row_" + j}>
+          {row.map((_, i) => {
             return (
               <BoardCell
                 key={`cell_${i}_${j}`}
                 background={Water}
-                img={i === j ? Player : ""}
+                img={this.boardPositions(`${i}_${j}`)}
                 pos={`${i}_${j}`}
               />
             );
