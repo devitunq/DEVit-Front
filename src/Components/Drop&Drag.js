@@ -56,7 +56,9 @@ export default class AppDragDropDemo extends Component {
 
     return (
       <div className="container-drag">
-        <span className="instructions-header">Instrucciones</span>
+        <span className="instructions-header">
+          <p className="text-header">Instrucciones</p>
+        </span>
         <div
           className="container-instructions"
           onDragOver={(e) => this.onDragOver(e)}
@@ -67,7 +69,9 @@ export default class AppDragDropDemo extends Component {
           {actions.instructions}
         </div>
 
-        <span className="board-header">Tablero</span>
+        <span className="instructions-header">
+          <p className="text-header">Tablero</p>
+        </span>
         <div
           className="container-board "
           onDragOver={(e) => this.onDragOver(e)}

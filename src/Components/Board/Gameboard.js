@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import BoardCell from "./BoardCell";
 import "./Gameboard.css";
 import Water from "../../Assets/test-water.png";
 import Player from "../../Assets/test-player.png";
 import Finish from "../../Assets/test-finish.png";
-import Navbarongame from "../Generics/Navbarongame";
+import Navbar from "../Generics/Navbar";
 import ParticlesBg from "particles-bg";
 import AppDragDropDemo from "../Drop&Drag";
 import BoxObjetive from "../Boxobjective";
@@ -71,26 +71,39 @@ class Gameboard extends Component {
           direction="column"
           spacing={10}
           justify="center"
-          alignItems="center"
+          alignItems="left"
         >
           <Grid item xs={12}>
-            <Navbarongame />
-          </Grid>
-          <Grid item xs={8} md={6} xl={4}>
-            <BoxObjetive />
+            <Navbar />
           </Grid>
 
-          <Grid item xs={8} md={6} xl={4}>
-            <div className="boardContainer">
-              <table cellSpacing="0" className="board">
-                <tbody>{board}</tbody>
-              </table>
-            </div>
+          <Grid container item xs={12}>
+
+            <Grid item xs={6}>
+              <BoxObjetive />
+
+              <AppDragDropDemo />
+
+              <div className="start-Board-butt">
+                Iniciar tablero
+              </div>
+
+              <div className="delete-Board-butt">
+                Borrar tablero
+              </div>
+
+            </Grid>
+
+            <Grid item xs={6}>
+              <div className="boardContainer">
+                <table cellSpacing="0" className="board">
+                  <tbody>{board}</tbody>
+                </table>
+              </div>
+            </Grid>
+
           </Grid>
 
-          <Grid item xs={8} md={6} xl={4}>
-            <AppDragDropDemo />
-          </Grid>
         </Grid>
       </div>
     );
