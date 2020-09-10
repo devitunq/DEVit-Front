@@ -9,8 +9,7 @@ import Navbar from "../Generics/Navbar";
 import ParticlesBg from "particles-bg";
 import AppDragDropDemo from "../Drop&Drag";
 import BoxObjetive from "../Boxobjective";
-
-
+import { getLevelByLevelId } from "../../Services/LevelService";
 
 const BOARD_SIZE = 7;
 class Gameboard extends Component {
@@ -27,19 +26,25 @@ class Gameboard extends Component {
     };
   }
 
+  componentDidMount() {
+    getLevelByLevelId("Easy_Level One").then((response) =>
+      console.log(response)
+    );
+  }
+
   boardPositions(boardCell) {
     let playerPosXY = `${this.state.playerXPos}_${this.state.playerYPos}`;
     let finishPosXY = `${this.state.finishXPos}_${this.state.finishYPos}`;
 
     switch (boardCell) {
       case playerPosXY:
-        return (Player);
+        return Player;
         break;
       case finishPosXY:
-        return (Finish);
+        return Finish;
         break;
       default:
-        return (Water);
+        return Water;
         break;
     }
   }
@@ -78,20 +83,14 @@ class Gameboard extends Component {
           </Grid>
 
           <Grid container item xs={12}>
-
             <Grid item xs={6}>
               <BoxObjetive />
 
               <AppDragDropDemo />
 
-              <div className="start-Board-butt">
-                Iniciar tablero
-              </div>
+              <div className="start-Board-butt">Iniciar tablero</div>
 
-              <div className="delete-Board-butt">
-                Borrar tablero
-              </div>
-
+              <div className="delete-Board-butt">Borrar tablero</div>
             </Grid>
 
             <Grid item xs={6}>
@@ -101,9 +100,7 @@ class Gameboard extends Component {
                 </table>
               </div>
             </Grid>
-
           </Grid>
-
         </Grid>
       </div>
     );
