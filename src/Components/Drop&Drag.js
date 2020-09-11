@@ -6,12 +6,11 @@ export default class AppDragDropDemo extends Component {
     actions: [
       { toDo: "Subir", category: "instructions" },
       { toDo: "Bajar", category: "instructions" },
-      { toDo: "Rodrikpo", category: "instructions" },
+      { toDo: "Rodrikpos", category: "instructions" },
     ],
   };
 
   onDragStart = (ev, id) => {
-    console.log("dragstart:", id);
     ev.dataTransfer.setData("id", id);
   };
 
@@ -22,12 +21,18 @@ export default class AppDragDropDemo extends Component {
   onDrop = (ev, categ) => {
     let id = ev.dataTransfer.getData("id");
 
-    let actions = this.state.actions.filter((actions) => {
-      if (actions.toDo === id) {
-        actions.category = categ;
+    let actions = this.state.actions.map((action) => {
+      if (action.toDo === id) {
+        action.category = categ;
       }
-      return actions;
+      return action;
     });
+
+    let elem = actions.splice(
+      actions.findIndex((e) => e.toDo === id),
+      1
+    )[0];
+    actions.splice(actions.length, 0, elem);
 
     this.setState({
       ...this.state,
@@ -61,7 +66,7 @@ export default class AppDragDropDemo extends Component {
         </span>
         <div
           className="container-instructions"
-          onDragOver={(e) => this.onDragOver(e)}
+          onDragOver={this.onDragOver}
           onDrop={(e) => {
             this.onDrop(e, "instructions");
           }}
@@ -74,7 +79,7 @@ export default class AppDragDropDemo extends Component {
         </span>
         <div
           className="container-board "
-          onDragOver={(e) => this.onDragOver(e)}
+          onDragOver={this.onDragOver}
           onDrop={(e) => this.onDrop(e, "tablero")}
         >
           {actions.tablero}
