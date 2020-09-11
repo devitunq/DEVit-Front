@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Grid, Button } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import BoardCell from "./BoardCell";
 import "./Gameboard.css";
 import Water from "../../Assets/test-water.png";
 import Player from "../../Assets/test-player.png";
 import Finish from "../../Assets/test-finish.png";
+import Path from "../../Assets/test-path.png";
 import Navbar from "../Generics/Navbar";
 import ParticlesBg from "particles-bg";
 import AppDragDropDemo from "../Drop&Drag";
@@ -19,37 +20,54 @@ class Gameboard extends Component {
       grid: Array(BOARD_SIZE)
         .fill()
         .map((_) => Array(BOARD_SIZE).fill()),
-      playerXPos: 1,
-      playerYPos: 4,
-      finishXPos: 6,
-      finishYPos: 0,
+      elementList: [],
     };
   }
 
   componentDidMount() {
-    getLevelByLevelId("Easy_Level One").then((response) =>
-      console.log(response)
-    );
+    getLevelByLevelId("Easy_Level One").then((response) => {
+      let temp = [];
+
+      if (response.data !== undefined) {
+        response.data.elements.forEach(e => { temp.push(e) }
+        );
+      }
+      this.setState({ elementList: temp })
+      console.log(this.state.elementList)
+    });
   }
 
-  boardPositions(boardCell) {
-    let playerPosXY = `${this.state.playerXPos}_${this.state.playerYPos}`;
-    let finishPosXY = `${this.state.finishXPos}_${this.state.finishYPos}`;
-
-    switch (boardCell) {
-      case playerPosXY:
-        return Player;
-        break;
-      case finishPosXY:
+  elemeTypeStrToElemType(elemTypeStr) {
+    switch (elemTypeStr) {
+      case "Finish":
         return Finish;
-        break;
+      case "Player":
+        return Player;
+      case "PathTile":
+        return Path;
       default:
         return Water;
-        break;
     }
   }
 
+  boardPositions(boardCell) {
+    let img = Water
+    let elements = this.state.elementList
+    let posFound = false
+
+    while (!posFound) {
+      let posString = `${elements[1].position.posX}_${elements[1].position.posY}`;
+      if (posString == boardCell) {
+        img = this.elemeTypeStrToElemType(elements[0].type);
+        posFound = true
+      }
+      elements = elements.shift()
+    }
+    return img
+  }
+
   render() {
+
     const grid = this.state.grid;
     const board = grid.map((row, j) => {
       return (
@@ -59,7 +77,7 @@ class Gameboard extends Component {
               <BoardCell
                 key={`cell_${i}_${j}`}
                 background={Water}
-                img={this.boardPositions(`${i}_${j}`)}
+                img={Water}
                 pos={`${i}_${j}`}
               />
             );
@@ -76,7 +94,6 @@ class Gameboard extends Component {
           direction="column"
           spacing={10}
           justify="center"
-          alignItems="left"
         >
           <Grid item xs={12}>
             <Navbar />
