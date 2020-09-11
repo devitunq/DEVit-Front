@@ -10,7 +10,10 @@ import Navbar from "../Generics/Navbar";
 import ParticlesBg from "particles-bg";
 import AppDragDropDemo from "../Drop&Drag";
 import BoxObjetive from "../Boxobjective";
-import { getLevelByLevelId } from "../../Services/LevelService";
+import {
+  getLevelByLevelId,
+  postLevelSolution,
+} from "../../Services/LevelService";
 
 const BOARD_SIZE = 7;
 class Gameboard extends Component {
@@ -77,7 +80,30 @@ class Gameboard extends Component {
 
               <AppDragDropDemo />
 
-              <div className="start-Board-butt">Iniciar tablero</div>
+              <div
+                className="start-Board-butt"
+                onClick={() => {
+                  postLevelSolution("Easy_Level One", [
+                    "GoUp",
+                    "GoUp",
+                    "GoRight",
+                    "GoRight",
+                    "GoRight",
+                    "GoUp",
+                    "GoRight",
+                    "GoRight",
+                    "GoUp",
+                  ]).then(({ data }) =>
+                    alert(
+                      data.levelState === "Complete"
+                        ? "Bien hecho!"
+                        : "No lo conseguiste, vuelve a intentarlo!"
+                    )
+                  );
+                }}
+              >
+                Iniciar tablero
+              </div>
 
               <div className="delete-Board-butt">Borrar tablero</div>
             </Grid>

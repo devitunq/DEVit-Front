@@ -2,5 +2,10 @@ import axios from "axios";
 
 const LEVELS_URL = "/api/levels";
 
-export const getLevelByLevelId = (levelId) =>
+const getLevelByLevelId = (levelId) =>
   axios.get(`http://localHost:8080/${LEVELS_URL}/${levelId}`);
+
+const postLevelSolution = (levelId, solution) =>
+  axios.post(`http://localHost:8080/${LEVELS_URL}/solve/${levelId}`, solution);
+
+export { getLevelByLevelId, postLevelSolution };
