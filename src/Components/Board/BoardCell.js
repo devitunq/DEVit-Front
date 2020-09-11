@@ -5,11 +5,10 @@ import Water from "../../Assets/test-water.png";
 
 class BoardCell extends Component {
   render() {
-    const background = this.props.background ? this.props.background : Water;
     return (
       <td
         className="boardCell"
-        style={{ backgroundImage: `url(${background})` }}
+        style={{ backgroundImage: `url(${this.props.background})` }}
         id={`cell_${this.props.pos}`}
       >
         <img
@@ -19,7 +18,7 @@ class BoardCell extends Component {
           }}
           width="100%"
           height="100%"
-          src={this.props.img}
+          src={this.props.img ? this.props.img : this.props.background}
           alt=""
         />
       </td>
@@ -29,8 +28,8 @@ class BoardCell extends Component {
 
 BoardCell.propTypes = {
   pos: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  background: PropTypes.string,
+  background: PropTypes.string.isRequired,
+  img: PropTypes.string,
 };
 
 export default BoardCell;
