@@ -62,6 +62,30 @@ class Gameboard extends Component {
     return img;
   }
 
+  renderEachStep = (i, data) => {
+    let { levelState, fullGame } = data;
+    let objects,
+      paths = [];
+    objects = fullGame[i].filter((e) => e.type !== "PathTile");
+    paths = fullGame[i].filter((e) => e.type === "PathTile");
+    this.setState({ objects, paths });
+    if (i < fullGame.length - 1) {
+      setTimeout(() => {
+        i++;
+        this.renderEachStep(i, data);
+      }, 500);
+    } else
+      setTimeout(
+        () =>
+          alert(
+            levelState === "Complete"
+              ? "Bien hecho!"
+              : "No lo conseguiste, vuelve a intentarlo!"
+          ),
+        500
+      );
+  };
+
   render() {
     const { grid, isLoading, objects, paths } = this.state;
     return isLoading ? (
@@ -93,13 +117,7 @@ class Gameboard extends Component {
                     "GoRight",
                     "GoRight",
                     "GoUp",
-                  ]).then(({ data }) =>
-                    alert(
-                      data.levelState === "Complete"
-                        ? "Bien hecho!"
-                        : "No lo conseguiste, vuelve a intentarlo!"
-                    )
-                  );
+                  ]).then(({ data }) => this.renderEachStep(0, data));
                 }}
               >
                 Iniciar tablero

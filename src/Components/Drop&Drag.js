@@ -6,7 +6,8 @@ export default class AppDragDropDemo extends Component {
     actions: [
       { toDo: "Subir", category: "instructions" },
       { toDo: "Bajar", category: "instructions" },
-      { toDo: "Rodrikpos", category: "instructions" },
+      { toDo: "Derecha", category: "instructions" },
+      { toDo: "Izquierda", category: "instructions" },
     ],
   };
 

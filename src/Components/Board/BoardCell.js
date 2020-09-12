@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import "./BoardCell.css";
-import Water from "../../Assets/test-water.png";
 
 class BoardCell extends Component {
   render() {
