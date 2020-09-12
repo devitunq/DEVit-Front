@@ -8,6 +8,15 @@ export default class AppDragDropDemo extends Component {
       { toDo: "Bajar", category: "instructions" },
       { toDo: "Derecha", category: "instructions" },
       { toDo: "Izquierda", category: "instructions" },
+      { toDo: "Subir", category: "tablero" },
+      { toDo: "Subir", category: "tablero" },
+      { toDo: "Derecha", category: "tablero" },
+      { toDo: "Derecha", category: "tablero" },
+      { toDo: "Derecha", category: "tablero" },
+      { toDo: "Subir", category: "tablero" },
+      { toDo: "Derecha", category: "tablero" },
+      { toDo: "Derecha", category: "tablero" },
+      { toDo: "Subir", category: "tablero" },
     ],
   };
 

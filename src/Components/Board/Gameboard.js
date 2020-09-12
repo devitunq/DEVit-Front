@@ -123,7 +123,7 @@ class Gameboard extends Component {
                 Iniciar tablero
               </div>
 
-              <div className="delete-Board-butt">Borrar tablero</div>
+              {/* <div className="delete-Board-butt">Borrar tablero</div> */}
             </Grid>
 
             <Grid item xs={6}>
