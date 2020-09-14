@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter } from "react-router-dom";
 
-import Header from "../Components/Header";
+import Home from "./Pages/Home";
 import Gameboard from "../Components/Board/Gameboard";
-import About from "./About";
+import About from "./Pages/About";
 
 class Routes extends Component {
   render() {
@@ -11,8 +11,8 @@ class Routes extends Component {
       <BrowserRouter>
         <Route component={Gameboard} path="/gameboard" />
         <Route component={About} path="/about" />
-        <Route component={Header} path="/home" />
-        <Route component={Header} exact path="/" />
+        <Route component={Home} path="/home" />
+        <Route component={Home} exact path="/" />
       </BrowserRouter>
     );
   }

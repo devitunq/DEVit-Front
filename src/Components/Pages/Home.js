@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import ParticlesBg from "particles-bg";
-import Navbar from "../Components/Generics/Navbar";
+import Navbar from "../Generics/Navbar";
 
-class Header extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.logopic = "images/Logo.png";
@@ -43,4 +43,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Home;

@@ -16,7 +16,7 @@ import {
 } from "../../Services/LevelService";
 
 const BOARD_SIZE = 7;
-class Gameboard extends Component {
+class Level extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -156,4 +156,4 @@ class Gameboard extends Component {
   }
 }
 
-export default Gameboard;
+export default Level;

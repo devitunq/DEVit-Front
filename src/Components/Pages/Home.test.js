@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Header from "./Header";
-import FluentTest from "../Utils/fluent-test";
+import Home from "./Home";
+import FluentTest from "../../Utils/fluent-test";
 
-describe("Header", () => {
-  class HeaderTest extends FluentTest {
+describe("Home", () => {
+  class HomeTest extends FluentTest {
     constructor() {
       super();
 
@@ -14,35 +14,35 @@ describe("Header", () => {
     }
 
     isRendered = () => {
-      this.wrapper = shallow(<Header {...this.props} />);
+      this.wrapper = shallow(<Home {...this.props} />);
 
       return this;
     };
   }
 
-  const whenHeader = () => new HeaderTest();
+  const whenHome = () => new HomeTest();
 
   test("debe tener un navBar.", () => {
-    whenHeader().isRendered().thenElement("Navbar").should().exist();
+    whenHome().isRendered().thenElement("Navbar").should().exist();
   });
 
   test("debe tener el logo de DEVit.", () => {
     const expectedId = "#logoDevit";
-    whenHeader().isRendered().thenElement(expectedId).should().exist();
+    whenHome().isRendered().thenElement(expectedId).should().exist();
   });
 
   test("debe tener el logo de DEVit.", () => {
     const expectedId = "#logoDevit";
-    whenHeader().isRendered().thenElement(expectedId).should().exist();
+    whenHome().isRendered().thenElement(expectedId).should().exist();
   });
 
   test("debe tener la descripción de DEVit.", () => {
     const expectedId = "#descDevit";
-    whenHeader().isRendered().thenElement(expectedId).should().exist();
+    whenHome().isRendered().thenElement(expectedId).should().exist();
   });
 
   test("debe tener un botón para jugar.", () => {
     const expectedId = "#playButton";
-    whenHeader().isRendered().thenElement(expectedId).should().exist();
+    whenHome().isRendered().thenElement(expectedId).should().exist();
   });
 });

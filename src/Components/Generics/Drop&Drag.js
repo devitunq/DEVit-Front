@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Drop&Drag.css";
 
-export default class AppDragDropDemo extends Component {
+export default class DropAndDrag extends Component {
   state = {
     actions: [
       { toDo: "Subir", category: "instructions" },
