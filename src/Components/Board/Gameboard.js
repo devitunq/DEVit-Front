@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import { Grid, LinearProgress } from "@material-ui/core";
+import { Grid, LinearProgress, Container, Button, ButtonGroup } from "@material-ui/core";
 import BoardCell from "./BoardCell";
 import "./Gameboard.css";
+import { BoardButton } from "../Generics/BoardButton"
 import Water from "../../Assets/test-water.png";
 import Player from "../../Assets/test-player.png";
 import Finish from "../../Assets/test-finish.png";
 import Path from "../../Assets/test-path.png";
-import Navbar from "../Generics/Navbar";
+import { Navbar } from "../Generics/Navbar";
 import ParticlesBg from "particles-bg";
-import DropAndDrag from "../Generics/Drop&Drag";
-import BoxObjetive from "../Generics/Boxobjective";
+import DropAndDrag from "../Others/Drop&Drag";
+import { BoxObjetive } from "../Others/Boxobjective";
+import { Logo } from "../Generics/Logo"
 import {
   getLevelByLevelId,
   postLevelSolution,
@@ -92,6 +94,9 @@ class Gameboard extends Component {
     ) : (
         <div>
           <ParticlesBg type="circle" bg={true} />
+
+          <Logo />
+
           <Grid container direction="column" spacing={10} justify="center">
             <Grid item xs={12}>
               <Navbar />
@@ -99,30 +104,37 @@ class Gameboard extends Component {
 
             <Grid container item xs={12}>
               <Grid item xs={6}>
-                <BoxObjetive />
 
-                <DropAndDrag />
+                <Container maxWidth="xl">
+                  <div className="ins-board-obj">
+                    <BoxObjetive />
 
-                <div
-                  className="start-Board-butt"
-                  onClick={() => {
-                    postLevelSolution("Easy_Level One", [
-                      "GoUp",
-                      "GoUp",
-                      "GoRight",
-                      "GoRight",
-                      "GoRight",
-                      "GoUp",
-                      "GoRight",
-                      "GoRight",
-                      "GoUp",
-                    ]).then(({ data }) => this.renderEachStep(0, data));
-                  }}
-                >
-                  Iniciar tablero
-              </div>
+                    <DropAndDrag />
 
-                {/* <div className="delete-Board-butt">Borrar tablero</div> */}
+                    <BoardButton
+                      text={"Iniciar tablero"}
+                      onClick={() => {
+                        postLevelSolution("Easy_Level One", [
+                          "GoUp",
+                          "GoUp",
+                          "GoRight",
+                          "GoRight",
+                          "GoRight",
+                          "GoUp",
+                          "GoRight",
+                          "GoRight",
+                          "GoUp",
+                        ]).then(({ data }) => this.renderEachStep(0, data));
+                      }}>
+                    </BoardButton>
+
+                    <BoardButton
+                      text={"Reiniciar juego"} >
+                    </BoardButton>
+                  </div>
+
+                </Container>
+
               </Grid>
 
               <Grid item xs={6}>

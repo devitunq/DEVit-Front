@@ -13,20 +13,40 @@
 }
 
 .start-Board-butt {
+  margin-left: 28%;
   margin-top: 2%;
-  box-shadow: 0px 0px 0px 0px #77a809;
-  /* background: linear-gradient(to bottom, #89c403 5%, #77a809 100%); */
-  background-color: #0eaa00;
-  border-radius: 14px;
+  background-color: #444444;
   display: inline-block;
-  cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
-  font-size: 16px;
-  width: 100%;
-  /* height: 5%; */
-  text-shadow: 0px 0px 5px #528009;
+  cursor: pointer;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  width: 40%;
   text-align: center;
+}
+
+.start-Board-butt:hover{
+  background-color: #f0b923;
+  text-rendering: optimizeSpeed;
+}
+
+.finish-Board-butt {
+  border: lightcyan 2px;
+  margin-left: 28%;
+  margin-top: 2%;
+  background-color: #444444;
+  display: inline-block;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  width: 40%;
+  text-align: center;
+}
+
+.finish-Board-butt:hover{
+  background-color: #f0b923;
+  text-rendering: optimizeSpeed;
 }
 
 .delete-Board-butt {
@@ -45,3 +65,26 @@
   text-align: center;
   text-shadow: 0px 0px 5px #da0000;
 }
+
+.ins-board-obj{
+  box-shadow: 0 1px 3px rgba(0, 0, 0), 0 1px 2px rgba(0, 0, 0);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  padding-top: 1%;
+  padding-bottom: 5%;
+  border-radius: 3%;
+  background-color: rgb(141, 141, 141) ;
+  height: 100%;
+}
+
+.ins-board-obj:hover {
+  box-shadow: 12px 12px 25px rgb(0, 0, 0), 12px 12px 25px rgba(0, 0, 0);
+}
+
+hr.dotted {
+  border-top: 3px dotted rgb(231, 231, 231);
+  margin-bottom: 0%;
+  margin-top: 1%;
+}
+
+
+

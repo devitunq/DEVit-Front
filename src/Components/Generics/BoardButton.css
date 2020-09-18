@@ -1,0 +1,17 @@
+.board-butt {
+  margin-left: 28%;
+  margin-top: 2%;
+  background-color: #444444;
+  display: inline-block;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  width: 40%;
+  text-align: center;
+}
+
+.board-butt:hover{
+  background-color: #f0b923;
+  text-rendering: optimizeSpeed;
+}

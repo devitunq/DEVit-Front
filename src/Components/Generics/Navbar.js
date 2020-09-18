@@ -1,24 +1,22 @@
 import React, { Component } from "react";
 
-class Navbar extends Component {
-  render() {
-    return (
-      <nav id="nav-wrap">
-        <ul id="nav" className="nav">
-          <li className="current">
-            <a href="/home" id="navHomeLink">
-              Home
+const Navbar = (props) => {
+  return (
+    <nav id="nav-wrap">
+      <ul id="nav" className="nav">
+        <li className="current">
+          <a href="/home" id="navHomeLink">
+            Home
             </a>
-          </li>
-          <li>
-            <a href="/about" id="navAboutLink">
-              ¿Quienes somos?
+        </li>
+        <li>
+          <a href="/about" id="navAboutLink">
+            ¿Quienes somos?
             </a>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
-}
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
-export default Navbar;
+export { Navbar };

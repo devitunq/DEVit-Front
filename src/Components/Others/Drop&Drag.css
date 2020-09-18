@@ -1,0 +1,87 @@
+.container-drag {
+  text-align: center;
+  margin: auto;
+  align-content: center;
+  align-items: center;
+}
+
+.container-instructions {
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.692);
+  height: 20%;
+  margin-left: 2%;
+  margin-right: 2%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.instructions-header {
+  margin-bottom: 2%;
+  margin-top: 2%;
+  text-align: center;
+  display: inline-block;
+  width: 70%;
+  height: 3.7%;
+}
+
+.board-header {
+  margin-bottom: 0.5%;
+  text-align: center;
+  display: inline-block;
+  width: 70%;
+  height: 3.7%;
+}
+
+.text-header {
+  color: white;
+  text-shadow: gray;
+  text-transform: uppercase;
+  font: 14px;
+  height: 2px;
+}
+
+.container-board {
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.692);
+  height: 20%;
+  margin-left: 2%;
+  margin-right: 2%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  min-height: 20%;
+}
+
+.action-item {
+  border-radius: 10px;
+  color: aliceblue;
+  text-align: center;
+  text-shadow: inherit;
+  background-color: rgb(37, 37, 37);
+  margin: 5px;
+  cursor: pointer;
+}
+
+.action-item:hover{
+  background-color: rgb(50, 73, 206);
+  box-shadow: 1px 0px 2px rgba(50, 73, 206), 1px 0px 2px rgba(50, 73, 206);
+}
+
+.instructions-pic{
+  margin-top: 1%;
+  height: 13%;
+  width: 42%;
+}
+
+.board-pic{
+  margin-top: 1%;
+  height: 2.7%;
+  width: 29%;
+}
+
+hr.dotted {
+  border-top: 3px dotted rgb(231, 231, 231);
+  margin-bottom: 1%;
+  margin-top: 3%;
+}

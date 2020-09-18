@@ -1,8 +1,0 @@
-{
-  "main": {
-    "name":"DEVit",
-    "description":"¡Bienvenido a DEVit!, un juego donde podrás aprender a programar divirtiendote y poniendo a prueba tus conocimientos.",
-    "logo":"Logo.png",
-    "bio":"Somos un equipo de estudiantes de programacion de la Universidad Nacional de Quilmes, los cuales decimos encarar un proyecto para que los allegados al tema puedan aprender, y al mismo tiempo divertirse. La idea de este juego es lograr incorporar conceptos basicos tanto del desarollo nato como de la logica implementada en él"
-  }
-} 

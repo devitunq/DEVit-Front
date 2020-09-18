@@ -72,20 +72,26 @@ export default class DropAndDrag extends Component {
     return (
       <div className="container-drag">
         <span className="instructions-header">
-          <p className="text-header">Instrucciones</p>
+          <img
+            className="board-pic"
+            src={"/images/tablero.png"}
+            alt="objetivo"
+          />
         </span>
-        <div
-          className="container-instructions"
+        <div className="container-instructions"
           onDragOver={this.onDragOver}
-          onDrop={(e) => {
-            this.onDrop(e, "instructions");
-          }}
+          onDrop={(e) => { this.onDrop(e, "instructions"); }}
         >
           {actions.instructions}
         </div>
 
+
         <span className="instructions-header">
-          <p className="text-header">Tablero</p>
+          <img
+            className="instructions-pic"
+            src={"/images/instrucciones.png"}
+            alt="objetivo"
+          />
         </span>
         <div
           className="container-board "

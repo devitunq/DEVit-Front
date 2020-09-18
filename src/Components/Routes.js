@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter } from "react-router-dom";
 
-import Home from "./Pages/Home";
+import { Home } from "./Pages/Home";
 import Gameboard from "../Components/Board/Gameboard";
-import About from "./Pages/About";
+import { About } from "./Pages/About";
 
 class Routes extends Component {
   render() {
