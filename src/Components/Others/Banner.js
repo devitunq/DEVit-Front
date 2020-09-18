@@ -16,7 +16,7 @@ const Banner = ({ description }) => {
 
         <StartButton
           style="button btn btn-primary"
-          href="/GameBoard"
+          href="/level"
           text="Comenzar"
           iconClassName="fa fa-play"
         />
