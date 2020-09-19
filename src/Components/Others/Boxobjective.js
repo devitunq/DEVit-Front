@@ -1,10 +1,8 @@
-import React from 'react';
-import './BoxObjective.css';
-
+import React from "react";
+import "./BoxObjective.css";
 
 const BoxObjetive = () => {
-
-  const objective = "Ganar"
+  const objective = "Ganar";
 
   return (
     <div className="container-objective">
@@ -18,9 +16,8 @@ const BoxObjetive = () => {
       <div className="objective">
         <p className="objective-text"> {objective} </p>
       </div>
-
     </div>
   );
-}
+};
 
-export { BoxObjetive };
+export default BoxObjetive;

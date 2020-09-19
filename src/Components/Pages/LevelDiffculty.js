@@ -1,9 +1,9 @@
 import React from "react";
 import ParticlesBg from "particles-bg";
-import { Grid, Container } from "@material-ui/core";
-import "./LevelDifficulty.css"
-import { Navbar } from "../Generics/Navbar";
-import { Logo } from "../Generics/Logo"
+import { Grid } from "@material-ui/core";
+import "./LevelDifficulty.css";
+import Navbar from "../Generics/Navbar";
+import Logo from "../Generics/Logo";
 
 const LevelDifficulty = () => {
   return (
@@ -19,17 +19,12 @@ const LevelDifficulty = () => {
           <Navbar />
         </Grid>
 
-        <Grid item xs="12">
-          <div className="diff-container">
-            sfafsa
-            </div>
+        <Grid item xs={12}>
+          <div className="diff-container">sfafsa</div>
         </Grid>
-
-
       </Grid>
     </div>
+  );
+};
 
-  )
-}
-
-export { LevelDifficulty };
+export default LevelDifficulty;

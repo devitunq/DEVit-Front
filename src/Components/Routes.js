@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter } from "react-router-dom";
 
-import { Home } from "./Pages/Home";
+import Home from "./Pages/Home";
 import Level from "../Components/Pages/Level";
-import { About } from "./Pages/About";
-import { LevelDifficulty } from "./Pages/LevelDiffculty"
+import About from "./Pages/About";
+import LevelDifficulty from "./Pages/LevelDiffculty";
 
 class Routes extends Component {
   render() {

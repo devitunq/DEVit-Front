@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import BoardCell from "./BoardCell";
 import "./Gameboard.css";
-import { boardPositions } from "../Pages/Level"
-
+import { boardPositions } from "../Pages/Level";
 
 const Gameboard = ({ grid, paths, objects }) => {
   return (
@@ -15,11 +14,7 @@ const Gameboard = ({ grid, paths, objects }) => {
                 <BoardCell
                   key={`cell_${i}_${j}`}
                   background={boardPositions(`${i}_${j}`, paths)}
-                  img={boardPositions(
-                    `${i}_${j}`,
-                    objects,
-                    true
-                  )}
+                  img={boardPositions(`${i}_${j}`, objects, true)}
                   pos={`${i}_${j}`}
                 />
               ))}
@@ -29,6 +24,6 @@ const Gameboard = ({ grid, paths, objects }) => {
       </table>
     </div>
   );
-}
+};
 
-export { Gameboard };
+export default Gameboard;

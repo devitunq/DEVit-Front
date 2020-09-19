@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import ParticlesBg from "particles-bg";
-import { Navbar } from "../Generics/Navbar";
-import { Banner } from "../Others/Banner"
+import Navbar from "../Generics/Navbar";
+import Banner from "../Others/Banner";
 
 const Home = () => {
-
   const description =
     "¡Bienvenido a DEVit!, un juego donde podrás aprender a programar divirtiendote" +
     "y poniendo a prueba tus conocimientos.";
@@ -15,12 +14,9 @@ const Home = () => {
 
       <Navbar />
 
-      <Banner
-        description={description}
-      />
-
+      <Banner description={description} />
     </header>
   );
-}
+};
 
-export { Home };
+export default Home;

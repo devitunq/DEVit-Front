@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import { Navbar } from "../Generics/Navbar";
-import { Logo } from "../Generics/Logo"
+import React from "react";
+import Navbar from "../Generics/Navbar";
+import Logo from "../Generics/Logo";
 const About = () => {
-
   const bio =
     "Somos un equipo de estudiantes de programacion de la Universidad Nacional" +
     "de Quilmes, los cuales decimos encarar un proyecto para que los allegados al tema" +
@@ -11,7 +10,6 @@ const About = () => {
 
   return (
     <div>
-
       <Logo />
 
       <Navbar />
@@ -26,7 +24,6 @@ const About = () => {
       </section>
     </div>
   );
-}
+};
 
-
-export { About };
+export default About;

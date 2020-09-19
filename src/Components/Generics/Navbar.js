@@ -1,27 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <nav id="nav-wrap">
       <ul id="nav" className="nav">
         <li className="current">
           <a href="/home" id="navHomeLink">
             Home
-            </a>
+          </a>
         </li>
         <li>
           <a href="/about" id="navAboutLink">
             ¿Quienes somos?
-            </a>
+          </a>
         </li>
         <li>
           <a href="/difficulty" id="navAboutLink">
             Dificultades
-            </a>
+          </a>
         </li>
       </ul>
     </nav>
   );
 };
 
-export { Navbar };
+export default Navbar;

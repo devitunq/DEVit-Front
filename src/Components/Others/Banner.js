@@ -1,5 +1,5 @@
-import React from 'react';
-import { StartButton } from "../Generics/StartButton"
+import React from "react";
+import StartButton from "../Generics/StartButton";
 
 const Banner = ({ description }) => {
   return (
@@ -22,7 +22,7 @@ const Banner = ({ description }) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export { Banner };
+export default Banner;
