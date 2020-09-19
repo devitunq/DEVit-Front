@@ -14,6 +14,11 @@ const Navbar = (props) => {
             ¿Quienes somos?
             </a>
         </li>
+        <li>
+          <a href="/difficulty" id="navAboutLink">
+            Dificultades
+            </a>
+        </li>
       </ul>
     </nav>
   );
