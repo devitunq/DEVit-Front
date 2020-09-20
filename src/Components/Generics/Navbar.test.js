@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 describe("Navbar", () => {
   class NavbarTest extends FluentTest {
     isRendered = () => {
-      this.wrapper = shallow(<Navbar {...this.props} />);
+      this.wrapper = shallow(<Navbar />);
       return this;
     };
   }
@@ -20,6 +20,11 @@ describe("Navbar", () => {
 
   test("debe tener un link al About.", () => {
     const expectedId = "#navAboutLink";
+    whenNavbar().isRendered().thenElement(expectedId).should().exist();
+  });
+
+  test("debe tener un link a las dificultades.", () => {
+    const expectedId = "#navDifficultyLink";
     whenNavbar().isRendered().thenElement(expectedId).should().exist();
   });
 });

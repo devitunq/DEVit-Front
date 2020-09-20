@@ -1,24 +1,24 @@
 import React from "react";
 import { Grid, Container } from "@material-ui/core";
-import "./FailedLvl.css";
+import "./SuccessLvl.css";
 
-const FailedLvl = () => (
+const SuccessLvl = () => (
   <div>
     <Grid container direction="column" spacing={10} justify="center">
       <Grid container item xs={12}>
         <Grid item xs={4}></Grid>
         <Grid item xs={4}>
           <Container maxWidth="xl">
-            <div className="failed-lvl">
+            <div className="success-lvl">
               <a href="/level">
                 <img
-                  className="failed-pic"
-                  src="images/failed.png"
-                  alt="failed"
+                  className="success-pic"
+                  src="images/success.png"
+                  alt="success"
                 />
               </a>
               <div className="success-text">
-                Has fallado! Intentalo de nuevo.
+                Bien hecho! Sigue asi camarada.
               </div>
             </div>
           </Container>
@@ -29,4 +29,4 @@ const FailedLvl = () => (
   </div>
 );
 
-export default FailedLvl;
+export default SuccessLvl;

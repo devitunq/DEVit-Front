@@ -26,23 +26,7 @@ describe("Home", () => {
     whenHome().isRendered().thenElement("Navbar").should().exist();
   });
 
-  test("debe tener el logo de DEVit.", () => {
-    const expectedId = "#logoDevit";
-    whenHome().isRendered().thenElement(expectedId).should().exist();
-  });
-
-  test("debe tener el logo de DEVit.", () => {
-    const expectedId = "#logoDevit";
-    whenHome().isRendered().thenElement(expectedId).should().exist();
-  });
-
-  test("debe tener la descripción de DEVit.", () => {
-    const expectedId = "#descDevit";
-    whenHome().isRendered().thenElement(expectedId).should().exist();
-  });
-
-  test("debe tener un botón para jugar.", () => {
-    const expectedId = "#playButton";
-    whenHome().isRendered().thenElement(expectedId).should().exist();
+  test("debe tener un Banner.", () => {
+    whenHome().isRendered().thenElement("Banner").should().exist();
   });
 });

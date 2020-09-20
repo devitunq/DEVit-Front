@@ -5,6 +5,17 @@ import Gameboard from "./Gameboard";
 
 describe("Gameboard", () => {
   class GameboardTest extends FluentTest {
+    constructor() {
+      super();
+
+      this.props = {
+        grid: Array(7)
+          .fill()
+          .map((_) => Array(7).fill()),
+        paths: [],
+        objects: [],
+      };
+    }
     isRendered = () => {
       this.wrapper = shallow(<Gameboard {...this.props} />);
       return this;
