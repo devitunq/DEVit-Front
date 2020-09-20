@@ -1,7 +1,32 @@
 import React from "react";
 import BoardCell from "./BoardCell";
 import "./Gameboard.css";
-import { boardPositions } from "../Pages/Level";
+import Water from "../../Assets/test-water.png";
+import Player from "../../Assets/test-player.png";
+import Finish from "../../Assets/test-finish.png";
+import Path from "../../Assets/test-path.png";
+
+const elemeTypeStrToElemType = (elemTypeStr) => {
+  switch (elemTypeStr) {
+    case "Finish":
+      return Finish;
+    case "Player":
+      return Player;
+    case "PathTile":
+      return Path;
+    default:
+      return Water;
+  }
+};
+
+const boardPositions = (boardCell, elements, isObject = false) => {
+  let img = isObject ? "" : Water;
+  let element = elements.find(
+    (e) => `${e.position.posX}_${e.position.posY}` === boardCell
+  );
+  if (element) img = elemeTypeStrToElemType(element.type);
+  return img;
+};
 
 const Gameboard = ({ grid, paths, objects }) => {
   return (
