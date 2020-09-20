@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, LinearProgress, Container } from "@material-ui/core";
 import "../Board/Gameboard.css";
 import Gameboard from "../Board/Gameboard";
 import BoardButton from "../Generics/BoardButton";
-
 import Navbar from "../Generics/Navbar";
 import ParticlesBg from "particles-bg";
 import DropAndDrag from "../Others/Drop&Drag";
@@ -15,41 +14,38 @@ import {
 } from "../../Services/LevelService";
 
 
-const BOARD_SIZE = 7;
-class Level extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      grid: Array(BOARD_SIZE)
-        .fill()
-        .map((_) => Array(BOARD_SIZE).fill()),
-      objects: [],
-      paths: [],
-      isLoading: true,
-    };
-  }
+const boardSize = 7;
+const initialBoard = Array(boardSize).fill().map((_) => Array(boardSize).fill())
 
-  componentDidMount() {
-    getLevelByLevelId("Easy_Level One").then((response) => {
-      let objects,
-        paths = [];
-      objects = response.data.elements.filter((e) => e.type !== "PathTile");
-      paths = response.data.elements.filter((e) => e.type === "PathTile");
-      this.setState({ objects, paths, isLoading: false });
-    });
-  }
+const Level = () => {
 
-  renderEachStep = (i, data) => {
+  const [grid, setGrid] = useState(initialBoard)
+  const [objects, setObjetcs] = useState([])
+  const [paths, setPaths] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if (isLoading)
+      getLevelByLevelId("Easy_Level One").then((response) => {
+        setObjetcs(response.data.elements.filter((e) => e.type !== "PathTile"));
+        setPaths(response.data.elements.filter((e) => e.type === "PathTile"));
+        setIsLoading(false);
+      });
+  })
+
+
+  const renderEachStep = (i, data) => {
     let { levelState, fullGame } = data;
-    let objects,
-      paths = [];
-    objects = fullGame[i].filter((e) => e.type !== "PathTile");
-    paths = fullGame[i].filter((e) => e.type === "PathTile");
-    this.setState({ objects, paths });
+    let tempObjects,
+      tempPaths = [];
+    tempObjects = fullGame[i].filter((e) => e.type !== "PathTile");
+    tempPaths = fullGame[i].filter((e) => e.type === "PathTile");
+    setObjetcs(tempObjects);
+    setPaths(tempPaths);
     if (i < fullGame.length - 1) {
       setTimeout(() => {
         i++;
-        this.renderEachStep(i, data);
+        renderEachStep(i, data);
       }, 500);
     } else
       setTimeout(
@@ -63,63 +59,61 @@ class Level extends Component {
       );
   };
 
-  render() {
-    const { grid, isLoading, objects, paths } = this.state;
-    return isLoading ? (
-      <LinearProgress variant="indeterminate" />
-    ) : (
-        <div>
-          <ParticlesBg type="circle" bg={true} />
 
-          <Logo />
+  return isLoading ? (
+    <LinearProgress variant="indeterminate" />
+  ) : (
+      <div>
+        <ParticlesBg type="circle" bg={true} />
 
-          <Grid container direction="column" spacing={10} justify="center">
-            <Grid item xs={12}>
-              <Navbar />
+        <Logo />
+
+        <Grid container direction="column" spacing={10} justify="center">
+          <Grid item xs={12}>
+            <Navbar />
+          </Grid>
+
+          <Grid container item xs={12}>
+            <Grid item xs={6}>
+              <Container maxWidth="xl">
+                <div className="ins-board-obj">
+                  <BoxObjetive />
+
+                  <DropAndDrag />
+
+                  <BoardButton
+                    text={"Iniciar tablero"}
+                    onClick={() => {
+                      postLevelSolution("Easy_Level One", [
+                        "GoUp",
+                        "GoUp",
+                        "GoRight",
+                        "GoRight",
+                        "GoRight",
+                        "GoUp",
+                        "GoRight",
+                        "GoRight",
+                        "GoUp",
+                      ]).then(({ data }) => renderEachStep(0, data));
+                    }}
+                  ></BoardButton>
+
+                  <BoardButton text={"Reiniciar juego"}></BoardButton>
+                </div>
+              </Container>
             </Grid>
 
-            <Grid container item xs={12}>
-              <Grid item xs={6}>
-                <Container maxWidth="xl">
-                  <div className="ins-board-obj">
-                    <BoxObjetive />
-
-                    <DropAndDrag />
-
-                    <BoardButton
-                      text={"Iniciar tablero"}
-                      onClick={() => {
-                        postLevelSolution("Easy_Level One", [
-                          "GoUp",
-                          "GoUp",
-                          "GoRight",
-                          "GoRight",
-                          "GoRight",
-                          "GoUp",
-                          "GoRight",
-                          "GoRight",
-                          "GoUp",
-                        ]).then(({ data }) => this.renderEachStep(0, data));
-                      }}
-                    ></BoardButton>
-
-                    <BoardButton text={"Reiniciar juego"}></BoardButton>
-                  </div>
-                </Container>
-              </Grid>
-
-              <Grid item xs={6}>
-                <Gameboard
-                  grid={grid}
-                  paths={paths}
-                  objects={objects}
-                ></Gameboard>
-              </Grid>
+            <Grid item xs={6}>
+              <Gameboard
+                grid={grid}
+                paths={paths}
+                objects={objects}
+              ></Gameboard>
             </Grid>
           </Grid>
-        </div>
-      );
-  }
+        </Grid>
+      </div>
+    );
 }
 
 export default Level;
