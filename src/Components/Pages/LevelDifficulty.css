@@ -1,16 +1,46 @@
 .diff-container{
-  align-self: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0), 0 1px 2px rgba(0, 0, 0);
+  margin-top: 15%;
+  text-align: center;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  margin-top: 20%;
+  padding-top: 1%;
+  padding-bottom: 1%;
   border-radius: 3%;
-  background-color: rgb(141, 141, 141) ;
+  background-color: rgb(17,122,101) ;
   height: 100%;
-  
+}
+
+.diff-container:hover {
+  box-shadow: 12px 20px 25px rgb(0, 0, 0), 12px 20px 25px rgba(0, 0, 0);
 }
 
 .diff-item{
-  border-top: black 5px;
-  border-bottom: black 5px;
-  color: aliceblue;
+  font-size: 300%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  color: azure;
+  height: 30%;
+  margin-left: 2%;
+  margin-right: 2%;
+  cursor: pointer;
+}
+
+.diff-item:hover{
+  background-color: grey;
+  border-radius: 5%;
+}
+
+.diff-separator{
+  margin-left: 24%;
+  align-self: center;
+  width: 50%;
+  margin-top: -1%;
+  margin-bottom: -1%;
+  border: 2px solid rgb(37, 37, 37);
+  border-radius: 5px;
+}
+
+.lvl-img{
+  width: 55% ;
+  height: 27%;
+  position: relative;
 }
