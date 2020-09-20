@@ -8,6 +8,7 @@ import ParticlesBg from "particles-bg";
 import DropAndDrag from "../Others/Drop&Drag";
 import BoxObjetive from "../Others/Boxobjective";
 import Logo from "../Generics/Logo";
+import LevelModal from "../Generics/Modal";
 import {
   getLevelByLevelId,
   postLevelSolution,
@@ -19,10 +20,12 @@ const initialBoard = Array(boardSize).fill().map((_) => Array(boardSize).fill())
 
 const Level = () => {
 
-  const [grid, setGrid] = useState(initialBoard)
-  const [objects, setObjetcs] = useState([])
-  const [paths, setPaths] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [grid, setGrid] = useState(initialBoard);
+  const [objects, setObjetcs] = useState([]);
+  const [paths, setPaths] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [succesfuly, setSuccesfuly] = useState(false);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     if (isLoading)
@@ -32,6 +35,21 @@ const Level = () => {
         setIsLoading(false);
       });
   })
+
+  const succesLevel = () => {
+    setSuccesfuly(true)
+    setModal(true);
+  };
+
+  const failedLevel = () => {
+    setSuccesfuly(false)
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
 
 
   const renderEachStep = (i, data) => {
@@ -49,13 +67,7 @@ const Level = () => {
       }, 500);
     } else
       setTimeout(
-        () =>
-          alert(
-            levelState === "Complete"
-              ? "Bien hecho!"
-              : "No lo conseguiste, vuelve a intentarlo!"
-          ),
-        500
+        () => levelState === "Complete" ? succesLevel() : failedLevel()
       );
   };
 
@@ -112,6 +124,13 @@ const Level = () => {
             </Grid>
           </Grid>
         </Grid>
+
+        <LevelModal
+          open={modal}
+          close={closeModal}
+          result={succesfuly}
+        >
+        </LevelModal>
       </div>
     );
 }

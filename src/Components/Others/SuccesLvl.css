@@ -1,0 +1,19 @@
+.succes-lvl{
+  margin-top: 45%;
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 3%;
+  border-radius: 5%;
+  background-color: rgb(226, 226, 226) ;
+  height: 100%;
+}
+
+.succes-pic{
+  width: 40%;
+}
+
+.succes-text{
+  text-align: center;
+  color: black;
+  font-size: 150%;
+}

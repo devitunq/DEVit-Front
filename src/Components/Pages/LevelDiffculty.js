@@ -18,9 +18,9 @@ const LevelDifficulty = () => {
         </Grid>
 
         <Grid container item xs={12}>
-          <Grid item xs={4}></Grid>
-          <Grid item xs={4}>
-            <Container maxWidth="xl">
+          <Grid item xs={2}></Grid>
+          <Grid item xs={8}>
+            <Container maxWidth="xs">
               <div className="diff-container">
                 <a href="/level">
                   <div className="diff-item">
@@ -42,7 +42,7 @@ const LevelDifficulty = () => {
               </div>
             </Container>
           </Grid>
-          <Grid item xs={4}></Grid>
+          <Grid item xs={2}></Grid>
         </Grid>
       </Grid>
     </div>
