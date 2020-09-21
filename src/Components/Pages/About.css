@@ -1,0 +1,36 @@
+.section-one {
+  background-color: rgb(17,122,101);
+  padding: 200px 0 0;
+  margin-top: -10%;
+}
+
+.separator {
+  background-color: rgb(17,122,101);
+  bottom: -4px;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.about-cont{
+  margin-left: 15%;
+  margin-right: 30%;
+}
+
+.about-title{
+  color: white;
+}
+
+.about-description{
+  color: whitesmoke;
+}
+
+.about-sep{
+  width: 40%;
+}
+
+.github-pic{
+  margin-left: -25%;
+  max-width: 35vh;
+  height: auto;
+}
