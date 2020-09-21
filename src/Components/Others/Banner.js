@@ -6,7 +6,6 @@ const Banner = ({ description }) => (
     <div className="banner-text">
       <img
         id="logoDevit"
-        className="logo-pic"
         src="images/Logo.png"
         alt="logoDevit"
       />

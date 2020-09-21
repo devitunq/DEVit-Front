@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Drop&Drag.css";
+import { Container } from "@material-ui/core";
 
 export default class DropAndDrag extends Component {
   state = {
@@ -71,35 +72,38 @@ export default class DropAndDrag extends Component {
 
     return (
       <div className="container-drag">
-        <span className="instructions-header">
+
+        <div className="cont-header">
           <img
             className="board-pic"
             src={"/images/tablero.png"}
             alt="objetivo"
           />
-        </span>
-        <div className="container-instructions"
+        </div>
+
+        <div className="container-box"
           onDragOver={this.onDragOver}
           onDrop={(e) => { this.onDrop(e, "instructions"); }}
         >
           {actions.instructions}
         </div>
 
-
-        <span className="instructions-header">
+        <div className="cont-header">
           <img
             className="instructions-pic"
             src={"/images/instrucciones.png"}
             alt="objetivo"
           />
-        </span>
+        </div>
+
         <div
-          className="container-board "
+          className="container-box"
           onDragOver={this.onDragOver}
           onDrop={(e) => this.onDrop(e, "tablero")}
         >
           {actions.tablero}
         </div>
+
       </div>
     );
   }

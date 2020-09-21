@@ -1,7 +1,7 @@
 .section-one {
   background-color: rgb(17,122,101);
   padding: 200px 0 0;
-  margin-top: -10%;
+  margin-top: -16%;
 }
 
 .separator {
@@ -13,6 +13,7 @@
 }
 
 .about-cont{
+  margin-top: 5%;
   margin-left: 15%;
   margin-right: 30%;
 }

@@ -1,9 +1,11 @@
 .logo-startpage{
+  margin-left: -1%;
   position: relative;
   margin-bottom: -7%;
 }
 
 .logo-start{
-  width: 13%;
-  height: 13%;
+  max-width: 35%;
+  width: 22vh;
+  height: auto;
 }

@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.container-instructions {
+.container-box {
   border-radius: 10px;
   border: 2px solid rgba(0, 0, 0, 0.692);
   height: 20%;
@@ -13,10 +13,12 @@
   margin-right: 2%;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: minmax(100px, max-content)
+                         repeat(auto-fill, 200px) 20%;
+  min-height: 20%;
 }
 
-.instructions-header {
+.cont-header {
   margin-bottom: 2%;
   margin-top: 2%;
   text-align: center;
@@ -25,13 +27,6 @@
   height: 3.7%;
 }
 
-.board-header {
-  margin-bottom: 0.5%;
-  text-align: center;
-  display: inline-block;
-  width: 70%;
-  height: 3.7%;
-}
 
 .text-header {
   color: white;
@@ -39,18 +34,6 @@
   text-transform: uppercase;
   font: 14px;
   height: 2px;
-}
-
-.container-board {
-  border-radius: 10px;
-  border: 2px solid rgba(0, 0, 0, 0.692);
-  height: 20%;
-  margin-left: 2%;
-  margin-right: 2%;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  min-height: 20%;
 }
 
 .action-item {

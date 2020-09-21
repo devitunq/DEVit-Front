@@ -5,6 +5,8 @@ import Water from "../../Assets/test-water.png";
 import Player from "../../Assets/test-player.png";
 import Finish from "../../Assets/test-finish.png";
 import Path from "../../Assets/test-path.png";
+import { Container } from "@material-ui/core";
+
 
 const elemeTypeStrToElemType = (elemTypeStr) => {
   switch (elemTypeStr) {
@@ -29,24 +31,26 @@ const boardPositions = (boardCell, elements, isObject = false) => {
 };
 
 const Gameboard = ({ grid, paths, objects }) => (
-  <div className="boardContainer">
-    <table cellSpacing="0" className="board">
-      <tbody>
-        {grid.map((row, j) => (
-          <tr key={"row_" + j}>
-            {row.map((_, i) => (
-              <BoardCell
-                key={`cell_${i}_${j}`}
-                background={boardPositions(`${i}_${j}`, paths)}
-                img={boardPositions(`${i}_${j}`, objects, true)}
-                pos={`${i}_${j}`}
-              />
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
+  <Container maxWidth="sl">
+    <div className="boardContainer">
+      <table cellSpacing="0" className="board">
+        <tbody>
+          {grid.map((row, j) => (
+            <tr key={"row_" + j}>
+              {row.map((_, i) => (
+                <BoardCell
+                  key={`cell_${i}_${j}`}
+                  background={boardPositions(`${i}_${j}`, paths)}
+                  img={boardPositions(`${i}_${j}`, objects, true)}
+                  pos={`${i}_${j}`}
+                />
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </Container>
 );
 
 export default Gameboard;

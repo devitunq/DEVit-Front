@@ -1,12 +1,3 @@
-/* ==================================================================
-
-*   Ceevee Media Queries
-*   url: styleshout.com
-*   03-18-2014
-
-/* ================================================================== */
-
-
 /* screenwidth less than 1024px
 --------------------------------------------------------------------- */
 @media only screen and (max-width: 1024px) {
@@ -47,13 +38,6 @@
    }
 
 
-   /* About Section
-   ------------------------------------------------------------------- */
-   #about .logo-pic {
-      width: 2000px;
-      height: 450px;
-   }
-
     /* Call to Action Section
    ------------------------------------------------------------------- */
    #call-to-action .header-col h1:before {
@@ -71,7 +55,7 @@
    -------------------------------------------------------------------- */
    #nav-wrap {
       font: 12px 'opensans-bold', sans-serif;
-      background: transparent !important;
+      background: transparent;
       letter-spacing: 1.5px;  
       width: auto;
       position: fixed;
@@ -98,7 +82,7 @@
 
 	#nav-wrap > a:before,
    #nav-wrap > a:after {
-	   position: absolute;
+      position: absolute;
 		border: 2px solid #fff;
 		top: 35%;
 		left: 25%;
@@ -110,7 +94,7 @@
    /* toggle buttons */
 	#nav-wrap:not( :target ) > a:first-of-type,
 	#nav-wrap:target > a:last-of-type  {
-	   display: block;
+      display: block;
 	}
 
    /* hide menu panel */
@@ -120,7 +104,7 @@
       clear: both;
       width: auto; 
       float: right;     
-
+      border-bottom: 1px solid #2D2E34;
       position: relative;
       top: 12px;
       right: 0;
@@ -179,8 +163,7 @@
    }
    header .social li { margin: 0 10px; }
 
-    /* scrolldown link */
-   header .scrolldown { display: none; }
+
 
 
    /* Call To Action Section

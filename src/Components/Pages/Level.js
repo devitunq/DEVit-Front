@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Grid, LinearProgress, Container } from "@material-ui/core";
 import ParticlesBg from "particles-bg";
-import "../Board/Gameboard.css";
+import "./Level.css";
 import Gameboard from "../Board/Gameboard";
 import BoardButton from "../Generics/BoardButton";
 import Navbar from "../Generics/Navbar";
@@ -86,7 +86,7 @@ const Level = () => {
 
           <Grid container item xs={12}>
             <Grid item xs={6}>
-              <Container maxWidth="xl">
+              <Container maxWidth="xm">
                 <div className="ins-board-obj">
                   <BoxObjetive
                     text={description}
@@ -109,7 +109,8 @@ const Level = () => {
                         "GoUp",
                       ]).then(({ data }) => renderEachStep(0, data));
                     }}
-                  ></BoardButton>
+                  >
+                  </BoardButton>
 
                   <BoardButton text={"Reiniciar juego"}></BoardButton>
                 </div>
