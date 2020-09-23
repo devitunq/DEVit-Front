@@ -1,0 +1,64 @@
+.arrow-down{
+  margin-top: 35%;
+  max-width: 55%;
+  width: 45vh;
+  height: auto;
+  position: initial;
+  cursor: pointer;
+}
+
+.arrow-up{
+  margin-bottom: 27%;
+  margin-top: 10%;
+  max-width: 55%;
+  width: 45vh;
+  height: auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.arrow-right{
+  margin-left: -45%;
+  margin-top: 65%;
+  max-width: 45%;
+  width: 45vh;
+  height: auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.arrow-left{
+  margin-right: -45%;
+  margin-top: 65%;
+  max-width: 45%;
+  width: 45vh;
+  height: auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.play-b{
+  margin-top: 5%;
+  max-width: 42%;
+  width: 30vh;
+}
+
+.restart-b{
+  margin-left: -4%;
+  margin-top: 7%;
+  margin-bottom: 5%;
+  max-width: 30%;
+  width: 30vh;
+}
+
+.if-b{
+  margin-top: 10%;
+  margin-right: 5%;
+  max-width: 60%;
+}
+
+.board-inst{
+  margin-top: 5%;
+  width: 25vh;
+  max-width: 40%;
+}

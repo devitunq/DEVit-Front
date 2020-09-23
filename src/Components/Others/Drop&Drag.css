@@ -12,9 +12,6 @@
   margin-left: 2%;
   margin-right: 2%;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: minmax(100px, max-content)
-                         repeat(auto-fill, 200px) 20%;
   min-height: 20%;
 }
 
@@ -26,7 +23,6 @@
   width: 70%;
   height: 3.7%;
 }
-
 
 .text-header {
   color: white;
@@ -44,6 +40,8 @@
   background-color: rgb(37, 37, 37);
   margin: 5px;
   cursor: pointer;
+  
+  word-break: keep-all;
 }
 
 .action-item:hover{

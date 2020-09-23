@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Drop&Drag.css";
-import { Container } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 
 export default class DropAndDrag extends Component {
   state = {
@@ -59,34 +59,21 @@ export default class DropAndDrag extends Component {
 
     this.state.actions.forEach((t) => {
       actions[t.category].push(
-        <div
-          key={`action_${t.toDo}`}
-          onDragStart={(e) => this.onDragStart(e, t.toDo)}
-          draggable
-          className="action-item"
-        >
-          {t.toDo}
-        </div>
+        <Grid item xs={2}>
+          <div
+            key={`action_${t.toDo}`}
+            onDragStart={(e) => this.onDragStart(e, t.toDo)}
+            draggable
+            className="action-item"
+          >
+            {t.toDo}
+          </div>
+        </Grid>
       );
     });
 
     return (
       <div className="container-drag">
-
-        <div className="cont-header">
-          <img
-            className="board-pic"
-            src={"/images/tablero.png"}
-            alt="objetivo"
-          />
-        </div>
-
-        <div className="container-box"
-          onDragOver={this.onDragOver}
-          onDrop={(e) => { this.onDrop(e, "instructions"); }}
-        >
-          {actions.instructions}
-        </div>
 
         <div className="cont-header">
           <img
@@ -96,15 +83,35 @@ export default class DropAndDrag extends Component {
           />
         </div>
 
+        <div className="container-box"
+          onDragOver={this.onDragOver}
+          onDrop={(e) => { this.onDrop(e, "instructions"); }}
+        >
+          <Grid container direction="row" xs={12} >
+            {actions.instructions}
+          </Grid>
+        </div>
+
+
+        <div className="cont-header">
+          <img
+            className="board-pic"
+            src={"/images/tablero.png"}
+            alt="objetivo"
+          />
+        </div>
+
         <div
           className="container-box"
           onDragOver={this.onDragOver}
           onDrop={(e) => this.onDrop(e, "tablero")}
         >
-          {actions.tablero}
+          <Grid container direction="row" xs={12} >
+            {actions.tablero}
+          </Grid>
         </div>
 
-      </div>
+      </div >
     );
   }
 }

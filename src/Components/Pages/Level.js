@@ -6,6 +6,8 @@ import Gameboard from "../Board/Gameboard";
 import BoardButton from "../Generics/BoardButton";
 import Navbar from "../Generics/Navbar";
 import DropAndDrag from "../Others/Drop&Drag";
+import Jositck from "../Others/Jostick";
+
 import BoxObjetive from "../Others/Boxobjective";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
@@ -86,33 +88,12 @@ const Level = () => {
 
           <Grid container item xs={12}>
             <Grid item xs={6}>
-              <Container maxWidth="xm">
+              <Container maxWidth="x">
                 <div className="ins-board-obj">
                   <BoxObjetive
                     text={description}
                   />
-
-                  <DropAndDrag />
-
-                  <BoardButton
-                    text={"Iniciar tablero"}
-                    onClick={() => {
-                      postLevelSolution("Easy_Level One", [
-                        "GoUp",
-                        "GoUp",
-                        "GoRight",
-                        "GoRight",
-                        "GoRight",
-                        "GoUp",
-                        "GoRight",
-                        "GoRight",
-                        "GoUp",
-                      ]).then(({ data }) => renderEachStep(0, data));
-                    }}
-                  >
-                  </BoardButton>
-
-                  <BoardButton text={"Reiniciar juego"}></BoardButton>
+                  <Jositck />
                 </div>
               </Container>
             </Grid>
