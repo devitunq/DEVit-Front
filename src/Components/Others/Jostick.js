@@ -15,7 +15,7 @@ const Jositck = ({ onClickPlay }) => {
     const upAction =
     {
       actionKey: `action_${actionID}`,
-      action: "goUp",
+      action: "GoUp",
       value:
         <Grid item xs={2}>
           <img
@@ -36,7 +36,7 @@ const Jositck = ({ onClickPlay }) => {
     let downAction =
     {
       actionKey: aKey,
-      action: "goDown",
+      action: "GoDown",
       value:
         <Grid item xs={2}>
           <img
@@ -55,7 +55,7 @@ const Jositck = ({ onClickPlay }) => {
     let leftAction =
     {
       actionKey: aKey,
-      action: "goLeft",
+      action: "GoLeft",
       value:
         <Grid item xs={2}>
           <img
@@ -74,7 +74,7 @@ const Jositck = ({ onClickPlay }) => {
     let rightAction =
     {
       actionKey: aKey,
-      action: "goRight",
+      action: "GoRight",
       value:
         <Grid item xs={2}>
           <img

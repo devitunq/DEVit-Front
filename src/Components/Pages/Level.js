@@ -4,8 +4,7 @@ import ParticlesBg from "particles-bg";
 import "./Level.css";
 import Gameboard from "../Board/Gameboard";
 import Navbar from "../Generics/Navbar";
-import Jositck from "../Others/Jostick";
-
+import Jositck, { board } from "../Others/Jostick";
 import BoxObjetive from "../Others/Boxobjective";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
@@ -52,7 +51,7 @@ const Level = () => {
     setModal(false);
   };
 
-  function renderEachStep({ i, data }) {
+  const renderEachStep = (i, data) => {
     let { levelState, fullGame } = data;
     let tempObjects,
       tempPaths = [];
@@ -92,7 +91,7 @@ const Level = () => {
                     text={description}
                   />
                   <Jositck
-                    onClickPlay={({ data }) => renderEachStep(0, data)}
+                    onClickPlay={(data) => renderEachStep(0, data)}
                   />
                 </div>
               </Container>
