@@ -31,7 +31,7 @@ const boardPositions = (boardCell, elements, isObject = false) => {
 };
 
 const Gameboard = ({ grid, paths, objects }) => (
-  <Container maxWidth="sl">
+  <Container maxWidth="xl">
     <div className="boardContainer">
       <table cellSpacing="0" className="board">
         <tbody>

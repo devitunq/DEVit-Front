@@ -3,9 +3,7 @@ import { Grid, LinearProgress, Container } from "@material-ui/core";
 import ParticlesBg from "particles-bg";
 import "./Level.css";
 import Gameboard from "../Board/Gameboard";
-import BoardButton from "../Generics/BoardButton";
 import Navbar from "../Generics/Navbar";
-import DropAndDrag from "../Others/Drop&Drag";
 import Jositck from "../Others/Jostick";
 
 import BoxObjetive from "../Others/Boxobjective";
@@ -54,7 +52,7 @@ const Level = () => {
     setModal(false);
   };
 
-  const renderEachStep = (i, data) => {
+  function renderEachStep({ i, data }) {
     let { levelState, fullGame } = data;
     let tempObjects,
       tempPaths = [];
@@ -88,12 +86,14 @@ const Level = () => {
 
           <Grid container item xs={12}>
             <Grid item xs={6}>
-              <Container maxWidth="x">
+              <Container maxWidth="xl">
                 <div className="ins-board-obj">
                   <BoxObjetive
                     text={description}
                   />
-                  <Jositck />
+                  <Jositck
+                    onClickPlay={({ data }) => renderEachStep(0, data)}
+                  />
                 </div>
               </Container>
             </Grid>

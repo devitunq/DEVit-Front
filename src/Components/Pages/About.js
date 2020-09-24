@@ -24,7 +24,7 @@ const About = () => {
           <hr className="about-sep"></hr>
           <p className="about-description" id="bioParagraph">{bio}</p>
           <a href="https://github.com/devitunq">
-            <Container maxWidth="sm">
+            <Container maxWidth="xs">
               <img className="github-pic" src={"/images/devit-github.png"} alt="logo" />
             </Container>
           </a>

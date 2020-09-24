@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Drop&Drag.css";
-import { Container, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 export default class DropAndDrag extends Component {
   state = {

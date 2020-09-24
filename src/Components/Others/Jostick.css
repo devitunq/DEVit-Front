@@ -41,6 +41,7 @@
   margin-top: 5%;
   max-width: 42%;
   width: 30vh;
+  cursor: pointer;
 }
 
 .restart-b{
@@ -49,6 +50,7 @@
   margin-bottom: 5%;
   max-width: 30%;
   width: 30vh;
+  cursor: pointer;
 }
 
 .if-b{
@@ -61,4 +63,5 @@
   margin-top: 5%;
   width: 25vh;
   max-width: 40%;
+  cursor: pointer;
 }
