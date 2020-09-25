@@ -43,8 +43,6 @@ const LevelSelection = () => {
 
 
 
-
-
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
   ) : (
