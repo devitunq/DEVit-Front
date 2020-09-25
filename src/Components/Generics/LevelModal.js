@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Modal } from "@material-ui/core";
-import SuccessLvl from "../Others/SuccessLvl";
-import FailedLvl from "../Others/FailedLvl";
+import ResultLvl from "../Others/ResultLvl";
 
 const LevelModal = ({ open, close, result }) => (
   <Modal id={"modalLevel"} open={open} onClose={close}>
@@ -10,10 +9,20 @@ const LevelModal = ({ open, close, result }) => (
     (pasan, pero dejan warnings por todos lados) */}
     <Fragment>
       {result ? (
-        <SuccessLvl id={"successLevel"} />
+        <ResultLvl
+          id={"successLevel"}
+          closeModal={close}
+          imgPath={"images/success.png"}
+          text={"Bien hecho camarada, sigue asi"}
+        />
       ) : (
-        <FailedLvl id={"failedLevel"} />
-      )}
+          <ResultLvl
+            id={"failedLevel"}
+            closeModal={close}
+            imgPath={"images/failed.png"}
+            text={"Has fallado! Intentalo de nuevo."}
+          />
+        )}
     </Fragment>
   </Modal>
 );

@@ -65,3 +65,42 @@
   max-width: 40%;
   cursor: pointer;
 }
+
+.cont-header {
+  margin-bottom: 2%;
+  margin-top: 2%;
+  text-align: center;
+  display: inline-block;
+  width: 70%;
+  height: 3.7%;
+}
+
+
+.container-box {
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.692);
+  height: 20%;
+  margin-left: 2%;
+  margin-right: 2%;
+  box-sizing: border-box;
+  min-height: 20%;
+}
+
+.container-drag {
+  text-align: center;
+  margin: auto;
+  align-content: center;
+  align-items: center;
+}
+
+.jostick-pic{
+  margin-top: 1%;
+  height: auto;
+  width: 32%;
+}
+
+.board-pic{
+  margin-top: 1%;
+  height: 2.7%;
+  width: 29%;
+}

@@ -4,14 +4,11 @@ import ParticlesBg from "particles-bg";
 import "./Level.css";
 import Gameboard from "../Board/Gameboard";
 import Navbar from "../Generics/Navbar";
-import Jositck, { board } from "../Others/Jostick";
+import Jositck from "../Others/Jostick";
 import BoxObjetive from "../Others/Boxobjective";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
-import {
-  getLevelByLevelId,
-  postLevelSolution,
-} from "../../Services/LevelService";
+import { getLevelByLevelId } from "../../Services/LevelService";
 
 const boardSize = 7;
 const initialBoard = Array(boardSize)
@@ -70,6 +67,10 @@ const Level = () => {
       );
   };
 
+  const onRestart = () => {
+    console.log(objects)
+  }
+
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
   ) : (
@@ -91,14 +92,16 @@ const Level = () => {
                     text={description}
                   />
                   <Jositck
-                    onClickPlay={(data) => renderEachStep(0, data)}
+                    onClickPlay={(reponse) => renderEachStep(0, reponse.data)}
                   />
                 </div>
               </Container>
             </Grid>
 
             <Grid item xs={6}>
-              <Gameboard grid={grid} paths={paths} objects={objects}></Gameboard>
+              <Container fixed>
+                <Gameboard grid={grid} paths={paths} objects={objects}></Gameboard>
+              </Container>
             </Grid>
           </Grid>
         </Grid>

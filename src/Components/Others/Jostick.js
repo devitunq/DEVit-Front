@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Drop&Drag.css";
 import { Grid } from "@material-ui/core";
 import "../Others/Jostick.css"
 import { postLevelSolution } from "../../Services/LevelService";
@@ -28,7 +27,6 @@ const Jositck = ({ onClickPlay }) => {
     }
     setBoard([...board, upAction]);
     setID(actionID + 1);
-    console.log(board.map(item => item.actionKey))
   }
 
   const onClickDown = () => {
@@ -90,6 +88,10 @@ const Jositck = ({ onClickPlay }) => {
 
   const deleteAction = (actKey) => {/* HACER */ }
 
+  const restartBoard = () => {
+    setBoard([])
+  }
+
 
 
   return (
@@ -97,8 +99,8 @@ const Jositck = ({ onClickPlay }) => {
 
       <div className="cont-header">
         <img
-          className="instructions-pic"
-          src={"/images/instrucciones.png"}
+          className="jostick-pic"
+          src={"/images/jostick.png"}
           alt="objetivo"
         />
       </div>
@@ -146,8 +148,7 @@ const Jositck = ({ onClickPlay }) => {
             <img
               onClick={() => {
                 postLevelSolution("Easy_Level One", board.map(item => item.action))
-                  .then({ onClickPlay });
-                console.log(board.map(item => item.action))
+                  .then(onClickPlay);
               }}
               className="play-b"
               src={"/images/jos-play.png"}
@@ -155,6 +156,7 @@ const Jositck = ({ onClickPlay }) => {
             />
             <div></div>
             <img
+              onClick={() => restartBoard()}
               className="restart-b"
               src={"/images/jos-restart.png"}
               alt="restart"
