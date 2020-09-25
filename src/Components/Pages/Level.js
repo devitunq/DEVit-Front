@@ -67,9 +67,6 @@ const Level = () => {
       );
   };
 
-  const onRestart = () => {
-    console.log(objects)
-  }
 
   return isLoading ? (
     <LinearProgress variant="indeterminate" />

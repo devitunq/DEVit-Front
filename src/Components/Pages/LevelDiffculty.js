@@ -21,36 +21,31 @@ const LevelDifficulty = () => (
         <Grid item xs={8}>
           <Container maxWidth="xs">
             <div className="diff-container">
-              <a href="/level">
-                <div className="diff-item">
+              <div className="diff-item">
+                <a href="/levelSelection/Easy">
                   <img
-                    href="/level"
                     className="lvl-img"
                     src={"/images/nivel-facil.png"}
                     alt="easy"
                   />
-                </div>
-              </a>
+                </a>
+              </div>
               <hr className="diff-separator" />
-              <a href="/level">
-                <div className="diff-item">
-                  <img
-                    className="lvl-img"
-                    src={"/images/nivel-medio.png"}
-                    alt="medium"
-                  />
-                </div>
-              </a>
+              <div className="diff-item">
+                <img
+                  className="lvl-img"
+                  src={"/images/nivel-medio.png"}
+                  alt="medium"
+                />
+              </div>
               <hr className="diff-separator" />
-              <a href="/level">
-                <div className="diff-item">
-                  <img
-                    className="lvl-img"
-                    src={"/images/nivel-dificil.png"}
-                    alt="hard"
-                  />
-                </div>
-              </a>
+              <div className="diff-item">
+                <img
+                  className="lvl-img"
+                  src={"/images/nivel-dificil.png"}
+                  alt="hard"
+                />
+              </div>
             </div>
           </Container>
         </Grid>

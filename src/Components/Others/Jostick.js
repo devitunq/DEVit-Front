@@ -106,9 +106,9 @@ const Jositck = ({ onClickPlay }) => {
       </div>
 
       <div className="container-box">
-        <Grid container direction="row" xs={12} >
+        <Grid container direction="row">
           <Grid item xs={4}>
-            <Grid container direction="row" xs={12}>
+            <Grid container direction="row">
 
               <Grid item xs={4}>
                 <img
@@ -182,7 +182,7 @@ const Jositck = ({ onClickPlay }) => {
       </div>
 
       <div className="container-box">
-        <Grid container direction="row" xs={12} spacing={1}>
+        <Grid container direction="row" spacing={1}>
           {board.map(item => { return item.value })}
         </Grid>
       </div>
