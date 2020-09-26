@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ParticlesBg from "particles-bg";
 import { Grid, Container, InputBase } from "@material-ui/core";
 import "./AuthOrGuess.css";
@@ -6,12 +6,11 @@ import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 
 const AuthOrGuess = () => {
-
   const [name, setName] = useState("");
 
   const handleChange = (value) => {
-    setName(value)
-  }
+    setName(value);
+  };
 
   return (
     <div>
@@ -29,17 +28,21 @@ const AuthOrGuess = () => {
           <Grid item xs={8}>
             <Container maxWidth="xs">
               <div className="auth-cont">
-                <div className="auth-chooseName"> Eliga su nombre </div>
+                <div className="auth-chooseName"> Elija su nombre </div>
                 <hr className="divider-auth"></hr>
                 <InputBase
-                  fullWidth={true}
-                  required={true}
-                  inputProps={{ 'aria-label': 'naked' }}
+                  fullWidth
+                  required
+                  inputProps={{ "aria-label": "naked" }}
                   value={name}
                   onChange={(event) => handleChange(event.target.value)}
                 />
                 <a href={`/difficulty/${name}`}>
-                  <img className="next-endbutt" src={"/images/next.png"} alt="next" />
+                  <img
+                    className="next-endbutt"
+                    src={"/images/next.png"}
+                    alt="next"
+                  />
                 </a>
               </div>
             </Container>
@@ -47,8 +50,8 @@ const AuthOrGuess = () => {
           <Grid item xs={2}></Grid>
         </Grid>
       </Grid>
-    </div >
-  )
+    </div>
+  );
 };
 
 export default AuthOrGuess;

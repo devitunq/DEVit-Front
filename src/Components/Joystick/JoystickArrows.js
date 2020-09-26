@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
-import "./Jostick.css"
+import "./Joystick.css";
 
-const JostickArrows = ({ onClickLeft, onClickUp, onClickDown, onClickRight }) => {
-
+const JoystickArrows = ({
+  onClickLeft,
+  onClickUp,
+  onClickDown,
+  onClickRight,
+}) => {
   return (
     <div>
       <Grid container direction="row">
@@ -41,7 +45,7 @@ const JostickArrows = ({ onClickLeft, onClickUp, onClickDown, onClickRight }) =>
         </Grid>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default JostickArrows;
+export default JoystickArrows;
