@@ -6,7 +6,7 @@ import Level from "../Components/Pages/Level";
 import About from "./Pages/About";
 import LevelDifficulty from "./Pages/LevelDifficulty";
 import LevelSelection from "./Pages/LevelSelection";
-import AuthOrGuess from "./Pages/AuthOrGuess"
+import AuthOrGuest from "./Pages/AuthOrGuest";
 
 class Routes extends Component {
   render() {
@@ -15,7 +15,7 @@ class Routes extends Component {
         <Route component={Level} path="/level" />
         <Route component={About} path="/about" />
         <Route component={Home} path="/home" />
-        <Route component={AuthOrGuess} path="/sign" />
+        <Route component={AuthOrGuest} path="/sign" />
         <Route component={LevelDifficulty} path="/difficulty/:nick" />
         <Route component={LevelSelection} path="/levelSelection/:difficulty" />
         <Route component={Home} exact path="/" />

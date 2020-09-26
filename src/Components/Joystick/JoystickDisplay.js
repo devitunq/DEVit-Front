@@ -9,7 +9,7 @@ const JoystickDisplay = ({ displayContent }) => (
     </div>
 
     <div className="container-box">
-      <Grid container direction="row" spacing={1}>
+      <Grid container direction="row" spacing={1} id="jdContainer">
         {displayContent}
       </Grid>
     </div>

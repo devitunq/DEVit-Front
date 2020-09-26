@@ -5,16 +5,8 @@ import FluentTest from "../../Utils/fluent-test";
 
 describe("About", () => {
   class AboutTest extends FluentTest {
-    constructor() {
-      super();
-
-      this.props = {
-        data: { bio: "TestBio" },
-      };
-    }
-
     isRendered = () => {
-      this.wrapper = shallow(<About {...this.props} />);
+      this.wrapper = shallow(<About />);
 
       return this;
     };

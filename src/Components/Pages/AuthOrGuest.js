@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ParticlesBg from "particles-bg";
 import { Grid, Container, InputBase } from "@material-ui/core";
-import "./AuthOrGuess.css";
+import "./AuthOrGuest.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 
-const AuthOrGuess = () => {
+const AuthOrGuest = () => {
   const [name, setName] = useState("");
 
   const handleChange = (value) => {
@@ -31,13 +31,14 @@ const AuthOrGuess = () => {
                 <div className="auth-chooseName"> Elija su nombre </div>
                 <hr className="divider-auth"></hr>
                 <InputBase
+                  id="inputName"
                   fullWidth
                   required
                   inputProps={{ "aria-label": "naked" }}
                   value={name}
                   onChange={(event) => handleChange(event.target.value)}
                 />
-                <a href={`/difficulty/${name}`}>
+                <a href={`/difficulty/${name}`} id="nextInput">
                   <img
                     className="next-endbutt"
                     src={"/images/next.png"}
@@ -54,4 +55,4 @@ const AuthOrGuess = () => {
   );
 };
 
-export default AuthOrGuess;
+export default AuthOrGuest;
