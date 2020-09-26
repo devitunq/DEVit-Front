@@ -1,5 +1,5 @@
 .diff-container{
-  margin-top: 15%;
+  margin-top: 10%;
   text-align: center;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   padding-top: 1%;
@@ -14,7 +14,6 @@
 }
 
 .diff-item{
-  font-size: 300%;
   margin-bottom: 1%;
   margin-top: 1%;
   color: azure;
@@ -33,14 +32,28 @@
   margin-left: 24%;
   align-self: center;
   width: 50%;
-  margin-top: -1%;
-  margin-bottom: -1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   border: 2px solid rgb(37, 37, 37);
   border-radius: 5px;
 }
 
-.lvl-img{
-  width: 55% ;
+.diff-img{
+  width: 20% ;
   height: auto;
   position: relative;
+}
+
+.divider-diff{
+  align-self: center;
+  width: 45%;
+  margin-left: 27%;
+}
+
+.contWelcome-diff{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  align-content: center;
+  font-size: 150%;
+  color: white;
 }

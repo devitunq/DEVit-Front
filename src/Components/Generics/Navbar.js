@@ -18,7 +18,7 @@ const Navbar = () => (
         </a>
       </li>
       <li>
-        <a href="/difficulty" id="navDifficultyLink">
+        <a href="/difficulty/deviter" id="navDifficultyLink">
           Dificultades
         </a>
       </li>

@@ -7,6 +7,12 @@ import Logo from "../Generics/Logo";
 
 const AuthOrGuess = () => {
 
+  const [name, setName] = useState("");
+
+  const handleChange = (value) => {
+    setName(value)
+  }
+
   return (
     <div>
       <ParticlesBg type="circle" bg={true} />
@@ -22,18 +28,18 @@ const AuthOrGuess = () => {
           <Grid item xs={2}></Grid>
           <Grid item xs={8}>
             <Container maxWidth="xs">
-              <div className="auth-container">
+              <div className="auth-cont">
                 <div className="auth-chooseName"> Eliga su nombre </div>
-                <hr></hr>
-                <Container maxWidth="xs">
-                  <InputBase
-                    fullWidth="true"
-                    required='true'
-                    inputProps={{ 'aria-label': 'naked' }}
-                  />
-                </Container>
-                <a href={"/difficulty"}>
-                  <p className="text-butt"> {"Avanzar >>"}</p>
+                <hr className="divider-auth"></hr>
+                <InputBase
+                  fullWidth={true}
+                  required={true}
+                  inputProps={{ 'aria-label': 'naked' }}
+                  value={name}
+                  onChange={(event) => handleChange(event.target.value)}
+                />
+                <a href={`/difficulty/${name}`}>
+                  <img className="next-endbutt" src={"/images/next.png"} alt="next" />
                 </a>
               </div>
             </Container>
@@ -41,7 +47,7 @@ const AuthOrGuess = () => {
           <Grid item xs={2}></Grid>
         </Grid>
       </Grid>
-    </div>
+    </div >
   )
 };
 

@@ -5,7 +5,7 @@ import "./LevelSelection.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import { getAllByDifficulty } from "../../Services/LevelService";
-import { useParams } from "react-router"
+import { useParams } from "react-router";
 
 
 const LevelSelection = () => {
@@ -21,10 +21,10 @@ const LevelSelection = () => {
         setLevels(response.data)
         levels.forEach((l) => {
           setLevelItems([...levelItems,
-          <div className="diff-container">
-            <hr className="diff-separator" />
+          <div className="lvl-container">
+            <hr className="lvl-separator" />
             <a href="/level">
-              <div className="diff-item">
+              <div className="lvl-item">
                 <img
                   href="/level"
                   className="lvl-img"
@@ -33,7 +33,7 @@ const LevelSelection = () => {
                 />
               </div>
             </a>
-            <hr className="diff-separator" />
+            <hr className="lvl-separator" />
           </div>
           ]);
         });

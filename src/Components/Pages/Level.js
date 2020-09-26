@@ -4,7 +4,7 @@ import ParticlesBg from "particles-bg";
 import "./Level.css";
 import Gameboard from "../Board/Gameboard";
 import Navbar from "../Generics/Navbar";
-import Jositck from "../Others/Jostick";
+import Jositck from "../Jostick/Jostick";
 import BoxObjetive from "../Others/Boxobjective";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";

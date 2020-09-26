@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
-import "../Others/Jostick.css"
+import "./Jostick.css"
+import JositckArrows from "./JostickArrows";
+import JostickDisplay from "./JostickDisplay";
 import { postLevelSolution } from "../../Services/LevelService";
 
 
@@ -92,8 +94,6 @@ const Jositck = ({ onClickPlay }) => {
     setBoard([])
   }
 
-
-
   return (
     <div className="container-drag">
 
@@ -108,40 +108,14 @@ const Jositck = ({ onClickPlay }) => {
       <div className="container-box">
         <Grid container direction="row">
           <Grid item xs={4}>
-            <Grid container direction="row">
 
-              <Grid item xs={4}>
-                <img
-                  className="arrow-left"
-                  onClick={onClickLeft}
-                  src={"/images/jos-left.png"}
-                  alt="left"
-                />
-              </Grid>
+            <JositckArrows
+              onClickLeft={onClickLeft}
+              onClickUp={onClickUp}
+              onClickDown={onClickDown}
+              onClickRight={onClickRight}
+            />
 
-              <Grid item xs={4}>
-                <img
-                  className="arrow-up"
-                  onClick={onClickUp}
-                  src={"/images/jos-up.png"}
-                  alt="up"
-                />
-                <img
-                  className="arrow-down"
-                  onClick={onClickDown}
-                  src={"/images/jos-down.png"}
-                  alt="down"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <img
-                  className="arrow-right"
-                  onClick={onClickRight}
-                  src={"/images/jos-right.png"}
-                  alt="right"
-                />
-              </Grid>
-            </Grid>
           </Grid>
 
           <Grid item xs={4}>
@@ -173,19 +147,9 @@ const Jositck = ({ onClickPlay }) => {
         </Grid>
       </div >
 
-      <div className="cont-header">
-        <img
-          className="board-pic"
-          src={"/images/tablero.png"}
-          alt="objetivo"
-        />
-      </div>
-
-      <div className="container-box">
-        <Grid container direction="row" spacing={1}>
-          {board.map(item => { return item.value })}
-        </Grid>
-      </div>
+      <JostickDisplay
+        displayContent={board.map(item => { return item.value })}
+      />
     </div >
   );
 }

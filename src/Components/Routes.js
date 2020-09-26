@@ -16,7 +16,7 @@ class Routes extends Component {
         <Route component={About} path="/about" />
         <Route component={Home} path="/home" />
         <Route component={AuthOrGuess} path="/sign" />
-        <Route component={LevelDifficulty} path="/difficulty" />
+        <Route component={LevelDifficulty} path="/difficulty/:nick" />
         <Route component={LevelSelection} path="/levelSelection/:difficulty" />
         <Route component={Home} exact path="/" />
       </BrowserRouter>
