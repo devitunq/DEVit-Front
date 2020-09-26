@@ -1,0 +1,32 @@
+.auth-container{
+  margin-top: 15%;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  padding-top: 3%;
+  padding-bottom: 1%;
+  border-radius: 3%;
+  background-color:  rgb(17,122,101) ;
+  height: 100%;
+}
+
+.auth-container:hover {
+  box-shadow: 12px 20px 25px rgb(0, 0, 0), 12px 20px 25px rgba(0, 0, 0);
+}
+
+.auth-chooseName{
+  text-align: center;
+  font-size: 105%;
+  color: rgb(214, 214, 214);
+  margin-bottom: 2%;
+}
+
+.text-butt{
+  margin-top: -2%;
+  margin-left: 60%;
+  font-size: 130%;
+  color: white;
+}
+
+.text-butt:hover{
+  color: lightblue;
+}

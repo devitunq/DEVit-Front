@@ -22,11 +22,6 @@ const Navbar = () => (
           Dificultades
         </a>
       </li>
-      <li>
-        <a href="/levelSelection" id="navLevelSelectionLink">
-          Niveles
-        </a>
-      </li>
     </ul>
   </nav>
 );
