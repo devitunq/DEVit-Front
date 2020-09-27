@@ -1,29 +1,35 @@
 import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
+import update from "immutability-helper";
 import "./Joystick.css";
 import JositckArrows from "./JoystickArrows";
 import JoystickDisplay from "./JoystickDisplay";
 import { postLevelSolution } from "../../Services/LevelService";
+import ActionCard from "./ActionCard";
 
 const Joystick = ({ onClickPlay }) => {
   const [board, setBoard] = useState([]);
   const [actionID, setID] = useState(1);
 
+  const moveCard = (dragIndex, hoverIndex) => {
+    const dragCard = board[dragIndex];
+    setBoard(
+      update(board, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, dragCard],
+        ],
+      })
+    );
+  };
+
   const onClickUp = () => {
     const aKey = `action_${actionID}`;
     const upAction = {
-      actionKey: `action_${actionID}`,
+      actionKey: aKey,
       action: "GoUp",
-      value: (
-        <Grid item xs={2} key={`key_${aKey}`}>
-          <img
-            onClick={() => deleteAction(aKey)}
-            className="board-inst"
-            src={"/images/board-up.png"}
-            alt="up"
-          />
-        </Grid>
-      ),
+      src: "/images/board-up.png",
+      alt: "up",
     };
     setBoard([...board, upAction]);
     setID(actionID + 1);
@@ -34,15 +40,8 @@ const Joystick = ({ onClickPlay }) => {
     let downAction = {
       actionKey: aKey,
       action: "GoDown",
-      value: (
-        <Grid item xs={2} key={`key_${aKey}`}>
-          <img
-            className="board-inst"
-            src={"/images/board-down.png"}
-            alt="down"
-          />
-        </Grid>
-      ),
+      src: "/images/board-down.png",
+      alt: "down",
     };
     setBoard([...board, downAction]);
     setID(actionID + 1);
@@ -53,15 +52,8 @@ const Joystick = ({ onClickPlay }) => {
     let leftAction = {
       actionKey: aKey,
       action: "GoLeft",
-      value: (
-        <Grid item xs={2} key={`key_${aKey}`}>
-          <img
-            className="board-inst"
-            src={"/images/board-left.png"}
-            alt="left"
-          />
-        </Grid>
-      ),
+      src: "/images/board-left.png",
+      alt: "left",
     };
     setBoard([...board, leftAction]);
     setID(actionID + 1);
@@ -72,15 +64,8 @@ const Joystick = ({ onClickPlay }) => {
     let rightAction = {
       actionKey: aKey,
       action: "GoRight",
-      value: (
-        <Grid item xs={2} key={`key_${aKey}`}>
-          <img
-            className="board-inst"
-            src={"/images/board-right.png"}
-            alt="right"
-          />
-        </Grid>
-      ),
+      src: "/images/board-right.png",
+      alt: "right",
     };
     setBoard([...board, rightAction]);
     setID(actionID + 1);
@@ -142,7 +127,19 @@ const Joystick = ({ onClickPlay }) => {
         </Grid>
       </div>
 
-      <JoystickDisplay displayContent={board.map((item) => item.value)} />
+      <JoystickDisplay>
+        {board.map((item, index) => {
+          return (
+            <ActionCard
+              key={`key_${item.actionKey}`}
+              src={item.src}
+              alt={item.alt}
+              moveCard={moveCard}
+              index={index}
+            />
+          );
+        })}
+      </JoystickDisplay>
     </div>
   );
 };
