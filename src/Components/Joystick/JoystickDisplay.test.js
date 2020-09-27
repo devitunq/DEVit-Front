@@ -6,13 +6,6 @@ import JoystickDisplay from "./JoystickDisplay";
 
 describe("JoystickDisplay", () => {
   class JoystickDisplayTest extends FluentTest {
-    constructor() {
-      super();
-
-      this.props = {
-        displayContent: null,
-      };
-    }
     isRendered = () => {
       this.wrapper = shallow(<JoystickDisplay {...this.props} />);
       return this;
@@ -31,7 +24,7 @@ describe("JoystickDisplay", () => {
 
   test("Debe renderizar el elemento pasado por prop dentro del grid", () => {
     const elemDisplay = <Grid item xs={2} id="testElem" key="testKey" />;
-    const props = { displayContent: [elemDisplay] };
+    const props = { children: [elemDisplay] };
 
     whenJoystickDisplay()
       .withProps(props)

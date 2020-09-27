@@ -6,7 +6,8 @@
       "src/**/*.js",
       "!src/*.js",
       "!src/Utils/fluent-test.js",
-      "!src/Components/Routes.js"
+      "!src/Components/Routes.js",
+      "!src/Components/Joystick/ItemTypes.js"
     ]
   },
   "homepage": "./",

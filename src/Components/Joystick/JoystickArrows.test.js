@@ -5,16 +5,6 @@ import JoystickArrows from "./JoystickArrows";
 
 describe("JoystickArrows", () => {
   class JoystickArrowsTest extends FluentTest {
-    constructor() {
-      super();
-
-      this.props = {
-        onClickLeft: jest.fn(),
-        onClickUp: jest.fn(),
-        onClickDown: jest.fn(),
-        onClickRight: jest.fn(),
-      };
-    }
     isRendered = () => {
       this.wrapper = shallow(<JoystickArrows {...this.props} />);
       return this;

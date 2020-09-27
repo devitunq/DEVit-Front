@@ -11,12 +11,13 @@ const ResultLvl = ({ closeModal, imgPath, text }) => (
           <Container maxWidth="xl">
             <div className="success-lvl">
               <img
+                id="resImg"
                 onClick={closeModal}
                 className="success-pic"
-                src={`${imgPath}`}
+                src={imgPath}
                 alt="success"
               />
-              <div className="success-text">
+              <div className="success-text" id="resText">
                 {text}
               </div>
             </div>
