@@ -3,7 +3,7 @@ import { DragSource, DropTarget } from "react-dnd";
 import { Grid } from "@material-ui/core";
 import { ItemTypes } from "./ItemTypes";
 
-const ActionCard = React.forwardRef(
+const MovableCard = React.forwardRef(
   ({ src, alt, isDragging, connectDragSource, connectDropTarget }, ref) => {
     const elementRef = useRef(null);
     connectDragSource(elementRef);
@@ -16,9 +16,8 @@ const ActionCard = React.forwardRef(
         <div ref={elementRef}>
           <img
             className="board-inst"
-            src={src} //{"/images/board-up.png"}
-            alt={alt} // "up"
-          />
+            src={src}
+            alt={alt} />
         </div>
       </Grid>
     );
@@ -71,5 +70,5 @@ export default DropTarget(
       connectDragSource: connect.dragSource(),
       isDragging: monitor.isDragging(),
     })
-  )(ActionCard)
+  )(MovableCard)
 );

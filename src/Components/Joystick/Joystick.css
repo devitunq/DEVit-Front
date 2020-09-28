@@ -66,6 +66,16 @@
   cursor: pointer;
 }
 
+.switch-joys{
+  max-width: 20%;
+}
+
+.delete-pic{
+  margin-top: 10%;
+  width: 55%;
+  margin-bottom: -2% ;
+}
+
 .cont-header {
   margin-bottom: 2%;
   margin-top: 2%;

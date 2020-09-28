@@ -1,11 +1,11 @@
-.lvl-container{
+.lvl-container {
   margin-top: 15%;
   text-align: center;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   padding-top: 1%;
   padding-bottom: 1%;
   border-radius: 3%;
-  background-color: rgb(17,122,101) ;
+  background-color: rgb(17, 122, 101);
   height: 100%;
 }
 
@@ -13,7 +13,7 @@
   box-shadow: 12px 20px 25px rgb(0, 0, 0), 12px 20px 25px rgba(0, 0, 0);
 }
 
-.lvl-item{
+.lvl-item {
   font-size: 300%;
   margin-bottom: 1%;
   margin-top: 1%;
@@ -24,12 +24,11 @@
   cursor: pointer;
 }
 
-.lvl-item:hover{
-  background-color: grey;
-  border-radius: 5%;
+.lvl-item:hover {
+  background-color: rgba(190, 184, 184, 0.301);
 }
 
-.lvl-separator{
+.lvl-separator {
   margin-left: 24%;
   align-self: center;
   width: 50%;
@@ -39,8 +38,8 @@
   border-radius: 5px;
 }
 
-.lvl-img{
-  width: 55% ;
+.lvl-img {
+  width: 55%;
   height: auto;
   position: relative;
 }

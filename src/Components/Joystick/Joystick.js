@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Switch, FormControlLabel } from "@material-ui/core";
 import update from "immutability-helper";
 import "./Joystick.css";
 import JositckArrows from "./JoystickArrows";
 import JoystickDisplay from "./JoystickDisplay";
 import { postLevelSolution } from "../../Services/LevelService";
-import ActionCard from "./ActionCard";
+import MovableCard from "./MovableCard";
+import RemovableCard from "./RemovableCard";
 
 const Joystick = ({ onClickPlay }) => {
   const [board, setBoard] = useState([]);
   const [actionID, setID] = useState(1);
+  const [displayDeleteMode, setDisplayMode] = useState(false);
 
   const moveCard = (dragIndex, hoverIndex) => {
     const dragCard = board[dragIndex];
@@ -71,9 +73,14 @@ const Joystick = ({ onClickPlay }) => {
     setID(actionID + 1);
   };
 
-  const deleteAction = (actKey) => {
-    /* HACER */
+  const handleCkick = (actionToDelete) => {
+    const newBoard = board.filter(action => action.actionKey !== actionToDelete);
+    setBoard(newBoard);
   };
+
+  const handleChange = () => {
+    displayDeleteMode ? setDisplayMode(false) : setDisplayMode(true)
+  }
 
   const restartBoard = () => {
     setBoard([]);
@@ -128,18 +135,51 @@ const Joystick = ({ onClickPlay }) => {
       </div>
 
       <JoystickDisplay>
-        {board.map((item, index) => {
-          return (
-            <ActionCard
-              key={`key_${item.actionKey}`}
-              src={item.src}
-              alt={item.alt}
-              moveCard={moveCard}
-              index={index}
-            />
-          );
-        })}
+        {
+          displayDeleteMode
+            ?
+            board.map((item) => {
+              return (
+                <RemovableCard
+                  aKey={item.actionKey}
+                  src={item.src}
+                  alt={item.alt}
+                  board={board}
+                  onClick={handleCkick}
+                />
+              );
+            })
+            :
+            board.map((item, index) => {
+              return (
+                <MovableCard
+                  key={`key_${item.actionKey}`}
+                  src={item.src}
+                  alt={item.alt}
+                  moveCard={moveCard}
+                  index={index}
+                />
+              );
+            })}
       </JoystickDisplay>
+
+      <Grid container justify="flex-start" direction="row" spacing={0}>
+        <Grid item xs={1}>
+          <div className="switch-joys">
+            <Switch
+              checked={displayDeleteMode}
+              onChange={handleChange}
+              name="checkedB"
+              color="secondary"
+            />
+          </div>
+        </Grid>
+        <Grid item xs={1}>
+          <img className="delete-pic" src={"/images/delete.png"} alt="delete" />
+        </Grid>
+        <Grid item xs={10}></Grid>
+      </Grid>
+
     </div>
   );
 };

@@ -10,6 +10,8 @@ const JoystickDisplay = (props) => (
       <img className="board-pic" src={"/images/tablero.png"} alt="objetivo" />
     </div>
 
+    {props.modeSelecion}
+
     <div className="container-box">
       <DndProvider backend={HTML5Backend}>
         <Grid container direction="row" spacing={1} id="jdContainer">
