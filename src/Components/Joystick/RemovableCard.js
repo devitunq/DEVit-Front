@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
 
 const RemovableCard = (props) => {
-
   const removeThisFromBoard = () => {
     props.onClick(props.aKey);
-  }
+  };
 
   return (
     <Grid item xs={2}>

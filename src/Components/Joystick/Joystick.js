@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Switch, FormControlLabel } from "@material-ui/core";
+import { Grid, Switch } from "@material-ui/core";
 import update from "immutability-helper";
 import "./Joystick.css";
 import JositckArrows from "./JoystickArrows";
@@ -74,13 +74,15 @@ const Joystick = ({ onClickPlay }) => {
   };
 
   const handleCkick = (actionToDelete) => {
-    const newBoard = board.filter(action => action.actionKey !== actionToDelete);
+    const newBoard = board.filter(
+      (action) => action.actionKey !== actionToDelete
+    );
     setBoard(newBoard);
   };
 
   const handleChange = () => {
-    displayDeleteMode ? setDisplayMode(false) : setDisplayMode(true)
-  }
+    displayDeleteMode ? setDisplayMode(false) : setDisplayMode(true);
+  };
 
   const restartBoard = () => {
     setBoard([]);
@@ -135,12 +137,11 @@ const Joystick = ({ onClickPlay }) => {
       </div>
 
       <JoystickDisplay>
-        {
-          displayDeleteMode
-            ?
-            board.map((item) => {
+        {displayDeleteMode
+          ? board.map((item) => {
               return (
                 <RemovableCard
+                  key={`removable_key_${item.actionKey}`}
                   aKey={item.actionKey}
                   src={item.src}
                   alt={item.alt}
@@ -149,11 +150,10 @@ const Joystick = ({ onClickPlay }) => {
                 />
               );
             })
-            :
-            board.map((item, index) => {
+          : board.map((item, index) => {
               return (
                 <MovableCard
-                  key={`key_${item.actionKey}`}
+                  key={`movable_key_${item.actionKey}`}
                   src={item.src}
                   alt={item.alt}
                   moveCard={moveCard}
@@ -179,7 +179,6 @@ const Joystick = ({ onClickPlay }) => {
         </Grid>
         <Grid item xs={10}></Grid>
       </Grid>
-
     </div>
   );
 };

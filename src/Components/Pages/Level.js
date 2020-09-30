@@ -35,13 +35,9 @@ const Level = () => {
       });
   });
 
-  const successLevel = () => {
-    setSuccess(true);
-    setModal(true);
-  };
-
-  const failedLevel = () => {
-    setSuccess(false);
+  const finishLevel = (success, comment) => {
+    setSuccess(success);
+    setComment(comment);
     setModal(true);
   };
 
@@ -50,73 +46,66 @@ const Level = () => {
   };
 
   const renderEachStep = (i, data) => {
-    let { levelState, fullGame } = data;
-    console.log(data);
+    let { levelState, fullGame, comment } = data;
     let tempObjects,
       tempPaths = [];
     tempObjects = fullGame[i].filter((e) => e.type !== "PathTile");
     tempPaths = fullGame[i].filter((e) => e.type === "PathTile");
     setObjects(tempObjects);
     setPaths(tempPaths);
-    setComment(data.comment);
     if (i < fullGame.length - 1) {
       setTimeout(() => {
         i++;
         renderEachStep(i, data);
       }, 500);
-    } else
-      setTimeout(() =>
-        levelState === "Complete" ? successLevel() : failedLevel()
-      );
+    } else setTimeout(() => finishLevel(levelState === "Complete", comment));
   };
 
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
   ) : (
-      <div>
-        <ParticlesBg type="circle" bg={true} />
+    <div>
+      <ParticlesBg type="circle" bg={true} />
 
-        <Logo />
+      <Logo />
 
-        <Grid container direction="column" spacing={10} justify="center">
-          <Grid item xs={12}>
-            <Navbar />
-          </Grid>
-
-          <Grid container item xs={12}>
-            <Grid item xs={6}>
-              <Container maxWidth="xl">
-                <div className="ins-board-obj">
-                  <BoxObjetive text={description} />
-                  <Joystick
-                    onClickPlay={(reponse) => renderEachStep(0, reponse.data)}
-                  />
-                </div>
-              </Container>
-            </Grid>
-
-            <Grid item xs={6}>
-              <Container fixed>
-                <Gameboard
-                  grid={grid}
-                  paths={paths}
-                  objects={objects}
-                ></Gameboard>
-              </Container>
-            </Grid>
-          </Grid>
+      <Grid container direction="column" spacing={10} justify="center">
+        <Grid item xs={12}>
+          <Navbar />
         </Grid>
 
-        <LevelModal
-          open={modal}
-          close={closeModal}
-          result={success}
-          comment={comment}
-        >
+        <Grid container item xs={12}>
+          <Grid item xs={6}>
+            <Container maxWidth="xl">
+              <div className="ins-board-obj">
+                <BoxObjetive text={description} />
+                <Joystick
+                  onClickPlay={(reponse) => renderEachStep(0, reponse.data)}
+                />
+              </div>
+            </Container>
+          </Grid>
 
-        </LevelModal>
-      </div>
-    );
+          <Grid item xs={6}>
+            <Container fixed>
+              <Gameboard
+                grid={grid}
+                paths={paths}
+                objects={objects}
+              ></Gameboard>
+            </Container>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <LevelModal
+        open={modal}
+        close={closeModal}
+        result={success}
+        comment={comment}
+      ></LevelModal>
+    </div>
+  );
 };
 
 export default Level;
