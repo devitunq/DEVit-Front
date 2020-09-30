@@ -10,32 +10,12 @@ import { useParams } from "react-router";
 const LevelSelection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [levels, setLevels] = useState([]);
-  const [levelItems, setLevelItems] = useState([]);
   const { difficulty } = useParams();
 
   useEffect(() => {
     if (isLoading)
       getAllByDifficulty(difficulty).then((response) => {
         setLevels(response.data);
-        levels.forEach((l) => {
-          setLevelItems([
-            ...levelItems,
-            <div className="lvl-container" key={`key_lvl_${l.levelId}`}>
-              <hr className="lvl-separator" />
-              <a href="/level">
-                <div className="lvl-item">
-                  <img
-                    href="/level"
-                    className="lvl-img"
-                    src={`/images/${l.levelId}.png`}
-                    alt={`${l.name}`}
-                  />
-                </div>
-              </a>
-              <hr className="lvl-separator" />
-            </div>,
-          ]);
-        });
         setIsLoading(false);
       });
   });
@@ -43,26 +23,47 @@ const LevelSelection = () => {
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
   ) : (
-    <div>
-      <ParticlesBg type="circle" bg={true} />
+      <div>
+        <ParticlesBg type="circle" bg={true} />
 
-      <Logo />
+        <Logo />
 
-      <Grid container direction="column" spacing={10} justify="center">
-        <Grid item xs={12}>
-          <Navbar />
-        </Grid>
-
-        <Grid container item xs={12}>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={8}>
-            <Container maxWidth="xs">{levelItems}</Container>
+        <Grid container direction="column" spacing={10} justify="center">
+          <Grid item xs={12}>
+            <Navbar />
           </Grid>
-          <Grid item xs={2}></Grid>
-        </Grid>
-      </Grid>
-    </div>
-  );
+
+          <Grid container item xs={12}>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={8}>
+              <Container maxWidth="xs">
+                <div className="lvl-container">{
+                  levels.map((l) => {
+                    return (
+                      <div key={`key_lvl_${l.levelId}`}>
+                        <a href={`/level/${l.levelId}`}>
+                          <div className="lvl-item">
+                            <img
+                              href="/level"
+                              className="lvl-img"
+                              src={`/images/${l.levelId}.png`}
+                              alt={`${l.name}`}
+                            />
+                          </div>
+                        </a>
+                        <hr className="lvl-separator" />
+                      </div>
+                    );
+                  })
+                }
+                </div>
+              </Container>
+            </Grid>
+            <Grid item xs={2}></Grid>
+          </Grid>
+        </Grid >
+      </div >
+    );
 };
 
 export default LevelSelection;

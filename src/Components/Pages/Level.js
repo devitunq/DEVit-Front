@@ -9,6 +9,7 @@ import BoxObjetive from "../Others/Boxobjective";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
 import { getLevelByLevelId } from "../../Services/LevelService";
+import { useParams } from "react-router";
 
 const boardSize = 7;
 const initialBoard = Array(boardSize)
@@ -24,10 +25,11 @@ const Level = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
+  const { levelID } = useParams();
 
   useEffect(() => {
     if (isLoading)
-      getLevelByLevelId("Easy_Level One").then((response) => {
+      getLevelByLevelId(levelID).then((response) => {
         setObjects(response.data.elements.filter((e) => e.type !== "PathTile"));
         setPaths(response.data.elements.filter((e) => e.type === "PathTile"));
         setDescription(response.data.description);
@@ -64,48 +66,49 @@ const Level = () => {
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
   ) : (
-    <div>
-      <ParticlesBg type="circle" bg={true} />
+      <div>
+        <ParticlesBg type="circle" bg={true} />
 
-      <Logo />
+        <Logo />
 
-      <Grid container direction="column" spacing={10} justify="center">
-        <Grid item xs={12}>
-          <Navbar />
-        </Grid>
-
-        <Grid container item xs={12}>
-          <Grid item xs={6}>
-            <Container maxWidth="xl">
-              <div className="ins-board-obj">
-                <BoxObjetive text={description} />
-                <Joystick
-                  onClickPlay={(reponse) => renderEachStep(0, reponse.data)}
-                />
-              </div>
-            </Container>
+        <Grid container direction="column" spacing={10} justify="center">
+          <Grid item xs={12}>
+            <Navbar />
           </Grid>
 
-          <Grid item xs={6}>
-            <Container fixed>
-              <Gameboard
-                grid={grid}
-                paths={paths}
-                objects={objects}
-              ></Gameboard>
-            </Container>
+          <Grid container item xs={12}>
+            <Grid item xs={6}>
+              <Container maxWidth="xl">
+                <div className="ins-board-obj">
+                  <BoxObjetive text={description} />
+                  <Joystick
+                    onClickPlay={(reponse) => renderEachStep(0, reponse.data)}
+                    levelID={levelID}
+                  />
+                </div>
+              </Container>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Container fixed>
+                <Gameboard
+                  grid={grid}
+                  paths={paths}
+                  objects={objects}
+                ></Gameboard>
+              </Container>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
 
-      <LevelModal
-        open={modal}
-        close={closeModal}
-        result={success}
-        comment={comment}
-      ></LevelModal>
-    </div>
-  );
+        <LevelModal
+          open={modal}
+          close={closeModal}
+          result={success}
+          comment={comment}
+        ></LevelModal>
+      </div>
+    );
 };
 
 export default Level;

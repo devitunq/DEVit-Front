@@ -17,23 +17,6 @@ const LevelDifficulty = () => {
     if (isLoading)
       getDifficulties().then((response) => {
         setDifficulties(response.data);
-        difficulties.forEach((diff) => {
-          setDiffultyItems([
-            ...diffultyItems,
-            <div className="diff-container" key={`key_${diff}`}>
-              <a href={`/levelSelection/${diff}`}>
-                <div className="diff-item">
-                  <img
-                    className="diff-img"
-                    src={`/images/${diff}.png`}
-                    alt={`${diff}`}
-                  />
-                </div>
-              </a>
-              <hr className="diff-separator" />
-            </div>,
-          ]);
-        });
         setIsLoading(false);
       });
   });
@@ -41,30 +24,48 @@ const LevelDifficulty = () => {
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
   ) : (
-    <div>
-      <ParticlesBg type="circle" bg={true} />
+      <div>
+        <ParticlesBg type="circle" bg={true} />
 
-      <Logo />
+        <Logo />
 
-      <Grid container direction="column" spacing={10} justify="center">
-        <Grid item xs={12}>
-          <Navbar />
-        </Grid>
-
-        <Grid container item xs={12}>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={8}>
-            <div className="contWelcome-diff">
-              {`Bienvenido ${nick}`}
-              <hr className="divider-diff"></hr>
-            </div>
-            <Container maxWidth="xs">{diffultyItems}</Container>
+        <Grid container direction="column" spacing={10} justify="center">
+          <Grid item xs={12}>
+            <Navbar />
           </Grid>
-          <Grid item xs={2}></Grid>
+
+          <Grid container item xs={12}>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={8}>
+              <div className="contWelcome-diff">
+                {`Bienvenido ${nick}`}
+                <hr className="divider-diff"></hr>
+              </div>
+              <Container maxWidth="xs">{
+                difficulties.map((diff) => {
+                  return (
+                    <div className="diff-container" key={`key_${diff}`}>
+                      <a href={`/levelSelection/${diff}`}>
+                        <div className="diff-item">
+                          <img
+                            className="diff-img"
+                            src={`/images/${diff}.png`}
+                            alt={`${diff}`}
+                          />
+                        </div>
+                      </a>
+                      <hr className="diff-separator" />
+                    </div>
+                  );
+                })
+              }
+              </Container>
+            </Grid>
+            <Grid item xs={2}></Grid>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
-  );
+      </div>
+    );
 };
 
 export default LevelDifficulty;

@@ -12,7 +12,7 @@ class Routes extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Route component={Level} path="/level" />
+        <Route component={Level} path="/level/:levelID" />
         <Route component={About} path="/about" />
         <Route component={Home} path="/home" />
         <Route component={AuthOrGuest} path="/sign" />

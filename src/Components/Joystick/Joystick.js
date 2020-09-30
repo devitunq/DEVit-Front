@@ -8,7 +8,7 @@ import { postLevelSolution } from "../../Services/LevelService";
 import MovableCard from "./MovableCard";
 import RemovableCard from "./RemovableCard";
 
-const Joystick = ({ onClickPlay }) => {
+const Joystick = (props) => {
   const [board, setBoard] = useState([]);
   const [actionID, setID] = useState(1);
   const [displayDeleteMode, setDisplayMode] = useState(false);
@@ -113,9 +113,9 @@ const Joystick = ({ onClickPlay }) => {
             <img
               onClick={() => {
                 postLevelSolution(
-                  "Easy_Level One",
+                  props.levelID,
                   board.map((item) => item.action)
-                ).then(onClickPlay);
+                ).then(props.onClickPlay);
               }}
               className="play-b"
               src={"/images/jos-play.png"}
@@ -139,28 +139,28 @@ const Joystick = ({ onClickPlay }) => {
       <JoystickDisplay>
         {displayDeleteMode
           ? board.map((item) => {
-              return (
-                <RemovableCard
-                  key={`removable_key_${item.actionKey}`}
-                  aKey={item.actionKey}
-                  src={item.src}
-                  alt={item.alt}
-                  board={board}
-                  onClick={handleCkick}
-                />
-              );
-            })
+            return (
+              <RemovableCard
+                key={`removable_key_${item.actionKey}`}
+                aKey={item.actionKey}
+                src={item.src}
+                alt={item.alt}
+                board={board}
+                onClick={handleCkick}
+              />
+            );
+          })
           : board.map((item, index) => {
-              return (
-                <MovableCard
-                  key={`movable_key_${item.actionKey}`}
-                  src={item.src}
-                  alt={item.alt}
-                  moveCard={moveCard}
-                  index={index}
-                />
-              );
-            })}
+            return (
+              <MovableCard
+                key={`movable_key_${item.actionKey}`}
+                src={item.src}
+                alt={item.alt}
+                moveCard={moveCard}
+                index={index}
+              />
+            );
+          })}
       </JoystickDisplay>
 
       <Grid container justify="flex-start" direction="row" spacing={0}>
