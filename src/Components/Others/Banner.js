@@ -14,7 +14,7 @@ const Banner = ({ description }) => (
 
       <StartButton
         styledClassName="button btn btn-primary"
-        href="/level"
+        href="/sign"
         text="Comenzar"
         iconClassName="fa fa-play"
       />

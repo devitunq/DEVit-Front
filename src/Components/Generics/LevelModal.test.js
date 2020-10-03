@@ -10,7 +10,7 @@ describe("LevelModal", () => {
 
       this.props = {
         open: true,
-        close: () => null,
+        close: jest.fn(),
         result: true,
       };
     }

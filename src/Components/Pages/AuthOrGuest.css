@@ -1,0 +1,29 @@
+.auth-cont{
+  margin-top: 25%;
+  text-align: center;
+}
+
+.divider-auth{
+  width: 70%;
+  margin-left: 16%;
+}
+
+.auth-chooseName{
+  text-align: center;
+  font-size: 105%;
+  color: rgb(214, 214, 214);
+  margin-bottom: 2%;
+}
+
+.next-endbutt{
+  width: 8%;
+  height: auto;
+  margin-top: -2%;
+  margin-left: 88%;
+  cursor: pointer;
+}
+
+.next-endbutt:hover{
+  width: 11%;
+  height: auto;
+}

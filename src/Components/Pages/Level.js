@@ -3,16 +3,13 @@ import { Grid, LinearProgress, Container } from "@material-ui/core";
 import ParticlesBg from "particles-bg";
 import "./Level.css";
 import Gameboard from "../Board/Gameboard";
-import BoardButton from "../Generics/BoardButton";
 import Navbar from "../Generics/Navbar";
-import DropAndDrag from "../Others/Drop&Drag";
+import Joystick from "../Joystick/Joystick";
 import BoxObjetive from "../Others/Boxobjective";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
-import {
-  getLevelByLevelId,
-  postLevelSolution,
-} from "../../Services/LevelService";
+import { getLevelByLevelId } from "../../Services/LevelService";
+import { useParams } from "react-router";
 
 const boardSize = 7;
 const initialBoard = Array(boardSize)
@@ -23,14 +20,16 @@ const Level = () => {
   const [grid] = useState(initialBoard);
   const [objects, setObjects] = useState([]);
   const [paths, setPaths] = useState([]);
-  const [description, setDescription] = useState("")
+  const [comment, setComment] = useState("");
+  const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
+  const { levelID } = useParams();
 
   useEffect(() => {
     if (isLoading)
-      getLevelByLevelId("Easy_Level One").then((response) => {
+      getLevelByLevelId(levelID).then((response) => {
         setObjects(response.data.elements.filter((e) => e.type !== "PathTile"));
         setPaths(response.data.elements.filter((e) => e.type === "PathTile"));
         setDescription(response.data.description);
@@ -38,13 +37,9 @@ const Level = () => {
       });
   });
 
-  const successLevel = () => {
-    setSuccess(true);
-    setModal(true);
-  };
-
-  const failedLevel = () => {
-    setSuccess(false);
+  const finishLevel = (success, comment) => {
+    setSuccess(success);
+    setComment(comment);
     setModal(true);
   };
 
@@ -53,7 +48,7 @@ const Level = () => {
   };
 
   const renderEachStep = (i, data) => {
-    let { levelState, fullGame } = data;
+    let { levelState, fullGame, comment } = data;
     let tempObjects,
       tempPaths = [];
     tempObjects = fullGame[i].filter((e) => e.type !== "PathTile");
@@ -65,10 +60,7 @@ const Level = () => {
         i++;
         renderEachStep(i, data);
       }, 500);
-    } else
-      setTimeout(() =>
-        levelState === "Complete" ? successLevel() : failedLevel()
-      );
+    } else setTimeout(() => finishLevel(levelState === "Complete", comment));
   };
 
   return isLoading ? (
@@ -86,44 +78,35 @@ const Level = () => {
 
           <Grid container item xs={12}>
             <Grid item xs={6}>
-              <Container maxWidth="xm">
+              <Container maxWidth="xl">
                 <div className="ins-board-obj">
-                  <BoxObjetive
-                    text={description}
+                  <BoxObjetive text={description} />
+                  <Joystick
+                    onClickPlay={(reponse) => renderEachStep(0, reponse.data)}
+                    levelID={levelID}
                   />
-
-                  <DropAndDrag />
-
-                  <BoardButton
-                    text={"Iniciar tablero"}
-                    onClick={() => {
-                      postLevelSolution("Easy_Level One", [
-                        "GoUp",
-                        "GoUp",
-                        "GoRight",
-                        "GoRight",
-                        "GoRight",
-                        "GoUp",
-                        "GoRight",
-                        "GoRight",
-                        "GoUp",
-                      ]).then(({ data }) => renderEachStep(0, data));
-                    }}
-                  >
-                  </BoardButton>
-
-                  <BoardButton text={"Reiniciar juego"}></BoardButton>
                 </div>
               </Container>
             </Grid>
 
             <Grid item xs={6}>
-              <Gameboard grid={grid} paths={paths} objects={objects}></Gameboard>
+              <Container fixed>
+                <Gameboard
+                  grid={grid}
+                  paths={paths}
+                  objects={objects}
+                ></Gameboard>
+              </Container>
             </Grid>
           </Grid>
         </Grid>
 
-        <LevelModal open={modal} close={closeModal} result={success}></LevelModal>
+        <LevelModal
+          open={modal}
+          close={closeModal}
+          result={success}
+          comment={comment}
+        ></LevelModal>
       </div>
     );
 };
