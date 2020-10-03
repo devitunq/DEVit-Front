@@ -9,17 +9,17 @@ const LevelModal = ({ open, close, result, comment }) => (
         <ResultLvl
           id={"successLevel"}
           closeModal={close}
-          imgPath="images/success.png"
+          imgPath="/images/success.png"
           text={comment}
         />
       ) : (
-          <ResultLvl
-            id={"failedLevel"}
-            closeModal={close}
-            imgPath="images/failed.png"
-            text={comment}
-          />
-        )}
+        <ResultLvl
+          id={"failedLevel"}
+          closeModal={close}
+          imgPath="/images/failed.png"
+          text={comment}
+        />
+      )}
     </Fragment>
   </Modal>
 );
