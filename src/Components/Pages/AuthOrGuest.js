@@ -4,6 +4,7 @@ import { Grid, Container, InputBase } from "@material-ui/core";
 import "./AuthOrGuest.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
+import Next from "../../Assets/others/next.png";
 
 const AuthOrGuest = () => {
   const [name, setName] = useState("");
@@ -41,7 +42,7 @@ const AuthOrGuest = () => {
                 <a href={`/difficulty/${name}`} id="nextInput">
                   <img
                     className="next-endbutt"
-                    src={"/images/next.png"}
+                    src={Next}
                     alt="next"
                   />
                 </a>

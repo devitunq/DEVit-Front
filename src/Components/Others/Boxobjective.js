@@ -1,5 +1,6 @@
 import React from "react";
 import "./BoxObjective.css";
+import objective from "../../Assets/levelPageItems/objetivo.png";
 
 const BoxObjetive = ({ text }) => (
   <div className="container-objective" id="objContainer">
@@ -7,7 +8,7 @@ const BoxObjetive = ({ text }) => (
       <img
         id="objImg"
         className="objetive-pic"
-        src={"/images/objetivo.png"}
+        src={objective}
         alt="objetivo"
       />
     </span>

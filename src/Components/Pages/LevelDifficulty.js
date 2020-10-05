@@ -6,12 +6,25 @@ import "./LevelDifficulty.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import { getDifficulties } from "../../Services/LevelService";
+import Easy from "../../Assets/difficulties/Easy.png";
+import Medium from "../../Assets/difficulties/Medium.png";
+import Hard from "../../Assets/difficulties/Hard.png";
 
 const LevelDifficulty = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [difficulties, setDifficulties] = useState([]);
-  const [diffultyItems, setDiffultyItems] = useState([]);
   const { nick } = useParams();
+
+  const dificultyToImg = (diffStr) => {
+    switch (diffStr) {
+      case "Easy":
+        return Easy;
+      case "Medium":
+        return Medium;
+      default:
+        return Hard
+    }
+  };
 
   useEffect(() => {
     if (isLoading)
@@ -49,7 +62,7 @@ const LevelDifficulty = () => {
                         <div className="diff-item">
                           <img
                             className="diff-img"
-                            src={`/images/${diff}.png`}
+                            src={dificultyToImg(diff)}
                             alt={`${diff}`}
                           />
                         </div>

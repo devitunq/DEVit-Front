@@ -3,6 +3,7 @@ import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import { Container } from "@material-ui/core";
 import "./About.css"
+import github from "../../Assets/others/devit-github.png";
 
 const About = () => {
   const bio =
@@ -25,7 +26,7 @@ const About = () => {
           <p className="about-description" id="bioParagraph">{bio}</p>
           <a href="https://github.com/devitunq">
             <Container maxWidth="xs" disableGutters={true}>
-              <img className="github-pic" src={"/images/devit-github.png"} alt="logo" />
+              <img className="github-pic" src={github} alt="logo" />
             </Container>
           </a>
         </div>
