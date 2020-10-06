@@ -16,6 +16,7 @@ const LevelSelection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [levels, setLevels] = useState([]);
   const { difficulty } = useParams();
+  const { character } = useParams();
 
   const levelNameToImg = (levelStr) => {
     switch (levelStr) {
@@ -59,10 +60,9 @@ const LevelSelection = () => {
               <Container maxWidth="xs">
                 <div className="lvl-container">{
                   levels.map((l) => {
-                    console.log(l.levelId)
                     return (
                       <div key={`key_lvl_${l.levelId}`}>
-                        <a href={`/level/${l.levelId}`}>
+                        <a href={`/level/${l.levelId}/${character}`}>
                           <div className="lvl-item">
                             <img
                               href="/level"

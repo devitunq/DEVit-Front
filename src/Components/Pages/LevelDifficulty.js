@@ -14,6 +14,7 @@ const LevelDifficulty = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [difficulties, setDifficulties] = useState([]);
   const { nick } = useParams();
+  const { character } = useParams();
 
   const dificultyToImg = (diffStr) => {
     switch (diffStr) {
@@ -25,6 +26,7 @@ const LevelDifficulty = () => {
         return Hard
     }
   };
+
 
   useEffect(() => {
     if (isLoading)
@@ -58,7 +60,7 @@ const LevelDifficulty = () => {
                 difficulties.map((diff) => {
                   return (
                     <div className="diff-container" key={`key_${diff}`}>
-                      <a href={`/levelSelection/${diff}`}>
+                      <a href={`/levelSelection/${diff}/${character}`}>
                         <div className="diff-item">
                           <img
                             className="diff-img"
@@ -74,10 +76,13 @@ const LevelDifficulty = () => {
               }
               </Container>
             </Grid>
-            <Grid item xs={2}></Grid>
+
+            <Grid item xs={2}>
+            </Grid>
+
           </Grid>
         </Grid>
-      </div>
+      </div >
     );
 };
 

@@ -26,6 +26,7 @@ const Level = () => {
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
   const { levelID } = useParams();
+  const { character } = useParams();
 
   useEffect(() => {
     if (isLoading)
@@ -92,6 +93,7 @@ const Level = () => {
             <Grid item xs={6}>
               <Container fixed>
                 <Gameboard
+                  characterName={character}
                   grid={grid}
                   paths={paths}
                   objects={objects}

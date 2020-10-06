@@ -39,7 +39,7 @@ const AuthOrGuest = () => {
                   value={name}
                   onChange={(event) => handleChange(event.target.value)}
                 />
-                <a href={`/difficulty/${name}`} id="nextInput">
+                <a href={`/characterSelection/${name}`} id="nextInput">
                   <img
                     className="next-endbutt"
                     src={Next}
