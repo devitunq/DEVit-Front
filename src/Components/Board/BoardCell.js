@@ -7,8 +7,6 @@ import Character4 from "../../Assets/gameElements/character4.png"
 
 const BoardCell = ({ pos, img, background }) => {
 
-  console.log(img);
-
   return (
     <td
       className="boardCell"
@@ -16,7 +14,6 @@ const BoardCell = ({ pos, img, background }) => {
       id={`cell_${pos}`}
     >
       <img
-        className={(img == Character1 || img == Character2 || img == Character3 || img == Character4) ? "character-pic" : ""}
         id={`cell_img_${pos}`}
         style={{
           display: "block",

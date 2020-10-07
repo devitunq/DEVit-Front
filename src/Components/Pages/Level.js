@@ -22,25 +22,38 @@ const Level = () => {
   const [paths, setPaths] = useState([]);
   const [comment, setComment] = useState("");
   const [description, setDescription] = useState("");
+  const [diff, setdiff] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
+  const [playerInicialPos, setPlayerInicialPos] = useState(null);
   const { levelID } = useParams();
   const { character } = useParams();
 
   useEffect(() => {
     if (isLoading)
       getLevelByLevelId(levelID).then((response) => {
+        console.log(response);
         setObjects(response.data.elements.filter((e) => e.type !== "PathTile"));
         setPaths(response.data.elements.filter((e) => e.type === "PathTile"));
+        setPlayerInicialPos(response.data.playerPosition);
         setDescription(response.data.description);
+        setdiff(response.data.difficulty);
         setIsLoading(false);
       });
   });
 
+
   const finishLevel = (success, comment) => {
     setSuccess(success);
     setComment(comment);
+    let objectsTemp = objects;
+    objectsTemp.map((obj) => {
+      if (obj.type === "player") {
+        obj.position = playerInicialPos;
+      }
+    });
+    setObjects(objectsTemp);
     setModal(true);
   };
 
@@ -61,7 +74,7 @@ const Level = () => {
         i++;
         renderEachStep(i, data);
       }, 500);
-    } else setTimeout(() => finishLevel(levelState === "Complete", comment));
+    } else setTimeout(() => finishLevel(levelState === "Complete", comment), 1300);
   };
 
   return isLoading ? (
@@ -105,11 +118,13 @@ const Level = () => {
 
         <LevelModal
           open={modal}
+          onClickWin={`/levelSelection/${diff}/${character}`}
+          onClickLost={closeModal}
           close={closeModal}
           result={success}
           comment={comment}
         ></LevelModal>
-      </div>
+      </div >
     );
 };
 
