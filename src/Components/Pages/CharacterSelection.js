@@ -50,7 +50,6 @@ const CharacterSelection = () => {
             return (
               <Grid item xs={3}>
                 <a href={`/difficulty/${nick}/${c}`}>
-                  {console.log(c)}
                   <img
                     src={characterNameToImg(c)}
                   />

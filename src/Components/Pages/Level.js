@@ -33,7 +33,6 @@ const Level = () => {
   useEffect(() => {
     if (isLoading)
       getLevelByLevelId(levelID).then((response) => {
-        console.log(response);
         setObjects(response.data.elements.filter((e) => e.type !== "PathTile"));
         setPaths(response.data.elements.filter((e) => e.type === "PathTile"));
         setPlayerInicialPos(response.data.playerPosition);
