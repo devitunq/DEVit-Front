@@ -4,7 +4,7 @@ import update from "immutability-helper";
 import "./Joystick.css";
 import JositckArrows from "./JoystickArrows";
 import JoystickDisplay from "./JoystickDisplay";
-import { postLevelSolution } from "../../Services/LevelService";
+import { postLevelSolution } from "../../Services/Api";
 import MovableCard from "./MovableCard";
 import RemovableCard from "./RemovableCard";
 import goUp from "../../Assets/displayAcitons/board-up.png";

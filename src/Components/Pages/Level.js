@@ -8,7 +8,7 @@ import Joystick from "../Joystick/Joystick";
 import BoxObjetive from "../Others/Boxobjective";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
-import { getLevelByLevelId } from "../../Services/LevelService";
+import { getLevelByLevelId } from "../../Services/Api";
 import { useParams } from "react-router";
 
 const boardSize = 7;

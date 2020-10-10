@@ -4,7 +4,7 @@ import { Grid, Container, LinearProgress } from "@material-ui/core";
 import "./LevelSelection.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
-import { getAllByDifficulty } from "../../Services/LevelService";
+import { getAllByDifficulty } from "../../Services/Api";
 import { useParams } from "react-router";
 import lvl1 from "../../Assets/levelNames/Easy_Level One.png";
 import lvl2 from "../../Assets/levelNames/Easy_Level Two.png";
