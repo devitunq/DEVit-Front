@@ -5,6 +5,7 @@ import "./AuthOrGuest.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import Next from "../../Assets/others/next.png";
+import Login from "../Generics/Login"
 
 const AuthOrGuest = () => {
   const [name, setName] = useState("");
@@ -25,12 +26,17 @@ const AuthOrGuest = () => {
         </Grid>
 
         <Grid container item xs={12}>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={8}>
+
+          <Grid item xs={6}>
+            <Login />
+          </Grid>
+
+          <Grid item xs={6}>
             <Container maxWidth="xs">
               <div className="auth-cont">
-                <div className="auth-chooseName"> Elija su nombre </div>
+                <div className="guess-title"> Jugar como invitado </div>
                 <hr className="divider-auth"></hr>
+                <div className="guess-data"> Elija su nombre. </div>
                 <InputBase
                   id="inputName"
                   fullWidth
@@ -49,7 +55,6 @@ const AuthOrGuest = () => {
               </div>
             </Container>
           </Grid>
-          <Grid item xs={2}></Grid>
         </Grid>
       </Grid>
     </div>
