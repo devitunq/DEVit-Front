@@ -39,15 +39,15 @@ const LevelDifficulty = () => {
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
   ) : (
-      <div>
-        <ParticlesBg type="circle" bg={true} />
+    <div>
+      <ParticlesBg type="circle" bg={true} />
 
-        <Logo />
+      <Logo />
 
-        <Grid container direction="column" spacing={10} justify="center">
-          <Grid item xs={12}>
-            <Navbar />
-          </Grid>
+      <Grid container direction="column" spacing={10} justify="center">
+        <Grid item xs={12}>
+          <Navbar />
+        </Grid>
 
           <Grid container item xs={12}>
             <Grid item xs={2}></Grid>
@@ -81,6 +81,7 @@ const LevelDifficulty = () => {
             </Grid>
 
           </Grid>
+          <Grid item xs={2}></Grid>
         </Grid>
       </div >
     );
