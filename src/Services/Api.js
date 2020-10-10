@@ -17,4 +17,7 @@ const postLevelSolution = (levelId, solution) =>
 const getUser = (user, passowrd) =>
   axios.post(`http://localHost:8080/${LEVELS_URL}/user`, user, passowrd);
 
+const getGuestPermission = () =>
+  axios.get(`http://localHost:8080/${LEVELS_URL}/guest`);
+
 export { getLevelByLevelId, postLevelSolution, getAllByDifficulty, getDifficulties };
