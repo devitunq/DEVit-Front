@@ -5,7 +5,7 @@ import "./Level.css";
 import Gameboard from "../Board/Gameboard";
 import Navbar from "../Generics/Navbar";
 import Joystick from "../Joystick/Joystick";
-import BoxObjetive from "../Others/Boxobjective";
+import Helpers from "../Others/Helpers";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
 import { getLevelByLevelId } from "../../Services/Api";
@@ -26,6 +26,7 @@ const Level = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
+  const [tutorial, setTutorial] = useState(false);
   const [playerInicialPos, setPlayerInicialPos] = useState(null);
   const { levelID } = useParams();
   const { character } = useParams();
@@ -93,7 +94,7 @@ const Level = () => {
             <Grid item xs={6}>
               <Container maxWidth="xl">
                 <div className="ins-board-obj">
-                  <BoxObjetive text={description} />
+                  <Helpers text={description} />
                   <Joystick
                     onClickPlay={(reponse) => renderEachStep(0, reponse.data)}
                     levelID={levelID}
@@ -122,7 +123,9 @@ const Level = () => {
           close={closeModal}
           result={success}
           comment={comment}
-        ></LevelModal>
+        >
+        </LevelModal>
+
       </div >
     );
 };
