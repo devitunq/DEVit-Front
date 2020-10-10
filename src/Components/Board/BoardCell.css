@@ -11,3 +11,8 @@
   content: "";
   margin-top: 100%;
 }
+
+.character-pic{
+  height: auto;
+  max-height: 1%;
+}

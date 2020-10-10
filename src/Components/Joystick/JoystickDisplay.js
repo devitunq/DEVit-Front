@@ -3,11 +3,12 @@ import { Grid } from "@material-ui/core";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import "./Joystick.css";
+import board from "../../Assets/levelPageItems/tablero.png";
 
 const JoystickDisplay = (props) => (
   <div>
     <div className="cont-header">
-      <img className="board-pic" src={"/images/tablero.png"} alt="objetivo" />
+      <img className="board-pic" src={board} alt="objetivo" />
     </div>
 
     {props.modeSelecion}

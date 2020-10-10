@@ -4,9 +4,18 @@ import update from "immutability-helper";
 import "./Joystick.css";
 import JositckArrows from "./JoystickArrows";
 import JoystickDisplay from "./JoystickDisplay";
-import { postLevelSolution } from "../../Services/LevelService";
+import { postLevelSolution } from "../../Services/Api";
 import MovableCard from "./MovableCard";
 import RemovableCard from "./RemovableCard";
+import goUp from "../../Assets/displayAcitons/board-up.png";
+import left from "../../Assets/displayAcitons/board-left.png";
+import goDown from "../../Assets/displayAcitons/board-down.png";
+import right from "../../Assets/displayAcitons/board-right.png";
+import joystickHeader from "../../Assets/levelPageItems/joystick.png";
+import josPlay from "../../Assets/joystick/joystickIns/jos-play.png";
+import josRestart from "../../Assets/joystick/joystickIns/jos-restart.png";
+import josif from "../../Assets/joystick/joystickIns/jos-if.png";
+import josDelete from "../../Assets/others/delete.png";
 
 const Joystick = (props) => {
   const [board, setBoard] = useState([]);
@@ -30,7 +39,7 @@ const Joystick = (props) => {
     const upAction = {
       actionKey: aKey,
       action: "GoUp",
-      src: "/images/board-up.png",
+      src: goUp,
       alt: "up",
     };
     setBoard([...board, upAction]);
@@ -42,7 +51,7 @@ const Joystick = (props) => {
     let downAction = {
       actionKey: aKey,
       action: "GoDown",
-      src: "/images/board-down.png",
+      src: goDown,
       alt: "down",
     };
     setBoard([...board, downAction]);
@@ -54,7 +63,7 @@ const Joystick = (props) => {
     let leftAction = {
       actionKey: aKey,
       action: "GoLeft",
-      src: "/images/board-left.png",
+      src: left,
       alt: "left",
     };
     setBoard([...board, leftAction]);
@@ -66,7 +75,7 @@ const Joystick = (props) => {
     let rightAction = {
       actionKey: aKey,
       action: "GoRight",
-      src: "/images/board-right.png",
+      src: right,
       alt: "right",
     };
     setBoard([...board, rightAction]);
@@ -93,7 +102,7 @@ const Joystick = (props) => {
       <div className="cont-header">
         <img
           className="joystick-pic"
-          src={"/images/jostick.png"}
+          src={joystickHeader}
           alt="objetivo"
         />
       </div>
@@ -118,20 +127,20 @@ const Joystick = (props) => {
                 ).then(props.onClickPlay);
               }}
               className="play-b"
-              src={"/images/jos-play.png"}
+              src={josPlay}
               alt="play"
             />
             <div></div>
             <img
               onClick={() => restartBoard()}
               className="restart-b"
-              src={"/images/jos-restart.png"}
+              src={josRestart}
               alt="restart"
             />
           </Grid>
 
           <Grid item xs={4}>
-            <img className="if-b" src={"/images/jos-if.png"} alt="if" />
+            <img className="if-b" src={josif} alt="if" />
           </Grid>
         </Grid>
       </div>
@@ -175,7 +184,7 @@ const Joystick = (props) => {
           </div>
         </Grid>
         <Grid item xs={1}>
-          <img className="delete-pic" src={"/images/delete.png"} alt="delete" />
+          <img className="delete-pic" src={josDelete} alt="delete" />
         </Grid>
         <Grid item xs={10}></Grid>
       </Grid>
