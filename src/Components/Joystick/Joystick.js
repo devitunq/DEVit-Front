@@ -108,6 +108,34 @@ const Joystick = (props) => {
       </div>
 
       <div className="container-box">
+        <JoystickDisplay>
+          {displayDeleteMode
+            ? board.map((item) => {
+              return (
+                <RemovableCard
+                  key={`removable_key_${item.actionKey}`}
+                  aKey={item.actionKey}
+                  src={item.src}
+                  alt={item.alt}
+                  board={board}
+                  onClick={handleCkick}
+                />
+              );
+            })
+            : board.map((item, index) => {
+              return (
+                <MovableCard
+                  key={`movable_key_${item.actionKey}`}
+                  src={item.src}
+                  alt={item.alt}
+                  moveCard={moveCard}
+                  index={index}
+                />
+              );
+            })}
+        </JoystickDisplay>
+
+
         <Grid container direction="row">
           <Grid item xs={4}>
             <JositckArrows
@@ -144,33 +172,6 @@ const Joystick = (props) => {
           </Grid>
         </Grid>
       </div>
-
-      <JoystickDisplay>
-        {displayDeleteMode
-          ? board.map((item) => {
-            return (
-              <RemovableCard
-                key={`removable_key_${item.actionKey}`}
-                aKey={item.actionKey}
-                src={item.src}
-                alt={item.alt}
-                board={board}
-                onClick={handleCkick}
-              />
-            );
-          })
-          : board.map((item, index) => {
-            return (
-              <MovableCard
-                key={`movable_key_${item.actionKey}`}
-                src={item.src}
-                alt={item.alt}
-                moveCard={moveCard}
-                index={index}
-              />
-            );
-          })}
-      </JoystickDisplay>
 
       <Grid container justify="flex-start" direction="row" spacing={0}>
         <Grid item xs={1}>

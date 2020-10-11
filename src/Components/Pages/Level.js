@@ -74,7 +74,7 @@ const Level = () => {
         i++;
         renderEachStep(i, data);
       }, 500);
-    } else setTimeout(() => finishLevel(levelState === "Complete", comment), 1300);
+    } else setTimeout(() => finishLevel(levelState === "Complete", comment), 500);
   };
 
   return isLoading ? (

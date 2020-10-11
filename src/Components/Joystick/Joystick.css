@@ -113,3 +113,12 @@
   height: 2.7%;
   width: 29%;
 }
+
+.display-container{
+  border: 2px solid rgba(0, 0, 0, 0.692);
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  min-height: 10vh;
+}
