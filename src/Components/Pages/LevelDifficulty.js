@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import ParticlesBg from "particles-bg";
 import { Grid, Container, LinearProgress } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import "./LevelDifficulty.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
@@ -13,8 +14,10 @@ import Hard from "../../Assets/difficulties/Hard.png";
 const LevelDifficulty = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [difficulties, setDifficulties] = useState([]);
+  const [permission, setPermission] = useState("");
   const { nick } = useParams();
   const { character } = useParams();
+  const history = useHistory();
 
   const dificultyToImg = (diffStr) => {
     switch (diffStr) {
@@ -32,22 +35,25 @@ const LevelDifficulty = () => {
     if (isLoading)
       getDifficulties().then((response) => {
         setDifficulties(response.data);
-        setIsLoading(false);
       });
+    let userPermission = localStorage.getItem('permission')
+    setPermission(userPermission);
+    console.log(permission);
+    setIsLoading(false);
   });
 
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
   ) : (
-    <div>
-      <ParticlesBg type="circle" bg={true} />
+      <div>
+        <ParticlesBg type="circle" bg={true} />
 
-      <Logo />
+        <Logo />
 
-      <Grid container direction="column" spacing={10} justify="center">
-        <Grid item xs={12}>
-          <Navbar />
-        </Grid>
+        <Grid container direction="column" spacing={10} justify="center">
+          <Grid item xs={12}>
+            <Navbar />
+          </Grid>
 
           <Grid container item xs={12}>
             <Grid item xs={2}></Grid>

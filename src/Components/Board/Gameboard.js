@@ -42,7 +42,7 @@ const boardPositions = (boardCell, elements, characterName, isObject = false) =>
   let element = elements.find(
     (e) => `${e.position.posX}_${e.position.posY}` === boardCell
   );
-  if (element) img = elemeTypeStrToElemType(element.type);
+  if (element) img = elemeTypeStrToElemType(element.type, characterName);
   return img;
 };
 

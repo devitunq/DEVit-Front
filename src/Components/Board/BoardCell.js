@@ -1,9 +1,5 @@
 import React from "react";
 import "./BoardCell.css";
-import Character1 from "../../Assets/gameElements/character1.png"
-import Character2 from "../../Assets/gameElements/character2.png"
-import Character3 from "../../Assets/gameElements/character3.png"
-import Character4 from "../../Assets/gameElements/character4.png"
 
 const BoardCell = ({ pos, img, background }) => {
 

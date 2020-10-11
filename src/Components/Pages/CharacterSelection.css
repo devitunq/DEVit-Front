@@ -1,5 +1,10 @@
-.c1-img{
+.character-img{
+  width: 75%;
   margin-left: 8%;
+  cursor: pointer;
+}
+.character-img:hover{
+  width: 90%;
 }
 
 .chooseCh-header{

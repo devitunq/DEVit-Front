@@ -1,4 +1,4 @@
-import {Redirect, Route} from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import React from "react";
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -7,7 +7,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) => (isAuthenticated() ? <Component {...props}/> : <Redirect to={"/"}/>)
+      render={(props) => (isAuthenticated() ? <Component {...props} /> : <Redirect to={"/sign"} />)
       }
     />
   );
