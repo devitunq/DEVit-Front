@@ -56,6 +56,7 @@ const CharacterSelection = () => {
               ?
               characters.map((c) => 
                   <Grid item xs={3} key={`img_grid_key_${c.name}`}>
+                    <div className="chooseCh-header"> {c.name} </div>
                     <img
                       className="character-img"
                       src={c.img}
