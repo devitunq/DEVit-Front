@@ -2,6 +2,7 @@ import axios from "axios";
 
 const LEVELS_URL = "/api/levels";
 const USER_URL = "/api/user"
+const GUEST_URL = "/api/guest"
 const HOST_URL = "http://localHost:8080"
 
 axios.interceptors.request.use((config) => {
@@ -25,7 +26,7 @@ const postLevelSolution = (levelId, solution) =>
 const getUser = (user, pass) =>
   axios.post(`${HOST_URL}${USER_URL}`, {userName: user, password: pass});
 
-const getGuestPermission = () =>
-  axios.get(`${HOST_URL}${LEVELS_URL}/guest`);
+const getGuestPermission = (nickname) =>
+  axios.get(`${HOST_URL}${GUEST_URL}?nick=${nickname}`);
 
 export { getLevelByLevelId, postLevelSolution, getAllByDifficulty, getDifficulties, getUser, getGuestPermission };

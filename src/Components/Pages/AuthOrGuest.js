@@ -7,16 +7,23 @@ import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import Next from "../../Assets/others/next.png";
 import Login from "../Generics/Login"
+import { getGuestPermission } from "../../Utils/Api"
 
 const AuthOrGuest = () => {
   const [name, setName] = useState("");
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleChange = (value) => {
-    setName(value);
-  };
-
+  const handleGuestLogin = () => {
+    getGuestPermission(name)
+      .then((response) => {
+        localStorage.setItem('accessToken', response.data.token); console.log(response)
+        localStorage.setItem('permission', response.data.permission);
+        localStorage.setItem('nick', response.data.nick);
+        history.push(`/characterSelection/${response.data.nick}`)
+      })
+      .catch((error) => console.log(error))
+  }
 
   useEffect(() => {
     if (localStorage.getItem('accessToken') != null) {
@@ -56,9 +63,9 @@ const AuthOrGuest = () => {
                     required
                     inputProps={{ "aria-label": "naked" }}
                     value={name}
-                    onChange={(event) => handleChange(event.target.value)}
+                    onChange={(event) => setName(event.target.value)}
                   />
-                  <a href={`/characterSelection/${name}`} id="nextInput">
+                  <a onClick={handleGuestLogin} id="nextInput">
                     <img
                       className="next-endbutt"
                       src={Next}

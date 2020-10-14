@@ -59,7 +59,7 @@ const Loign = () => {
         </Container>
       </Grid>
       <Grid item xs={1}>
-        <div class="vl"></div>
+        <div className="vl"></div>
       </Grid>
     </Grid>
   );

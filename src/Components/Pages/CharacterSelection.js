@@ -19,26 +19,18 @@ const CharacterSelection = () => {
   const history = useHistory();
 
 
-  const characters = ["c1", "c2", "c3", "c4"]
+  const ANA = { name: "Ana", img: Character1 }
+  const LIAM = { name: "Liam", img: Character2 }
+  const ARIEL = { name: "Ariel", img: Character3 }
+  const JORGE = { name: "Jorge", img: Character4 }
+
+  const characters = [ANA, LIAM, ARIEL, JORGE]
 
   useEffect(() => {
     let userPermission = localStorage.getItem('permission');
     setPermission(userPermission);
     setIsLoading(false);
   });
-
-  const characterNameToImg = chrstr => {
-    switch (chrstr) {
-      case "c1":
-        return Character1;
-      case "c2":
-        return Character2;
-      case "c3":
-        return Character3;
-      default:
-        return Character4
-    }
-  }
 
 
   return isLoading ? (
@@ -60,25 +52,25 @@ const CharacterSelection = () => {
           </Grid>
 
           <Grid container item xs={12} alignItems="center" spacing={4}>
-            {permission === "FullAcces"
+            {permission === "FullAccess"
               ?
-              characters.map((c) => {
-                return (
-                  <Grid item xs={3}>
+              characters.map((c) => 
+                  <Grid item xs={3} key={`img_grid_key_${c.name}`}>
                     <img
                       className="character-img"
-                      src={characterNameToImg(c)}
-                      onClick={() => { history.push(`/difficulty/${nick}/${c}`) }}
+                      src={c.img}
+                      onClick={() => { history.push(`/difficulty/${nick}/${c.name}`) }}
+                      alt={c.name}
                     />
                   </Grid>
-                )
-              })
+              )
               :
               <Grid item xs={12}>
                 <img
                   className="character-img"
-                  src={characterNameToImg(characters[4])}
-                  onClick={() => { history.push(`/difficulty/${nick}/${characters[4]}`) }}
+                  src={characters[4].img}
+                  onClick={() => { history.push(`/difficulty/${nick}/${characters[4].name}`) }}
+                  alt={characters[4].name}
                 />
               </Grid>
             }
