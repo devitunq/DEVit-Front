@@ -54,16 +54,16 @@ const CharacterSelection = () => {
           <Grid container item xs={12} alignItems="center" spacing={4}>
             {permission === "FullAccess"
               ?
-              characters.map((c) => 
-                  <Grid item xs={3} key={`img_grid_key_${c.name}`}>
-                    <div className="chooseCh-header"> {c.name} </div>
-                    <img
-                      className="character-img"
-                      src={c.img}
-                      onClick={() => { history.push(`/difficulty/${nick}/${c.name}`) }}
-                      alt={c.name}
-                    />
-                  </Grid>
+              characters.map((c) =>
+                <Grid item xs={3} key={`img_grid_key_${c.name}`}>
+                  <img
+                    className="character-img"
+                    src={c.img}
+                    onClick={() => { history.push(`/difficulty/${nick}/${c.name}`) }}
+                    alt={c.name}
+                  />
+                  <div className="character-header"> {c.name} </div>
+                </Grid>
               )
               :
               <Grid item xs={12}>

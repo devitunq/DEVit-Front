@@ -5,7 +5,7 @@ import TutorialSelection from "./TutorialSelection"
 import TutorialDisplay from "./TutorialDisplay"
 import TutorialStartAndRestart from "./TutorialStartAndRestart"
 import TutorialDelSwitchAndArrows from "./TutorialDelSwitchAndArrows"
-const TutorialController = ({ open }) => {
+const TutorialController = ({ open, closeTutorial }) => {
 
   const [tutorialSelection, setTutorialSelection] = useState(false);
   const [tutorialControlls, setTutorialControlls] = useState(false);
@@ -84,6 +84,7 @@ const TutorialController = ({ open }) => {
         open={tutorialSelection}
         toControlls={TSelectionToTControlls}
         toBoard={TSelectionToTBoard}
+        closeTutorial={closeTutorial}
       />
 
       <TutorialControlls

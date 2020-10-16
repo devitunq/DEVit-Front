@@ -13,3 +13,10 @@
   color: rgb(255, 255, 255);
   margin-bottom: 2%;
 }
+
+.character-header{
+  text-align: center;
+  font-size: 200%;
+  color: rgb(245, 245, 245);
+  margin-bottom: 6%;
+}

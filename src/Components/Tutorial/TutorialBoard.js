@@ -13,16 +13,21 @@ const TutorialBoard = ({ open, backSelecetion }) => (
       <div className="tutorial-container">
         <Grid item xs={12}>
           <div className="tutorial-style-cont">
-            <div className="back-modal">
-              <img
-                onClick={backSelecetion}
-                className="back-pic"
-                src={back}
-                alt="back"
-              />
-            </div>
             <Grid container direction="row">
+
+              <Grid item xs={12}>
+                <div className="back-modal">
+                  <img
+                    onClick={backSelecetion}
+                    className="back-pic"
+                    src={back}
+                    alt="back"
+                  />
+                </div>
+              </Grid>
+
               <hr className="tutorial-style-separator"></hr>
+
               <Grid item xs={12}>
                 <Grid container direction="colummn">
                   <Grid item xs={4}>
@@ -39,6 +44,7 @@ const TutorialBoard = ({ open, backSelecetion }) => (
                   </Grid>
                 </Grid>
                 <hr className="tutorial-style-separator"></hr>
+
                 <Grid item xs={12}>
                   <Grid container direction="colummn">
                     <Grid item xs={4}>

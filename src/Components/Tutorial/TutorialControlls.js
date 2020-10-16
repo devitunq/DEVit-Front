@@ -35,58 +35,52 @@ const TutorialControlls = ({
                 alt="controles"
               />
               <Grid container direction="row">
+
                 <Grid item xs={4}>
                   <div className="controller-parts-container">
                     <img
-                      className="controller-parts"
+                      className="controller-display-part"
                       onClick={toDisplay}
                       src={TDisplay}
                       alt="display"
                     />
                   </div>
                 </Grid>
+
                 <Grid item xs={4}>
                   <div className="controller-parts-container">
                     <img
                       onClick={toStartRestart}
-                      className="controller-parts"
+                      className="controller-StartRestar-parts"
                       src={TStart}
                       alt="start"
                     />
-                  </div>
-                </Grid>
-                <Grid item xs={4}>
-                  <div className="controller-parts-container">
                     <img
                       onClick={toStartRestart}
-                      className="controller-parts"
+                      className="controller-StartRestar-parts"
                       src={TRestart}
                       alt="restart"
                     />
                   </div>
                 </Grid>
-              </Grid>
-              <Grid container direction="row">
-                <Grid item xs={6}>
+
+                <Grid item xs={4}>
                   <div className="controller-parts-container">
                     <img
                       onClick={toDeleteArrows}
-                      className="controller-parts"
+                      className="controller-deleteArrow-parts"
                       src={TDeleteMode}
                       alt="deleteMode"
                     />
-                  </div>
-                </Grid>
-                <Grid item xs={6}>
-                  <div className="controller-parts-container">
                     <img
                       onClick={toDeleteArrows}
-                      className="controller-parts2"
+                      className="controller-deleteArrow-parts"
                       src={TArrows}
                       alt="arrows"
                     />
                   </div>
                 </Grid>
+
               </Grid>
             </div>
           </Grid>
