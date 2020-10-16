@@ -2,7 +2,6 @@ import React from "react";
 import BoardCell from "./BoardCell";
 import "./Gameboard.css";
 import Water from "../../Assets/gameElements/test-water.png";
-import Player from "../../Assets/gameElements/test-player.png";
 import Finish from "../../Assets/gameElements/test-finish.png";
 import Path from "../../Assets/gameElements/test-path.png";
 import { Container } from "@material-ui/core";

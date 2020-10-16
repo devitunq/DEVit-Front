@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import ParticlesBg from "particles-bg";
 import { Grid, Container, LinearProgress } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
 import "./LevelDifficulty.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
@@ -17,7 +16,6 @@ const LevelDifficulty = () => {
   const [permission, setPermission] = useState("");
   const { nick } = useParams();
   const { character } = useParams();
-  const history = useHistory();
 
   const dificultyToImg = (diffStr) => {
     switch (diffStr) {

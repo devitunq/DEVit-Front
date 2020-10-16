@@ -48,7 +48,7 @@ const Level = () => {
     setSuccess(success);
     setComment(comment);
     let objectsTemp = objects;
-    objectsTemp.map((obj) => {
+    objectsTemp.forEach((obj) => {
       if (obj.type === "player") {
         obj.position = playerInicialPos;
       }

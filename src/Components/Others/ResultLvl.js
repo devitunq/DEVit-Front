@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Container, Button } from "@material-ui/core";
-import StartButton from "../../Components/Generics/StartButton"
 import "./ResultLvl.css";
 
 const ResultLvl = ({ closeModal, imgPath, text, onClickWin, onClickLost }) => (
