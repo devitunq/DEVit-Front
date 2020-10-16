@@ -1,0 +1,106 @@
+.tutorial-container{
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+
+.tutorial-cont-controls{
+  background-color: rgb(58, 57, 57);
+  text-align: center;
+  border-left: 5px black double;
+  border-right: 5px black double;
+  border-top: 5px black double;
+  cursor: pointer;
+}
+
+.tutorial-cont-board{
+  background-color: rgb(218, 216, 216);
+  border-radius: 15% solid;
+  text-align: center;
+  border-left: 5px black double;
+  border-right: 5px black double;
+  border-bottom: 5px black double;
+  cursor: pointer;
+}
+
+.tutorial-cont-board:hover{
+  background-color: rgba(255, 217, 111, 0.849);
+}
+
+.tutorial-cont-controls:hover{
+  background-color: rgba(255, 217, 111, 0.849);
+}
+
+.tutorial-style-cont{
+  background-color: rgb(218, 216, 216);
+  border-radius: 15% solid;
+  text-align: center;
+  border: 5px black double;
+}
+
+.tutorial-style-font{
+  color: black;
+  font-size: large;
+  font-family: cursive;
+}
+
+.tutorial-style-separator{
+  margin-left: 24%;
+  align-self: center;
+  width: 50%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: 1px solid rgb(37, 37, 37);
+  border-radius: px;
+}
+
+
+.tut-picIntro{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+
+.back-modal{
+  text-align: left;
+  cursor: pointer;
+}
+
+.back-pic{
+  position: absolute;
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 2%;
+  height: auto;
+}
+
+.controller-parts-container{
+  cursor: pointer;
+}
+
+.controller-parts-container:hover{
+  background-color: cadetblue;
+}
+
+.controller-parts{
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+  width: 50%;
+  cursor: pointer;
+}
+
+.controller-parts2{
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+  width: 60%;
+  cursor: pointer;
+}
+
+.tutorial-style-font-Board{
+  align-self: start;
+  color: black;
+  font-size: large;
+  font-family: cursive;
+  margin-left: -13%;
+}

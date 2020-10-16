@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Helpers.css";
 import { Grid, Container } from "@material-ui/core";
-import Tutorial from "../Tutorial/Tutorial";
+import TutorialController from "../Tutorial/TutorialController";
 import objective from "../../Assets/levelPageItems/objetivo.png";
 import tutorialPic from "../../Assets/levelPageItems/tutorial.png";
 
@@ -47,11 +47,10 @@ const Helpers = ({ text }) => {
         </Grid>
       </Grid>
 
-      <Tutorial
+      <TutorialController
         open={tutorial}
-        close={closeTutorial}
-      >
-      </Tutorial>
+        closeTutorial={closeTutorial}
+      />
     </div >
   );
 };
