@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { Grid, LinearProgress, Container } from "@material-ui/core";
 import ParticlesBg from "particles-bg";
 import "./Level.css";
@@ -9,7 +10,7 @@ import Helpers from "../Others/Helpers";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
 import { getLevelByLevelId } from "../../Utils/Api";
-import { useParams } from "react-router";
+import { getCharacterByName } from "../../Utils/Characters";
 
 const boardSize = 7;
 const initialBoard = Array(boardSize)
@@ -26,11 +27,10 @@ const Level = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
-  const [tutorial, setTutorial] = useState(false);
   const [playerInicialPos, setPlayerInicialPos] = useState(null);
   const { levelID } = useParams();
   const { character } = useParams();
-
+  const characterObj = getCharacterByName(character);
   useEffect(() => {
     if (isLoading)
       getLevelByLevelId(levelID).then((response) => {
@@ -106,7 +106,7 @@ const Level = () => {
             <Grid item xs={6}>
               <Container fixed>
                 <Gameboard
-                  characterName={character}
+                  character={characterObj}
                   grid={grid}
                   paths={paths}
                   objects={objects}

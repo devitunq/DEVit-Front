@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Modal, Grid, Container } from "@material-ui/core";
+import React from "react";
+import { Modal, Grid } from "@material-ui/core";
 import "../Tutorial/Tutorial.css"
 import back from "../../Assets/others/back.png"
 import path from "../../Assets/tutorial/pathTutorial.png"
@@ -29,7 +29,7 @@ const TutorialBoard = ({ open, backSelecetion }) => (
               <hr className="tutorial-style-separator"></hr>
 
               <Grid item xs={12}>
-                <Grid container direction="colummn">
+                <Grid container>
                   <Grid item xs={4}>
                     <img
                       src={player}
@@ -46,7 +46,7 @@ const TutorialBoard = ({ open, backSelecetion }) => (
                 <hr className="tutorial-style-separator"></hr>
 
                 <Grid item xs={12}>
-                  <Grid container direction="colummn">
+                  <Grid container>
                     <Grid item xs={4}>
                       <img
                         src={path}
@@ -63,7 +63,7 @@ const TutorialBoard = ({ open, backSelecetion }) => (
                 </Grid>
                 <hr className="tutorial-style-separator"></hr>
                 <Grid item xs={12}>
-                  <Grid container direction="colummn">
+                  <Grid container>
                     <Grid item xs={4}>
                       <img
                         src={water}
@@ -80,7 +80,7 @@ const TutorialBoard = ({ open, backSelecetion }) => (
                 </Grid>
                 <hr className="tutorial-style-separator"></hr>
                 <Grid item xs={12}>
-                  <Grid container direction="colummn">
+                  <Grid container>
                     <Grid item xs={4}>
                       <img
                         src={finish}

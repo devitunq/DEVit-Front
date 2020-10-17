@@ -36,7 +36,6 @@ const LevelDifficulty = () => {
       });
     let userPermission = localStorage.getItem('permission')
     setPermission(userPermission);
-    console.log(permission);
     setIsLoading(false);
   });
 

@@ -3,27 +3,10 @@ import BoardCell from "./BoardCell";
 import "./Gameboard.css";
 import Water from "../../Assets/gameElements/test-water.png";
 import Finish from "../../Assets/gameElements/test-finish.png";
-import Door from "../../Assets/gameElements/path-withDoor.png";
-import Key from "../../Assets/gameElements/path-withKey.png";
+import Door from "../../Assets/gameElements/door.png";
+import Key from "../../Assets/gameElements/key.png";
 import Path from "../../Assets/gameElements/test-path.png";
 import { Container } from "@material-ui/core";
-import Character1 from "../../Assets/gameElements/character1.png"
-import Character2 from "../../Assets/gameElements/character2.png"
-import Character3 from "../../Assets/gameElements/character3.png"
-import Character4 from "../../Assets/gameElements/character4.png"
-
-const characterNameToImg = chrstr => {
-  switch (chrstr) {
-    case "c1":
-      return Character1;
-    case "c2":
-      return Character2;
-    case "c3":
-      return Character3;
-    default:
-      return Character4
-  }
-}
 
 const elemeTypeStrToElemType = (elemTypeStr) => {
   switch (elemTypeStr) {
@@ -38,33 +21,32 @@ const elemeTypeStrToElemType = (elemTypeStr) => {
   }
 };
 
-const boardBGpositions = (boardCell, allBoardElements) => {
+const boardBGpositions = (boardCell, elements) => {
   let img = Water;
-  let element = allBoardElements.find(
-    (e) => `${e.position.posX}_${e.position.posY}` === boardCell
-  );
-  if (element && element.type !== "Player") img = elemeTypeStrToElemType(element.type);
-  return img;
-}
-
-const boardFGpositions = (boardCell, elements, characterName) => {
-  let img = "";
   let element = elements.find(
     (e) => `${e.position.posX}_${e.position.posY}` === boardCell
   );
-  if (element && element.type === "Player") img = characterNameToImg(characterName);
-  if (element && element.type === "Finish") img = Finish;
+  if (element) img = elemeTypeStrToElemType(element.type);
   return img;
-};
-
-
-const allBoard = (paths, objects) => {
-  let allBoard = paths.concat(objects);
-  console.log(allBoard);
-  return allBoard;
 }
 
-const Gameboard = ({ grid, paths, objects, characterName }) => {
+const boardFGpositions = (boardCell, elements, characterImg) => {
+  let images = [];
+  elements.forEach(
+    (e) => {
+      if (`${e.position.posX}_${e.position.posY}` === boardCell)
+        if (e.type === "Player")
+          images.push(characterImg);
+        else
+          images.push(elemeTypeStrToElemType(e.type));
+    });
+    console.log(images);
+    if (images.length === 0)
+      images.push("");
+  return images;
+};
+
+const Gameboard = ({ grid, paths, objects, character }) => {
   return (
     <Container maxWidth="xl">
       <div className="boardContainer">
@@ -75,8 +57,8 @@ const Gameboard = ({ grid, paths, objects, characterName }) => {
                 {row.map((_, i) => (
                   <BoardCell
                     key={`cell_${i}_${j}`}
-                    background={boardBGpositions(`${i}_${j}`, allBoard(paths, objects))}
-                    img={boardFGpositions(`${i}_${j}`, objects, characterName)}
+                    background={boardBGpositions(`${i}_${j}`, paths)}
+                    imgList={boardFGpositions(`${i}_${j}`, objects, character.img)}
                     pos={`${i}_${j}`}
                   />
                 ))}

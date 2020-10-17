@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Modal, Grid, Container } from "@material-ui/core";
+import React from "react";
+import { Modal, Grid } from "@material-ui/core";
 import "../Tutorial/Tutorial.css"
 import controlls from "../../Assets/tutorial/picControllsutorial.png";
 import back from "../../Assets/others/back.png"
