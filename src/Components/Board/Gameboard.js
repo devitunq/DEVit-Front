@@ -4,18 +4,19 @@ import "./Gameboard.css";
 import Water from "../../Assets/gameElements/test-water.png";
 import Finish from "../../Assets/gameElements/test-finish.png";
 import Door from "../../Assets/gameElements/door.png";
+import OpenDoor from "../../Assets/gameElements/dooropen.png";
 import Key from "../../Assets/gameElements/key.png";
 import Path from "../../Assets/gameElements/test-path.png";
 import { Container } from "@material-ui/core";
 
-const elemeTypeStrToElemType = (elemTypeStr) => {
-  switch (elemTypeStr) {
+const elemeTypeStrToElemType = (elem) => {
+  switch (elem.type) {
     case "Finish":
       return Finish;
     case "Key":
       return Key;
     case "door":
-      return Door;
+      return elem.open ? OpenDoor : Door;
     default:
       return Path;
   }
@@ -26,7 +27,7 @@ const boardBGpositions = (boardCell, elements) => {
   let element = elements.find(
     (e) => `${e.position.posX}_${e.position.posY}` === boardCell
   );
-  if (element) img = elemeTypeStrToElemType(element.type);
+  if (element) img = elemeTypeStrToElemType(element);
   return img;
 }
 
@@ -38,11 +39,11 @@ const boardFGpositions = (boardCell, elements, characterImg) => {
         if (e.type === "Player")
           images.push(characterImg);
         else
-          images.push(elemeTypeStrToElemType(e.type));
+          images.push(elemeTypeStrToElemType(e));
     });
-    console.log(images);
-    if (images.length === 0)
-      images.push("");
+  console.log(images);
+  if (images.length === 0)
+    images.push("");
   return images;
 };
 
