@@ -3,6 +3,8 @@ import BoardCell from "./BoardCell";
 import "./Gameboard.css";
 import Water from "../../Assets/gameElements/test-water.png";
 import Finish from "../../Assets/gameElements/test-finish.png";
+import Door from "../../Assets/gameElements/path-withDoor.png";
+import Key from "../../Assets/gameElements/path-withKey.png";
 import Path from "../../Assets/gameElements/test-path.png";
 import { Container } from "@material-ui/core";
 import Character1 from "../../Assets/gameElements/character1.png"
@@ -23,49 +25,68 @@ const characterNameToImg = chrstr => {
   }
 }
 
-const elemeTypeStrToElemType = (elemTypeStr, characterName) => {
+const elemeTypeStrToElemType = (elemTypeStr) => {
   switch (elemTypeStr) {
     case "Finish":
       return Finish;
-    case "Player":
-      return characterNameToImg(characterName);
-    case "PathTile":
-      return Path;
+    case "Key":
+      return Key;
+    case "door":
+      return Door;
     default:
-      return Water;
+      return Path;
   }
 };
 
-const boardPositions = (boardCell, elements, characterName, isObject = false) => {
-  let img = isObject ? "" : Water;
+const boardBGpositions = (boardCell, allBoardElements) => {
+  let img = Water;
+  let element = allBoardElements.find(
+    (e) => `${e.position.posX}_${e.position.posY}` === boardCell
+  );
+  if (element && element.type !== "Player") img = elemeTypeStrToElemType(element.type);
+  return img;
+}
+
+const boardFGpositions = (boardCell, elements, characterName) => {
+  let img = "";
   let element = elements.find(
     (e) => `${e.position.posX}_${e.position.posY}` === boardCell
   );
-  if (element) img = elemeTypeStrToElemType(element.type, characterName);
+  if (element && element.type === "Player") img = characterNameToImg(characterName);
+  if (element && element.type === "Finish") img = Finish;
   return img;
 };
 
-const Gameboard = ({ grid, paths, objects, characterName }) => (
-  <Container maxWidth="xl">
-    <div className="boardContainer">
-      <table cellSpacing="0" className="board">
-        <tbody>
-          {grid.map((row, j) => (
-            <tr key={"row_" + j}>
-              {row.map((_, i) => (
-                <BoardCell
-                  key={`cell_${i}_${j}`}
-                  background={boardPositions(`${i}_${j}`, paths, characterName)}
-                  img={boardPositions(`${i}_${j}`, objects, characterName, true)}
-                  pos={`${i}_${j}`}
-                />
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </Container>
-);
+
+const allBoard = (paths, objects) => {
+  let allBoard = paths.concat(objects);
+  console.log(allBoard);
+  return allBoard;
+}
+
+const Gameboard = ({ grid, paths, objects, characterName }) => {
+  return (
+    <Container maxWidth="xl">
+      <div className="boardContainer">
+        <table cellSpacing="0" className="board">
+          <tbody>
+            {grid.map((row, j) => (
+              <tr key={"row_" + j}>
+                {row.map((_, i) => (
+                  <BoardCell
+                    key={`cell_${i}_${j}`}
+                    background={boardBGpositions(`${i}_${j}`, allBoard(paths, objects))}
+                    img={boardFGpositions(`${i}_${j}`, objects, characterName)}
+                    pos={`${i}_${j}`}
+                  />
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Container>
+  )
+};
 
 export default Gameboard;
