@@ -1,5 +1,5 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Modal, Grid, Container } from "@material-ui/core";
+import React from "react";
+import { Modal, Grid } from "@material-ui/core";
 import "../Tutorial/Tutorial.css"
 import playTutorial from "../../Assets/tutorial/playTutorial.png";
 import restartTutotrial from "../../Assets/tutorial/restartTutotrial.png";

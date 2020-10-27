@@ -6,10 +6,7 @@ import "./AuthOrGuest.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import { useHistory } from "react-router-dom";
-import Character1 from "../../Assets/gameElements/character1.png"
-import Character2 from "../../Assets/gameElements/character2.png"
-import Character3 from "../../Assets/gameElements/character3.png"
-import Character4 from "../../Assets/gameElements/character4.png"
+import { ANA, LIAM, ARIEL, JORGE } from "../../Utils/Characters";
 import "./CharacterSelection.css";
 
 const CharacterSelection = () => {
@@ -17,12 +14,6 @@ const CharacterSelection = () => {
   const [permission, setPermission] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
-
-
-  const ANA = { name: "Ana", img: Character1 }
-  const LIAM = { name: "Liam", img: Character2 }
-  const ARIEL = { name: "Ariel", img: Character3 }
-  const JORGE = { name: "Jorge", img: Character4 }
 
   const characters = [ANA, LIAM, ARIEL, JORGE]
 
@@ -51,7 +42,7 @@ const CharacterSelection = () => {
             <hr className="divider-chooseCh"></hr>
           </Grid>
 
-          <Grid container item xs={12} alignItems="center" spacing={4}>
+          <Grid container item xs={12} alignItems="center" style={{justifyContent:"center"}} spacing={4}>
             {permission === "FullAccess"
               ?
               characters.map((c) =>
@@ -66,13 +57,14 @@ const CharacterSelection = () => {
                 </Grid>
               )
               :
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={4}>
                 <img
                   className="character-img"
-                  src={characters[4].img}
-                  onClick={() => { history.push(`/difficulty/${nick}/${characters[4].name}`) }}
-                  alt={characters[4].name}
+                  src={JORGE.img}
+                  onClick={() => { history.push(`/difficulty/${nick}/${JORGE.name}`) }}
+                  alt={JORGE.name}
                 />
+                <div className="character-header"> {JORGE.name} </div>
               </Grid>
             }
           </Grid>

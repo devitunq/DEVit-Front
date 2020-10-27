@@ -1,7 +1,7 @@
 import React from "react";
 import "./BoardCell.css";
 
-const BoardCell = ({ pos, img, background }) => {
+const BoardCell = ({ pos, imgList, background }) => {
 
   return (
     <td
@@ -9,8 +9,10 @@ const BoardCell = ({ pos, img, background }) => {
       style={{ backgroundImage: `url(${background})` }}
       id={`cell_${pos}`}
     >
+      {imgList.map((img, index) => 
       <img
-        id={`cell_img_${pos}`}
+        id={`cell_img_${pos}_${index}`}
+        key={`key_cell_img_${pos}_${index}`}
         style={{
           display: "block",
         }}
@@ -18,7 +20,7 @@ const BoardCell = ({ pos, img, background }) => {
         height="100%"
         src={img ? img : background}
         alt=""
-      />
+      />)}
     </td>
   )
 };
