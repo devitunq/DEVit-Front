@@ -1,10 +1,13 @@
 .character-img{
   width: 75%;
   margin-left: 8%;
+  filter: opacity(.7);
   cursor: pointer;
 }
+
 .character-img:hover{
   width: 90%;
+  filter: opacity(1);
 }
 
 .chooseCh-header{

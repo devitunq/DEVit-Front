@@ -41,7 +41,6 @@ const boardFGpositions = (boardCell, elements, characterImg) => {
         else
           images.push(elemeTypeStrToElemType(e));
     });
-  console.log(images);
   if (images.length === 0)
     images.push("");
   return images;

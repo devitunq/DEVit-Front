@@ -42,7 +42,7 @@ const CharacterSelection = () => {
             <hr className="divider-chooseCh"></hr>
           </Grid>
 
-          <Grid container item xs={12} alignItems="center" style={{justifyContent:"center"}} spacing={4}>
+          <Grid container item xs={12} alignItems="center" style={{ justifyContent: "center" }} spacing={4}>
             {permission === "FullAccess"
               ?
               characters.map((c) =>
