@@ -4,7 +4,7 @@ import ResultLvl from "../Others/ResultLvl";
 import Success from "../../Assets/modalResults/success.png";
 import Failed from "../../Assets/modalResults/failed.png";
 
-const LevelModal = ({ open, close, result, comment, onClickWin, onClickLost }) => (
+const LevelModal = ({ open, close, result, comment, onClickWin, onClickLost, stars }) => (
   <Modal id={"modalLevel"} open={open} onClose={close}>
     <Fragment>
       {result ? (
@@ -15,6 +15,7 @@ const LevelModal = ({ open, close, result, comment, onClickWin, onClickLost }) =
           closeModal={close}
           imgPath={Success}
           text={comment}
+          stars={stars}
         />
       ) : (
           <ResultLvl

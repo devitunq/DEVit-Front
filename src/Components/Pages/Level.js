@@ -9,7 +9,7 @@ import Joystick from "../Joystick/Joystick";
 import Helpers from "../Others/Helpers";
 import Logo from "../Generics/Logo";
 import LevelModal from "../Generics/LevelModal";
-import { getLevelByLevelId } from "../../Utils/Api";
+import { getLevelByLevelId, postLevelSucces } from "../../Utils/Api";
 import { getCharacterByName } from "../../Utils/Characters";
 
 const boardSize = 7;
@@ -28,6 +28,7 @@ const Level = () => {
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
   const [playerInicialPos, setPlayerInicialPos] = useState(null);
+  const [stars, setStars] = useState();
   const { levelID } = useParams();
   const { character } = useParams();
   const characterObj = getCharacterByName(character);
@@ -44,7 +45,7 @@ const Level = () => {
   });
 
 
-  const finishLevel = (success, comment) => {
+  const finishLevel = (success, comment, starsWon) => {
     setSuccess(success);
     setComment(comment);
     let objectsTemp = objects;
@@ -54,6 +55,8 @@ const Level = () => {
       }
     });
     setObjects(objectsTemp);
+    setStars(starsWon);
+    postLevelSucces(localStorage.getItem("userName"), levelID);
     setModal(true);
   };
 
@@ -62,7 +65,7 @@ const Level = () => {
   };
 
   const renderEachStep = (i, data) => {
-    let { levelState, fullGame, comment } = data;
+    let { levelState, fullGame, comment, starsWon } = data;
     let tempObjects,
       tempPaths = [];
     tempObjects = fullGame[i].filter((e) => e.type !== "PathTile");
@@ -74,7 +77,7 @@ const Level = () => {
         i++;
         renderEachStep(i, data);
       }, 500);
-    } else setTimeout(() => finishLevel(levelState === "Complete", comment), 500);
+    } else setTimeout(() => finishLevel(levelState === "Complete", comment, starsWon), 500);
   };
 
   return isLoading ? (
@@ -96,7 +99,9 @@ const Level = () => {
                 <div className="ins-board-obj">
                   <Helpers text={description} />
                   <Joystick
-                    onClickPlay={(reponse) => renderEachStep(0, reponse.data)}
+                    onClickPlay={(response) => {
+                      renderEachStep(0, response.data)
+                    }}
                     levelID={levelID}
                   />
                 </div>
@@ -123,6 +128,7 @@ const Level = () => {
           close={closeModal}
           result={success}
           comment={comment}
+          stars={stars}
         >
         </LevelModal>
 

@@ -24,9 +24,12 @@ const postLevelSolution = (levelId, solution) =>
   axios.post(`${HOST_URL}${LEVELS_URL}/solve/${levelId}`, solution);
 
 const getUser = (user, pass) =>
-  axios.post(`${HOST_URL}${USER_URL}`, {userName: user, password: pass});
+  axios.post(`${HOST_URL}${USER_URL}`, { userName: user, password: pass });
 
 const getGuestPermission = (nickname) =>
   axios.get(`${HOST_URL}${GUEST_URL}?nick=${nickname}`);
 
-export { getLevelByLevelId, postLevelSolution, getAllByDifficulty, getDifficulties, getUser, getGuestPermission };
+const postLevelSucces = (userName, levelId) =>
+  axios.post(`${HOST_URL}${USER_URL}/saveLevel`, { userName: userName, levelID: levelId })
+
+export { getLevelByLevelId, postLevelSolution, getAllByDifficulty, getDifficulties, getUser, getGuestPermission, postLevelSucces };
