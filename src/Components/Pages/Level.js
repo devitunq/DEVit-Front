@@ -28,7 +28,7 @@ const Level = () => {
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
   const [playerInicialPos, setPlayerInicialPos] = useState(null);
-  const [stars, setStars] = useState();
+  const [stars, setStars] = useState(0);
   const { levelID } = useParams();
   const { character } = useParams();
   const characterObj = getCharacterByName(character);
@@ -56,7 +56,7 @@ const Level = () => {
     });
     setObjects(objectsTemp);
     setStars(starsWon);
-    postLevelSucces(localStorage.getItem("userName"), levelID);
+    postLevelSucces(localStorage.getItem("userName"), levelID, stars);
     setModal(true);
   };
 

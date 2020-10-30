@@ -1,19 +1,21 @@
 import React from "react";
 import { Grid, Container, Button } from "@material-ui/core";
 import "./ResultLvl.css";
-import StarsWon from "./StarsWon";
+import OneStar from "../../Assets/stars/onestarwon.gif";
+import TwoStar from "../../Assets/stars/twostarwon.gif";
+import ThreeStar from "../../Assets/stars/threestarwon.gif";
 
 const ResultLvl = ({ closeModal, imgPath, text, onClickWin, onClickLost, stars }) => (
   <div>
     <Grid container direction="column" spacing={10} justify="center">
       <Grid container item xs={12}>
-        <Grid item xs={4}></Grid>
+        <Grid item xs={4}>
+
+        </Grid>
         <Grid item xs={4}>
           <Container maxWidth="xl">
             <div className="success-lvl">
-              <StarsWon
-                stars={stars}
-              />
+              <img src={OneStar} />
               <img
                 id="resImg"
                 onClick={closeModal}
