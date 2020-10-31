@@ -19,8 +19,22 @@ import threeStars from "../../Assets/stars/staticstars3.png";
 const LevelSelection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [levels, setLevels] = useState([]);
+  const [levelsPlayed, setLevelsPlayed] = useState(null);
   const { difficulty } = useParams();
   const { character } = useParams();
+
+  useEffect(() => {
+    if (isLoading) {
+      getAllByDifficulty(difficulty).then((response) => {
+        setLevels(response.data);
+      });
+      getUserLevelsCompleted(localStorage.getItem("userName")).then((response) => {
+        console.log(response)
+        setLevelsPlayed(response.data)
+        setIsLoading(false);
+      });
+    }
+  });
 
   const levelNameToImg = (levelStr) => {
     switch (levelStr) {
@@ -52,23 +66,11 @@ const LevelSelection = () => {
 
   const searchLevelStars = (idLevel) => {
     let stars = 0;
-    let levelsPassed = JSON.parse(localStorage.getItem("levels"));
-    let level = levelsPassed.find(levelData => levelData.levelID === idLevel)
+    let level = levelsPlayed.find(levelData => levelData.levelID === idLevel)
     if (level) stars = level.stars
     return stars;
   }
 
-  useEffect(() => {
-    if (isLoading) {
-      getAllByDifficulty(difficulty).then((response) => {
-        setLevels(response.data);
-        setIsLoading(false);
-      });
-      getUserLevelsCompleted().then((response) => {
-        console.log(response)
-      })
-    }
-  });
 
   return isLoading ? (
     <LinearProgress variant="indeterminate" />

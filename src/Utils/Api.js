@@ -32,9 +32,9 @@ const getGuestPermission = (nickname) =>
 const postLevelSucces = (userName, levelId, stars) =>
   axios.post(`${HOST_URL}${USER_URL}/saveLevel`, { userName: userName, levelID: levelId, stars: stars })
 
-const getUserLevelsCompleted = (userName) => {
+const getUserLevelsCompleted = (userName) =>
   axios.get(`${HOST_URL}${USER_URL}/levelsCompleted?userName=${userName}`);
-}
+
 export {
   getLevelByLevelId, postLevelSolution, getAllByDifficulty,
   getDifficulties, getUser, getGuestPermission, postLevelSucces, getUserLevelsCompleted
