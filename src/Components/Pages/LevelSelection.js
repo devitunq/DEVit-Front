@@ -4,8 +4,8 @@ import { Grid, Container, LinearProgress } from "@material-ui/core";
 import "./LevelSelection.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
-import Like from "../Others/Like";
-import { getAllByDifficulty, getUserLevelsCompleted } from "../../Utils/Api";
+import LikeAndDislike from "../Others/LikeAndDislike";
+import { getAllByDifficulty, getUserLevelsCompleted, postLevelScore } from "../../Utils/Api";
 import { useParams } from "react-router";
 import lvl1 from "../../Assets/levelNames/Easy_Level One.png";
 import lvl2 from "../../Assets/levelNames/Easy_Level Two.png";
@@ -21,6 +21,7 @@ const LevelSelection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [levels, setLevels] = useState([]);
   const [levelsPlayed, setLevelsPlayed] = useState(null);
+  const [levelsScored, setLevelsScored] = useState([]);
   const { difficulty } = useParams();
   const { character } = useParams();
 
@@ -30,7 +31,6 @@ const LevelSelection = () => {
         setLevels(response.data);
       });
       getUserLevelsCompleted(localStorage.getItem("userName")).then((response) => {
-        console.log(response)
         setLevelsPlayed(response.data)
         setIsLoading(false);
       });
@@ -72,6 +72,44 @@ const LevelSelection = () => {
     return stars;
   }
 
+  const updateLikes = (level) => {
+    level.likes++
+  }
+
+  const updateDislikes = (level) => {
+    level.dislikes++
+  }
+
+  const onClickLike = (levelId) => {
+    let lev = levels.find((l) => l.levelId === levelId);
+    if (!lev.scoreFromAndLevel.includes(`${localStorage.getItem("userName")}_${levelId}`)
+      && !levelsScored.includes(levelId)) {
+      setLevelsScored([...levelsScored, levelId])
+      postLevelScore(levelId, "Like", localStorage.getItem("userName"));
+      let levelsUpdated = levels.map(level => {
+        let l = level
+        if (level.levelId === levelId) updateLikes(l)
+        return l
+      });
+      setLevels(levelsUpdated);
+    };
+  };
+
+  const onClickDislike = (levelId) => {
+    let lev = levels.find((l) => l.levelId === levelId);
+    if (!lev.scoreFromAndLevel.includes(`${localStorage.getItem("userName")}_${levelId}`)
+      && !levelsScored.includes(levelId)) {
+      setLevelsScored([...levelsScored, levelId])
+      postLevelScore(levelId, "Dislike", localStorage.getItem("userName"));
+      let levelsUpdated = levels.map(level => {
+        let l = level
+        if (level.levelId === levelId) updateDislikes(l)
+        return l
+      });
+      setLevels(levelsUpdated);
+    };
+  };
+
 
   return isLoading ? (
     <LinearProgress variant="indeterminate" />
@@ -99,18 +137,26 @@ const LevelSelection = () => {
                           <div key={`key_lvl_${l.levelId}`}>
                             <a href={`/level/${l.levelId}/${character}`}>
                               <div className="lvl-item">
-                                <img
-                                  href="/level"
-                                  className="lvl-img"
-                                  src={levelNameToImg(l.levelId)}
-                                  alt={`${l.name}`}
-                                />
-                                <img
-                                  className="lvl-stars"
-                                  src={determinateStars(searchLevelStars(l.levelId))}
-                                />
+                                <div className="center">
+                                  <img
+                                    href="/level"
+                                    className="lvl-img"
+                                    src={levelNameToImg(l.levelId)}
+                                    alt={`${l.name}`}
+                                  />
+                                  <img
+                                    className="lvl-stars"
+                                    src={determinateStars(searchLevelStars(l.levelId))}
+                                  />
+                                </div>
                               </div>
                             </a>
+                            <LikeAndDislike
+                              likes={l.likes}
+                              dislikes={l.dislikes}
+                              onClickLike={() => onClickLike(l.levelId)}
+                              onClickDislike={() => onClickDislike(l.levelId)}
+                            />
                           </div>
 
                         </div>

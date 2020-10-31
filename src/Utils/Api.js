@@ -32,8 +32,8 @@ const getGuestPermission = (nickname) =>
 const postLevelSucces = (userName, levelId, stars) =>
   axios.post(`${HOST_URL}${USER_URL}/saveLevel`, { userName: userName, levelID: levelId, stars: stars })
 
-const postLevelScore = (levelID, score) =>
-  axios.post(`${HOST_URL}${USER_URL}/solve/${levelID}`, score)
+const postLevelScore = (levelID, score, from) =>
+  axios.post(`${HOST_URL}${LEVELS_URL}/score/${levelID}`, { score: score, from: from })
 
 const getUserLevelsCompleted = (userName) =>
   axios.get(`${HOST_URL}${USER_URL}/levelsCompleted?userName=${userName}`);

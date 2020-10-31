@@ -1,0 +1,22 @@
+.like-dislike{
+  display: inline-block;
+  max-height: 20px;
+  margin-left: 5%;
+}
+
+.likeAndDislike-number{
+  color: white;
+  float: left;
+  font-size: 10px;
+  margin-right: 6px;
+}
+
+.likeAndDislike-icon{
+  cursor: pointer;
+  opacity: 0.7;
+  float: left;
+}
+
+.likeAndDislike-icon:hover{
+  opacity: 1;
+}

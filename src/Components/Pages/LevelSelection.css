@@ -1,12 +1,15 @@
 .lvl-container {
   margin-top: 5%;
-  text-align: center;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   padding-top: 1%;
   padding-bottom: 1%;
   border-radius: 10px;
   background-color: rgb(17, 122, 101);
   height: 100%;
+}
+
+.center{
+  text-align: center;
 }
 
 
