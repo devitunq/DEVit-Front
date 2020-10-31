@@ -13,10 +13,12 @@ const Loign = () => {
   const handleLogin = () => {
     getUser(username, password)
       .then((response) => {
+        console.log(response)
         localStorage.setItem('accessToken', response.data.token); console.log(response)
         localStorage.setItem('permission', response.data.permission);
         localStorage.setItem('nick', response.data.nick);
         localStorage.setItem('userName', response.data.userName);
+        localStorage.setItem('levels', JSON.stringify(response.data.levelsPassed));
         history.push(`/characterSelection/${response.data.nick}`)
       })
       .catch((error) => console.log(error))

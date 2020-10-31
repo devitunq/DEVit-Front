@@ -4,13 +4,17 @@ import { Grid, Container, LinearProgress } from "@material-ui/core";
 import "./LevelSelection.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
-import { getAllByDifficulty } from "../../Utils/Api";
+import { getAllByDifficulty, getUserLevelsCompleted } from "../../Utils/Api";
 import { useParams } from "react-router";
 import lvl1 from "../../Assets/levelNames/Easy_Level One.png";
 import lvl2 from "../../Assets/levelNames/Easy_Level Two.png";
 import lvl3 from "../../Assets/levelNames/Easy_Level Three.png";
 import lvl4 from "../../Assets/levelNames/Easy_Level Four.png";
 import lvl5 from "../../Assets/levelNames/Easy_Level Five.png";
+import zeroStar from "../../Assets/stars/staticstars0.png";
+import oneStar from "../../Assets/stars/staticstars1.png";
+import twoStars from "../../Assets/stars/staticstars2.png";
+import threeStars from "../../Assets/stars/staticstars3.png";
 
 const LevelSelection = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,12 +37,37 @@ const LevelSelection = () => {
     }
   };
 
+  const determinateStars = (stars) => {
+    switch (stars) {
+      case 0:
+        return zeroStar
+      case 1:
+        return oneStar
+      case 2:
+        return twoStars
+      default:
+        return threeStars
+    }
+  };
+
+  const searchLevelStars = (idLevel) => {
+    let stars = 0;
+    let levelsPassed = JSON.parse(localStorage.getItem("levels"));
+    let level = levelsPassed.find(levelData => levelData.levelID === idLevel)
+    if (level) stars = level.stars
+    return stars;
+  }
+
   useEffect(() => {
-    if (isLoading)
+    if (isLoading) {
       getAllByDifficulty(difficulty).then((response) => {
         setLevels(response.data);
         setIsLoading(false);
       });
+      getUserLevelsCompleted().then((response) => {
+        console.log(response)
+      })
+    }
   });
 
   return isLoading ? (
@@ -57,28 +86,35 @@ const LevelSelection = () => {
           <Grid container item xs={12}>
             <Grid item xs={2}></Grid>
             <Grid item xs={8}>
-              <Container maxWidth="xs">
-                <div className="lvl-container">{
-                  levels.map((l) => {
-                    return (
-                      <div key={`key_lvl_${l.levelId}`}>
-                        <a href={`/level/${l.levelId}/${character}`}>
-                          <div className="lvl-item">
-                            <img
-                              href="/level"
-                              className="lvl-img"
-                              src={levelNameToImg(l.levelId)}
-                              alt={`${l.name}`}
-                            />
+              <Grid cotnainer>
+                <Container maxWidth="xs">
+                  {
+                    levels.map((l) => {
+
+                      return (
+                        <div className="lvl-container" >
+                          <div key={`key_lvl_${l.levelId}`}>
+                            <a href={`/level/${l.levelId}/${character}`}>
+                              <div className="lvl-item">
+                                <img
+                                  href="/level"
+                                  className="lvl-img"
+                                  src={levelNameToImg(l.levelId)}
+                                  alt={`${l.name}`}
+                                />
+                                <img
+                                  className="lvl-stars"
+                                  src={determinateStars(searchLevelStars(l.levelId))}
+                                />
+                              </div>
+                            </a>
                           </div>
-                        </a>
-                        <hr className="lvl-separator" />
-                      </div>
-                    );
-                  })
-                }
-                </div>
-              </Container>
+                        </div>
+                      );
+                    })
+                  }
+                </Container>
+              </Grid>
             </Grid>
             <Grid item xs={2}></Grid>
           </Grid>
