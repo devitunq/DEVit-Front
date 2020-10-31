@@ -13,7 +13,6 @@ const LevelModal = ({ open, close, result, comment, onClickWin, onClickLost, sta
           onClickLost={onClickLost}
           onClickWin={onClickWin}
           closeModal={close}
-          imgPath={Success}
           text={comment}
           stars={stars}
         />

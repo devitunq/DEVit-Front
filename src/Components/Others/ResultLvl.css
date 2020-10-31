@@ -9,8 +9,14 @@
 }
 
 .result-pic {
-  width: 25%;
+  text-align: center;
+  width: 15%;
   cursor: pointer;
+}
+
+.stars{
+  margin-left: -17%;
+  width: 40%;
 }
 
 .success-text {
