@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import { Container } from "@material-ui/core";
-import "./About.css"
+import "./styles/About.css"
 import github from "../../Assets/others/devit-github.png";
 
 const About = () => {

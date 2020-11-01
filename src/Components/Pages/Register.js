@@ -4,7 +4,7 @@ import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import ParticlesBg from "particles-bg";
 import Next from "../../Assets/others/next.png";
-import "../Pages/Register.css";
+import "../Pages/styles/Register.css";
 
 const Register = () => {
   const [username, setUsername] = useState("")

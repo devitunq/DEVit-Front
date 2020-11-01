@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import FluentTest from "../../Utils/fluent-test";
-import AuthOrGuest from "./AuthOrGuest";
+import FluentTest from "../../../Utils/fluent-test";
+import AuthOrGuest from "../AuthOrGuest";
 
 describe("AuthOrGuest", () => {
   class AuthOrGuestTest extends FluentTest {

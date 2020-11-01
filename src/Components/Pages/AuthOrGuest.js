@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ParticlesBg from "particles-bg";
 import { Grid, Container, InputBase, LinearProgress } from "@material-ui/core";
 import { useHistory } from "react-router-dom"
-import "./AuthOrGuest.css";
+import "./styles/AuthOrGuest.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import Next from "../../Assets/others/next.png";

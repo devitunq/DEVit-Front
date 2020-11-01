@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ParticlesBg from "particles-bg";
 import { Grid, Container, LinearProgress } from "@material-ui/core";
-import "./LevelSelection.css";
+import "./styles/LevelSelection.css";
 import Navbar from "../Generics/Navbar";
 import Logo from "../Generics/Logo";
 import LikeAndDislike from "../Others/LikeAndDislike";

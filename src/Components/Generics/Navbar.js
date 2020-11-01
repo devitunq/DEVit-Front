@@ -21,7 +21,7 @@ const Navbar = () => (
       </li>
       {isAuthenticated() &&
         <li>
-          <a href="/difficulty/deviter" id="navDifficultyLink">
+          <a href="/difficulty/deviter/Jorge" id="navDifficultyLink">
             Dificultades
         </a>
         </li>}

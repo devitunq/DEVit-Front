@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Home from "./Home";
-import FluentTest from "../../Utils/fluent-test";
+import Home from "../Home";
+import FluentTest from "../../../Utils/fluent-test";
 
 describe("Home", () => {
   class HomeTest extends FluentTest {

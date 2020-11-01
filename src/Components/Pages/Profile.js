@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Grid, List, LinearProgress, ListItem, ListItemText, Divider, Icon
 } from '@material-ui/core';
-import '../Pages/Profile.css'
+import '../Pages/styles/Profile.css'
 import LevelProgress from '../Others/LevelsProgress';
 import ProfileItem from '../Others/ProfileItem';
 import ProfileHeader from '../Others/ProfileHeader';

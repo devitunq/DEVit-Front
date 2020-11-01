@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Grid, LinearProgress, Container } from "@material-ui/core";
 import ParticlesBg from "particles-bg";
-import "./Level.css";
+import "./styles/Level.css";
 import Gameboard from "../Board/Gameboard";
 import Navbar from "../Generics/Navbar";
 import Joystick from "../Joystick/Joystick";
