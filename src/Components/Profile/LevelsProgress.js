@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, LinearProgress } from '@material-ui/core';
-import "../Others/LevelsProgress.css";
+import "./LevelsProgress.css";
 
 const LevelProgress = ({ value, min, max, progressBarTitle }) => (
   <Grid item xs={12}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Others/ProfileHeader.css";
+import "./ProfileHeader.css";
 import { Grid, Avatar } from '@material-ui/core';
 
 const ProfileHeader = () => (

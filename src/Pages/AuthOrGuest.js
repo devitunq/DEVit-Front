@@ -6,7 +6,7 @@ import "./styles/AuthOrGuest.css";
 import Navbar from "../Components/Generics/Navbar";
 import Logo from "../Components/Generics/Logo";
 import Next from "../Assets/others/next.png";
-import Login from "../Components/Generics/Login"
+import Login from "../Components/Auth/Login"
 import { getGuestPermission } from "../Utils/Api"
 
 const AuthOrGuest = () => {

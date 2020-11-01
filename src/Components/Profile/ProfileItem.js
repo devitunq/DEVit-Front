@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import "../Others/ProfileItem.css";
+import "./ProfileItem.css";
 
 const ProfileItem = ({ icon, detail, detailTitle }) => (
   <Grid item xs={6}>

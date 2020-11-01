@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Container, InputBase } from "@material-ui/core";
 import Next from "../../Assets/others/next.png";
-import "../Generics/Login.css";
+import "./Login.css";
 import { getUser } from "../../Utils/Api"
 import { useHistory } from "react-router-dom"
 
