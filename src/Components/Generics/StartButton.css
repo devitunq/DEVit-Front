@@ -1,0 +1,13 @@
+.social .btn:first-child {
+  margin-right: 30px;
+}
+.social .btn {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.social .btn i {
+  margin-right: 15px;
+}
+.project-btn {
+  background-color: #1abc9c !important;
+}

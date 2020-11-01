@@ -1,5 +1,6 @@
 import React from "react";
 import StartButton from "../Generics/StartButton";
+import "../Others/Banner.css";
 
 const Banner = ({ description }) => (
   <div className="row banner">
