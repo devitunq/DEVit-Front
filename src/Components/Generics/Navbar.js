@@ -22,6 +22,11 @@ const Navbar = () => (
           Dificultades
         </a>
       </li>
+      <li>
+        <a href="/profile" id="navProfileLink">
+          Perfil
+        </a>
+      </li>
     </ul>
   </nav>
 );
