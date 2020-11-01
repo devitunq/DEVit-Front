@@ -11,6 +11,7 @@
 }
 
 .profileItem-infoText{
+  text-align: center;
   display: inline; 
   font-size: large;
   vertical-align: middle;

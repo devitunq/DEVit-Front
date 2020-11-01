@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Grid, List, LinearProgress, ListItem, ListItemText, Divider
+  Grid, List, LinearProgress, ListItem, ListItemText, Divider, Icon
 } from '@material-ui/core';
 import '../Pages/Profile.css'
 import LevelProgress from '../Others/LevelsProgress';
@@ -8,6 +8,7 @@ import ProfileItem from '../Others/ProfileItem';
 import ProfileHeader from '../Others/ProfileHeader';
 import Navbar from '../Generics/Navbar'
 import ParticlesBg from "particles-bg";
+import LockIcon from '@material-ui/icons/Lock';
 
 const Profile = () => (
 
@@ -35,6 +36,13 @@ const Profile = () => (
                   detail={localStorage.getItem("nick")}
                 />
                 <ProfileItem
+                  icon={<LockIcon
+                    style={{
+                      width: "20%",
+                      marginTop: "1%",
+                      marginLeft: "10%",
+                    }}
+                  />}
                   detailTitle={"Contraseña: "}
                   detail="********"
                 />
@@ -43,7 +51,7 @@ const Profile = () => (
               <Grid item xs={12}>
                 <Grid container spacing={8}>
                   <LevelProgress
-                    progressBarTitle="Porcentaje de juego completado"
+                    progressBarTitle="Porcentaje de juego completado: "
                     value={30}
                     min={0}
                     max={100}

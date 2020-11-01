@@ -3,6 +3,7 @@ import { Route, BrowserRouter } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import Home from "./Components/Pages/Home";
 import Profile from "./Components/Pages/Profile";
+import Register from "./Components/Pages/Register";
 import Level from "./Components/Pages/Level";
 import About from "./Components/Pages/About";
 import LevelDifficulty from "./Components/Pages/LevelDifficulty";
@@ -17,6 +18,7 @@ class Routes extends Component {
         <PrivateRoute component={Level} path="/level/:levelID/:character" />
         <Route component={About} path="/about" />
         <Route component={AuthOrGuest} path="/sign" />
+        <Route component={Register} path="/register" />
         <PrivateRoute component={Profile} path="/profile" />
         <PrivateRoute component={LevelDifficulty} path="/difficulty/:nick/:character" />
         <PrivateRoute component={CharacterSelection} path="/characterSelection/:nick" />

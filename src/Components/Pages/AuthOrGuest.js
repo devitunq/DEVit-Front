@@ -72,6 +72,9 @@ const AuthOrGuest = () => {
                       alt="next"
                     />
                   </a>
+                  <a href="/register">
+                    <p className="auth-register"> Si aun no lo hiciste, Registrate </p>
+                  </a>
                 </div>
               </Container>
             </Grid>

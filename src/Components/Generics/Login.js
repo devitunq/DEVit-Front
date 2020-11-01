@@ -56,7 +56,6 @@ const Loign = () => {
                 alt="next"
               />
             </a>
-
           </div>
         </Container>
       </Grid>
