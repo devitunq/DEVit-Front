@@ -1,5 +1,7 @@
 import React from "react";
 
+const isAuthenticated = () => { return localStorage.getItem('accessToken') != null };
+
 const Navbar = () => (
   <nav id="nav-wrap">
 
@@ -17,16 +19,18 @@ const Navbar = () => (
           ¿Quienes somos?
         </a>
       </li>
-      <li>
-        <a href="/difficulty/deviter" id="navDifficultyLink">
-          Dificultades
+      {isAuthenticated() &&
+        <li>
+          <a href="/difficulty/deviter" id="navDifficultyLink">
+            Dificultades
         </a>
-      </li>
-      <li>
-        <a href="/profile" id="navProfileLink">
-          Perfil
+        </li>}
+      {isAuthenticated() &&
+        <li>
+          <a href="/profile" id="navProfileLink">
+            Perfil
         </a>
-      </li>
+        </li>}
     </ul>
   </nav>
 );
