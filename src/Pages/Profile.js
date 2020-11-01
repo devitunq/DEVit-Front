@@ -1,12 +1,10 @@
 import React from 'react';
-import {
-  Grid, List, LinearProgress, ListItem, ListItemText, Divider, Icon
-} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import '../Pages/styles/Profile.css'
-import LevelProgress from '../Others/LevelsProgress';
-import ProfileItem from '../Others/ProfileItem';
-import ProfileHeader from '../Others/ProfileHeader';
-import Navbar from '../Generics/Navbar'
+import LevelProgress from '../Components/Others/LevelsProgress';
+import ProfileItem from '../Components/Others/ProfileItem';
+import ProfileHeader from '../Components/Others/ProfileHeader';
+import Navbar from '../Components/Generics/Navbar'
 import ParticlesBg from "particles-bg";
 import LockIcon from '@material-ui/icons/Lock';
 

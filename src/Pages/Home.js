@@ -1,7 +1,7 @@
 import React from "react";
 import ParticlesBg from "particles-bg";
-import Navbar from "../Generics/Navbar";
-import Banner from "../Others/Banner";
+import Navbar from "../Components/Generics/Navbar";
+import Banner from "../Components/Others/Banner";
 
 const Home = () => {
   const description =

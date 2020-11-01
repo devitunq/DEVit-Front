@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
-import Home from "./Components/Pages/Home";
-import Profile from "./Components/Pages/Profile";
-import Register from "./Components/Pages/Register";
-import Level from "./Components/Pages/Level";
-import About from "./Components/Pages/About";
-import LevelDifficulty from "./Components/Pages/LevelDifficulty";
-import LevelSelection from "./Components/Pages/LevelSelection";
-import AuthOrGuest from "./Components/Pages/AuthOrGuest";
-import CharacterSelection from "./Components/Pages/CharacterSelection";
+import Home from "./Pages/Home";
+import Profile from "./Pages/Profile";
+import Register from "./Pages/Register";
+import Level from "./Pages/Level";
+import About from "./Pages/About";
+import LevelDifficulty from "./Pages/LevelDifficulty";
+import LevelSelection from "./Pages/LevelSelection";
+import AuthOrGuest from "./Pages/AuthOrGuest";
+import CharacterSelection from "./Pages/CharacterSelection";
 
 class Routes extends Component {
   render() {

@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../Generics/Navbar";
-import Logo from "../Generics/Logo";
+import Navbar from "../Components/Generics/Navbar";
+import Logo from "../Components/Generics/Logo";
 import { Container } from "@material-ui/core";
 import "./styles/About.css"
-import github from "../../Assets/others/devit-github.png";
+import github from "../Assets/others/devit-github.png";
 
 const About = () => {
   const bio =

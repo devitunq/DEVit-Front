@@ -3,12 +3,12 @@ import { useParams } from "react-router";
 import ParticlesBg from "particles-bg";
 import { Grid, Container, LinearProgress } from "@material-ui/core";
 import "./styles/LevelDifficulty.css";
-import Navbar from "../Generics/Navbar";
-import Logo from "../Generics/Logo";
-import { getDifficulties } from "../../Utils/Api";
-import Easy from "../../Assets/difficulties/Easy.png";
-import Medium from "../../Assets/difficulties/Medium.png";
-import Hard from "../../Assets/difficulties/Hard.png";
+import Navbar from "../Components/Generics/Navbar";
+import Logo from "../Components/Generics/Logo";
+import { getDifficulties } from "../Utils/Api";
+import Easy from "../Assets/difficulties/Easy.png";
+import Medium from "../Assets/difficulties/Medium.png";
+import Hard from "../Assets/difficulties/Hard.png";
 
 const LevelDifficulty = () => {
   const [isLoading, setIsLoading] = useState(true);

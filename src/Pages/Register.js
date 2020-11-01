@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Grid, Container, InputBase } from "@material-ui/core";
-import Navbar from "../Generics/Navbar";
-import Logo from "../Generics/Logo";
+import Navbar from "../Components/Generics/Navbar";
+import Logo from "../Components/Generics/Logo";
 import ParticlesBg from "particles-bg";
-import Next from "../../Assets/others/next.png";
+import Next from "../Assets/others/next.png";
 import "../Pages/styles/Register.css";
 
 const Register = () => {

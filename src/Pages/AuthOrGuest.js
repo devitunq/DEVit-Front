@@ -3,11 +3,11 @@ import ParticlesBg from "particles-bg";
 import { Grid, Container, InputBase, LinearProgress } from "@material-ui/core";
 import { useHistory } from "react-router-dom"
 import "./styles/AuthOrGuest.css";
-import Navbar from "../Generics/Navbar";
-import Logo from "../Generics/Logo";
-import Next from "../../Assets/others/next.png";
-import Login from "../Generics/Login"
-import { getGuestPermission } from "../../Utils/Api"
+import Navbar from "../Components/Generics/Navbar";
+import Logo from "../Components/Generics/Logo";
+import Next from "../Assets/others/next.png";
+import Login from "../Components/Generics/Login"
+import { getGuestPermission } from "../Utils/Api"
 
 const AuthOrGuest = () => {
   const [name, setName] = useState("");

@@ -3,10 +3,10 @@ import ParticlesBg from "particles-bg";
 import { Grid, LinearProgress } from "@material-ui/core";
 import { useParams } from "react-router";
 import "./styles/AuthOrGuest.css";
-import Navbar from "../Generics/Navbar";
-import Logo from "../Generics/Logo";
+import Navbar from "../Components/Generics/Navbar";
+import Logo from "../Components/Generics/Logo";
 import { useHistory } from "react-router-dom";
-import { ANA, LIAM, ARIEL, JORGE } from "../../Utils/Characters";
+import { ANA, LIAM, ARIEL, JORGE } from "../Utils/Characters";
 import "./styles/CharacterSelection.css";
 
 const CharacterSelection = () => {

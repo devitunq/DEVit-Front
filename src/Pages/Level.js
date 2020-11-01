@@ -3,14 +3,14 @@ import { useParams } from "react-router";
 import { Grid, LinearProgress, Container } from "@material-ui/core";
 import ParticlesBg from "particles-bg";
 import "./styles/Level.css";
-import Gameboard from "../Board/Gameboard";
-import Navbar from "../Generics/Navbar";
-import Joystick from "../Joystick/Joystick";
-import Helpers from "../Others/Helpers";
-import Logo from "../Generics/Logo";
-import LevelModal from "../Generics/LevelModal";
-import { getLevelByLevelId, postLevelSucces } from "../../Utils/Api";
-import { getCharacterByName } from "../../Utils/Characters";
+import Gameboard from "../Components/Board/Gameboard";
+import Navbar from "../Components/Generics/Navbar";
+import Joystick from "../Components/Joystick/Joystick";
+import Helpers from "../Components/Others/Helpers";
+import Logo from "../Components/Generics/Logo";
+import LevelModal from "../Components/Generics/LevelModal";
+import { getLevelByLevelId, postLevelSucces } from "../Utils/Api";
+import { getCharacterByName } from "../Utils/Characters";
 
 const boardSize = 7;
 const initialBoard = Array(boardSize)
