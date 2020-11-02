@@ -1,0 +1,24 @@
+.guest-cont{
+  margin-top: 25%;
+  text-align: left;
+}
+
+.guest-divider{
+  width: 100%;
+}
+
+.guest-title{
+  text-align: left;
+  font-size: 150%;
+  color: rgb(255, 255, 255);
+  margin-bottom: 2%;
+}
+
+.guest-data{
+  text-align: left;
+  font-size: 105%;
+  color: rgb(214, 214, 214);
+  margin-bottom: 2%
+}
+
+

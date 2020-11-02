@@ -1,0 +1,10 @@
+.register{
+  margin-top: 40px;
+  font-size: large;
+  color: white;
+  cursor: pointer;
+}
+
+.register:hover{
+  text-decoration: underline;
+}

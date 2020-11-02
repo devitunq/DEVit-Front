@@ -32,6 +32,12 @@ const Navbar = () => (
             Perfil
         </a>
         </li>}
+      {isAuthenticated() &&
+        <li>
+          <a href="#" onClick={() => localStorage.clear()} id="navLogoutLink">
+            Cerrar sesion
+        </a>
+        </li>}
     </ul>
   </nav>
 );

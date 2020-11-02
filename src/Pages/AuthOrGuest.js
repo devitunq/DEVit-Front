@@ -5,9 +5,9 @@ import { useHistory } from "react-router-dom"
 import "./styles/AuthOrGuest.css";
 import Navbar from "../Components/Generics/Navbar";
 import Logo from "../Components/Generics/Logo";
-import Next from "../Assets/others/next.png";
-import Login from "../Components/Auth/Login"
-import { getGuestPermission } from "../Utils/Api"
+import Login from "../Components/Auth/Login";
+import Guest from "../Components/Auth/Guest";
+import { getGuestPermission } from "../Utils/Api";
 
 const AuthOrGuest = () => {
   const [name, setName] = useState("");
@@ -52,31 +52,11 @@ const AuthOrGuest = () => {
             </Grid>
 
             <Grid item xs={6}>
-              <Container maxWidth="xs">
-                <div className="auth-cont">
-                  <div className="guess-title"> Jugar como invitado </div>
-                  <hr className="divider-auth"></hr>
-                  <div className="guess-data"> Elija su nombre. </div>
-                  <InputBase
-                    id="inputName"
-                    fullWidth
-                    required
-                    inputProps={{ "aria-label": "naked" }}
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                  />
-                  <a onClick={handleGuestLogin} id="nextInput">
-                    <img
-                      className="next-endbutt"
-                      src={Next}
-                      alt="next"
-                    />
-                  </a>
-                  <a href="/register">
-                    <p className="auth-register"> Si aun no lo hiciste, Registrate </p>
-                  </a>
-                </div>
-              </Container>
+              <Guest
+                name={name}
+                onChangeName={(event) => setName(event.target.value)}
+                handleSumbit={() => handleGuestLogin()}
+              />
             </Grid>
           </Grid>
         </Grid>
