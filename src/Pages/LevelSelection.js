@@ -17,6 +17,8 @@ import oneStar from "../Assets/stars/staticstars1.png";
 import twoStars from "../Assets/stars/staticstars2.png";
 import threeStars from "../Assets/stars/staticstars3.png";
 
+const isUser = () => localStorage.getItem("userName") !== null;
+
 const LevelSelection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [levels, setLevels] = useState([]);
@@ -30,11 +32,13 @@ const LevelSelection = () => {
       getAllByDifficulty(difficulty).then((response) => {
         setLevels(response.data);
       });
-      getUserLevelsCompleted(localStorage.getItem("userName")).then((response) => {
-        setLevelsPlayed(response.data)
-        setIsLoading(false);
-      });
-    }
+      if (isUser()) {
+        getUserLevelsCompleted(localStorage.getItem("userName")).then((response) =>
+          setLevelsPlayed(response.data)
+        );
+      };
+      setIsLoading(false);
+    };
   });
 
   const levelNameToImg = (levelStr) => {
@@ -144,19 +148,25 @@ const LevelSelection = () => {
                                     src={levelNameToImg(l.levelId)}
                                     alt={`${l.name}`}
                                   />
-                                  <img
-                                    className="lvl-stars"
-                                    src={determinateStars(searchLevelStars(l.levelId))}
-                                  />
+                                  {
+                                    isUser() &&
+                                    <img
+                                      className="lvl-stars"
+                                      src={determinateStars(searchLevelStars(l.levelId))}
+                                    />
+                                  }
                                 </div>
                               </div>
                             </a>
-                            <LikeAndDislike
-                              likes={l.likes}
-                              dislikes={l.dislikes}
-                              onClickLike={() => onClickLike(l.levelId)}
-                              onClickDislike={() => onClickDislike(l.levelId)}
-                            />
+                            {
+                              isUser() &&
+                              <LikeAndDislike
+                                likes={l.likes}
+                                dislikes={l.dislikes}
+                                onClickLike={() => onClickLike(l.levelId)}
+                                onClickDislike={() => onClickDislike(l.levelId)}
+                              />
+                            }
                           </div>
 
                         </div>
