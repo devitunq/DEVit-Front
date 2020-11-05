@@ -151,7 +151,7 @@ const Joystick = (props) => {
               onClick={() => {
                 postLevelSolution(
                   props.levelID,
-                  board.map((item) => item.action)
+                  [ { name: "f1", actionList: board.map((item) => item.action) } ]
                 ).then(props.onClickPlay);
               }}
               className="play-b"
