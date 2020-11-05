@@ -45,11 +45,11 @@ const postLevelScore = (levelID, score, from) =>
 const getUserLevelsCompleted = (userName) =>
   axios.get(`${HOST_URL}${USER_URL}/levelsCompleted?userName=${userName}`);
 
-const getUserCompletionProgress = (userName) =>
-  axios.get(`${HOST_URL}${USER_URL}/completionProgress?userName=${userName}`);
+const getCompletionProgress = (userName) =>
+  axios.get(`${HOST_URL}${USER_URL}/completionProgress?userName=${userName}`)
 
 export {
   getLevelByLevelId, postLevelSolution, getAllByDifficulty,
   getDifficulties, getUser, getGuestPermission, postLevelSucces, getUserLevelsCompleted,
-  postLevelScore, getUserCompletionProgress, registerUser
+  postLevelScore, getCompletionProgress, registerUser
 };
