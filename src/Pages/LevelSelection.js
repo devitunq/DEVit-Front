@@ -22,7 +22,7 @@ const isUser = () => localStorage.getItem("userName") !== null;
 const LevelSelection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [levels, setLevels] = useState([]);
-  const [levelsPlayed, setLevelsPlayed] = useState(null);
+  const [levelsPlayed, setLevelsPlayed] = useState([]);
   const [levelsScored, setLevelsScored] = useState([]);
   const { difficulty } = useParams();
   const { character } = useParams();

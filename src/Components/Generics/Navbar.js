@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css"
 
-const isAuthenticated = () => { return localStorage.getItem('accessToken') != null };
+const isAuthenticated = () => { return localStorage.getItem('accessToken') != null && localStorage.getItem("userName") != null };
 
 const Navbar = () => (
   <nav id="nav-wrap">

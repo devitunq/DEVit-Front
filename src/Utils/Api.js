@@ -26,6 +26,13 @@ const postLevelSolution = (levelId, solution) =>
 const getUser = (user, pass) =>
   axios.post(`${HOST_URL}${USER_URL}`, { userName: user, password: pass });
 
+
+const registerUser = (user, nick, pass, passConfirmation) =>
+  axios.post(
+    `${HOST_URL}${USER_URL}/register`,
+    { userName: user, nick: nick, password: pass, passwordConfirm: passConfirmation }
+  );
+
 const getGuestPermission = (nickname) =>
   axios.get(`${HOST_URL}${GUEST_URL}?nick=${nickname}`);
 
@@ -38,8 +45,11 @@ const postLevelScore = (levelID, score, from) =>
 const getUserLevelsCompleted = (userName) =>
   axios.get(`${HOST_URL}${USER_URL}/levelsCompleted?userName=${userName}`);
 
+const getUserCompletionProgress = (userName) =>
+  axios.get(`${HOST_URL}${USER_URL}/completionProgress?userName=${userName}`);
+
 export {
   getLevelByLevelId, postLevelSolution, getAllByDifficulty,
   getDifficulties, getUser, getGuestPermission, postLevelSucces, getUserLevelsCompleted,
-  postLevelScore
+  postLevelScore, getUserCompletionProgress, registerUser
 };
