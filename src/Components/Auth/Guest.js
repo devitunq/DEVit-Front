@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, InputBase } from "@material-ui/core";
 import Next from "../../Assets/others/next.png";
 import { useHistory } from "react-router-dom"

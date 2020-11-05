@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Modal } from "@material-ui/core";
 import ResultLvl from "../Others/ResultLvl";
-import Success from "../../Assets/modalResults/success.png";
 import Failed from "../../Assets/modalResults/failed.png";
 
 const LevelModal = ({ open, close, result, comment, onClickWin, onClickLost, stars }) => (

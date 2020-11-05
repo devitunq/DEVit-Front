@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ParticlesBg from "particles-bg";
-import { Grid, LinearProgress } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
 import '../Pages/styles/Profile.css'
 import LevelProgress from '../Components/Profile/LevelsProgress';
 import ProfileItem from '../Components/Profile/ProfileItem';
 import ProfileHeader from '../Components/Profile/ProfileHeader';
-import { getUserCompletionProgress } from '../Utils/Api';
 import Navbar from '../Components/Generics/Navbar'
 import { getCompletionProgress } from "../Utils/Api";
 
