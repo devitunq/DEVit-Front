@@ -19,6 +19,8 @@ import josDelete from "../../Assets/others/delete.png";
 
 const Joystick = (props) => {
   const [board, setBoard] = useState([]);
+  const [boardSecondary, setBoardSecondary] = useState([]);
+  const [boardInView, setBoardInView] = useState("BoardOne");
   const [actionID, setID] = useState(1);
   const [displayDeleteMode, setDisplayMode] = useState(false);
 
@@ -34,6 +36,14 @@ const Joystick = (props) => {
     );
   };
 
+  const addActionToCurrentBoard = (movement) => {
+    if (boardInView === "BoardOne") {
+      setBoard([...board, movement]);
+    } else {
+      setBoardSecondary([...boardSecondary, movement]);
+    }
+  }
+
   const onClickUp = () => {
     const aKey = `action_${actionID}`;
     const upAction = {
@@ -42,7 +52,7 @@ const Joystick = (props) => {
       src: goUp,
       alt: "up",
     };
-    setBoard([...board, upAction]);
+    addActionToCurrentBoard(upAction);
     setID(actionID + 1);
   };
 
@@ -54,7 +64,7 @@ const Joystick = (props) => {
       src: goDown,
       alt: "down",
     };
-    setBoard([...board, downAction]);
+    addActionToCurrentBoard(downAction);
     setID(actionID + 1);
   };
 
@@ -66,7 +76,7 @@ const Joystick = (props) => {
       src: left,
       alt: "left",
     };
-    setBoard([...board, leftAction]);
+    addActionToCurrentBoard(leftAction);
     setID(actionID + 1);
   };
 
@@ -78,7 +88,7 @@ const Joystick = (props) => {
       src: right,
       alt: "right",
     };
-    setBoard([...board, rightAction]);
+    addActionToCurrentBoard(rightAction);
     setID(actionID + 1);
   };
 
@@ -99,96 +109,133 @@ const Joystick = (props) => {
 
   return (
     <div className="container-drag">
-      <div className="cont-header">
-        <img
-          className="joystick-pic"
-          src={joystickHeader}
-          alt="objetivo"
-        />
+      <div className="center">
+        <div className="cont-header">
+          <img
+            className="joystick-pic"
+            src={joystickHeader}
+            alt="objetivo"
+          />
+        </div>
       </div>
 
       <div className="container-box">
-        <JoystickDisplay>
-          {displayDeleteMode
-            ? board.map((item) => {
-              return (
-                <RemovableCard
-                  key={`removable_key_${item.actionKey}`}
-                  aKey={item.actionKey}
-                  src={item.src}
-                  alt={item.alt}
-                  board={board}
-                  onClick={handleCkick}
-                />
-              );
-            })
-            : board.map((item, index) => {
-              return (
-                <MovableCard
-                  key={`movable_key_${item.actionKey}`}
-                  src={item.src}
-                  alt={item.alt}
-                  moveCard={moveCard}
-                  index={index}
-                />
-              );
-            })}
-        </JoystickDisplay>
+        <div className="board-switch-container">
+          <div onClick={() => setBoardInView("BoardOne")} className="board-switch"> Tablero 1 </div>
+          <div onClick={() => setBoardInView("BoardTwo")} className="board-switch"> Tablero 2 </div>
+        </div>
+        <div className="center">
 
+          {boardInView === "BoardOne"
+            ?
+            <JoystickDisplay>
+              {displayDeleteMode
+                ? board.map((item) => {
+                  return (
+                    <RemovableCard
+                      key={`removable_key_${item.actionKey}`}
+                      aKey={item.actionKey}
+                      src={item.src}
+                      alt={item.alt}
+                      board={board}
+                      onClick={handleCkick}
+                    />
+                  );
+                })
+                : board.map((item, index) => {
+                  return (
+                    <MovableCard
+                      key={`movable_key_${item.actionKey}`}
+                      src={item.src}
+                      alt={item.alt}
+                      moveCard={moveCard}
+                      index={index}
+                    />
+                  );
+                })}
+            </JoystickDisplay>
+            :
+            <JoystickDisplay>
+              {displayDeleteMode
+                ? boardSecondary.map((item) => {
+                  return (
+                    <RemovableCard
+                      key={`removable_key_${item.actionKey}`}
+                      aKey={item.actionKey}
+                      src={item.src}
+                      alt={item.alt}
+                      board={board}
+                      onClick={handleCkick}
+                    />
+                  );
+                })
+                : boardSecondary.map((item, index) => {
+                  return (
+                    <MovableCard
+                      key={`movable_key_${item.actionKey}`}
+                      src={item.src}
+                      alt={item.alt}
+                      moveCard={moveCard}
+                      index={index}
+                    />
+                  );
+                })}
+            </JoystickDisplay>
+          }
+          <Grid container direction="row">
+            <Grid item xs={4}>
+              <JositckArrows
+                onClickLeft={onClickLeft}
+                onClickUp={onClickUp}
+                onClickDown={onClickDown}
+                onClickRight={onClickRight}
+              />
+            </Grid>
 
-        <Grid container direction="row">
-          <Grid item xs={4}>
-            <JositckArrows
-              onClickLeft={onClickLeft}
-              onClickUp={onClickUp}
-              onClickDown={onClickDown}
-              onClickRight={onClickRight}
-            />
+            <Grid item xs={4}>
+              <img
+                onClick={() => {
+                  postLevelSolution(
+                    props.levelID,
+                    [{ name: "f1", actionList: board.map((item) => item.action) }]
+                  ).then(props.onClickPlay);
+                }}
+                className="play-b"
+                src={josPlay}
+                alt="play"
+              />
+              <div></div>
+              <img
+                onClick={() => restartBoard()}
+                className="restart-b"
+                src={josRestart}
+                alt="restart"
+              />
+            </Grid>
+
+            <Grid item xs={4}>
+              <img className="if-b" src={josif} alt="if" />
+            </Grid>
           </Grid>
+        </div>
 
-          <Grid item xs={4}>
-            <img
-              onClick={() => {
-                postLevelSolution(
-                  props.levelID,
-                  [ { name: "f1", actionList: board.map((item) => item.action) } ]
-                ).then(props.onClickPlay);
-              }}
-              className="play-b"
-              src={josPlay}
-              alt="play"
-            />
-            <div></div>
-            <img
-              onClick={() => restartBoard()}
-              className="restart-b"
-              src={josRestart}
-              alt="restart"
-            />
+        <Grid container justify="flex-start" direction="row" spacing={0}>
+          <Grid item xs={1}>
+            <div className="switch-joys">
+              <Switch
+                checked={displayDeleteMode}
+                onChange={handleChange}
+                name="checkedB"
+                color="secondary"
+              />
+            </div>
           </Grid>
-
-          <Grid item xs={4}>
-            <img className="if-b" src={josif} alt="if" />
+          <Grid item xs={1}>
+            <img className="delete-pic" src={josDelete} alt="delete" />
           </Grid>
+          <Grid item xs={10}></Grid>
         </Grid>
       </div>
-
-      <Grid container justify="flex-start" direction="row" spacing={0}>
-        <Grid item xs={1}>
-          <div className="switch-joys">
-            <Switch
-              checked={displayDeleteMode}
-              onChange={handleChange}
-              name="checkedB"
-              color="secondary"
-            />
-          </div>
-        </Grid>
-        <Grid item xs={1}>
-          <img className="delete-pic" src={josDelete} alt="delete" />
-        </Grid>
-        <Grid item xs={10}></Grid>
-      </Grid>
     </div>
   );
 };
