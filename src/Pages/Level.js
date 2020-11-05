@@ -56,7 +56,7 @@ const Level = () => {
     });
     setObjects(objectsTemp);
     setStars(starsWon);
-    postLevelSucces(localStorage.getItem("userName"), levelID, stars);
+    postLevelSucces(localStorage.getItem("userName"), levelID, starsWon);
     setModal(true);
   };
 
@@ -65,6 +65,7 @@ const Level = () => {
   };
 
   const renderEachStep = (i, data) => {
+    console.log(data);
     let { levelState, fullGame, comment, starsWon } = data;
     let tempObjects,
       tempPaths = [];

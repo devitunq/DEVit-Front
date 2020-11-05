@@ -72,6 +72,7 @@ const LevelSelection = () => {
   const searchLevelStars = (idLevel) => {
     let stars = 0;
     let level = levelsPlayed.find(levelData => levelData.levelID === idLevel)
+    console.log(level);
     if (level) stars = level.stars
     return stars;
   }
