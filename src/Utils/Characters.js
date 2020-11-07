@@ -8,10 +8,10 @@ import Character3l from "../Assets/gameElements/character3l.png";
 import Character4l from "../Assets/gameElements/character4l.png";
 
 
-const ANA = { name: "Ana", img: { RIGHT: Character1, LEFT: Character1l } };
-const LIAM = { name: "Liam", img: { RIGHT: Character2, LEFT: Character2l } };
-const ARIEL = { name: "Ariel", img: { RIGHT: Character3, LEFT: Character3l } };
-const JORGE = { name: "Jorge", img: { RIGHT: Character4, LEFT: Character4l } };
+const ANA = { name: "Ana", img: { right: Character1, left: Character1l } };
+const LIAM = { name: "Liam", img: { right: Character2, left: Character2l } };
+const ARIEL = { name: "Ariel", img: { right: Character3, left: Character3l } };
+const JORGE = { name: "Jorge", img: { right: Character4, left: Character4l } };
 
 const getCharacterByName = (charName) => {
   switch (charName) {

@@ -37,7 +37,7 @@ const boardFGpositions = (boardCell, elements, characterImg) => {
     (e) => {
       if (`${e.position.posX}_${e.position.posY}` === boardCell)
         if (e.type === "Player")
-          images.push(e.lookingTo === "left" ? characterImg.left : characterImg.right);
+          images.push(e.lookingTo === "LEFT" ? characterImg.left : characterImg.right);
         else
           images.push(elemeTypeStrToElemType(e));
     });
