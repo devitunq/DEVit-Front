@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css"
 
 const isAuthenticated = () => { return localStorage.getItem('accessToken') != null && localStorage.getItem("userName") != null };
+const isUserName = () => { return localStorage.getItem("userName") != null }
 
 const Navbar = () => (
   <nav id="nav-wrap">
@@ -26,7 +27,7 @@ const Navbar = () => (
             Dificultades
         </a>
         </li>}
-      {isAuthenticated() &&
+      {isAuthenticated() && isUserName() &&
         <li>
           <a href="/profile" id="navProfileLink">
             Perfil
