@@ -7,6 +7,7 @@ import JoystickDisplay from "./JoystickDisplay";
 import { postLevelSolution } from "../../Utils/Api";
 import MovableCard from "./MovableCard";
 import RemovableCard from "./RemovableCard";
+import ConditionsModal from "./ConditionsModal";
 import goUp from "../../Assets/displayAcitons/board-up.png";
 import left from "../../Assets/displayAcitons/board-left.png";
 import goDown from "../../Assets/displayAcitons/board-down.png";
@@ -16,6 +17,12 @@ import josPlay from "../../Assets/joystick/joystickIns/jos-play.png";
 import josRestart from "../../Assets/joystick/joystickIns/jos-restart.png";
 import josif from "../../Assets/joystick/joystickIns/jos-if.png";
 import josDelete from "../../Assets/others/delete.png";
+import open from "../../Assets/joystick/joystickIns/door.png";
+import collect from "../../Assets/joystick/joystickIns/key.png";
+import openDisplay from "../../Assets/displayAcitons/open-door.png";
+import collectDisplay from "../../Assets/displayAcitons/collect-key.png";
+import isDoor from "../../Assets/displayAcitons/isDoor.png";
+import isKey from "../../Assets/displayAcitons/isKey.png";
 
 const Joystick = (props) => {
   const [board, setBoard] = useState([]);
@@ -23,6 +30,7 @@ const Joystick = (props) => {
   const [boardInView, setBoardInView] = useState("BoardOne");
   const [actionID, setID] = useState(1);
   const [displayDeleteMode, setDisplayMode] = useState(false);
+  const [conditionsModal, setConditionsModal] = useState(false);
 
   const moveCard = (dragIndex, hoverIndex) => {
     const dragCard = board[dragIndex];
@@ -91,6 +99,54 @@ const Joystick = (props) => {
     addActionToCurrentBoard(rightAction);
     setID(actionID + 1);
   };
+
+  const onClickCollectKey = () => {
+    const aKey = `action_${actionID}`;
+    let collectKey = {
+      actionKey: aKey,
+      action: "CollectKey",
+      src: collectDisplay,
+      alt: "collect",
+    };
+    addActionToCurrentBoard(collectKey);
+    setID(actionID + 1);
+  }
+
+  const onClickOpenDoor = () => {
+    const aKey = `action_${actionID}`;
+    let openDoor = {
+      actionKey: aKey,
+      action: "OpenDoor",
+      src: openDisplay,
+      alt: "open",
+    };
+    addActionToCurrentBoard(openDoor);
+    setID(actionID + 1);
+  }
+
+  const onClickIsDoor = () => {
+    const aKey = `action_${actionID}`;
+    let openDoor = {
+      actionKey: aKey,
+      action: "DoorCondition",
+      src: isDoor,
+      alt: "isDoor",
+    };
+    addActionToCurrentBoard(openDoor);
+    setID(actionID + 1);
+  }
+
+  const onClickIsKey = () => {
+    const aKey = `action_${actionID}`;
+    let openDoor = {
+      actionKey: aKey,
+      action: "KeyCondition",
+      src: isKey,
+      alt: "isKey",
+    };
+    addActionToCurrentBoard(openDoor);
+    setID(actionID + 1);
+  }
 
   const handleCkick = (actionToDelete) => {
     const newBoard = board.filter(
@@ -214,7 +270,11 @@ const Joystick = (props) => {
             </Grid>
 
             <Grid item xs={4}>
-              <img className="if-b" src={josif} alt="if" />
+              <img onClick={() => setConditionsModal(true)} className="if-b" src={josif} alt="if" />
+              <div className="inline-block">
+                <img onClick={onClickOpenDoor} className="open" src={open} alt="openDoor" />
+                <img onClick={onClickCollectKey} className="collect" src={collect} alt="collectKey" />
+              </div>
             </Grid>
           </Grid>
         </div>
@@ -236,7 +296,13 @@ const Joystick = (props) => {
           <Grid item xs={10}></Grid>
         </Grid>
       </div>
-    </div>
+      <ConditionsModal
+        open={conditionsModal}
+        handleClose={() => setConditionsModal(false)}
+        onClickIsKey={onClickIsKey}
+        onClickIsDoor={onClickIsDoor}
+      />
+    </div >
   );
 };
 
