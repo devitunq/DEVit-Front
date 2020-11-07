@@ -15,11 +15,13 @@
   font-size: 280%;
   color: rgb(255, 255, 255);
   margin-bottom: 2%;
+  font-family: "opensans", sans-serif;
 }
 
 .character-header{
   text-align: center;
   font-size: 200%;
+  font-family: "opensans", sans-serif;
   color: rgb(245, 245, 245);
   margin-bottom: 6%;
 }

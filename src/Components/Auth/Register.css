@@ -3,6 +3,7 @@
   font-size: large;
   color: white;
   cursor: pointer;
+  font-family: "opensans", sans-serif;
 }
 
 .register:hover{

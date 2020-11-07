@@ -19,11 +19,14 @@
 }
 
 .about-title{
+  font-family: "opensansbold", sans-serif;
   color: white;
 }
 
 .about-description{
+  font-family: "opensans", sans-serif;
   color: whitesmoke;
+  font-size: 1.2em;
 }
 
 .about-sep{

@@ -8,6 +8,7 @@
 }
 
 .login-title{
+  font-family: "opensans", sans-serif;
   text-align: left;
   font-size: 150%;
   color: rgb(255, 255, 255);
@@ -15,6 +16,7 @@
 }
 
 .login-data{
+  font-family: "opensans", sans-serif;
   text-align: left;
   font-size: 105%;
   color: rgb(214, 214, 214);

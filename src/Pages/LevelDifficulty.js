@@ -56,7 +56,7 @@ const LevelDifficulty = () => {
             <Grid item xs={2}></Grid>
             <Grid item xs={8}>
               <div className="contWelcome-diff">
-                {`Bienvenido ${nick}`}
+                {`Seleccione una dificultad`}
                 <hr className="divider-diff"></hr>
               </div>
               <Container maxWidth="xs">{

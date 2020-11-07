@@ -26,6 +26,7 @@ ul#nav li a {
   display: inline-block;
   padding: 8px 13px;
   line-height: 32px;
+  font-family: "opensans-bold", sans-serif;
   text-decoration: none;
   text-align: left;
   color: #fff;

@@ -132,6 +132,10 @@ const LevelSelection = () => {
           <Grid container item xs={12}>
             <Grid item xs={2}></Grid>
             <Grid item xs={8}>
+              <div className="contWelcome-lvlSelection">
+                {`Seleccione un nivel`}
+                <hr className="divider-diff"></hr>
+              </div>
               <Grid cotnainer>
                 <Container maxWidth="xs">
                   {

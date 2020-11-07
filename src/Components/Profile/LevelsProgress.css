@@ -1,12 +1,12 @@
 .levelProgress-label{
-  font-family: monospace;
+  font-family: "opensans", sans-serif;
   font-size: large;
   color: white;
-  font-weight: bold;
   margin-left: 2%;
 }
 
 .levelProgress-infoContainer{
+  font-family: "opensans", sans-serif;
   box-shadow: 2px 4px 8px rgb(0, 0, 0), 2px 4px 4px rgba(0, 0, 0);
   margin-top: 1%;
   margin-bottom: 1%;
@@ -19,6 +19,7 @@
 }
 
 .levelProgress-bar{
+  font-family: "opensans", sans-serif;
   display: inline; 
   font-size: large;
   margin: 5%;
@@ -26,6 +27,7 @@
 }
 
 .levelProgress-MinMax{
+  font-family: "opensans", sans-serif;
   display: inline-block;
   float: left;
   margin-left: 5px;

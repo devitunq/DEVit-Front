@@ -40,9 +40,9 @@
 }
 
 .tutorial-style-font{
+  font-family: "opensans", sans-serif;
   color: black;
   font-size: large;
-  font-family: cursive;
 }
 
 .tutorial-style-separator{
@@ -122,13 +122,14 @@
   align-self: start;
   color: black;
   font-size: large;
-  font-family: cursive;
+  font-family: "opensans", sans-serif;
   margin-left: -13%;
 }
 
 .obj-style-cont{
   margin-bottom: 2%;
   font-size: 120%;
+  font-family: "opensans", sans-serif;
   color: black;
   background-color: rgb(218, 216, 216);
   border-radius: 15% solid;
