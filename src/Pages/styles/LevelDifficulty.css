@@ -4,14 +4,12 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   padding-top: 1%;
   padding-bottom: 1%;
-  border-radius: 3%;
+  border-radius: 15px;
   background-color: rgb(17, 122, 101);
   height: 100%;
 }
 
-.diff-container:hover {
-  box-shadow: 12px 20px 25px rgb(0, 0, 0), 12px 20px 25px rgba(0, 0, 0);
-}
+
 
 .diff-item {
   margin-bottom: 1%;
@@ -39,6 +37,11 @@
 
 .diff-img {
   width: 55%;
+  position: relative;
+}
+
+.diff-img2 {
+  width: 68%;
   position: relative;
 }
 
