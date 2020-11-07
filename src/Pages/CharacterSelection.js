@@ -49,7 +49,7 @@ const CharacterSelection = () => {
                 <Grid item xs={3} key={`img_grid_key_${c.name}`}>
                   <img
                     className="character-img"
-                    src={c.img}
+                    src={c.img.right}
                     onClick={() => { history.push(`/difficulty/${nick}/${c.name}`) }}
                     alt={c.name}
                   />
@@ -60,7 +60,7 @@ const CharacterSelection = () => {
               <Grid item xs={12} sm={4}>
                 <img
                   className="character-img"
-                  src={JORGE.img}
+                  src={JORGE.img.right}
                   onClick={() => { history.push(`/difficulty/${nick}/${JORGE.name}`) }}
                   alt={JORGE.name}
                 />
