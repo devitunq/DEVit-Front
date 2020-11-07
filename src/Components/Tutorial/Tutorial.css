@@ -6,21 +6,16 @@
 }
 
 .tutorial-cont-controls{
+  border-radius: 15px;
   background-color: rgb(58, 57, 57);
   text-align: center;
-  border-left: 5px black double;
-  border-right: 5px black double;
-  border-top: 5px black double;
   cursor: pointer;
 }
 
 .tutorial-cont-board{
   background-color: rgb(218, 216, 216);
-  border-radius: 15% solid;
+  border-radius: 15px;
   text-align: center;
-  border-left: 5px black double;
-  border-right: 5px black double;
-  border-bottom: 5px black double;
   cursor: pointer;
 }
 
@@ -34,9 +29,9 @@
 
 .tutorial-style-cont{
   background-color: rgb(218, 216, 216);
-  border-radius: 15% solid;
+  border-radius: 15px;
   text-align: center;
-  border: 5px black double;
+  border: 5px black;
 }
 
 .tutorial-style-font{
@@ -52,7 +47,7 @@
   margin-top: 2%;
   margin-bottom: 2%;
   border: 1px solid rgb(37, 37, 37);
-  border-radius: px;
+  border-radius: 15px;
 }
 
 
@@ -93,10 +88,10 @@
 }
 
 .controller-parts-container{
+  border-radius: 15px;
   width: 100%;
   height: 100%;
   padding-top: 2%;
-  border-top: solid rgba(0, 0, 0, 0.342) 2px;
   cursor: pointer;
 }
 
@@ -132,8 +127,35 @@
   font-family: "opensans", sans-serif;
   color: black;
   background-color: rgb(218, 216, 216);
-  border-radius: 15% solid;
+  border-radius: 15px;
   text-align: center;
-  border: 5px black double;
 }
 
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #b61924;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-color: #b61924;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  
+}
+
+#overlay {
+  position: relative;
+  padding: 50px;
+}

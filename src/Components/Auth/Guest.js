@@ -59,6 +59,9 @@ const Guest = () => {
             alt="next"
           />
         </a>
+
+        <div className="or"> ------------------   o  ------------------</div>
+
         <RegisterUser />
       </div>
 
