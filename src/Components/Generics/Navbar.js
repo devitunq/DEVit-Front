@@ -35,6 +35,12 @@ const Navbar = () => (
         </li>}
       {isAuthenticated() &&
         <li>
+          <a href="/levelMaker" id="navLevelMakerLink">
+            Autoservicio
+        </a>
+        </li>}
+      {isAuthenticated() &&
+        <li>
           <a href="#" onClick={() => localStorage.clear()} id="navLogoutLink">
             Cerrar sesion
         </a>

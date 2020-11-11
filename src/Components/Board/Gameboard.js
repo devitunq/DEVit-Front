@@ -46,19 +46,26 @@ const boardFGpositions = (boardCell, elements, characterImg) => {
   return images;
 };
 
-const Gameboard = ({ grid, paths, objects, character }) => {
+const Gameboard = (props) => {
+
+  const onClickCell = (i, j) => {
+    props.savePosition(i, j);
+  }
+
   return (
     <Container maxWidth="xl">
       <div className="boardContainer">
         <table cellSpacing="0" className="board">
           <tbody>
-            {grid.map((row, j) => (
+            {props.grid.map((row, j) => (
               <tr key={"row_" + j}>
                 {row.map((_, i) => (
                   <BoardCell
+                    clickeable={props.clickeable}
+                    onClick={() => onClickCell(i, j)}
                     key={`cell_${i}_${j}`}
-                    background={boardBGpositions(`${i}_${j}`, paths)}
-                    imgList={boardFGpositions(`${i}_${j}`, objects, character.img)}
+                    background={boardBGpositions(`${i}_${j}`, props.paths)}
+                    imgList={boardFGpositions(`${i}_${j}`, props.objects, props.character.img)}
                     pos={`${i}_${j}`}
                   />
                 ))}

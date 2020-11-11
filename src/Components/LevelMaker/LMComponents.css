@@ -1,0 +1,25 @@
+.lmakermodal-container{
+  text-align: center;
+  background-color: rgb(197, 197, 197);
+  margin-top: 20%;
+  margin-right: 35%;
+  margin-left: 35%;
+  border-radius: 15px;
+
+}
+
+.lmakermodal-title{
+  font-size: large;
+  color: black;
+}
+
+.close-lmakermodal{
+  color: black;
+  position: relative;
+  text-align: right;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 3%;
+  margin-top: 0.5%;
+  font-size: large;
+}
