@@ -2,14 +2,14 @@
   text-align: center;
   background-color: rgb(197, 197, 197);
   margin-top: 20%;
-  margin-right: 35%;
-  margin-left: 35%;
+  margin-right: 15%;
+  margin-left: 15%;
   border-radius: 15px;
 
 }
 
 .lmakermodal-title{
-  font-size: large;
+  font-size: x-large;
   color: black;
 }
 
@@ -23,3 +23,12 @@
   margin-top: 0.5%;
   font-size: large;
 }
+
+.img{
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  cursor: pointer;
+  width: 15%;
+}
+

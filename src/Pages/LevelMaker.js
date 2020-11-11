@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import ParticlesBg from "particles-bg";
 import Navbar from "../Components/Generics/Navbar";
 import Logo from "../Components/Generics/Logo";
+import LevelMakerModal from "../Components/LevelMaker/LevelMakerModal";
 import Gameboard from "../Components/Board/Gameboard";
 import CharacterDefault from "../Assets/gameElements/character3.png";
+import Toast from "../Components/Generics/Toast";
 import { Grid, Container, LinearProgress } from "@material-ui/core";
 import "./styles/LevelMaker.css";
 
@@ -12,21 +14,86 @@ const emptyBoard = Array(boardSize)
   .fill()
   .map((_) => Array(boardSize).fill());
 
+const defaultPlayer =
+  { name: "Ariel", img: { right: CharacterDefault, left: CharacterDefault } };
+
+
 const LevelMaker = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [grid] = useState(emptyBoard);
   const [currentPosition, setCurrentPosition] = useState(null);
-  const [currentType, setCurrentType] = useState(null);
-  const [elements, setElement] = useState([]);
+  const [objects, setObjects] = useState([]);
+  const [paths, setPaths] = useState([]);
+  const [openSelection, setOpenSelection] = useState(false);
+  const [toast, setToast] = useState(false);
+  const [error, setError] = useState("");
 
-  const [wasPlayedSelected, setPlayedSeelcted] = useState(false);
-  const [wasFinishSelected, setFinishSelected] = useState(false);
+  const [playersInGame, setPlayerSelected] = useState(0);
+  const [finishesInGame, setFinisheSelected] = useState(0);
 
 
   const savePosition = (i, j) => {
-    setCurrentPosition(i, j);
+    setCurrentPosition({ posX: i, posY: j })
+    setOpenSelection(true);
   };
 
+  const saveElement = (element) => {
+    if (element.type === "PathTile") {
+      setPaths([...paths, element])
+    } else {
+      setObjects([...objects, element])
+    };
+  };
+
+  const onSelectionPlayerFromModal = () => {
+    if (playersInGame === 0) {
+      let elementToSave = { type: "Player", position: currentPosition, lookingTo: "right", keys: [] };
+      console.log(elementToSave)
+      saveElement(elementToSave);
+      setPlayerSelected(playersInGame + 1);
+      setOpenSelection(false);
+    } else {
+      setOpenSelection(false);
+      setError("No puede haber mas de un personaje en el tablero.");
+      setToast(true);
+    }
+  }
+
+  const onSelectionFinishFromModal = () => {
+    if (finishesInGame === 0) {
+      let elementToSave = { type: "Finish", position: currentPosition };
+      saveElement(elementToSave);
+      console.log(elementToSave)
+      setFinisheSelected(finishesInGame + 1);
+      setOpenSelection(false);
+    } else {
+      setOpenSelection(false);
+      setError("No puede haber mas de una meta en el tablero.");
+      setToast(true);
+    }
+  }
+
+  const onSelectionPathFromModal = () => {
+    let elementToSave = { type: "PathTile", position: currentPosition };
+    saveElement(elementToSave);
+    setOpenSelection(false);
+  }
+
+  const onSelectionDoorFromModal = () => {
+    let elementToSave = { type: "Door", position: currentPosition };
+    saveElement(elementToSave);
+    setOpenSelection(false);
+  }
+
+  const onSelectionKeyFromModal = () => {
+    let elementToSave = { type: "Key", position: currentPosition };
+    saveElement(elementToSave);
+    setOpenSelection(false);
+  }
+
+  const handleCloseErrorToast = () => {
+    setToast(false);
+    setError(null);
+  }
 
 
   return (
@@ -53,13 +120,30 @@ const LevelMaker = () => {
           <Gameboard
             savePosition={savePosition}
             clickeable
-            character={CharacterDefault}
+            character={defaultPlayer}
             grid={grid}
-            paths={[]}
-            objects={[]}
+            paths={paths}
+            objects={objects}
           />
         </Container>
       </Grid>
+
+      <LevelMakerModal
+        open={openSelection}
+        handleClose={() => setOpenSelection(false)}
+        onClickPlayer={onSelectionPlayerFromModal}
+        onClickFinish={onSelectionFinishFromModal}
+        onClickPath={onSelectionPathFromModal}
+        onClickDoor={onSelectionDoorFromModal}
+        onClickKey={onSelectionKeyFromModal}
+      />
+
+      <Toast
+        width="85%"
+        content={error}
+        open={toast}
+        handleClose={handleCloseErrorToast}
+      />
     </div>
   );
 };
