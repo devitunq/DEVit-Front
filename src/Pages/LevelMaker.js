@@ -44,10 +44,75 @@ const LevelMaker = () => {
     };
   };
 
+  const onSelectionDeleteFromModal = () => {
+    let positionElement = currentPosition;
+    if (typeOfElementInPosition(positionElement) !== null) {
+      deleteElement(positionElement);
+      setOpenSelection(false);
+    }
+    else {
+      setOpenSelection(false);
+      setError("No hay elemento para borrar en la celda seleccionada");
+      setToast(true);
+    };
+  };
+
+  const deleteElement = (positionElement) => {
+    let typeElementInPosition = typeOfElementInPosition(positionElement);
+    console.log("el tipo a borrar", typeElementInPosition)
+    if (typeElementInPosition === "PathTile") {
+      deletePath(positionElement);
+    } else {
+      deleteObject(positionElement, typeElementInPosition);
+    };
+    if (isFinishOrPlayerType(typeElementInPosition))
+      decreaseCountForPlayerOrFinishType(typeElementInPosition);
+  };
+
+  const deletePath = (pathPosition) => {
+    let newPaths = paths.filter(path =>
+      path.position.posX !== pathPosition.posX &&
+      path.position.posY !== pathPosition.posY
+    );
+    setPaths(newPaths);
+  }
+
+  const deleteObject = (objectPosition, typeElementInPosition) => {
+    let newObjects = objects.filter(obj =>
+      obj.position.posX !== objectPosition.posX &&
+      obj.position.posY !== objectPosition.posY &&
+      obj.type === typeElementInPosition
+    );
+    setObjects(newObjects);
+    console.log(newObjects);
+  }
+
+  const typeOfElementInPosition = (pos) => {
+    let type = null;
+    let objectFound = objects.find(obj => obj.position.posX === pos.posX &&
+      obj.position.posY === pos.posY);
+    let pathFound = paths.find(path => path.position.posX === pos.posX &&
+      path.position.posY === pos.posY);
+    if (objectFound) type = objectFound.type;
+    if (pathFound) type = pathFound.type;
+    return type;
+  };
+
+  const isFinishOrPlayerType = (type) => {
+    return type === "Player" || type === "Finish" ? true : false
+  }
+
+  const decreaseCountForPlayerOrFinishType = (type) => {
+    if (type === "Player") {
+      setPlayerSelected(playersInGame - 1);
+    } else {
+      setFinisheSelected(finishesInGame - 1);
+    };
+  };
+
   const onSelectionPlayerFromModal = () => {
     if (playersInGame === 0) {
       let elementToSave = { type: "Player", position: currentPosition, lookingTo: "right", keys: [] };
-      console.log(elementToSave)
       saveElement(elementToSave);
       setPlayerSelected(playersInGame + 1);
       setOpenSelection(false);
@@ -55,8 +120,8 @@ const LevelMaker = () => {
       setOpenSelection(false);
       setError("No puede haber mas de un personaje en el tablero.");
       setToast(true);
-    }
-  }
+    };
+  };
 
   const onSelectionFinishFromModal = () => {
     if (finishesInGame === 0) {
@@ -79,7 +144,7 @@ const LevelMaker = () => {
   }
 
   const onSelectionDoorFromModal = () => {
-    let elementToSave = { type: "Door", position: currentPosition };
+    let elementToSave = { type: "door", position: currentPosition };
     saveElement(elementToSave);
     setOpenSelection(false);
   }
@@ -136,6 +201,7 @@ const LevelMaker = () => {
         onClickPath={onSelectionPathFromModal}
         onClickDoor={onSelectionDoorFromModal}
         onClickKey={onSelectionKeyFromModal}
+        onClickDelete={onSelectionDeleteFromModal}
       />
 
       <Toast
