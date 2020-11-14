@@ -42,6 +42,22 @@ const postLevelSucces = (userName, levelId, stars) =>
 const postLevelScore = (levelID, score, from) =>
   axios.post(`${HOST_URL}${LEVELS_URL}/score/${levelID}`, { score: score, from: from })
 
+const postLevel = (elementList, name, bestNumberOfMovements, levelId) =>
+  axios.post(
+    `${HOST_URL}${LEVELS_URL}/save`,
+    {
+      levelId: levelId,
+      difficulty: "General",
+      description: "Nivel creado por un usuario",
+      levelName: name,
+      bestNumberMovesToWin: bestNumberOfMovements,
+      likes: 0,
+      dislikes: 0,
+      elements: elementList,
+      scoreFromAndLevel: []
+    }
+  );
+
 const getUserLevelsCompleted = (userName) =>
   axios.get(`${HOST_URL}${USER_URL}/levelsCompleted?userName=${userName}`);
 
@@ -51,5 +67,5 @@ const getCompletionProgress = (userName) =>
 export {
   getLevelByLevelId, postLevelSolution, getAllByDifficulty,
   getDifficulties, getUser, getGuestPermission, postLevelSucces, getUserLevelsCompleted,
-  postLevelScore, getCompletionProgress, registerUser
+  postLevelScore, getCompletionProgress, registerUser, postLevel
 };

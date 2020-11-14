@@ -32,3 +32,18 @@
   width: 10%;
 }
 
+.level-name{
+  font-family: "opensans", sans-serif;
+  text-align: left;
+  font-size: 1.1em;
+  color: rgb(214, 214, 214);
+  margin-bottom: 2%
+}
+
+.next {
+  position: relative;
+  top: 100px;
+  width: 8%;
+  margin-top: 2%;
+  cursor: pointer;
+}

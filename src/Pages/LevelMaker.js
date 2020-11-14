@@ -6,7 +6,10 @@ import LevelMakerModal from "../Components/LevelMaker/LevelMakerModal";
 import Gameboard from "../Components/Board/Gameboard";
 import CharacterDefault from "../Assets/gameElements/character3.png";
 import Toast from "../Components/Generics/Toast";
-import { Grid, Container, LinearProgress } from "@material-ui/core";
+import Joystick from "../Components/Joystick/Joystick";
+import Next from "../Assets/others/next.png";
+import { Grid, Container, InputBase } from "@material-ui/core";
+import { postLevel } from "../Utils/Api";
 import "./styles/LevelMaker.css";
 
 const boardSize = 7;
@@ -26,9 +29,10 @@ const LevelMaker = () => {
   const [openSelection, setOpenSelection] = useState(false);
   const [toast, setToast] = useState(false);
   const [error, setError] = useState("");
-
   const [playersInGame, setPlayerSelected] = useState(0);
   const [finishesInGame, setFinisheSelected] = useState(0);
+  const [newLevelName, setLevelName] = useState(null);
+  const [newMovementsNumber, setMovementesNumber] = useState(null);
 
 
   const savePosition = (i, j) => {
@@ -58,12 +62,13 @@ const LevelMaker = () => {
   };
 
   const deleteElement = (positionElement) => {
+    console.log("delete", positionElement);
     let typeElementInPosition = typeOfElementInPosition(positionElement);
     console.log("el tipo a borrar", typeElementInPosition)
     if (typeElementInPosition === "PathTile") {
       deletePath(positionElement);
     } else {
-      deleteObject(positionElement, typeElementInPosition);
+      deleteObject(positionElement);
     };
     if (isFinishOrPlayerType(typeElementInPosition))
       decreaseCountForPlayerOrFinishType(typeElementInPosition);
@@ -77,11 +82,10 @@ const LevelMaker = () => {
     setPaths(newPaths);
   }
 
-  const deleteObject = (objectPosition, typeElementInPosition) => {
+  const deleteObject = (objectPosition) => {
     let newObjects = objects.filter(obj =>
-      obj.position.posX !== objectPosition.posX &&
-      obj.position.posY !== objectPosition.posY &&
-      obj.type === typeElementInPosition
+      obj.position.posX === objectPosition.posX &&
+      obj.position.posY === objectPosition.posY
     );
     setObjects(newObjects);
     console.log(newObjects);
@@ -127,7 +131,6 @@ const LevelMaker = () => {
     if (finishesInGame === 0) {
       let elementToSave = { type: "Finish", position: currentPosition };
       saveElement(elementToSave);
-      console.log(elementToSave)
       setFinisheSelected(finishesInGame + 1);
       setOpenSelection(false);
     } else {
@@ -160,6 +163,18 @@ const LevelMaker = () => {
     setError(null);
   }
 
+  const onHandleSumbit = () => {
+    if (newLevelName === null || newLevelName === "" ||
+      newMovementsNumber === null || newMovementsNumber === 0) {
+      setError("No deben quedar campos vacios");
+    } else {
+      const allElements = paths.concat(objects)
+      postLevel(allElements, newLevelName, newMovementsNumber, `General_${newLevelName}`)
+        .then(() => console.log("Creado exitosamente"))
+        .catch(e => console.log(e))
+    }
+  }
+
 
   return (
     <div>
@@ -174,23 +189,59 @@ const LevelMaker = () => {
 
         <Grid item xs={12}>
           <div className="contWelcome-diff">
-            {`Cree su propio nivel`}
+            {`Cree su propio nivel y resuelvalo`}
             <hr className="divider-diff"></hr>
           </div>
         </Grid>
       </Grid>
 
-      <Grid container direction="row">
-        <Container maxWidth="xl">
-          <Gameboard
-            savePosition={savePosition}
-            clickeable
-            character={defaultPlayer}
-            grid={grid}
-            paths={paths}
-            objects={objects}
-          />
-        </Container>
+      <Grid container direction="row" spacing={0}>
+        <Grid item xs={6}>
+          <Container maxWidth="xl">
+            <Gameboard
+              savePosition={savePosition}
+              clickeable
+              character={defaultPlayer}
+              grid={grid}
+              paths={paths}
+              objects={objects}
+            />
+          </Container>
+        </Grid>
+
+        <Grid item xs={6}>
+          <Container maxWidth="xl">
+            <div className="display-inblock">
+              <div className="float">
+                <div className="level-name"> Nombre del nivel. </div>
+                <InputBase
+                  id="inputLevelName"
+                  required
+                  inputProps={{ "aria-label": "naked" }}
+                  value={newLevelName}
+                  onChange={(event) => setLevelName(event.target.value)}
+                />
+              </div>
+              <div className="float">
+                <div className="level-name"> Cantidad minima de movimientos. </div>
+                <InputBase
+                  id="inputMovementsNumber"
+                  required
+                  inputProps={{ "aria-label": "naked" }}
+                  value={newMovementsNumber}
+                  onChange={(event) => setMovementesNumber(event.target.value)}
+                />
+              </div>
+            </div>
+            <div className="lm-joystick">
+              <Joystick
+                noHeader
+              />
+            </div>
+          </Container>
+        </Grid>
+
+
       </Grid>
 
       <LevelMakerModal
@@ -210,7 +261,7 @@ const LevelMaker = () => {
         open={toast}
         handleClose={handleCloseErrorToast}
       />
-    </div>
+    </div >
   );
 };
 

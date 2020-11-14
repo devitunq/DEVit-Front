@@ -167,11 +167,13 @@ const Joystick = (props) => {
     <div className="container-drag">
       <div className="center">
         <div className="cont-header">
-          <img
-            className="joystick-pic"
-            src={joystickHeader}
-            alt="objetivo"
-          />
+          {!props.noHeader &&
+            <img
+              className="joystick-pic"
+              src={joystickHeader}
+              alt="objetivo"
+            />
+          }
         </div>
       </div>
 
