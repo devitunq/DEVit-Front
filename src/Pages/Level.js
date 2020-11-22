@@ -65,6 +65,7 @@ const Level = () => {
   };
 
   const renderEachStep = (i, data) => {
+    console.log(data)
     let { levelState, fullGame, comment, starsWon } = data;
     let tempObjects,
       tempPaths = [];
@@ -72,8 +73,6 @@ const Level = () => {
     tempPaths = fullGame[i].filter((e) => e.type === "PathTile");
     setObjects(tempObjects);
     setPaths(tempPaths);
-    console.log("path", paths)
-    console.log("objects", objects)
     if (i < fullGame.length - 1) {
       setTimeout(() => {
         i++;
@@ -101,6 +100,7 @@ const Level = () => {
                 <div className="ins-board-obj">
                   <Helpers text={description} />
                   <Joystick
+                    withSave
                     onClickPlay={(response) => {
                       renderEachStep(0, response.data)
                     }}

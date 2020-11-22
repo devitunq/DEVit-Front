@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ParticlesBg from "particles-bg";
 import Navbar from "../Components/Generics/Navbar";
 import Logo from "../Components/Generics/Logo";
-import LevelMakerModal from "../Components/LevelMaker/LevelMakerModal";
 import Gameboard from "../Components/Board/Gameboard";
 import CharacterDefault from "../Assets/gameElements/character3.png";
 import Toast from "../Components/Generics/Toast";
 import Joystick from "../Components/Joystick/Joystick";
-import Next from "../Assets/others/next.png";
+import LevelMakerModal from "../Components/LevelMaker/LevelMakerModal";
 import { Grid, Container, InputBase } from "@material-ui/core";
-import { postLevel } from "../Utils/Api";
+import { postNewLevel, isLevelExistent } from "../Utils/Api";
+import { useHistory } from "react-router-dom"
 import "./styles/LevelMaker.css";
 
 const boardSize = 7;
@@ -28,12 +28,18 @@ const LevelMaker = () => {
   const [paths, setPaths] = useState([]);
   const [openSelection, setOpenSelection] = useState(false);
   const [toast, setToast] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [successToast, setSuccessToast] = useState(false);
+  const [showJoystick, setShowJoystick] = useState(false);
   const [playersInGame, setPlayerSelected] = useState(0);
   const [finishesInGame, setFinisheSelected] = useState(0);
+  const [playerInitialPosition, setPlayerInitialPosition] = useState(null);
   const [newLevelName, setLevelName] = useState(null);
   const [newMovementsNumber, setMovementesNumber] = useState(null);
-
+  const [level, setLevel] = useState(null);
+  const [initialLevel, setInitialLevel] = useState(null);
+  const history = useHistory();
 
   const savePosition = (i, j) => {
     setCurrentPosition({ posX: i, posY: j })
@@ -46,6 +52,13 @@ const LevelMaker = () => {
     } else {
       setObjects([...objects, element])
     };
+  };
+
+  const isCellWithPathTile = (position) => {
+    return paths.find(p =>
+      p.position.posX === position.posX &&
+      p.position.posY === position.posY
+    ) !== undefined
   };
 
   const onSelectionDeleteFromModal = () => {
@@ -62,9 +75,7 @@ const LevelMaker = () => {
   };
 
   const deleteElement = (positionElement) => {
-    console.log("delete", positionElement);
     let typeElementInPosition = typeOfElementInPosition(positionElement);
-    console.log("el tipo a borrar", typeElementInPosition)
     if (typeElementInPosition === "PathTile") {
       deletePath(positionElement);
     } else {
@@ -74,10 +85,10 @@ const LevelMaker = () => {
       decreaseCountForPlayerOrFinishType(typeElementInPosition);
   };
 
-  const deletePath = (pathPosition) => {
+  const deletePath = (pathPos) => {
     let newPaths = paths.filter(path =>
-      path.position.posX !== pathPosition.posX &&
-      path.position.posY !== pathPosition.posY
+      path.position.posX !== pathPos.posX &&
+      path.position.posY !== pathPos.posY
     );
     setPaths(newPaths);
   }
@@ -115,65 +126,153 @@ const LevelMaker = () => {
   };
 
   const onSelectionPlayerFromModal = () => {
-    if (playersInGame === 0) {
-      let elementToSave = { type: "Player", position: currentPosition, lookingTo: "right", keys: [] };
+    if (playersInGame === 0 && isCellWithPathTile(currentPosition)) {
+      let elementToSave = { type: "Player", position: currentPosition, lookingTo: "RIGHT", keys: [] };
       saveElement(elementToSave);
       setPlayerSelected(playersInGame + 1);
       setOpenSelection(false);
+      setPlayerInitialPosition(currentPosition);
     } else {
       setOpenSelection(false);
-      setError("No puede haber mas de un personaje en el tablero.");
+      setError("Verifique que no haya otro personaje en el tablero y que haya camino en la celda.");
       setToast(true);
     };
   };
 
   const onSelectionFinishFromModal = () => {
-    if (finishesInGame === 0) {
+    console.log(currentPosition);
+    let asa = isCellWithPathTile(currentPosition)
+    console.log(asa)
+    if (finishesInGame === 0 && isCellWithPathTile(currentPosition)) {
       let elementToSave = { type: "Finish", position: currentPosition };
       saveElement(elementToSave);
       setFinisheSelected(finishesInGame + 1);
       setOpenSelection(false);
     } else {
       setOpenSelection(false);
-      setError("No puede haber mas de una meta en el tablero.");
+      setError("Verifique que no haya otra meta en el tablero y que haya camino en la celda.");
       setToast(true);
     }
   }
 
   const onSelectionPathFromModal = () => {
-    let elementToSave = { type: "PathTile", position: currentPosition };
-    saveElement(elementToSave);
-    setOpenSelection(false);
-  }
+    if (!isCellWithPathTile(currentPosition)) {
+      let elementToSave = { type: "PathTile", position: currentPosition };
+      saveElement(elementToSave);
+      setOpenSelection(false);
+    };
+  };
 
   const onSelectionDoorFromModal = () => {
-    let elementToSave = { type: "door", position: currentPosition };
-    saveElement(elementToSave);
-    setOpenSelection(false);
-  }
+    if (isCellWithPathTile(currentPosition)) {
+      let elementToSave = { type: "door", position: currentPosition };
+      saveElement(elementToSave);
+      setOpenSelection(false);
+    } else {
+      setOpenSelection(false);
+      setError("Debe haber camino en la celda para colocar una puerta;");
+      setToast(true);
+    }
+  };
 
   const onSelectionKeyFromModal = () => {
-    let elementToSave = { type: "Key", position: currentPosition };
-    saveElement(elementToSave);
-    setOpenSelection(false);
+    if (isCellWithPathTile(currentPosition)) {
+      let elementToSave = { type: "Key", position: currentPosition };
+      saveElement(elementToSave);
+      setOpenSelection(false);
+    } else {
+      setOpenSelection(false);
+      setError("Debe haber camino en la celda para colocar una llave;");
+      setToast(true);
+    }
   }
 
   const handleCloseErrorToast = () => {
     setToast(false);
     setError(null);
-  }
+  };
 
-  const onHandleSumbit = () => {
-    if (newLevelName === null || newLevelName === "" ||
-      newMovementsNumber === null || newMovementsNumber === 0) {
-      setError("No deben quedar campos vacios");
+  const onChangeLevelName = (name) => {
+    setShowJoystick(false);
+    setLevelName(name);
+  };
+
+
+  const renderEachStep = (i, data) => {
+    console.log(data)
+    let { levelState, fullGame } = data;
+    let tempObjects,
+      tempPaths = [];
+    tempObjects = fullGame[i].filter((e) => e.type !== "PathTile");
+    tempPaths = fullGame[i].filter((e) => e.type === "PathTile");
+    setObjects(tempObjects);
+    setPaths(tempPaths);
+    if (i < fullGame.length - 1) {
+      setTimeout(() => {
+        i++;
+        renderEachStep(i, data);
+      }, 500);
+    } else finishLevel(levelState === "Complete");
+  };
+
+  const finishLevel = (success) => {
+    if (success) {
+      postNewLevel(initialLevel).then(() => {
+        setSuccessMessage("Nivel guardado exitosamente...")
+        setSuccessToast(true);
+        setTimeout(() => { history.push("/") }, 3000)
+      }).catch((e) => {
+        setError("Nombre ya existente, intente con otro")
+        setToast(true);
+        setTimeout(() => { setToast(false) }, 2500)
+      });
+    };
+  };
+
+
+
+  const onClickFinishLevel = () => {
+    const newID = `General_${newLevelName}`;
+    if (paths.length !== 0 || objects.length !== 0) {
+      isLevelExistent(newID).then(response => {
+        if (newLevelName === null || response.data) {
+          setError("Intente con otro nombre, el indicado no esta disponible")
+          setToast(true);
+        } else {
+          if (newMovementsNumber !== 0 && newMovementsNumber !== null) {
+            let newLevel = {
+              levelId: newID,
+              difficulty: "General",
+              description: "Nivel creado por un usuario",
+              playerPosition: playerInitialPosition,
+              name: newLevelName,
+              bestNumberMovesToWin: newMovementsNumber,
+              likes: 0,
+              dislikes: 0,
+              elements: paths.concat(objects),
+              scoreFromAndLevel: []
+            }
+            setInitialLevel(newLevel);
+            setLevel(newLevel);
+            setShowJoystick(true);
+          } else {
+            setError("Ingrese una cantidad de movimientos valida")
+            setToast(true);
+          };
+        };
+      });
     } else {
-      const allElements = paths.concat(objects)
-      postLevel(allElements, newLevelName, newMovementsNumber, `General_${newLevelName}`)
-        .then(() => console.log("Creado exitosamente"))
-        .catch(e => console.log(e))
+      setError("Tablero invalido")
+      setToast(true);
     }
-  }
+  };
+
+  const handleMovementsError = () => {
+    setError("Verifique que la cantidad de movimientos sea la indicada previamente");
+    setToast(true);
+    setTimeout(() => { setToast(false) }, 2500);
+  };
+
 
 
   return (
@@ -219,7 +318,7 @@ const LevelMaker = () => {
                   required
                   inputProps={{ "aria-label": "naked" }}
                   value={newLevelName}
-                  onChange={(event) => setLevelName(event.target.value)}
+                  onChange={(event) => onChangeLevelName(event.target.value)}
                 />
               </div>
               <div className="float">
@@ -232,12 +331,22 @@ const LevelMaker = () => {
                   onChange={(event) => setMovementesNumber(event.target.value)}
                 />
               </div>
+              <div className="float finished-level" onClick={onClickFinishLevel}> Resolver </div>
             </div>
-            <div className="lm-joystick">
-              <Joystick
-                noHeader
-              />
-            </div>
+            {showJoystick &&
+              <div className="lm-joystick">
+                <Joystick
+                  onClickError={handleMovementsError}
+                  onClickPlay={
+                    (response) => {
+                      renderEachStep(0, response.data)
+                    }
+                  }
+                  level={level}
+                  noHeader
+                />
+              </div>
+            }
           </Container>
         </Grid>
 
@@ -260,6 +369,13 @@ const LevelMaker = () => {
         content={error}
         open={toast}
         handleClose={handleCloseErrorToast}
+      />
+
+      <Toast
+        width="85%"
+        content={successMessage}
+        open={successToast}
+        succes
       />
     </div >
   );

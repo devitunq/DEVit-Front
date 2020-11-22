@@ -21,4 +21,23 @@
   margin-left: 90%;
 }
 
+.finished-level{
+  border: solid black 2px;
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 10px;
+  background-color: rgb(17,122,101) ;
+  color: white;
+  height: 70px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-family: 'opensans-regular', sans-serif;
+}
+
+.finished-level:hover{
+  background-color: teal;
+}
+
 
