@@ -56,7 +56,10 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     const upAction = {
       actionKey: aKey,
-      action: "GoUp",
+      action: {
+        type: "GoUp",
+        times: 1
+      },
       src: goUp,
       alt: "up",
     };
@@ -68,7 +71,10 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     let downAction = {
       actionKey: aKey,
-      action: "GoDown",
+      action: {
+        type: "GoDown",
+        times: 1
+      },
       src: goDown,
       alt: "down",
     };
@@ -80,7 +86,10 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     let leftAction = {
       actionKey: aKey,
-      action: "GoLeft",
+      action: {
+        type: "GoLeft",
+        times: 1
+      },
       src: left,
       alt: "left",
     };
@@ -92,7 +101,10 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     let rightAction = {
       actionKey: aKey,
-      action: "GoRight",
+      action: {
+        type: "GoRight",
+        times: 1
+      },
       src: right,
       alt: "right",
     };
@@ -104,49 +116,61 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     let collectKey = {
       actionKey: aKey,
-      action: "CollectKey",
+      action: {
+        type: "CollectKey",
+        times: 1
+      },
       src: collectDisplay,
       alt: "collect",
     };
     addActionToCurrentBoard(collectKey);
     setID(actionID + 1);
-  }
+  };
 
   const onClickOpenDoor = () => {
     const aKey = `action_${actionID}`;
     let openDoor = {
       actionKey: aKey,
-      action: "OpenDoor",
+      action: {
+        type: "OpenDoor",
+        times: 1
+      },
       src: openDisplay,
       alt: "open",
     };
     addActionToCurrentBoard(openDoor);
     setID(actionID + 1);
-  }
+  };
 
   const onClickIsDoor = () => {
     const aKey = `action_${actionID}`;
     let openDoor = {
       actionKey: aKey,
-      action: "DoorCondition",
+      action: {
+        type: "DoorCondition",
+        times: 1
+      },
       src: isDoor,
       alt: "isDoor",
     };
     addActionToCurrentBoard(openDoor);
     setID(actionID + 1);
-  }
+  };
 
   const onClickIsKey = () => {
     const aKey = `action_${actionID}`;
     let openDoor = {
       actionKey: aKey,
-      action: "KeyCondition",
+      action: {
+        type: "KeyCondition",
+        times: 1
+      },
       src: isKey,
       alt: "isKey",
     };
     addActionToCurrentBoard(openDoor);
     setID(actionID + 1);
-  }
+  };
 
   const handleCkick = (actionToDelete) => {
     const newBoard = board.filter(
