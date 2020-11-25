@@ -56,7 +56,7 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     const upAction = {
       actionKey: aKey,
-      action: "GoUp",
+      action: { type: "GoUp" },
       src: goUp,
       alt: "up",
     };
@@ -68,7 +68,7 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     let downAction = {
       actionKey: aKey,
-      action: "GoDown",
+      action: { type: "GoDown" },
       src: goDown,
       alt: "down",
     };
@@ -80,7 +80,7 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     let leftAction = {
       actionKey: aKey,
-      action: "GoLeft",
+      action: { type: "GoLeft" },
       src: left,
       alt: "left",
     };
@@ -92,7 +92,7 @@ const Joystick = (props) => {
     const aKey = `action_${actionID}`;
     let rightAction = {
       actionKey: aKey,
-      action: "GoRight",
+      action: { type: "GoRight" },
       src: right,
       alt: "right",
     };
@@ -259,6 +259,7 @@ const Joystick = (props) => {
                 className="play-b"
                 src={josPlay}
                 alt="play"
+                data-testid="playButton"
               />
               <div></div>
               <img

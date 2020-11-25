@@ -51,8 +51,9 @@ const Guest = () => {
           inputProps={{ "aria-label": "naked" }}
           value={name}
           onChange={(event) => setName(event.target.value)}
+          data-testid="guestInputName"
         />
-        <a onClick={() => handleGuestLogin()} id="nextInput">
+        <a onClick={() => handleGuestLogin()} id="nextInput" data-testid="guestNext">
           <img
             className="next-endbutt"
             src={Next}

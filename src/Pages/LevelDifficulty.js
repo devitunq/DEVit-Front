@@ -62,7 +62,7 @@ const LevelDifficulty = () => {
               <Container maxWidth="xs">{
                 difficulties.map((diff) => {
                   return (
-                    <div className="diff-container" key={`key_${diff}`}>
+                    <div className="diff-container" key={`key_${diff}`} data-testid={`difSel_${diff}`}>
                       <a href={`/levelSelection/${diff}/${character}`}>
                         <div className="diff-item">
                           <img

@@ -63,6 +63,7 @@ const CharacterSelection = () => {
                   src={JORGE.img.right}
                   onClick={() => { history.push(`/difficulty/${nick}/${JORGE.name}`) }}
                   alt={JORGE.name}
+                  data-testid="guestJorgeChar"
                 />
                 <div className="character-header"> {JORGE.name} </div>
               </Grid>

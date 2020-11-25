@@ -139,7 +139,7 @@ const LevelSelection = () => {
 
                       return (
                         <div className="lvl-container" >
-                          <div key={`key_lvl_${l.levelId}`}>
+                          <div key={`key_lvl_${l.levelId}`} data-testid={`selectLevel_${l.levelId}`}>
                             <a href={`/level/${l.levelId}/${character}`}>
                               <div className="lvl-item">
                                 <div className="center">
