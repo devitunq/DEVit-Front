@@ -7,6 +7,11 @@
   border-radius: 15px;
   background-color: rgb(17, 122, 101);
   height: 100%;
+  min-height: 130px;
+}
+
+.diff-container:hover {
+  background-color: rgba(170, 170, 170, 0.829);
 }
 
 
@@ -21,9 +26,6 @@
   cursor: pointer;
 }
 
-.diff-item:hover {
-  background-color: rgba(190, 184, 184, 0.301);
-}
 
 .diff-separator {
   margin-left: 24%;

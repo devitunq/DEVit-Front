@@ -9,6 +9,7 @@ import { getDifficulties } from "../Utils/Api";
 import Easy from "../Assets/difficulties/Easy.png";
 import Medium from "../Assets/difficulties/Medium.png";
 import Hard from "../Assets/difficulties/Hard.png";
+import General from "../Assets/difficulties/General.png";
 
 const LevelDifficulty = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,12 +23,14 @@ const LevelDifficulty = () => {
         return Easy;
       case "Medium":
         return Medium;
+      case "Hard":
+        return Hard;
       default:
-        return Hard
+        return General
     }
   };
 
-  const difficultiesList = ["Easy", "Medium", "Hard"];
+  const difficultiesList = ["Easy", "Medium", "Hard", "General"];
 
 
   useEffect(() => {
@@ -63,7 +66,7 @@ const LevelDifficulty = () => {
           <Grid container direction="row">
             {difficultiesList.map((diff) => {
               return (
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   <Container maxWidth="xs">
                     <div className="diff-container" key={`key_${diff}`}>
                       <a href={`/levelSelection/${diff}/${character}`}>

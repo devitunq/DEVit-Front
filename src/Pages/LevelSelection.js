@@ -147,12 +147,16 @@ const LevelSelection = () => {
                             <a href={`/level/${l.levelId}/${character}`}>
                               <div className="lvl-item">
                                 <div className="center">
-                                  <img
-                                    href="/level"
-                                    className="lvl-img"
-                                    src={levelNameToImg(l.levelId)}
-                                    alt={`${l.name}`}
-                                  />
+                                  {difficulty !== "General"
+                                    ?
+                                    <img
+                                      href="/level"
+                                      className="lvl-img"
+                                      src={levelNameToImg(l.levelId)}
+                                      alt={`${l.name}`}
+                                    />
+                                    : l.name
+                                  }
                                   {
                                     isUser() &&
                                     <img
