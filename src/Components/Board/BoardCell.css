@@ -7,7 +7,19 @@
   border: 0.5px solid black;
   background-size: cover;
 }
+
 .boardCell:after {
   content: "";
   margin-top: 100%;
+}
+
+.cellImg{
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.clickeable{
+  cursor: pointer;
 }

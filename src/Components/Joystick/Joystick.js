@@ -4,7 +4,7 @@ import update from "immutability-helper";
 import "./Joystick.css";
 import JositckArrows from "./JoystickArrows";
 import JoystickDisplay from "./JoystickDisplay";
-import { postLevelSolution } from "../../Utils/Api";
+import { postLevelSolution, postLevelSolutionUnsaved } from "../../Utils/Api";
 import MovableCard from "./MovableCard";
 import RemovableCard from "./RemovableCard";
 import ConditionsModal from "./ConditionsModal";
@@ -167,11 +167,13 @@ const Joystick = (props) => {
     <div className="container-drag">
       <div className="center">
         <div className="cont-header">
-          <img
-            className="joystick-pic"
-            src={joystickHeader}
-            alt="objetivo"
-          />
+          {!props.noHeader &&
+            <img
+              className="joystick-pic"
+              src={joystickHeader}
+              alt="objetivo"
+            />
+          }
         </div>
       </div>
 
@@ -251,11 +253,17 @@ const Joystick = (props) => {
             <Grid item xs={4}>
               <img
                 onClick={() => {
-                  postLevelSolution(
-                    props.levelID,
-                    [{ name: "f1", actionList: board.map((item) => item.action) }]
-                  ).then(props.onClickPlay);
-                }}
+                  props.withSave
+                    ? postLevelSolution(
+                      props.levelID,
+                      [{ name: "f1", actionList: board.map((item) => item.action) }]
+                    ).then(props.onClickPlay)
+                    : postLevelSolutionUnsaved(
+                      props.level,
+                      [{ name: "f1", actionList: board.map((item) => item.action) }]
+                    ).then(props.onClickPlay).catch(props.onClickError);
+                }
+                }
                 className="play-b"
                 src={josPlay}
                 alt="play"

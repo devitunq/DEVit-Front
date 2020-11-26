@@ -14,7 +14,6 @@ const LevelDifficulty = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [difficulties, setDifficulties] = useState([]);
   const [permission, setPermission] = useState("");
-  const { nick } = useParams();
   const { character } = useParams();
 
   const dificultyToImg = (diffStr) => {
@@ -27,6 +26,8 @@ const LevelDifficulty = () => {
         return Hard
     }
   };
+
+  const difficultiesList = ["Easy", "Medium", "Hard"];
 
 
   useEffect(() => {
@@ -52,38 +53,36 @@ const LevelDifficulty = () => {
             <Navbar />
           </Grid>
 
-          <Grid container item xs={12}>
-            <Grid item xs={2}></Grid>
-            <Grid item xs={8}>
-              <div className="contWelcome-diff">
-                {`Bienvenido ${nick}`}
-                <hr className="divider-diff"></hr>
-              </div>
-              <Container maxWidth="xs">{
-                difficulties.map((diff) => {
-                  return (
+          <Grid item xs={12}>
+            <div className="contWelcome-diff">
+              {`Seleccione una dificultad`}
+              <hr className="divider-diff"></hr>
+            </div>
+          </Grid>
+
+          <Grid container direction="row">
+            {difficultiesList.map((diff) => {
+              return (
+                <Grid item xs={4}>
+                  <Container maxWidth="xs">
                     <div className="diff-container" key={`key_${diff}`} data-testid={`difSel_${diff}`}>
                       <a href={`/levelSelection/${diff}/${character}`}>
                         <div className="diff-item">
                           <img
-                            className="diff-img"
+                            className={diff === "Medium" ? "diff-img2" : "diff-img"}
                             src={dificultyToImg(diff)}
                             alt={`${diff}`}
                           />
                         </div>
                       </a>
-                      <hr className="diff-separator" />
                     </div>
-                  );
-                })
-              }
-              </Container>
-            </Grid>
-
-            <Grid item xs={2}>
-            </Grid>
-
+                  </Container>
+                </Grid>
+              );
+            })
+            }
           </Grid>
+
           <Grid item xs={2}></Grid>
         </Grid>
       </div >

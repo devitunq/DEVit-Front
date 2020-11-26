@@ -4,14 +4,12 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   padding-top: 1%;
   padding-bottom: 1%;
-  border-radius: 3%;
+  border-radius: 15px;
   background-color: rgb(17, 122, 101);
   height: 100%;
 }
 
-.diff-container:hover {
-  box-shadow: 12px 20px 25px rgb(0, 0, 0), 12px 20px 25px rgba(0, 0, 0);
-}
+
 
 .diff-item {
   margin-bottom: 1%;
@@ -42,6 +40,11 @@
   position: relative;
 }
 
+.diff-img2 {
+  width: 68%;
+  position: relative;
+}
+
 .divider-diff {
   align-self: center;
   width: 45%;
@@ -49,11 +52,10 @@
 }
 
 .contWelcome-diff {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "opensans", sans-serif;
   text-align: center;
   align-content: center;
-  font-size: 150%;
+  font-size: 2em;
   color: white;
 }
 

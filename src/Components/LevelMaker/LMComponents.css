@@ -1,0 +1,49 @@
+.lmakermodal-container{
+  text-align: center;
+  background-color: rgb(197, 197, 197);
+  margin-top: 20%;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 15px;
+
+}
+
+.lmakermodal-title{
+  font-size: x-large;
+  color: black;
+}
+
+.close-lmakermodal{
+  color: black;
+  position: relative;
+  text-align: right;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 3%;
+  margin-top: 0.5%;
+  font-size: large;
+}
+
+.img{
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  cursor: pointer;
+  width: 10%;
+}
+
+.level-name{
+  font-family: "opensans", sans-serif;
+  text-align: left;
+  font-size: 1.1em;
+  color: rgb(214, 214, 214);
+  margin-bottom: 2%
+}
+
+.next {
+  position: relative;
+  top: 100px;
+  width: 8%;
+  margin-top: 2%;
+  cursor: pointer;
+}

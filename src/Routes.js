@@ -6,6 +6,7 @@ import Profile from "./Pages/Profile";
 import Register from "./Pages/Register";
 import Level from "./Pages/Level";
 import About from "./Pages/About";
+import LevelMaker from "./Pages/LevelMaker";
 import LevelDifficulty from "./Pages/LevelDifficulty";
 import LevelSelection from "./Pages/LevelSelection";
 import AuthOrGuest from "./Pages/AuthOrGuest";
@@ -19,6 +20,7 @@ class Routes extends Component {
         <Route component={About} path="/about" />
         <Route component={AuthOrGuest} path="/sign" />
         <Route component={Register} path="/register" />
+        <PrivateRoute component={LevelMaker} path="/levelMaker" />
         <PrivateRoute component={Profile} path="/profile" />
         <PrivateRoute component={LevelDifficulty} path="/difficulty/:nick/:character" />
         <PrivateRoute component={CharacterSelection} path="/characterSelection/:nick" />

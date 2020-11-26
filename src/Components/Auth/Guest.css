@@ -8,6 +8,7 @@
 }
 
 .guest-title{
+  font-family: "opensans", sans-serif;
   text-align: left;
   font-size: 150%;
   color: rgb(255, 255, 255);
@@ -15,10 +16,20 @@
 }
 
 .guest-data{
+  font-family: "opensans", sans-serif;
   text-align: left;
   font-size: 105%;
   color: rgb(214, 214, 214);
   margin-bottom: 2%
 }
+
+.or{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color:white;
+  font-family: "opensans", sans-serif;
+  font-size: 2em;
+}
+
 
 

@@ -13,7 +13,7 @@ const ModalObjective = ({ open, close, textObjective }) => (
                 onClick={close}
               >
                 X
-            </div>
+              </div>
               {textObjective}
             </div>
           </Grid>

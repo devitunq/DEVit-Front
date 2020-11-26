@@ -65,7 +65,7 @@ const Level = () => {
   };
 
   const renderEachStep = (i, data) => {
-    console.log(data);
+    console.log(data)
     let { levelState, fullGame, comment, starsWon } = data;
     let tempObjects,
       tempPaths = [];
@@ -100,6 +100,7 @@ const Level = () => {
                 <div className="ins-board-obj">
                   <Helpers text={description} />
                   <Joystick
+                    withSave
                     onClickPlay={(response) => {
                       renderEachStep(0, response.data)
                     }}

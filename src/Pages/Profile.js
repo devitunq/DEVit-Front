@@ -37,17 +37,6 @@ const Profile = () => {
                     detailTitle={"Nick: "}
                     detail={localStorage.getItem("nick")}
                   />
-                  <ProfileItem
-                    icon={<LockIcon
-                      style={{
-                        width: "20%",
-                        marginTop: "1%",
-                        marginLeft: "10%",
-                      }}
-                    />}
-                    detailTitle={"Contraseña: "}
-                    detail="********"
-                  />
                 </Grid>
                 <Grid item xs={12}>
                   <Grid container spacing={8}>

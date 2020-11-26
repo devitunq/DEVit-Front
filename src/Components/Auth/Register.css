@@ -1,8 +1,9 @@
 .register{
   margin-top: 40px;
-  font-size: large;
+  font-size: 1.6em;
   color: white;
   cursor: pointer;
+  font-family: "opensans", sans-serif;
 }
 
 .register:hover{
