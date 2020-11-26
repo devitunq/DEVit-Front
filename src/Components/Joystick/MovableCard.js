@@ -2,9 +2,10 @@ import React, { useImperativeHandle, useRef } from "react";
 import { DragSource, DropTarget } from "react-dnd";
 import { Grid } from "@material-ui/core";
 import { ItemTypes } from "./ItemTypes";
+import ActionAndTimes from "./ActionAndTimes"
 
 const MovableCard = React.forwardRef(
-  ({ src, alt, isDragging, connectDragSource, connectDropTarget }, ref) => {
+  ({ src, alt, times, onClickTimes, isDragging, connectDragSource, connectDropTarget }, ref) => {
     const elementRef = useRef(null);
     connectDragSource(elementRef);
     connectDropTarget(elementRef);
@@ -14,10 +15,12 @@ const MovableCard = React.forwardRef(
     return (
       <Grid item xs={2}>
         <div ref={elementRef}>
-          <img
-            className="board-inst"
+          <ActionAndTimes
+            onClickTimes={onClickTimes}
+            times={times}
             src={src}
-            alt={alt} />
+            alt={alt}
+          />
         </div>
       </Grid>
     );

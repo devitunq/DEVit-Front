@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Switch } from "@material-ui/core";
 import update from "immutability-helper";
 import "./Joystick.css";
@@ -31,6 +31,8 @@ const Joystick = (props) => {
   const [actionID, setID] = useState(1);
   const [displayDeleteMode, setDisplayMode] = useState(false);
   const [conditionsModal, setConditionsModal] = useState(false);
+
+  useEffect(() => { }, [])
 
   const moveCard = (dragIndex, hoverIndex) => {
     const dragCard = board[dragIndex];
@@ -187,6 +189,14 @@ const Joystick = (props) => {
     setBoard([]);
   };
 
+  const newBoard = key => {
+    setBoard(board.map(item =>
+      item.actionKey === key ? { ...item, times: 4 } : item
+    ))
+  };
+
+
+
   return (
     <div className="container-drag">
       <div className="center">
@@ -230,6 +240,8 @@ const Joystick = (props) => {
                       key={`movable_key_${item.actionKey}`}
                       src={item.src}
                       alt={item.alt}
+                      onClickTimes={newBoard(`movable_key_${item.actionKey}`)}
+                      times={item.action.times}
                       moveCard={moveCard}
                       index={index}
                     />
@@ -257,6 +269,8 @@ const Joystick = (props) => {
                       key={`movable_key_${item.actionKey}`}
                       src={item.src}
                       alt={item.alt}
+                      times={item.action.times}
+                      onClickTimes={newBoard(`movable_key_${item.actionKey}`)}
                       moveCard={moveCard}
                       index={index}
                     />

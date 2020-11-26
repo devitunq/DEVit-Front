@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import ActionAndTimes from "./ActionAndTimes"
 
 const RemovableCard = (props) => {
   const removeThisFromBoard = () => {
@@ -8,14 +9,11 @@ const RemovableCard = (props) => {
 
   return (
     <Grid item xs={2}>
-      <div>
-        <img
-          className="board-inst"
-          src={props.src}
-          alt={props.alt}
-          onClick={removeThisFromBoard}
-        />
-      </div>
+      <ActionAndTimes
+        src={props.src}
+        alt={props.alt}
+        onClick={removeThisFromBoard}
+      />
     </Grid>
   );
 };

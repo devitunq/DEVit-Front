@@ -277,7 +277,7 @@ const LevelMaker = () => {
 
   return (
     <div>
-      <ParticlesBg type="circle" bg={true} />
+      <ParticlesBg className="bubbles" type="circle" bg={true} />
 
       <Logo />
 
@@ -294,64 +294,57 @@ const LevelMaker = () => {
         </Grid>
       </Grid>
 
-      <Grid container direction="row" spacing={0}>
-        <Grid item xs={6}>
-          <Container maxWidth="xl">
-            <Gameboard
-              savePosition={savePosition}
-              clickeable
-              character={defaultPlayer}
-              grid={grid}
-              paths={paths}
-              objects={objects}
-            />
-          </Container>
-        </Grid>
+      <div className="inputs-lm-container">
+        <div className="inputs-lm-header"> Nombre del nivel. </div>
+        <InputBase
+          id="inputLevelName"
+          required
+          style={{
+            width: "400px"
+          }}
+          inputProps={{ "aria-label": "naked" }}
+          value={newLevelName}
+          onChange={(event) => onChangeLevelName(event.target.value)}
+        />
+        <div className="inputs-lm-header"> Cantidad minima de movimientos. </div>
+        <InputBase
+          id="inputMovementsNumber"
+          required
+          style={{
+            width: "400px"
+          }}
+          inputProps={{ "aria-label": "naked" }}
+          value={newMovementsNumber}
+          onChange={(event) => setMovementesNumber(event.target.value)}
+        />
+      </div>
 
-        <Grid item xs={6}>
-          <Container maxWidth="xl">
-            <div className="display-inblock">
-              <div className="float">
-                <div className="level-name"> Nombre del nivel. </div>
-                <InputBase
-                  id="inputLevelName"
-                  required
-                  inputProps={{ "aria-label": "naked" }}
-                  value={newLevelName}
-                  onChange={(event) => onChangeLevelName(event.target.value)}
-                />
-              </div>
-              <div className="float">
-                <div className="level-name"> Cantidad minima de movimientos. </div>
-                <InputBase
-                  id="inputMovementsNumber"
-                  required
-                  inputProps={{ "aria-label": "naked" }}
-                  value={newMovementsNumber}
-                  onChange={(event) => setMovementesNumber(event.target.value)}
-                />
-              </div>
-              <div className="float finished-level" onClick={onClickFinishLevel}> Resolver </div>
-            </div>
-            {showJoystick &&
-              <div className="lm-joystick">
-                <Joystick
-                  onClickError={handleMovementsError}
-                  onClickPlay={
-                    (response) => {
-                      renderEachStep(0, response.data)
-                    }
-                  }
-                  level={level}
-                  noHeader
-                />
-              </div>
+      <Gameboard
+        savePosition={savePosition}
+        clickeable
+        character={defaultPlayer}
+        grid={grid}
+        paths={paths}
+        objects={objects}
+      />
+
+
+      <div className="finished-level" onClick={onClickFinishLevel}> Resolver </div>
+
+      {showJoystick &&
+        <div className="lm-joystick">
+          <Joystick
+            onClickError={handleMovementsError}
+            onClickPlay={
+              (response) => {
+                renderEachStep(0, response.data)
+              }
             }
-          </Container>
-        </Grid>
-
-
-      </Grid>
+            level={level}
+            noHeader
+          />
+        </div>
+      }
 
       <LevelMakerModal
         open={openSelection}

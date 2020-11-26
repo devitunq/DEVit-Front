@@ -7,7 +7,6 @@ import Door from "../../Assets/gameElements/door.png";
 import OpenDoor from "../../Assets/gameElements/dooropen.png";
 import Key from "../../Assets/gameElements/key.png";
 import Path from "../../Assets/gameElements/test-path.png";
-import { Container } from "@material-ui/core";
 
 const elemeTypeStrToElemType = (elem) => {
   switch (elem.type) {
@@ -53,28 +52,26 @@ const Gameboard = (props) => {
   }
 
   return (
-    <Container maxWidth="xl">
-      <div className="boardContainer">
-        <table cellSpacing="0" className="board">
-          <tbody>
-            {props.grid.map((row, j) => (
-              <tr key={"row_" + j}>
-                {row.map((_, i) => (
-                  <BoardCell
-                    clickeable={props.clickeable}
-                    onClick={() => onClickCell(i, j)}
-                    key={`cell_${i}_${j}`}
-                    background={boardBGpositions(`${i}_${j}`, props.paths)}
-                    imgList={boardFGpositions(`${i}_${j}`, props.objects, props.character.img)}
-                    pos={`${i}_${j}`}
-                  />
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Container>
+    <div className="boardContainer">
+      <table cellSpacing="0" className="board">
+        <tbody>
+          {props.grid.map((row, j) => (
+            <tr key={"row_" + j}>
+              {row.map((_, i) => (
+                <BoardCell
+                  clickeable={props.clickeable}
+                  onClick={() => onClickCell(i, j)}
+                  key={`cell_${i}_${j}`}
+                  background={boardBGpositions(`${i}_${j}`, props.paths)}
+                  imgList={boardFGpositions(`${i}_${j}`, props.objects, props.character.img)}
+                  pos={`${i}_${j}`}
+                />
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 };
 

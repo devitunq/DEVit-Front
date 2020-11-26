@@ -1,19 +1,40 @@
 .lm-joystick{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 20%;
   box-shadow: 0 1px 3px rgba(0, 0, 0), 0 1px 2px rgba(0, 0, 0);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   padding-bottom: 3%;
   border-radius: 15px;
   background-color: rgb(17,122,101) ;
-  height: 100%;
+  width: 60%;
+  text-align: center;
 }
 
-.display-inblock{
-  display: inline-block;
+@media only screen and (max-width: 750px) {
+  .lm-joystick {
+    width: 80%;
+    margin-left: 10%;
+  }
 }
 
-.float{
-  float: left;
-  margin-left: 20px;
+@media only screen and (max-width: 900px) {
+  .lm-joystick {
+    width: 70%;
+    margin-left: 15%;
+  }
+}
+
+.inputs-lm-container{
+  text-align: center;
+  width: 100%;
+}
+
+.inputs-lm-header{
+  text-align: center;
+  font-size: 1.2em;
+  color: white;
+  font-family: 'opensans-regular', sans-serif;
 }
 
 .next{
@@ -22,8 +43,12 @@
 }
 
 .finished-level{
+  text-align: center;
   border: solid black 2px;
-  margin-top: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 35%;
+  width: 30%;
   padding-top: 15px;
   padding-left: 3px;
   padding-right: 3px;
@@ -39,5 +64,3 @@
 .finished-level:hover{
   background-color: teal;
 }
-
-

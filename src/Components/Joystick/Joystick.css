@@ -214,3 +214,25 @@
   margin-top: 0.5%;
   font-size: large;
 }
+
+.times-circle{
+  cursor: pointer;
+  text-align: center;
+  margin-left: 4%;
+  margin-bottom: 10px;
+  position: absolute;
+  width: 1.3%;
+  border-radius: 50%;
+  background: black;
+  height: 25px;
+  color: rgb(0, 122, 116);
+  font-size: 1.1em;
+  font-family: 'opensans-bold', sans-serif;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.times-text{
+  margin-top: 27px;
+}
