@@ -68,7 +68,7 @@ const LevelDifficulty = () => {
               return (
                 <Grid item xs={6}>
                   <Container maxWidth="xs">
-                    <div className="diff-container" key={`key_${diff}`}>
+                    <div className="diff-container" key={`key_${diff}`} data-testid={`difSel_${diff}`}>
                       <a href={`/levelSelection/${diff}/${character}`}>
                         <div className="diff-item">
                           <img

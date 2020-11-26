@@ -37,7 +37,7 @@ const ResultLvl = ({ closeModal, imgPath, text, onClickWin, onClickLost, stars }
                 {!imgPath &&
                   <img className="stars" src={determinateStars(stars)} />
                 }
-                <div className="success-text" id="resText">
+                <div className="success-text" id="resText" data-testid="resText">
                   {text}
                 </div>
                 <Grid container item xs={12}>
@@ -58,6 +58,7 @@ const ResultLvl = ({ closeModal, imgPath, text, onClickWin, onClickLost, stars }
                           color="primary"
                           size="medium"
                           onClick={() => onClickWin}
+                          data-testid="selectLevelPopUp"
                         >
                           Elegir nivel
                   </Button> : ""

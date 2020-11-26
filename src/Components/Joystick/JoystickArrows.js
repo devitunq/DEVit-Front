@@ -27,6 +27,7 @@ const JoystickArrows = ({
         <Grid item xs={4}>
           <img
             id="upArrow"
+            data-testid="upArrow"
             className="arrow-up"
             onClick={onClickUp}
             src={joysUp}
@@ -44,6 +45,7 @@ const JoystickArrows = ({
         <Grid item xs={4}>
           <img
             id="rightArrow"
+            data-testid="rightArrow"
             className="arrow-right"
             onClick={onClickRight}
             src={joysRight}

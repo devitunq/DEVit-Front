@@ -305,6 +305,7 @@ const Joystick = (props) => {
                 className="play-b"
                 src={josPlay}
                 alt="play"
+                data-testid="playButton"
               />
               <div></div>
               <img

@@ -54,17 +54,22 @@ const LevelMaker = () => {
     };
   };
 
-  const isCellWithPathTile = (position) => {
-    return paths.find(p =>
-      p.position.posX === position.posX &&
-      p.position.posY === position.posY
+  const currentCellWithPathTile = () =>
+    paths.find(p =>
+      p.position.posX === currentPosition.posX &&
+      p.position.posY === currentPosition.posY
     ) !== undefined
-  };
+
+  const currentCellWithFinishOrPlayer = () =>
+    objects.find(p =>
+      p.position.posX === currentPosition.posX &&
+      p.position.posY === currentPosition.posY &&
+      (p.type === "Player" || p.type === "Finish")
+    ) !== undefined
 
   const onSelectionDeleteFromModal = () => {
-    let positionElement = currentPosition;
-    if (typeOfElementInPosition(positionElement) !== null) {
-      deleteElement(positionElement);
+    if (currentCellWithPathTile()) {
+      deleteElementInCurrentCell();
       setOpenSelection(false);
     }
     else {
@@ -74,59 +79,26 @@ const LevelMaker = () => {
     };
   };
 
-  const deleteElement = (positionElement) => {
-    let typeElementInPosition = typeOfElementInPosition(positionElement);
-    if (typeElementInPosition === "PathTile") {
-      deletePath(positionElement);
-    } else {
-      deleteObject(positionElement);
-    };
-    if (isFinishOrPlayerType(typeElementInPosition))
-      decreaseCountForPlayerOrFinishType(typeElementInPosition);
+  const deleteElementInCurrentCell = () => {
+    setPaths(paths.filter(path => path.position.posX !== currentPosition.posX || path.position.posY !== currentPosition.posY));
+    deleteObjectInCurrentCell();
   };
 
-  const deletePath = (pathPos) => {
-    let newPaths = paths.filter(path =>
-      path.position.posX !== pathPos.posX &&
-      path.position.posY !== pathPos.posY
-    );
-    setPaths(newPaths);
-  }
-
-  const deleteObject = (objectPosition) => {
+  const deleteObjectInCurrentCell = () => {
     let newObjects = objects.filter(obj =>
-      obj.position.posX === objectPosition.posX &&
-      obj.position.posY === objectPosition.posY
+      obj.position.posX !== currentPosition.posX ||
+      obj.position.posY !== currentPosition.posY
     );
+    let player = newObjects.find(obj => obj.type === "Player");
+    let finish = newObjects.find(obj => obj.type === "Finish");
+    if (!player && playersInGame !== 0) setPlayerSelected(playersInGame - 1);
+    if (!finish && finishesInGame !== 0) setFinisheSelected(finishesInGame - 1);
+    console.log("players: " + playersInGame + "FINISH " + finishesInGame);
     setObjects(newObjects);
-    console.log(newObjects);
   }
-
-  const typeOfElementInPosition = (pos) => {
-    let type = null;
-    let objectFound = objects.find(obj => obj.position.posX === pos.posX &&
-      obj.position.posY === pos.posY);
-    let pathFound = paths.find(path => path.position.posX === pos.posX &&
-      path.position.posY === pos.posY);
-    if (objectFound) type = objectFound.type;
-    if (pathFound) type = pathFound.type;
-    return type;
-  };
-
-  const isFinishOrPlayerType = (type) => {
-    return type === "Player" || type === "Finish" ? true : false
-  }
-
-  const decreaseCountForPlayerOrFinishType = (type) => {
-    if (type === "Player") {
-      setPlayerSelected(playersInGame - 1);
-    } else {
-      setFinisheSelected(finishesInGame - 1);
-    };
-  };
 
   const onSelectionPlayerFromModal = () => {
-    if (playersInGame === 0 && isCellWithPathTile(currentPosition)) {
+    if (playersInGame === 0 && currentCellWithPathTile() && !currentCellWithFinishOrPlayer()) {
       let elementToSave = { type: "Player", position: currentPosition, lookingTo: "RIGHT", keys: [] };
       saveElement(elementToSave);
       setPlayerSelected(playersInGame + 1);
@@ -134,29 +106,26 @@ const LevelMaker = () => {
       setPlayerInitialPosition(currentPosition);
     } else {
       setOpenSelection(false);
-      setError("Verifique que no haya otro personaje en el tablero y que haya camino en la celda.");
+      setError("Verifique que no haya otro personaje en el tablero, que la celda no posea la meta y que haya camino.");
       setToast(true);
     };
   };
 
   const onSelectionFinishFromModal = () => {
-    console.log(currentPosition);
-    let asa = isCellWithPathTile(currentPosition)
-    console.log(asa)
-    if (finishesInGame === 0 && isCellWithPathTile(currentPosition)) {
+    if (finishesInGame === 0 && currentCellWithPathTile() && !currentCellWithFinishOrPlayer()) {
       let elementToSave = { type: "Finish", position: currentPosition };
       saveElement(elementToSave);
       setFinisheSelected(finishesInGame + 1);
       setOpenSelection(false);
     } else {
       setOpenSelection(false);
-      setError("Verifique que no haya otra meta en el tablero y que haya camino en la celda.");
+      setError("Verifique que no haya otra meta en el tablero, que la celda no posea al jugador y que haya camino.");
       setToast(true);
     }
   }
 
   const onSelectionPathFromModal = () => {
-    if (!isCellWithPathTile(currentPosition)) {
+    if (!currentCellWithPathTile()) {
       let elementToSave = { type: "PathTile", position: currentPosition };
       saveElement(elementToSave);
       setOpenSelection(false);
@@ -164,7 +133,7 @@ const LevelMaker = () => {
   };
 
   const onSelectionDoorFromModal = () => {
-    if (isCellWithPathTile(currentPosition)) {
+    if (currentCellWithPathTile()) {
       let elementToSave = { type: "door", position: currentPosition };
       saveElement(elementToSave);
       setOpenSelection(false);
@@ -176,7 +145,7 @@ const LevelMaker = () => {
   };
 
   const onSelectionKeyFromModal = () => {
-    if (isCellWithPathTile(currentPosition)) {
+    if (currentCellWithPathTile()) {
       let elementToSave = { type: "Key", position: currentPosition };
       saveElement(elementToSave);
       setOpenSelection(false);
@@ -199,7 +168,6 @@ const LevelMaker = () => {
 
 
   const renderEachStep = (i, data) => {
-    console.log(data)
     let { levelState, fullGame } = data;
     let tempObjects,
       tempPaths = [];
@@ -233,13 +201,13 @@ const LevelMaker = () => {
 
   const onClickFinishLevel = () => {
     const newID = `General_${newLevelName}`;
-    if (paths.length !== 0 || objects.length !== 0) {
+    if (paths.length !== 0 && playersInGame === 1 && finishesInGame === 1) {
       isLevelExistent(newID).then(response => {
         if (newLevelName === null || response.data) {
           setError("Intente con otro nombre, el indicado no esta disponible")
           setToast(true);
         } else {
-          if (newMovementsNumber !== 0 && newMovementsNumber !== null) {
+          if (newMovementsNumber && newMovementsNumber > 0) {
             let newLevel = {
               levelId: newID,
               difficulty: "General",
