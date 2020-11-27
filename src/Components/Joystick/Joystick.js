@@ -191,8 +191,7 @@ const Joystick = (props) => {
 
   const newBoard = key => {
     setBoard(board.map(item =>
-      item.actionKey === key ? { ...item, times: 4 } : item
-    ))
+      item.actionKey === key ? { ...item, action: {...item.action, times: 4 } } : item))
   };
 
 
@@ -240,7 +239,7 @@ const Joystick = (props) => {
                       key={`movable_key_${item.actionKey}`}
                       src={item.src}
                       alt={item.alt}
-                      onClickTimes={newBoard(`movable_key_${item.actionKey}`)}
+                      onClickTimes={() => newBoard(item.actionKey)}
                       times={item.action.times}
                       moveCard={moveCard}
                       index={index}
@@ -270,7 +269,7 @@ const Joystick = (props) => {
                       src={item.src}
                       alt={item.alt}
                       times={item.action.times}
-                      onClickTimes={newBoard(`movable_key_${item.actionKey}`)}
+                      onClickTimes={() => newBoard(item.actionKey)}
                       moveCard={moveCard}
                       index={index}
                     />
