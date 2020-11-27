@@ -30,9 +30,7 @@ import TimesModal from "./TimesModal";
 
 const Joystick = (props) => {
   const [board, setBoard] = useState([]);
-  const [functionList, setFunctionList] = useState([]);
   const [boardSecondary, setBoardSecondary] = useState([]);
-  const [functionListSecondary, setFunctionListSecondary] = useState([]);
   const [boardInView, setBoardInView] = useState("BoardOne");
   const [actionID, setID] = useState(1);
   const [displayDeleteMode, setDisplayMode] = useState(false);
@@ -40,7 +38,6 @@ const Joystick = (props) => {
   const [timesModal, setTimesModal] = useState(false);
   const [currentTimes, setCurrentTimes] = useState("");
   const [currentKeyAction, setCurrentKeyAction] = useState(null);
-  const [currentFunctionNumber, setCurrentFunctionNumber] = useState(0);
 
   useEffect(() => { }, [])
 
@@ -184,6 +181,36 @@ const Joystick = (props) => {
     setID(actionID + 1);
   };
 
+  const onClickBoardOne = () => {
+    const aKey = `action_${actionID}`;
+    let openDoor = {
+      actionKey: aKey,
+      action: {
+        type: "Board1Call",
+        times: 1
+      },
+      src: boardone,
+      alt: "boardOneCall",
+    };
+    addActionToCurrentBoard(openDoor);
+    setID(actionID + 1);
+  };
+
+  const onClickBoardTwo = () => {
+    const aKey = `action_${actionID}`;
+    let openDoor = {
+      actionKey: aKey,
+      action: {
+        type: "Board2Call",
+        times: 1
+      },
+      src: boardtwo,
+      alt: "boardTwo",
+    };
+    addActionToCurrentBoard(openDoor);
+    setID(actionID + 1);
+  };
+
   const handleCkick = (actionToDelete) => {
     const newBoard = board.filter(
       (action) => action.actionKey !== actionToDelete
@@ -213,29 +240,11 @@ const Joystick = (props) => {
     setTimesModal(false);
   };
 
-  const isBoardWithProcedures = functionList.length > 0;
-
-  const createFunctionFromMainBoard = () => {
-    let newFunction = [];
-    if (!isBoardWithProcedures) {
-      newFunction.push(
-        {
-          name: `function_${currentFunctionNumber}`,
-          actionList: board.map((item) => item.action)
-        }
-      );
-    };
-    return newFunction;
+  const createFunctions = () => {
+    let board1 = { name: "Board1", actionList: board.map((item) => item.action) };
+    let board2 = { name: "Board2", actionList: boardSecondary.map((item) => item.action) };
+    return [board1, board2];
   };
-
-  const functionFromLastProcedureToFinish = () => {
-    let reverseBoard = board.reverse();
-    let lastProcedure = board.find(f => f.action.type === "BoardOne" || f.action.type === "BoardTwo")
-    let indexLastProcedure = board.indexOf(lastProcedure);
-    let arrayToLastProcedure = reverseBoard.slice(0, indexLastProcedure);
-    return { name: `function_${currentFunctionNumber}`, actionList: arrayToLastProcedure.map((item) => item.action) }
-  };
-
 
   return (
     <div className="container-drag">
@@ -334,11 +343,11 @@ const Joystick = (props) => {
                   props.withSave
                     ? postLevelSolution(
                       props.levelID,
-                      createFunctionFromMainBoard()
+                      createFunctions()
                     ).then(props.onClickPlay)
                     : postLevelSolutionUnsaved(
                       props.level,
-                      createFunctionFromMainBoard()
+                      createFunctions()
                     ).then(props.onClickPlay).catch(props.onClickError);
                 }
                 }
@@ -363,8 +372,8 @@ const Joystick = (props) => {
                 <img onClick={onClickCollectKey} className="collect" src={collect} alt="collectKey" />
               </div>
               <div className="inline-block">
-                <img onClick={onClickOpenDoor} className="board1" src={boardone} alt="board1" />
-                <img onClick={onClickCollectKey} className="board2" src={boardtwo} alt="board2" />
+                <img onClick={onClickBoardOne} className="board1" src={boardone} alt="board1" />
+                <img onClick={onClickBoardTwo} className="board2" src={boardtwo} alt="board2" />
               </div>
             </Grid>
           </Grid>
