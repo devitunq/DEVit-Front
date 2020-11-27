@@ -23,6 +23,8 @@ import openDisplay from "../../Assets/displayAcitons/open-door.png";
 import collectDisplay from "../../Assets/displayAcitons/collect-key.png";
 import isDoor from "../../Assets/displayAcitons/isDoor.png";
 import isKey from "../../Assets/displayAcitons/isKey.png";
+import TimesModal from "./TimesModal";
+import { Settings } from "@material-ui/icons";
 
 const Joystick = (props) => {
   const [board, setBoard] = useState([]);
@@ -31,6 +33,9 @@ const Joystick = (props) => {
   const [actionID, setID] = useState(1);
   const [displayDeleteMode, setDisplayMode] = useState(false);
   const [conditionsModal, setConditionsModal] = useState(false);
+  const [timesModal, setTimesModal] = useState(false);
+  const [currentTimes, setCurrentTimes] = useState("");
+  const [currentKeyAction, setCurrentKeyAction] = useState(null);
 
   useEffect(() => { }, [])
 
@@ -189,9 +194,18 @@ const Joystick = (props) => {
     setBoard([]);
   };
 
-  const newBoard = key => {
-    setBoard(board.map(item =>
-      item.actionKey === key ? { ...item, action: {...item.action, times: 4 } } : item))
+  const onClickTimes = key => {
+    setCurrentKeyAction(key);
+    setTimesModal(true);
+  };
+
+  const updateBoardTimes = () => {
+    boardInView === "BoardOne"
+      ? setBoard(board.map(item =>
+        item.actionKey === currentKeyAction ? { ...item, action: { ...item.action, times: currentTimes } } : item))
+      : setBoard(boardSecondary.map(item =>
+        item.actionKey === currentKeyAction ? { ...item, action: { ...item.action, times: currentTimes } } : item));
+    setTimesModal(false);
   };
 
 
@@ -239,7 +253,7 @@ const Joystick = (props) => {
                       key={`movable_key_${item.actionKey}`}
                       src={item.src}
                       alt={item.alt}
-                      onClickTimes={() => newBoard(item.actionKey)}
+                      onClickTimes={() => onClickTimes(item.actionKey)}
                       times={item.action.times}
                       moveCard={moveCard}
                       index={index}
@@ -269,7 +283,7 @@ const Joystick = (props) => {
                       src={item.src}
                       alt={item.alt}
                       times={item.action.times}
-                      onClickTimes={() => newBoard(item.actionKey)}
+                      onClickTimes={() => onClickTimes(item.actionKey)}
                       moveCard={moveCard}
                       index={index}
                     />
@@ -347,6 +361,13 @@ const Joystick = (props) => {
         handleClose={() => setConditionsModal(false)}
         onClickIsKey={onClickIsKey}
         onClickIsDoor={onClickIsDoor}
+      />
+      <TimesModal
+        open={timesModal}
+        handleClose={() => setTimesModal(false)}
+        onChangeTimes={e => setCurrentTimes(e.target.value)}
+        times={currentTimes}
+        onClickButton={updateBoardTimes}
       />
     </div >
   );
