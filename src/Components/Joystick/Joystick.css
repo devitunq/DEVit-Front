@@ -55,7 +55,7 @@
 
 .if-b {
   cursor: pointer;
-  margin-top: 10%;
+  margin-top: 8%;
   margin-right: 5%;
   max-width: 60%;
 }
@@ -160,8 +160,7 @@
 
 .open{
   cursor: pointer;
-  margin-left: 19%;
-  margin-top: 2%;
+  margin-left: 22%;
   float: left;
   width: 23%;
 }
@@ -169,7 +168,6 @@
 .collect{
   cursor: pointer;
   margin-left: 11%;
-  margin-top: 2%;
   float: left;
   width: 22%;
 }
@@ -279,4 +277,18 @@
 
 .times-text{
   margin-top: 27px;
+}
+
+.board1{
+  margin-left: -3px;
+  margin-right: 40px;
+  margin-bottom: none;
+  width: 25%;
+  cursor: pointer;
+}
+
+.board2{
+  margin-bottom: none;
+  width: 25%;
+  cursor: pointer;
 }
