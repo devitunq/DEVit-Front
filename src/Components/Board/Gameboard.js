@@ -7,6 +7,7 @@ import Door from "../../Assets/gameElements/door.png";
 import OpenDoor from "../../Assets/gameElements/dooropen.png";
 import Key from "../../Assets/gameElements/key.png";
 import Path from "../../Assets/gameElements/test-path.png";
+import Conceal from "../../Assets/gameElements/conceal.png"
 
 const elemeTypeStrToElemType = (elem) => {
   switch (elem.type) {
@@ -16,6 +17,8 @@ const elemeTypeStrToElemType = (elem) => {
       return Key;
     case "door":
       return elem.open ? OpenDoor : Door;
+    case "Conceal":
+      return Conceal;
     default:
       return Path;
   }
@@ -47,8 +50,8 @@ const boardFGpositions = (boardCell, elements, characterImg) => {
 
 const Gameboard = (props) => {
 
-  const onClickCell = (i, j) => {
-    props.savePosition(i, j);
+  const onClickCell = (i, j, clickeable) => {
+    if (clickeable) props.savePosition(i, j);
   }
 
   return (
@@ -60,7 +63,7 @@ const Gameboard = (props) => {
               {row.map((_, i) => (
                 <BoardCell
                   clickeable={props.clickeable}
-                  onClick={() => onClickCell(i, j)}
+                  onClick={() => onClickCell(i, j, props.clickeable)}
                   key={`cell_${i}_${j}`}
                   background={boardBGpositions(`${i}_${j}`, props.paths)}
                   imgList={boardFGpositions(`${i}_${j}`, props.objects, props.character.img)}
