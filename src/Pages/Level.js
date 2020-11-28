@@ -9,6 +9,7 @@ import Joystick from "../Components/Joystick/Joystick";
 import Helpers from "../Components/Others/Helpers";
 import Logo from "../Components/Generics/Logo";
 import LevelModal from "../Components/Generics/LevelModal";
+import InfoBar from "../Components/Others/InfoBar";
 import { getLevelByLevelId, postLevelSucces } from "../Utils/Api";
 import { getCharacterByName } from "../Utils/Characters";
 import { traductorLevels } from "../Utils/LevelsTraductor";
@@ -31,7 +32,9 @@ const Level = () => {
   const [modal, setModal] = useState(false);
   const [playerInicialPos, setPlayerInicialPos] = useState(null);
   const [stars, setStars] = useState(0);
-  const [joystickRestrictions, setJoystickRestrictions] = useState(null);
+  const [levelRestrictions, setLevelRestrictions] = useState(null);
+  const [bestNumberOfMovementes, setBestNumberOfMovementes] = useState(null);
+  const [actualMovementes, setActualMovements] = useState(0);
   const { levelID } = useParams();
   const { character } = useParams();
   const characterObj = getCharacterByName(character);
@@ -45,13 +48,14 @@ const Level = () => {
         setPlayerInicialPos(response.data.playerPosition);
         setDescription(response.data.description);
         setdiff(response.data.difficulty);
-        setJoystickRestrictions({
+        setLevelRestrictions({
           ifEnabled: response.data.ifEnabled,
           repeatEnabled: response.data.repeatEnabled,
           callProceduresEnabled: response.data.callProceduresEnabled,
           maxMovsBoard1: response.data.maxMovsBoard1,
           maxMovsBoard2: response.data.maxMovsBoard2
         });
+        setBestNumberOfMovementes(response.data.bestNumberMovesToWin)
         setIsLoading(false);
       });
   });
@@ -87,6 +91,7 @@ const Level = () => {
     if (i < fullGame.length - 1) {
       setTimeout(() => {
         i++;
+        setActualMovements(actualMovementes + 1);
         renderEachStep(i, data);
       }, 500);
     } else setTimeout(() => finishLevel(levelState === "Complete", comment, starsWon), 500);
@@ -114,19 +119,27 @@ const Level = () => {
 
         </Grid>
 
-        <div className="boardLevel">
-          <Gameboard
-            character={characterObj}
-            grid={grid}
-            paths={paths}
-            objects={objects}
+        <div>
+          <InfoBar
+            bestMovementes={bestNumberOfMovementes}
+            actualMovements={actualMovementes}
+            maxMovementsBoard1={levelRestrictions.maxMovsBoard1}
+            maxMovementsBoard2={levelRestrictions.maxMovsBoard2}
           />
+          <div className="boardLevel">
+            <Gameboard
+              character={characterObj}
+              grid={grid}
+              paths={paths}
+              objects={objects}
+            />
+          </div>
         </div>
 
         <div className="l-joystick">
           <Helpers text={description} />
           <Joystick
-            restrictions={joystickRestrictions}
+            restrictions={levelRestrictions}
             withSave
             onClickPlay={(response) => {
               renderEachStep(0, response.data)
