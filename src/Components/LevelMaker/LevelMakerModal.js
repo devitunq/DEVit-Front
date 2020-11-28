@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Modal } from "@material-ui/core";
 import Door from "../../Assets/levelMaker/door.png";
+import Conceal from "../../Assets/levelMaker/conceal.png";
 import Key from "../../Assets/levelMaker/key.png";
 import Finish from "../../Assets/levelMaker/finish.png";
 import Path from "../../Assets/levelMaker/path.png";
@@ -16,6 +17,7 @@ const LevelMakerModal = ({
   onClickPath,
   onClickDoor,
   onClickKey,
+  onClickConceal,
   onClickDelete
 }) => (
     <Modal id={"conditionsModal"} open={open}>
@@ -32,6 +34,7 @@ const LevelMakerModal = ({
           <img onClick={onClickDoor} className="img" src={Door} alt="door" />
           <img onClick={onClickKey} className="img" src={Key} alt="key" />
           <img onClick={onClickPath} className="img" src={Path} alt="path" />
+          <img onClick={onClickConceal} className="img" src={Conceal} alt="delete" />
           <img onClick={onClickDelete} className="img" src={Delete} alt="delete" />
         </div>
       </Fragment>
