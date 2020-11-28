@@ -66,22 +66,7 @@
   padding-bottom: 1%;
   border-radius: 15px;
   background-color: rgb(17,122,101) ;
-  width: 50%;
   text-align: center;
-}
-
-@media only screen and (max-width: 750px) {
-  .l-joystick {
-    width: 80%;
-    margin-left: 10%;
-  }
-}
-
-@media only screen and (max-width: 900px) {
-  .l-joystick {
-    width: 70%;
-    margin-left: 15%;
-  }
 }
 
 
@@ -95,7 +80,7 @@
   border-radius: 3%;
   background-color: rgb(17,122,101) ;
   height: 100%;
-  width: 42%;
+  width: 100%;
 }
 
 .ins-board-obj:hover {

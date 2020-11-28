@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Grid, LinearProgress } from "@material-ui/core";
+import { Grid, LinearProgress, Container } from "@material-ui/core";
 import ParticlesBg from "particles-bg";
 import "./styles/Level.css";
 import Gameboard from "../Components/Board/Gameboard";
@@ -119,45 +119,53 @@ const Level = () => {
 
         </Grid>
 
-        <div>
-          <InfoBar
-            bestMovementes={bestNumberOfMovementes}
-            actualMovements={actualMovementes}
-            maxMovementsBoard1={levelRestrictions.maxMovsBoard1}
-            maxMovementsBoard2={levelRestrictions.maxMovsBoard2}
+
+
+        <Grid container item xs={12}>
+          <Grid item xs={6}>
+            <Container maxWidth="xl">
+              <InfoBar
+                bestMovementes={bestNumberOfMovementes}
+                actualMovements={actualMovementes}
+                maxMovementsBoard1={levelRestrictions.maxMovsBoard1}
+                maxMovementsBoard2={levelRestrictions.maxMovsBoard2}
+              />
+              <div className="ins-board-obj">
+                <Helpers text={description} />
+                <Joystick
+                  restrictions={levelRestrictions}
+                  withSave
+                  onClickPlay={(response) => {
+                    renderEachStep(0, response.data)
+                  }}
+                  levelID={levelID}
+                />
+              </div>
+            </Container>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Container fixed>
+              <Gameboard
+                character={characterObj}
+                grid={grid}
+                paths={paths}
+                objects={objects}
+              ></Gameboard>
+            </Container>
+          </Grid>
+
+
+          <LevelModal
+            open={modal}
+            onClickWin={`/levelSelection/${diff}/${character}`}
+            onClickLost={closeModal}
+            close={closeModal}
+            result={success}
+            comment={comment}
+            stars={stars}
           />
-          <div className="boardLevel">
-            <Gameboard
-              character={characterObj}
-              grid={grid}
-              paths={paths}
-              objects={objects}
-            />
-          </div>
-        </div>
-
-        <div className="l-joystick">
-          <Helpers text={description} />
-          <Joystick
-            restrictions={levelRestrictions}
-            withSave
-            onClickPlay={(response) => {
-              renderEachStep(0, response.data)
-            }}
-            levelID={levelID}
-          />
-        </div>
-
-
-        <LevelModal
-          open={modal}
-          onClickWin={`/levelSelection/${diff}/${character}`}
-          onClickLost={closeModal}
-          close={closeModal}
-          result={success}
-          comment={comment}
-          stars={stars}
-        />
+        </Grid>
 
       </div >
     );
