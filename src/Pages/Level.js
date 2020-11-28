@@ -29,9 +29,11 @@ const Level = () => {
   const [modal, setModal] = useState(false);
   const [playerInicialPos, setPlayerInicialPos] = useState(null);
   const [stars, setStars] = useState(0);
+  const [joystickRestrictions, setJoystickRestrictions] = useState(null);
   const { levelID } = useParams();
   const { character } = useParams();
   const characterObj = getCharacterByName(character);
+
   useEffect(() => {
     if (isLoading)
       getLevelByLevelId(levelID).then((response) => {
@@ -40,6 +42,13 @@ const Level = () => {
         setPlayerInicialPos(response.data.playerPosition);
         setDescription(response.data.description);
         setdiff(response.data.difficulty);
+        setJoystickRestrictions({
+          ifEnabled: response.data.ifEnabled,
+          repeatEnabled: response.data.repeatEnabled,
+          callProceduresEnabled: response.data.callProceduresEnabled,
+          maxMovsBoard1: response.data.maxMovsBoard1,
+          maxMovsBoard2: response.data.maxMovsBoard2
+        });
         setIsLoading(false);
       });
   });
@@ -100,6 +109,7 @@ const Level = () => {
                 <div className="ins-board-obj">
                   <Helpers text={description} />
                   <Joystick
+                    restrictions={joystickRestrictions}
                     withSave
                     onClickPlay={(response) => {
                       renderEachStep(0, response.data)

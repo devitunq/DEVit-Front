@@ -5,7 +5,8 @@ import { ItemTypes } from "./ItemTypes";
 import ActionAndTimes from "./ActionAndTimes"
 
 const MovableCard = React.forwardRef(
-  ({ src, alt, times, onClickTimes, isDragging, connectDragSource, connectDropTarget }, ref) => {
+  ({ src, alt, times, onClickTimes, isDragging, connectDragSource,
+    connectDropTarget, timesEnabled }, ref) => {
     const elementRef = useRef(null);
     connectDragSource(elementRef);
     connectDropTarget(elementRef);
@@ -16,6 +17,7 @@ const MovableCard = React.forwardRef(
       <Grid item xs={2}>
         <div ref={elementRef}>
           <ActionAndTimes
+            timesEnabled={timesEnabled}
             onClickTimes={onClickTimes}
             times={times}
             src={src}

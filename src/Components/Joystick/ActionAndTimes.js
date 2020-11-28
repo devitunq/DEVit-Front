@@ -1,9 +1,10 @@
 import React from "react";
 import "./Joystick.css";
 
-const ActionAndTimes = ({ src, alt, times, onClick, onClickTimes }) => (
+const ActionAndTimes = ({ src, alt, times, onClick, onClickTimes, timesEnabled }) => (
   <div>
-    <div onClick={onClickTimes} className="times-circle"><p className="times-text">{times}</p></div>
+    {timesEnabled &&
+      <div onClick={onClickTimes} className="times-circle"><p className="times-text">{times}</p></div>}
     <img
       className="board-inst"
       src={src}

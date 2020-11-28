@@ -8,6 +8,7 @@ import { postLevelSolution, postLevelSolutionUnsaved } from "../../Utils/Api";
 import MovableCard from "./MovableCard";
 import RemovableCard from "./RemovableCard";
 import ConditionsModal from "./ConditionsModal";
+import Toast from "../Generics/Toast";
 import goUp from "../../Assets/displayAcitons/board-up.png";
 import left from "../../Assets/displayAcitons/board-left.png";
 import goDown from "../../Assets/displayAcitons/board-down.png";
@@ -38,8 +39,9 @@ const Joystick = (props) => {
   const [timesModal, setTimesModal] = useState(false);
   const [currentTimes, setCurrentTimes] = useState("");
   const [currentKeyAction, setCurrentKeyAction] = useState(null);
+  const [toastError, setToastError] = useState(null);
 
-  useEffect(() => { }, [])
+  useEffect(() => { console.log(props.restrictions) }, [])
 
   const moveCard = (dragIndex, hoverIndex) => {
     const dragCard = board[dragIndex];
@@ -54,161 +56,206 @@ const Joystick = (props) => {
   };
 
   const addActionToCurrentBoard = (movement) => {
-    if (boardInView === "BoardOne") {
+    if (isBoardOne) {
       setBoard([...board, movement]);
     } else {
       setBoardSecondary([...boardSecondary, movement]);
     }
-  }
+  };
+
+  const isBoardOne = boardInView === "BoardOne";
+  const currentBoard = isBoardOne ? board : boardSecondary;
+  const currentBoardName = isBoardOne ? "Tablero 1" : "Tablero 2";
+  const maxMovFromCurrentBoard = isBoardOne ? props.restrictions.maxMovsBoard1 : props.restrictions.maxMovsBoard2
 
   const onClickUp = () => {
-    const aKey = `action_${actionID}`;
-    const upAction = {
-      actionKey: aKey,
-      action: {
-        type: "GoUp",
-        times: 1
-      },
-      src: goUp,
-      alt: "up",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      const upAction = {
+        actionKey: aKey,
+        action: {
+          type: "GoUp",
+          times: 1
+        },
+        src: goUp,
+        alt: "up",
+      };
+      addActionToCurrentBoard(upAction);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(upAction);
-    setID(actionID + 1);
   };
 
   const onClickDown = () => {
-    const aKey = `action_${actionID}`;
-    let downAction = {
-      actionKey: aKey,
-      action: {
-        type: "GoDown",
-        times: 1
-      },
-      src: goDown,
-      alt: "down",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let downAction = {
+        actionKey: aKey,
+        action: {
+          type: "GoDown",
+          times: 1
+        },
+        src: goDown,
+        alt: "down",
+      };
+      addActionToCurrentBoard(downAction);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(downAction);
-    setID(actionID + 1);
   };
 
   const onClickLeft = () => {
-    const aKey = `action_${actionID}`;
-    let leftAction = {
-      actionKey: aKey,
-      action: {
-        type: "GoLeft",
-        times: 1
-      },
-      src: left,
-      alt: "left",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let leftAction = {
+        actionKey: aKey,
+        action: {
+          type: "GoLeft",
+          times: 1
+        },
+        src: left,
+        alt: "left",
+      };
+      addActionToCurrentBoard(leftAction);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(leftAction);
-    setID(actionID + 1);
   };
 
   const onClickRight = () => {
-    const aKey = `action_${actionID}`;
-    let rightAction = {
-      actionKey: aKey,
-      action: {
-        type: "GoRight",
-        times: 1
-      },
-      src: right,
-      alt: "right",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let rightAction = {
+        actionKey: aKey,
+        action: {
+          type: "GoRight",
+          times: 1
+        },
+        src: right,
+        alt: "right",
+      };
+      addActionToCurrentBoard(rightAction);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(rightAction);
-    setID(actionID + 1);
   };
 
   const onClickCollectKey = () => {
-    const aKey = `action_${actionID}`;
-    let collectKey = {
-      actionKey: aKey,
-      action: {
-        type: "CollectKey",
-        times: 1
-      },
-      src: collectDisplay,
-      alt: "collect",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let collectKey = {
+        actionKey: aKey,
+        action: {
+          type: "CollectKey",
+          times: 1
+        },
+        src: collectDisplay,
+        alt: "collect",
+      };
+      addActionToCurrentBoard(collectKey);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(collectKey);
-    setID(actionID + 1);
   };
 
   const onClickOpenDoor = () => {
-    const aKey = `action_${actionID}`;
-    let openDoor = {
-      actionKey: aKey,
-      action: {
-        type: "OpenDoor",
-        times: 1
-      },
-      src: openDisplay,
-      alt: "open",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let openDoor = {
+        actionKey: aKey,
+        action: {
+          type: "OpenDoor",
+          times: 1
+        },
+        src: openDisplay,
+        alt: "open",
+      };
+      addActionToCurrentBoard(openDoor);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(openDoor);
-    setID(actionID + 1);
   };
 
   const onClickIsDoor = () => {
-    const aKey = `action_${actionID}`;
-    let openDoor = {
-      actionKey: aKey,
-      action: {
-        type: "DoorCondition",
-        times: 1
-      },
-      src: isDoor,
-      alt: "isDoor",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let openDoor = {
+        actionKey: aKey,
+        action: {
+          type: "DoorCondition",
+          times: 1
+        },
+        src: isDoor,
+        alt: "isDoor",
+      };
+      addActionToCurrentBoard(openDoor);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(openDoor);
-    setID(actionID + 1);
   };
 
   const onClickIsKey = () => {
-    const aKey = `action_${actionID}`;
-    let openDoor = {
-      actionKey: aKey,
-      action: {
-        type: "KeyCondition",
-        times: 1
-      },
-      src: isKey,
-      alt: "isKey",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let openDoor = {
+        actionKey: aKey,
+        action: {
+          type: "KeyCondition",
+          times: 1
+        },
+        src: isKey,
+        alt: "isKey",
+      };
+      addActionToCurrentBoard(openDoor);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(openDoor);
-    setID(actionID + 1);
   };
 
   const onClickBoardOne = () => {
-    const aKey = `action_${actionID}`;
-    let openDoor = {
-      actionKey: aKey,
-      action: {
-        type: "Board1Call",
-        times: 1
-      },
-      src: boardone,
-      alt: "boardOneCall",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let openDoor = {
+        actionKey: aKey,
+        action: {
+          type: "Board1Call",
+          times: 1
+        },
+        src: boardone,
+        alt: "boardOneCall",
+      };
+      addActionToCurrentBoard(openDoor);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(openDoor);
-    setID(actionID + 1);
   };
 
   const onClickBoardTwo = () => {
-    const aKey = `action_${actionID}`;
-    let openDoor = {
-      actionKey: aKey,
-      action: {
-        type: "Board2Call",
-        times: 1
-      },
-      src: boardtwo,
-      alt: "boardTwo",
+    if (maxMovFromCurrentBoard > currentBoard.length) {
+      const aKey = `action_${actionID}`;
+      let openDoor = {
+        actionKey: aKey,
+        action: {
+          type: "Board2Call",
+          times: 1
+        },
+        src: boardtwo,
+        alt: "boardTwo",
+      };
+      addActionToCurrentBoard(openDoor);
+      setID(actionID + 1);
+    } else {
+      setToastError(true);
     };
-    addActionToCurrentBoard(openDoor);
-    setID(actionID + 1);
   };
 
   const handleCkick = (actionToDelete) => {
@@ -223,19 +270,22 @@ const Joystick = (props) => {
   };
 
   const restartBoard = () => {
-    setBoard([]);
+    isBoardOne
+      ? setBoard([])
+      : setBoardSecondary([]);
   };
 
   const onClickTimes = key => {
+    console.log(key)
     setCurrentKeyAction(key);
     setTimesModal(true);
   };
 
   const updateBoardTimes = () => {
-    boardInView === "BoardOne"
+    isBoardOne
       ? setBoard(board.map(item =>
         item.actionKey === currentKeyAction ? { ...item, action: { ...item.action, times: currentTimes } } : item))
-      : setBoard(boardSecondary.map(item =>
+      : setBoardSecondary(boardSecondary.map(item =>
         item.actionKey === currentKeyAction ? { ...item, action: { ...item.action, times: currentTimes } } : item));
     setTimesModal(false);
   };
@@ -261,13 +311,14 @@ const Joystick = (props) => {
       </div>
 
       <div className="container-box">
-        <div className="board-switch-container">
-          <div onClick={() => setBoardInView("BoardOne")} className="board-switch"> Tablero 1 </div>
-          <div onClick={() => setBoardInView("BoardTwo")} className="board-switch"> Tablero 2 </div>
-        </div>
+        {props.restrictions.callProceduresEnabled &&
+          <div className="board-switch-container">
+            <div onClick={() => setBoardInView("BoardOne")} className="board-switch"> Tablero 1 </div>
+            <div onClick={() => setBoardInView("BoardTwo")} className="board-switch"> Tablero 2 </div>
+          </div>}
         <div className="center">
 
-          {boardInView === "BoardOne"
+          {isBoardOne
             ?
             <JoystickDisplay>
               {displayDeleteMode
@@ -286,6 +337,7 @@ const Joystick = (props) => {
                 : board.map((item, index) => {
                   return (
                     <MovableCard
+                      timesEnabled={props.restrictions.callProceduresEnabled}
                       key={`movable_key_${item.actionKey}`}
                       src={item.src}
                       alt={item.alt}
@@ -315,11 +367,12 @@ const Joystick = (props) => {
                 : boardSecondary.map((item, index) => {
                   return (
                     <MovableCard
+                      timesEnabled={props.restrictions.callProceduresEnabled}
                       key={`movable_key_${item.actionKey}`}
                       src={item.src}
                       alt={item.alt}
-                      times={item.action.times}
                       onClickTimes={() => onClickTimes(item.actionKey)}
+                      times={item.action.times}
                       moveCard={moveCard}
                       index={index}
                     />
@@ -366,15 +419,17 @@ const Joystick = (props) => {
             </Grid>
 
             <Grid item xs={4}>
-              <img onClick={() => setConditionsModal(true)} className="if-b" src={josif} alt="if" />
+              {props.restrictions.ifEnabled &&
+                <img onClick={() => setConditionsModal(true)} className="if-b" src={josif} alt="if" />}
               <div className="inline-block">
                 <img onClick={onClickOpenDoor} className="open" src={open} alt="openDoor" />
                 <img onClick={onClickCollectKey} className="collect" src={collect} alt="collectKey" />
               </div>
-              <div className="inline-block">
-                <img onClick={onClickBoardOne} className="board1" src={boardone} alt="board1" />
-                <img onClick={onClickBoardTwo} className="board2" src={boardtwo} alt="board2" />
-              </div>
+              {props.restrictions.callProceduresEnabled &&
+                <div className="inline-block">
+                  <img onClick={onClickBoardOne} className="board1" src={boardone} alt="board1" />
+                  <img onClick={onClickBoardTwo} className="board2" src={boardtwo} alt="board2" />
+                </div>}
             </Grid>
           </Grid>
         </div>
@@ -409,6 +464,11 @@ const Joystick = (props) => {
         onChangeTimes={e => setCurrentTimes(e.target.value)}
         times={currentTimes}
         onClickButton={updateBoardTimes}
+      />
+      <Toast
+        content={`El limite de instrucciones en ${currentBoardName} es ${maxMovFromCurrentBoard}`}
+        open={toastError}
+        handleClose={() => setToastError(false)}
       />
     </div >
   );
