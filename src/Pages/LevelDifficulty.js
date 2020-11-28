@@ -30,8 +30,7 @@ const LevelDifficulty = () => {
     }
   };
 
-  const difficultiesList = ["Easy", "Medium", "Hard", "General"];
-
+  // const difficultiesList = ["Easy", "Medium", "Hard", "General"];
 
   useEffect(() => {
     if (isLoading)
@@ -64,7 +63,7 @@ const LevelDifficulty = () => {
           </Grid>
 
           <Grid container direction="row">
-            {difficultiesList.map((diff) => {
+            {difficulties.map((diff) => {
               return (
                 <Grid item xs={6}>
                   <Container maxWidth="xs">

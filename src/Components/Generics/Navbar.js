@@ -36,7 +36,7 @@ const Navbar = () => (
       {isAuthenticated() &&
         <li>
           <a href="/levelMaker" id="navLevelMakerLink">
-            Autoservicio
+            Crear nivel
         </a>
         </li>}
       {isAuthenticated() &&

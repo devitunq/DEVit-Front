@@ -39,7 +39,7 @@ const Guest = () => {
 
 
   return (
-    <Container maxWidth="xs">
+    <div>
       <div className="guest-cont">
         <div className="guest-title"> Jugar como invitado </div>
         <hr className="guest-divider"></hr>
@@ -61,8 +61,6 @@ const Guest = () => {
           />
         </a>
 
-        <div className="or"> ------------------   o  ------------------</div>
-
         <RegisterUser />
       </div>
 
@@ -71,7 +69,7 @@ const Guest = () => {
         open={alert}
         handleClose={handleClose}
       />
-    </Container>
+    </div>
   )
 };
 

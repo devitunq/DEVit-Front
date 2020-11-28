@@ -33,18 +33,17 @@ const AuthOrGuest = () => {
           <Grid item xs={12}>
             <Navbar />
           </Grid>
-
-          <Grid container item xs={12}>
-
-            <Grid item xs={6}>
-              <Login />
-            </Grid>
-
-            <Grid item xs={6}>
-              <Guest />
-            </Grid>
-          </Grid>
         </Grid>
+
+        <div className="loginRegister">
+          <div className="floatL">
+            <Login />
+          </div>
+          <div className="floatL">
+            <Guest />
+          </div>
+        </div>
+
       </div>
     );
 };

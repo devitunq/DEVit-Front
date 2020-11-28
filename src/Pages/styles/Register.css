@@ -1,37 +1,32 @@
-.login-cont{
-  margin-top: 25%;
+.register-cont{
+  margin-top: 10%;
   text-align: left;
+  margin-left: 3%;
+  width: 85%;
 }
 
-.divider-login{
+.divider-register{
   width: 100%;
 }
 
-.login-title{
-  text-align: left;
-  font-size: 150%;
+.register-title{
+  text-align: center;
+  font-size: 2em;
   color: rgb(255, 255, 255);
   margin-bottom: 2%;
 }
 
-.login-data{
+.register-data{
   text-align: left;
   font-size: 105%;
   color: rgb(214, 214, 214);
   margin-bottom: 2%;
 }
 
-.next-endbutt{
-  width: 8%;
+.next-register{
+  width: 2%;
   height: auto;
-  margin-top: 2%;
-  margin-left: 92%;
+  margin-top: 4%;
+  margin-left: 96%;
   cursor: pointer;
-}
-
-.vl{
-  margin-left: 160%;
-  margin-top: 25%;
-  border-left: 3px solid rgb(255, 255, 255);
-  height: 500px;
 }

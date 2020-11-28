@@ -14,11 +14,6 @@
   margin-bottom: 2%;
 }
 
-.next-endbutt:hover{
-  width: 11%;
-  height: auto;
-}
-
 .guess-data{
   text-align: left;
   font-size: 105%;
@@ -35,4 +30,14 @@
 
 .auth-register:hover{
   text-decoration: underline;
+}
+
+.loginRegister{
+  margin-top: 5%;
+  width: 100%;
+  margin-left: 5%;
+}
+
+.floatL{
+  display: inline;
 }

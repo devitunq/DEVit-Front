@@ -1,14 +1,14 @@
 export const traductorLevels = (levelName) => {
   switch (levelName) {
     case "Level One":
-      return "Nivel Uno"
+      return "Nivel Uno";
     case "Level Two":
-      return "Nivel Dos"
+      return "Nivel Dos";
     case "Level Three":
-      return "Nivel Tres"
+      return "Nivel Tres";
     case "Level Four":
-      return "Nivel Cuatro"
+      return "Nivel Cuatro";
     default:
-      return "Nivel creado por usuario"
+      return levelName;
   }
 } 

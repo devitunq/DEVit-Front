@@ -55,40 +55,35 @@ const Loign = () => {
   return (
     <Grid container item xs={12}>
       <Grid item xs={10}>
-        <Container maxWidth="xs">
-          <div className="login-cont">
-            <div className="login-title"> Jugar con mi cuenta. </div>
-            <hr className="divider-login"></hr>
-            <div className="login-data"> Usuario </div>
-            <InputBase
-              id="userId"
-              fullWidth
-              required
-              inputProps={{ "aria-label": "naked" }}
-              onChange={(e) => setUsername(e.target.value)}
+        <div className="login-cont">
+          <div className="login-title"> Jugar con mi cuenta. </div>
+          <hr className="divider-login"></hr>
+          <div className="login-data"> Usuario </div>
+          <InputBase
+            id="userId"
+            fullWidth
+            required
+            inputProps={{ "aria-label": "naked" }}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <hr className="divider-login"></hr>
+          <div className="login-data"> Contraseña </div>
+          <InputBase
+            id="passId"
+            type="password"
+            fullWidth
+            required
+            inputProps={{ "aria-label": "naked" }}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <a id="nextInput" onClick={handleLogin}>
+            <img
+              className="next-endbutt"
+              src={Next}
+              alt="next"
             />
-            <hr className="divider-login"></hr>
-            <div className="login-data"> Contraseña </div>
-            <InputBase
-              id="passId"
-              type="password"
-              fullWidth
-              required
-              inputProps={{ "aria-label": "naked" }}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <a id="nextInput" onClick={handleLogin}>
-              <img
-                className="next-endbutt"
-                src={Next}
-                alt="next"
-              />
-            </a>
-          </div>
-        </Container>
-      </Grid>
-      <Grid item xs={1}>
-        <div className="vl"></div>
+          </a>
+        </div>
       </Grid>
 
       <Toast

@@ -62,60 +62,53 @@ const Register = () => {
         <Navbar />
       </Grid>
 
-      <Grid container>
-        <Grid item xs={2}></Grid>
-        <Grid item xs={8}>
-          <Container maxWidth="xs">
-            <div className="login-cont">
-              <div className="login-title"> Nuevo usuario </div>
-              <hr className="divider-login"></hr>
-              <div className="login-data"> Elija un nombre de usuario </div>
-              <InputBase
-                id="userId"
-                fullWidth
-                required
-                inputProps={{ "aria-label": "naked" }}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <div className="login-data"> Elija un nick </div>
-              <InputBase
-                id="nickId"
-                fullWidth
-                required
-                inputProps={{ "aria-label": "naked" }}
-                onChange={(e) => setNick(e.target.value)}
-              />
-              <div className="login-data"> Contraseña </div>
-              <InputBase
-                id="passId"
-                type="password"
-                fullWidth
-                required
-                inputProps={{ "aria-label": "naked" }}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <div className="login-data"> Repita la contraseña </div>
-              <InputBase
-                id="passId"
-                type="password"
-                fullWidth
-                required
-                inputProps={{ "aria-label": "naked" }}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
-              />
-              <a id="nextInput">
-                <img
-                  className="next-endbutt"
-                  src={Next}
-                  alt="next"
-                  onClick={handleSumbit}
-                />
-              </a>
-            </div>
-          </Container>
-        </Grid>
-        <Grid item xs={2}></Grid>
-      </Grid>
+      <div className="register-cont">
+        <div className="register-title"> Nuevo usuario </div>
+        <hr className="divider-register"></hr>
+        <div className="register-data"> Elija un nombre de usuario </div>
+        <InputBase
+          id="userId"
+          fullWidth
+          required
+          inputProps={{ "aria-label": "naked" }}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <div className="login-data"> Elija un nick </div>
+        <InputBase
+          id="nickId"
+          fullWidth
+          required
+          inputProps={{ "aria-label": "naked" }}
+          onChange={(e) => setNick(e.target.value)}
+        />
+        <div className="register-data"> Contraseña </div>
+        <InputBase
+          id="passId"
+          type="password"
+          fullWidth
+          required
+          inputProps={{ "aria-label": "naked" }}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <div className="register-data"> Repita la contraseña </div>
+        <InputBase
+          id="passId"
+          type="password"
+          fullWidth
+          required
+          inputProps={{ "aria-label": "naked" }}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+        />
+        <a id="nextInput">
+          <img
+            className="next-register"
+            src={Next}
+            alt="next"
+            onClick={handleSumbit}
+          />
+        </a>
+      </div>
+
 
       <Toast
         width="100%"

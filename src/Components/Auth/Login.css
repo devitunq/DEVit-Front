@@ -1,5 +1,5 @@
 .login-cont{
-  margin-top: 25%;
+  margin-top: 5%;
   text-align: left;
 }
 
@@ -24,16 +24,9 @@
 }
 
 .next-endbutt{
-  width: 8%;
+  width: 2%;
   height: auto;
   margin-top: 2%;
-  margin-left: 92%;
+  margin-left: 96%;
   cursor: pointer;
-}
-
-.vl{
-  margin-left: 160%;
-  margin-top: 25%;
-  border-left: 3px solid rgb(255, 255, 255);
-  height: 500px;
 }
