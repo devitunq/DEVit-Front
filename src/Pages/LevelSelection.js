@@ -45,11 +45,19 @@ const LevelSelection = () => {
     switch (levelStr) {
       case "Easy_Level One":
         return lvl1;
+      case "Medium_Level One":
+        return lvl1;
       case "Easy_Level Two":
+        return lvl2;
+      case "Medium_Level Two":
         return lvl2;
       case "Easy_Level Three":
         return lvl3;
+      case "Medium Three":
+        return lvl3;
       case "Easy_Level Four":
+        return lvl4;
+      case "Medium Four":
         return lvl4;
       default:
         return lvl5;
