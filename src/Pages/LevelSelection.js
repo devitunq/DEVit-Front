@@ -24,6 +24,8 @@ const LevelSelection = () => {
   const [levels, setLevels] = useState([]);
   const [levelsPlayed, setLevelsPlayed] = useState([]);
   const [levelsScored, setLevelsScored] = useState([]);
+  const [startingShowLevels, setStartingShowLevels] = useState(0);
+  const [finishingShowLevels, setFinishShowLevels] = useState(4);
   const { difficulty } = useParams();
   const { character } = useParams();
 
@@ -40,6 +42,18 @@ const LevelSelection = () => {
       setIsLoading(false);
     };
   });
+
+  const levelsToShow = difficulty !== "General" ? levels : levels.slice(startingShowLevels, finishingShowLevels + 1)
+
+  const setNextPage = () => {
+    setStartingShowLevels(startingShowLevels + 5);
+    setFinishShowLevels(finishingShowLevels + 5);
+  }
+
+  const setPreviusPage = () => {
+    setStartingShowLevels(startingShowLevels - 5);
+    setFinishShowLevels(finishingShowLevels - 5);
+  }
 
   const levelNameToImg = (levelStr) => {
     switch (levelStr) {
@@ -147,7 +161,7 @@ const LevelSelection = () => {
               <Grid cotnainer>
                 <Container maxWidth="xs">
                   {
-                    levels.map((l) => {
+                    levelsToShow.map((l) => {
 
                       return (
                         <div className="lvl-container" >
@@ -163,12 +177,12 @@ const LevelSelection = () => {
                                       src={levelNameToImg(l.levelId)}
                                       alt={`${l.name}`}
                                     />
-                                    : l.name
+                                    : <p className="generalLevelName">{l.name}</p>
                                   }
                                   {
                                     isUser() &&
                                     <img
-                                      className="lvl-stars"
+                                      className={difficulty !== "General" ? "lvl-stars" : "lvl-stars-general"}
                                       src={determinateStars(searchLevelStars(l.levelId))}
                                     />
                                   }
@@ -190,10 +204,15 @@ const LevelSelection = () => {
                       );
                     })
                   }
+                  {difficulty === "General" &&
+                    <div>
+                      <div onClick={() => setPreviusPage()} className="lsback"> Anterior </div>
+                      <div onClick={() => setNextPage()} className="lsnext"> Siguiente </div>
+                    </div>}
                 </Container>
               </Grid>
             </Grid>
-            <Grid item xs={2}></Grid>
+            <Grid item xs={2}> </Grid>
           </Grid>
         </Grid >
       </div >
