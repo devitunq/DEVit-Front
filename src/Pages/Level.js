@@ -9,7 +9,6 @@ import Joystick from "../Components/Joystick/Joystick";
 import Helpers from "../Components/Others/Helpers";
 import Logo from "../Components/Generics/Logo";
 import LevelModal from "../Components/Generics/LevelModal";
-import InfoBar from "../Components/Others/InfoBar";
 import { getLevelByLevelId, postLevelSucces } from "../Utils/Api";
 import { getCharacterByName } from "../Utils/Characters";
 import { traductorLevels } from "../Utils/LevelsTraductor";
@@ -33,7 +32,6 @@ const Level = () => {
   const [playerInicialPos, setPlayerInicialPos] = useState(null);
   const [stars, setStars] = useState(0);
   const [levelRestrictions, setLevelRestrictions] = useState(null);
-  const [bestNumberOfMovementes, setBestNumberOfMovementes] = useState(null);
   const [actualMovementes, setActualMovements] = useState(0);
   const { levelID } = useParams();
   const { character } = useParams();
@@ -55,7 +53,6 @@ const Level = () => {
           maxMovsBoard1: response.data.maxMovsBoard1,
           maxMovsBoard2: response.data.maxMovsBoard2
         });
-        setBestNumberOfMovementes(response.data.bestNumberMovesToWin)
         setIsLoading(false);
       });
   });
@@ -124,12 +121,6 @@ const Level = () => {
         <Grid container item xs={12}>
           <Grid item xs={6}>
             <Container maxWidth="xl">
-              <InfoBar
-                bestMovementes={bestNumberOfMovementes}
-                actualMovements={actualMovementes}
-                maxMovementsBoard1={levelRestrictions.maxMovsBoard1}
-                maxMovementsBoard2={levelRestrictions.maxMovsBoard2}
-              />
               <div className="ins-board-obj">
                 <Helpers text={description} />
                 <Joystick

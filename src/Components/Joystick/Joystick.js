@@ -388,6 +388,7 @@ const Joystick = (props) => {
                 })}
             </JoystickDisplay>
           }
+          <p style={{color:'Black', fontWeight: 'bold' }}>{`Instrucciones restantes: ${maxMovFromCurrentBoard - currentBoard.length}`}</p>
           <Grid container direction="row">
             <Grid item xs={4}>
               <JositckArrows
