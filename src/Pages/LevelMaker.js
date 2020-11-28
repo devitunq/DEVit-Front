@@ -7,7 +7,7 @@ import CharacterDefault from "../Assets/gameElements/character3.png";
 import Toast from "../Components/Generics/Toast";
 import Joystick from "../Components/Joystick/Joystick";
 import LevelMakerModal from "../Components/LevelMaker/LevelMakerModal";
-import { Grid, Container, InputBase } from "@material-ui/core";
+import { Grid, Container, InputBase, Checkbox } from "@material-ui/core";
 import { postNewLevel, isLevelExistent } from "../Utils/Api";
 import { useHistory } from "react-router-dom"
 import "./styles/LevelMaker.css";
@@ -37,6 +37,11 @@ const LevelMaker = () => {
   const [playerInitialPosition, setPlayerInitialPosition] = useState(null);
   const [newLevelName, setLevelName] = useState(null);
   const [newMovementsNumber, setMovementesNumber] = useState(null);
+  const [newMaxBoard1, setNewMaxBoard1] = useState(null);
+  const [newMaxBoard2, setNewMaxBoard2] = useState(null);
+  const [newIfEnable, setNewIfEnable] = useState(false);
+  const [newProcedureEnable, setNewProcedureEnable] = useState(false);
+  const [newRepeatEnable, setNewRepeatEnable] = useState(false);
   const [level, setLevel] = useState(null);
   const [initialLevel, setInitialLevel] = useState(null);
   const history = useHistory();
@@ -285,6 +290,61 @@ const LevelMaker = () => {
           value={newMovementsNumber}
           onChange={(event) => setMovementesNumber(event.target.value)}
         />
+        <div className="inputs-lm-header"> Cantidad maxima movimientos tablero 1. </div>
+        <InputBase
+          id="maxBoard1"
+          required
+          style={{
+            width: "400px"
+          }}
+          inputProps={{ "aria-label": "naked" }}
+          value={newMaxBoard1}
+          onChange={(event) => setNewMaxBoard1(event.target.value)}
+        />
+        <div className="inputs-lm-header"> Cantidad maxima movimientos tablero 2. </div>
+        <InputBase
+          id="maxBoard2"
+          required
+          style={{
+            width: "400px"
+          }}
+          inputProps={{ "aria-label": "naked" }}
+          value={newMaxBoard2}
+          onChange={(event) => setNewMaxBoard2(event.target.value)}
+        />
+        <div>
+          <p className="checkboxLabel"> Habilitar el if en tablero </p>
+          <input
+            className="checkbox"
+            type="checkbox"
+            id="ifEnable"
+            name="ifEnable"
+            value={newIfEnable}
+            onClick={() => setNewIfEnable(!newIfEnable)}
+          />
+        </div>
+        <div>
+          <p className="checkboxLabel"> Habilitar el procedure en tablero </p>
+          <input
+            className="checkbox"
+            type="checkbox"
+            id="procedureEnable"
+            name="procedureEnable"
+            value={newProcedureEnable}
+            onClick={() => setNewProcedureEnable(!newProcedureEnable)}
+          />
+        </div>
+        <div>
+          <p className="checkboxLabel"> Habilitar el repeat en tablero </p>
+          <input
+            className="checkbox"
+            type="checkbox"
+            id="repeatEnable"
+            name="repeatEnable"
+            value={newRepeatEnable}
+            onClick={() => setNewRepeatEnable(!newRepeatEnable)}
+          />
+        </div>
       </div>
 
       <Gameboard
@@ -302,6 +362,13 @@ const LevelMaker = () => {
       {showJoystick &&
         <div className="lm-joystick">
           <Joystick
+            restrictions={{
+              ifEnabled: newIfEnable,
+              repeatEnabled: newRepeatEnable,
+              callProceduresEnabled: newProcedureEnable,
+              maxMovsBoard1: newMaxBoard1 || 99999,
+              maxMovsBoard2: newMaxBoard2 || 99999
+            }}
             onClickError={handleMovementsError}
             onClickPlay={
               (response) => {

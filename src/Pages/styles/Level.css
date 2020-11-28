@@ -52,7 +52,42 @@
   text-shadow: 0px 0px 5px #da0000;
 }
 
+.boardLevel{
+  margin-top: 2%;
+}
+
+.l-joystick{
+  padding-top: 1%;
+  margin-top: 3%;
+  margin-bottom: 15px;
+  margin-left: 25%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0), 0 1px 2px rgba(0, 0, 0);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  padding-bottom: 1%;
+  border-radius: 15px;
+  background-color: rgb(17,122,101) ;
+  width: 50%;
+  text-align: center;
+}
+
+@media only screen and (max-width: 750px) {
+  .l-joystick {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .l-joystick {
+    width: 70%;
+    margin-left: 15%;
+  }
+}
+
+
 .ins-board-obj{
+  margin-left: 1%;
+  margin-top: 5%;
   box-shadow: 0 1px 3px rgba(0, 0, 0), 0 1px 2px rgba(0, 0, 0);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   padding-top: 1%;
@@ -60,6 +95,7 @@
   border-radius: 3%;
   background-color: rgb(17,122,101) ;
   height: 100%;
+  width: 42%;
 }
 
 .ins-board-obj:hover {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Grid, LinearProgress, Container } from "@material-ui/core";
+import { Grid, LinearProgress } from "@material-ui/core";
 import ParticlesBg from "particles-bg";
 import "./styles/Level.css";
 import Gameboard from "../Components/Board/Gameboard";
@@ -11,6 +11,7 @@ import Logo from "../Components/Generics/Logo";
 import LevelModal from "../Components/Generics/LevelModal";
 import { getLevelByLevelId, postLevelSucces } from "../Utils/Api";
 import { getCharacterByName } from "../Utils/Characters";
+import { traductorLevels } from "../Utils/LevelsTraductor";
 
 const boardSize = 7;
 const initialBoard = Array(boardSize)
@@ -19,6 +20,7 @@ const initialBoard = Array(boardSize)
 
 const Level = () => {
   const [grid] = useState(initialBoard);
+  const [levelName, setLevelName] = useState(null);
   const [objects, setObjects] = useState([]);
   const [paths, setPaths] = useState([]);
   const [comment, setComment] = useState("");
@@ -37,6 +39,7 @@ const Level = () => {
   useEffect(() => {
     if (isLoading)
       getLevelByLevelId(levelID).then((response) => {
+        setLevelName(response.data.name);
         setObjects(response.data.elements.filter((e) => e.type !== "PathTile"));
         setPaths(response.data.elements.filter((e) => e.type === "PathTile"));
         setPlayerInicialPos(response.data.playerPosition);
@@ -102,35 +105,36 @@ const Level = () => {
             <Navbar />
           </Grid>
 
-          <Grid container item xs={12}>
-            <Grid item xs={6}>
-              <Container maxWidth="xl">
-                <div className="ins-board-obj">
-                  <Helpers text={description} />
-                  <Joystick
-                    restrictions={joystickRestrictions}
-                    withSave
-                    onClickPlay={(response) => {
-                      renderEachStep(0, response.data)
-                    }}
-                    levelID={levelID}
-                  />
-                </div>
-              </Container>
-            </Grid>
-
-            <Grid item xs={6}>
-              <Container fixed>
-                <Gameboard
-                  character={characterObj}
-                  grid={grid}
-                  paths={paths}
-                  objects={objects}
-                ></Gameboard>
-              </Container>
-            </Grid>
+          <Grid item xs={12}>
+            <div className="contWelcome-diff">
+              {traductorLevels(levelName)}
+              <hr className="divider-diff"></hr>
+            </div>
           </Grid>
+
         </Grid>
+
+        <div className="boardLevel">
+          <Gameboard
+            character={characterObj}
+            grid={grid}
+            paths={paths}
+            objects={objects}
+          />
+        </div>
+
+        <div className="l-joystick">
+          <Helpers text={description} />
+          <Joystick
+            restrictions={joystickRestrictions}
+            withSave
+            onClickPlay={(response) => {
+              renderEachStep(0, response.data)
+            }}
+            levelID={levelID}
+          />
+        </div>
+
 
         <LevelModal
           open={modal}
@@ -140,8 +144,7 @@ const Level = () => {
           result={success}
           comment={comment}
           stars={stars}
-        >
-        </LevelModal>
+        />
 
       </div >
     );

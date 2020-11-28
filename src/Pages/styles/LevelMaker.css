@@ -64,3 +64,19 @@
 .finished-level:hover{
   background-color: teal;
 }
+
+.checkboxLabel{
+  display: inline;
+  font-size: 1.5em;
+  font-family: 'opensans-regular', sans-serif;
+  color: white;
+  margin-right: 5%;
+}
+
+.checkbox{
+  cursor: pointer;
+  margin-bottom: 2%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}

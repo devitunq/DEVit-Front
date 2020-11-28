@@ -41,7 +41,7 @@ const Joystick = (props) => {
   const [currentKeyAction, setCurrentKeyAction] = useState(null);
   const [toastError, setToastError] = useState(null);
 
-  useEffect(() => { console.log(props.restrictions) }, [])
+  useEffect(() => { }, [])
 
   const moveCard = (dragIndex, hoverIndex) => {
     const dragCard = board[dragIndex];
