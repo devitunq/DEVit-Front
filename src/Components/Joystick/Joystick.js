@@ -196,6 +196,7 @@ const Joystick = (props) => {
       };
       addActionToCurrentBoard(openDoor);
       setID(actionID + 1);
+      setConditionsModal(false);
     } else {
       setToastError(true);
     };
@@ -215,6 +216,7 @@ const Joystick = (props) => {
       };
       addActionToCurrentBoard(openDoor);
       setID(actionID + 1);
+      setConditionsModal(false);
     } else {
       setToastError(true);
     };
@@ -259,10 +261,17 @@ const Joystick = (props) => {
   };
 
   const handleCkick = (actionToDelete) => {
-    const newBoard = board.filter(
-      (action) => action.actionKey !== actionToDelete
-    );
-    setBoard(newBoard);
+    if (isBoardOne) {
+      const newBoard = board.filter(
+        (action) => action.actionKey !== actionToDelete
+      );
+      setBoard(newBoard);
+    } else {
+      const newBoard = boardSecondary.filter(
+        (action) => action.actionKey !== actionToDelete
+      );
+      setBoardSecondary(newBoard);
+    }
   };
 
   const handleChange = () => {
@@ -276,7 +285,6 @@ const Joystick = (props) => {
   };
 
   const onClickTimes = key => {
-    console.log(key)
     setCurrentKeyAction(key);
     setTimesModal(true);
   };

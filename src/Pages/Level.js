@@ -74,7 +74,6 @@ const Level = () => {
   };
 
   const renderEachStep = (i, data) => {
-    console.log(data)
     let { levelState, fullGame, comment, starsWon } = data;
     let tempObjects,
       tempPaths = [];
