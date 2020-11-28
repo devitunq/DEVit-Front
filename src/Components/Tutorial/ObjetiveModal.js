@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Grid } from "@material-ui/core";
+import Finish from "../../Assets/Modals/finish.png";
 import "../Tutorial/Tutorial.css"
 
 const ModalObjective = ({ open, close, textObjective }) => (
@@ -14,6 +15,7 @@ const ModalObjective = ({ open, close, textObjective }) => (
               >
                 X
               </div>
+              <img alt="finish" src={Finish} style={{ width: "4%" }} />
               {textObjective}
             </div>
           </Grid>
