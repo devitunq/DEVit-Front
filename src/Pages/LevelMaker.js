@@ -159,7 +159,19 @@ const LevelMaker = () => {
       setError("Debe haber camino en la celda para colocar una llave;");
       setToast(true);
     }
-  }
+  };
+
+  const onSelectionConcealFromModal = () => {
+    if (currentCellWithPathTile()) {
+      let elementToSave = { type: "Conceal", position: currentPosition };
+      saveElement(elementToSave);
+      setOpenSelection(false);
+    } else {
+      setOpenSelection(false);
+      setError("Debe haber camino en la celda para colocar tierra;");
+      setToast(true);
+    }
+  };
 
   const handleCloseErrorToast = () => {
     setToast(false);
@@ -389,6 +401,7 @@ const LevelMaker = () => {
         onClickPath={onSelectionPathFromModal}
         onClickDoor={onSelectionDoorFromModal}
         onClickKey={onSelectionKeyFromModal}
+        onClickConceal={onSelectionConcealFromModal}
         onClickDelete={onSelectionDeleteFromModal}
       />
 
