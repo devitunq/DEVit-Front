@@ -43,8 +43,6 @@ const Profile = () => {
                     <LevelProgress
                       progressBarTitle="Porcentaje de juego completado: "
                       value={completion}
-                      min={0}
-                      max={100}
                     />
                   </Grid>
                 </Grid>

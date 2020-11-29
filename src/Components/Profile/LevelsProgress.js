@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, LinearProgress } from '@material-ui/core';
 import "./LevelsProgress.css";
 
-const LevelProgress = ({ value, min, max, progressBarTitle }) => (
+const LevelProgress = ({ value, progressBarTitle }) => (
   <Grid item xs={12}>
     <div className="levelProgress-label">{progressBarTitle}</div>
     <div className="levelProgress-infoContainer">
@@ -10,7 +10,6 @@ const LevelProgress = ({ value, min, max, progressBarTitle }) => (
         <Grid item xs={2}></Grid>
         <Grid item xs={8}>
           <div className="levelProgress-bar">
-            <div className="levelProgress-MinMax">{min}</div>
             <LinearProgress
               variant="determinate"
               value={value}
@@ -25,7 +24,7 @@ const LevelProgress = ({ value, min, max, progressBarTitle }) => (
                 float: "left"
               }}
             />
-            <div className="levelProgress-MinMax">{max}</div>
+            <div className="levelProgress-MinMax">{value}%</div>
           </div>
         </Grid>
         <Grid item xs={2}></Grid>
