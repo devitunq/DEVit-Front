@@ -241,13 +241,13 @@ const LevelMaker = () => {
             setLevel(newLevel);
             setShowJoystick(true);
           } else {
-            setError("Ingrese una cantidad de movimientos valida")
+            setError("Ingrese una cantidad de movimientos válida")
             setToast(true);
           };
         };
       });
     } else {
-      setError("Tablero invalido")
+      setError("Tablero incompleto, verifique que el nivel posee una meta y un personaje.")
       setToast(true);
     }
   };

@@ -304,6 +304,8 @@ const Joystick = (props) => {
     return [board1, board2];
   };
 
+  const numberOfInstr = () => maxMovFromCurrentBoard == 0 ? `El tablero no acepta instrucciones` : maxMovFromCurrentBoard > 100 ? `El tablero no posee un limite de instrucciones` : `Instrucciones restantes del tablero: ${maxMovFromCurrentBoard - currentBoard.length}`;
+
   return (
     <div className="container-drag">
       <div className="center">
@@ -388,7 +390,7 @@ const Joystick = (props) => {
                 })}
             </JoystickDisplay>
           }
-          <p style={{color:'Black', fontWeight: 'bold' }}>{`Instrucciones restantes: ${maxMovFromCurrentBoard - currentBoard.length}`}</p>
+          <p style={{color:'Black', fontWeight: 'bold' }}>{ numberOfInstr() }</p>
           <Grid container direction="row">
             <Grid item xs={4}>
               <JositckArrows
