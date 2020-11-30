@@ -173,12 +173,12 @@ const LevelSelection = () => {
                                       src={levelNameToImg(l.levelId)}
                                       alt={`${l.name}`}
                                     />
-                                    : <p className="generalLevelName">{l.name}</p>
+                                    : <div className="generalLevelName">{l.name}</div>
                                   }
                                   {
                                     isUser() &&
                                     <img
-                                      className={difficulty !== "General" ? "lvl-stars" : "lvl-stars-general"}
+                                      className={difficulty !== "General" ? "lvl-stars" : "lvl-stars"}
                                       src={determinateStars(searchLevelStars(l.levelId))}
                                     />
                                   }

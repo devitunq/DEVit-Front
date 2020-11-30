@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Caviar Dreams';
+  src: url('../../Fonts/CaviarDreams.ttf') format('truetype');
+  font-weight: normal;   
+  font-style: normal; 
+  font-display: swap;
+ }
+
 .lvl-container {
   margin-top: 5%;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -58,8 +66,12 @@
 }
 
 .generalLevelName{
-  display: inline;
-  font-size: 0.5em;
+  max-width: 200px;
+  display: inline-block;
+  color: black;
+  font-size: 0.8em;
+  margin-bottom: 5px;
+  font-family: 'Caviar Dreams';
 }
 
 .lsback{

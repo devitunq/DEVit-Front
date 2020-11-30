@@ -62,24 +62,22 @@ const LevelDifficulty = () => {
             </div>
           </Grid>
 
-          <Grid container direction="row">
+          <Grid container direction="column">
             {difficulties.map((diff) => {
               return (
-                <Grid item xs={6}>
-                  <Container maxWidth="xs">
-                    <div className="diff-container" key={`key_${diff}`} data-testid={`difSel_${diff}`}>
-                      <a href={`/levelSelection/${diff}/${character}`}>
-                        <div className="diff-item">
-                          <img
-                            className={diff === "Medium" ? "diff-img2" : "diff-img"}
-                            src={dificultyToImg(diff)}
-                            alt={`${diff}`}
-                          />
-                        </div>
-                      </a>
-                    </div>
-                  </Container>
-                </Grid>
+                <Container maxWidth="xs">
+                  <div className="diff-container" key={`key_${diff}`} data-testid={`difSel_${diff}`}>
+                    <a href={`/levelSelection/${diff}/${character}`}>
+                      <div className="diff-item">
+                        <img
+                          className={diff === "Medium" ? "diff-img2" : "diff-img"}
+                          src={dificultyToImg(diff)}
+                          alt={`${diff}`}
+                        />
+                      </div>
+                    </a>
+                  </div>
+                </Container>
               );
             })
             }
