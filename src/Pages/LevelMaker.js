@@ -7,7 +7,8 @@ import CharacterDefault from "../Assets/gameElements/character3.png";
 import Toast from "../Components/Generics/Toast";
 import Joystick from "../Components/Joystick/Joystick";
 import LevelMakerModal from "../Components/LevelMaker/LevelMakerModal";
-import { Grid, Container, InputBase, Checkbox } from "@material-ui/core";
+import LevelMakerConcealModal from "../Components/LevelMaker/LevelMakerConcealModal";
+import { Grid, InputBase } from "@material-ui/core";
 import { postNewLevel, isLevelExistent } from "../Utils/Api";
 import { useHistory } from "react-router-dom"
 import "./styles/LevelMaker.css";
@@ -27,6 +28,7 @@ const LevelMaker = () => {
   const [objects, setObjects] = useState([]);
   const [paths, setPaths] = useState([]);
   const [openSelection, setOpenSelection] = useState(false);
+  const [openConcealSelection, setOpenConcealSelection] = useState(false);
   const [toast, setToast] = useState(false);
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -37,8 +39,8 @@ const LevelMaker = () => {
   const [playerInitialPosition, setPlayerInitialPosition] = useState(null);
   const [newLevelName, setLevelName] = useState(null);
   const [newMovementsNumber, setMovementesNumber] = useState(null);
-  const [newMaxBoard1, setNewMaxBoard1] = useState(null);
-  const [newMaxBoard2, setNewMaxBoard2] = useState(null);
+  const [newMaxBoard1, setNewMaxBoard1] = useState("");
+  const [newMaxBoard2, setNewMaxBoard2] = useState("");
   const [newIfEnable, setNewIfEnable] = useState(false);
   const [newProcedureEnable, setNewProcedureEnable] = useState(false);
   const [newRepeatEnable, setNewRepeatEnable] = useState(false);
@@ -163,14 +165,26 @@ const LevelMaker = () => {
 
   const onSelectionConcealFromModal = () => {
     if (currentCellWithPathTile()) {
-      let elementToSave = { type: "Conceal", position: currentPosition };
-      saveElement(elementToSave);
       setOpenSelection(false);
+      setOpenConcealSelection(true);
     } else {
       setOpenSelection(false);
       setError("Debe haber camino en la celda para colocar tierra;");
       setToast(true);
     }
+  };
+
+  const onSelectionKeyFromConcealModal = () => {
+    let concealKey = { type: "Key", position: currentPosition }
+    let elementToSave = { type: "Conceal", position: currentPosition, hiddenElement: concealKey };
+    saveElement(elementToSave);
+    setOpenConcealSelection(false);
+  };
+
+  const onSelectionNotKeyFromConcealModal = () => {
+    let elementToSave = { type: "Conceal", position: currentPosition };
+    saveElement(elementToSave);
+    setOpenConcealSelection(false);
   };
 
   const handleCloseErrorToast = () => {
@@ -242,6 +256,7 @@ const LevelMaker = () => {
               callProceduresEnabled: newProcedureEnable,
               scoreFromAndLevel: []
             }
+            console.log(newLevel);
             setInitialLevel(newLevel);
             setLevel(newLevel);
             setShowJoystick(true);
@@ -383,8 +398,8 @@ const LevelMaker = () => {
               ifEnabled: newIfEnable,
               repeatEnabled: newRepeatEnable,
               callProceduresEnabled: newProcedureEnable,
-              maxMovsBoard1: newMaxBoard1 || 99999,
-              maxMovsBoard2: newMaxBoard2 || 99999
+              maxMovsBoard1: newMaxBoard1 === "" ? 99999 : newMaxBoard1,
+              maxMovsBoard2: newMaxBoard2 === "" ? 99999 : newMaxBoard2
             }}
             onClickError={handleMovementsError}
             onClickPlay={
@@ -408,6 +423,13 @@ const LevelMaker = () => {
         onClickKey={onSelectionKeyFromModal}
         onClickConceal={onSelectionConcealFromModal}
         onClickDelete={onSelectionDeleteFromModal}
+      />
+
+      <LevelMakerConcealModal
+        open={openConcealSelection}
+        handleClose={() => setOpenConcealSelection(false)}
+        onClickKey={onSelectionKeyFromConcealModal}
+        onClickNotKey={onSelectionNotKeyFromConcealModal}
       />
 
       <Toast
