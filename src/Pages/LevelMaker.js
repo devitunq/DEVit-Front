@@ -324,8 +324,8 @@ const LevelMaker = () => {
           value={newMaxBoard2}
           onChange={(event) => setNewMaxBoard2(event.target.value)}
         />
-        <div>
-          <p className="checkboxLabel"> Habilitar el if en tablero </p>
+        <div className="radio-lm">
+          <div className="checkboxLabel"> Habilitar condiciones en tablero </div>
           <input
             className="checkbox"
             type="checkbox"
@@ -335,8 +335,8 @@ const LevelMaker = () => {
             onClick={() => setNewIfEnable(!newIfEnable)}
           />
         </div>
-        <div>
-          <p className="checkboxLabel"> Habilitar el procedure en tablero </p>
+        <div className="radio-lm">
+          <div className="checkboxLabel"> Habilitar procedimientos en tablero </div>
           <input
             className="checkbox"
             type="checkbox"
@@ -346,8 +346,8 @@ const LevelMaker = () => {
             onClick={() => setNewProcedureEnable(!newProcedureEnable)}
           />
         </div>
-        <div>
-          <p className="checkboxLabel"> Habilitar el repeat en tablero </p>
+        <div className="radio-lm">
+          <div className="checkboxLabel"> Habilitar repeticiones en tablero </div>
           <input
             className="checkbox"
             type="checkbox"
