@@ -235,6 +235,11 @@ const LevelMaker = () => {
               likes: 0,
               dislikes: 0,
               elements: paths.concat(objects),
+              maxMovsBoard1: newMaxBoard1,
+              maxMovsBoard2: newMaxBoard2,
+              ifEnabled: newIfEnable,
+              repeatEnabled: newRepeatEnable,
+              callProceduresEnabled: newProcedureEnable,
               scoreFromAndLevel: []
             }
             setInitialLevel(newLevel);
