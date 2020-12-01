@@ -8,7 +8,7 @@ import Toast from "../Components/Generics/Toast";
 import Joystick from "../Components/Joystick/Joystick";
 import LevelMakerModal from "../Components/LevelMaker/LevelMakerModal";
 import LevelMakerConcealModal from "../Components/LevelMaker/LevelMakerConcealModal";
-import { Grid, InputBase } from "@material-ui/core";
+import { Grid, InputBase, TextareaAutosize } from "@material-ui/core";
 import { postNewLevel, isLevelExistent } from "../Utils/Api";
 import { useHistory } from "react-router-dom"
 import "./styles/LevelMaker.css";
@@ -38,6 +38,7 @@ const LevelMaker = () => {
   const [finishesInGame, setFinisheSelected] = useState(0);
   const [playerInitialPosition, setPlayerInitialPosition] = useState(null);
   const [newLevelName, setLevelName] = useState(null);
+  const [newObjective, setNewObjective] = useState(null);
   const [newMovementsNumber, setMovementesNumber] = useState(null);
   const [newMaxBoard1, setNewMaxBoard1] = useState("");
   const [newMaxBoard2, setNewMaxBoard2] = useState("");
@@ -242,7 +243,7 @@ const LevelMaker = () => {
             let newLevel = {
               levelId: newID,
               difficulty: "General",
-              description: "Nivel creado por un usuario",
+              description: newObjective,
               playerPosition: playerInitialPosition,
               name: newLevelName,
               bestNumberMovesToWin: newMovementsNumber,
@@ -325,7 +326,7 @@ const LevelMaker = () => {
         <div className="inputs-lm-header"> Cantidad maxima movimientos tablero 1. </div>
         <InputBase
           id="maxBoard1"
-          required
+          rowsMax={6}
           style={{
             width: "400px"
           }}
@@ -343,6 +344,16 @@ const LevelMaker = () => {
           inputProps={{ "aria-label": "naked" }}
           value={newMaxBoard2}
           onChange={(event) => setNewMaxBoard2(event.target.value)}
+        />
+        <div className="inputs-lm-header"> Objetivo. </div>
+        <InputBase
+          id="inputobjective"
+          style={{
+            width: "400px",
+          }}
+          inputProps={{ "aria-label": "naked" }}
+          value={newObjective}
+          onChange={(event) => setNewObjective(event.target.value)}
         />
         <div className="radio-lm">
           <div className="checkboxLabel"> Habilitar condiciones en tablero </div>
