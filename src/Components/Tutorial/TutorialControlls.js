@@ -10,7 +10,8 @@ const TutorialControlls = ({
   toDisplay,
   toStartRestart,
   toDeleteArrows,
-  toCondProceRepet
+  toCondProceRepet,
+  toTRepCondProd
 }) => (
     <div>
       <Modal open={open}>
@@ -54,7 +55,7 @@ const TutorialControlls = ({
                 </Grid>
 
                 <Grid item xs={3}>
-                  <div onClick={toCondProceRepet} className="controller-parts-container">
+                  <div onClick={toTRepCondProd} className="controller-parts-container">
                     <p className="controlls-text">Condiciones</p>
                     <p className="controlls-text">Repeticiones</p>
                     <p className="controlls-text">Procedimientos</p>

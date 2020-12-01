@@ -5,6 +5,9 @@ import TutorialSelection from "./TutorialSelection"
 import TutorialDisplay from "./TutorialDisplay"
 import TutorialStartAndRestart from "./TutorialStartAndRestart"
 import TutorialDelSwitchAndArrows from "./TutorialDelSwitchAndArrows"
+import TutorialCondRepProc from "./TutorialCondRepProc"
+
+
 const TutorialController = ({ open, closeTutorial }) => {
 
   const [tutorialSelection, setTutorialSelection] = useState(false);
@@ -13,6 +16,7 @@ const TutorialController = ({ open, closeTutorial }) => {
   const [tutorialDisplay, setTutorialDisplay] = useState(false);
   const [tutorialStartAndRestart, setTutorialStartAndRestart] = useState(false);
   const [tutorialDelSwitchAndArrows, setTutorialDelSwitchAndArrows] = useState(false);
+  const [tutorialCondRepProc, setTutorialCondRepProc] = useState(false);
 
   useEffect(() => {
     if (
@@ -21,7 +25,8 @@ const TutorialController = ({ open, closeTutorial }) => {
       !tutorialDisplay &&
       !tutorialStartAndRestart &&
       !tutorialDelSwitchAndArrows &&
-      !tutorialBoard
+      !tutorialBoard &&
+      !tutorialCondRepProc
     ) {
       const opened = open;
       setTutorialSelection(opened);
@@ -56,7 +61,12 @@ const TutorialController = ({ open, closeTutorial }) => {
   const TControlsToTDeleteArrows = () => {
     setTutorialControlls(false);
     setTutorialDelSwitchAndArrows(true);
-  }
+  };
+
+  const TControlsToTRepCondProd = () => {
+    setTutorialControlls(false);
+    setTutorialCondRepProc(true);
+  };
 
   const TDisplayToControlls = () => {
     setTutorialDisplay(false);
@@ -76,7 +86,12 @@ const TutorialController = ({ open, closeTutorial }) => {
   const TBoardToSelection = () => {
     setTutorialBoard(false);
     setTutorialSelection(true);
-  }
+  };
+
+  const TRepCondProdToControlls = () => {
+    setTutorialCondRepProc(false);
+    setTutorialSelection(true);
+  };
 
   return (
     <div>
@@ -93,6 +108,7 @@ const TutorialController = ({ open, closeTutorial }) => {
         toDisplay={TControlsToTDisplay}
         toStartRestart={TControlsToTStartRestart}
         toDeleteArrows={TControlsToTDeleteArrows}
+        toTRepCondProd={TControlsToTRepCondProd}
       />
 
       <TutorialDisplay
@@ -113,6 +129,11 @@ const TutorialController = ({ open, closeTutorial }) => {
       <TutorialBoard
         open={tutorialBoard}
         backSelecetion={TBoardToSelection}
+      />
+
+      <TutorialCondRepProc
+        open={tutorialCondRepProc}
+        backControlls={TRepCondProdToControlls}
       />
 
     </div>

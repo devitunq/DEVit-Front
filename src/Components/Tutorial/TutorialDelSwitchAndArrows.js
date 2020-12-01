@@ -42,7 +42,6 @@ const TutorialDelSwitchAndArrows = ({ open, backControlls }) => (
                 el display del jostick; y si lo switcheamos, al seleccionar alguna instruccion
                 esta se borrara del tablero
               </div>
-              <hr className="tutorial-style-separator"></hr>
             </div>
           </Grid>
         </Grid>

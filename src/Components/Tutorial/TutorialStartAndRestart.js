@@ -40,7 +40,6 @@ const TutorialStartAndRestart = ({ open, backControlls }) => (
                 Al seleccionar el boton restart, todas las instrucciones que tenian en el display
                 se borraran, y no podras recuperarlas.
               </div>
-              <hr className="tutorial-style-separator"></hr>
             </div>
           </Grid>
         </Grid>
