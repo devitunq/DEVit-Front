@@ -35,20 +35,18 @@
   border: 5px black;
 }
 
+.tutorial-board-cont{
+  background-color: rgb(218, 216, 216);
+  border-radius: 15px;
+  text-align: left;
+  padding: 2%;
+  border: 5px black;
+}
+
 .tutorial-style-font{
   font-family: "opensans", sans-serif;
   color: black;
   font-size: large;
-}
-
-.tutorial-style-separator{
-  margin-left: 24%;
-  align-self: center;
-  width: 50%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  border: 1px solid rgb(37, 37, 37);
-  border-radius: 15px;
 }
 
 
@@ -59,8 +57,10 @@
 
 
 .back-modal{
+  width: 2%;
   text-align: left;
   cursor: pointer;
+  margin-bottom: 1%;
 }
 
 .close-modal{
@@ -115,11 +115,14 @@
 
 
 .tutorial-style-font-Board{
-  align-self: start;
+  padding: 1.5%;
+  border-radius: 15px 25px;
+  background-color: rgba(95, 158, 160, 0.712) ;
+  display: inline-block;
+  text-align: left;
   color: black;
   font-size: large;
   font-family: "opensans", sans-serif;
-  margin-left: -13%;
 }
 
 .obj-style-cont{
