@@ -1,7 +1,7 @@
 .tutorial-container{
   margin-left: 20%;
   margin-right: 20%;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 10%;
 }
 
@@ -158,4 +158,11 @@ canvas {
 #overlay {
   position: relative;
   padding: 50px;
+}
+
+.controlls-text{
+  font-family: "opensans", sans-serif;
+  font-size: 2em;
+  color: rgba(34, 34, 34, 0.924);
+  font-weight: bold;
 }

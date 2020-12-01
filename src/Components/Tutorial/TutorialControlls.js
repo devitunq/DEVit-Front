@@ -3,18 +3,14 @@ import { Modal, Grid } from "@material-ui/core";
 import "../Tutorial/Tutorial.css"
 import controlls from "../../Assets/tutorial/picControllsutorial.png";
 import back from "../../Assets/others/back.png"
-import TDisplay from "../../Assets/tutorial/displayTuto.png";
-import TArrows from "../../Assets/tutorial/FlechasTutorial.png";
-import TRestart from "../../Assets/tutorial/reiniciarTutorial.png";
-import TStart from "../../Assets/tutorial/iniciarTutorial.png";
-import TDeleteMode from "../../Assets/tutorial/modoDeBorradoTutorial.png";
 
 const TutorialControlls = ({
   open,
   backSelecetion,
   toDisplay,
   toStartRestart,
-  toDeleteArrows
+  toDeleteArrows,
+  toCondProceRepet
 }) => (
     <div>
       <Modal open={open}>
@@ -36,51 +32,34 @@ const TutorialControlls = ({
               />
               <Grid container direction="row">
 
-                <Grid item xs={4}>
-                  <div className="controller-parts-container">
-                    <img
-                      className="controller-display-part"
-                      onClick={toDisplay}
-                      src={TDisplay}
-                      alt="display"
-                    />
+                <Grid item xs={3}>
+                  <div onClick={toDisplay} className="controller-parts-container">
+                    <p className="controlls-text">Display</p>
+                    <p className="controlls-text">Tablero</p>
                   </div>
                 </Grid>
 
-                <Grid item xs={4}>
+                <Grid onClick={toStartRestart} item xs={3}>
                   <div className="controller-parts-container">
-                    <img
-                      onClick={toStartRestart}
-                      className="controller-StartRestar-parts"
-                      src={TStart}
-                      alt="start"
-                    />
-                    <img
-                      onClick={toStartRestart}
-                      className="controller-StartRestar-parts"
-                      src={TRestart}
-                      alt="restart"
-                    />
+                    <p className="controlls-text">Iniciar</p>
+                    <p className="controlls-text">Reiniciar</p>
                   </div>
                 </Grid>
 
-                <Grid item xs={4}>
-                  <div className="controller-parts-container">
-                    <img
-                      onClick={toDeleteArrows}
-                      className="controller-deleteArrow-parts"
-                      src={TDeleteMode}
-                      alt="deleteMode"
-                    />
-                    <img
-                      onClick={toDeleteArrows}
-                      className="controller-deleteArrow-parts"
-                      src={TArrows}
-                      alt="arrows"
-                    />
+                <Grid item xs={3}>
+                  <div onClick={toDeleteArrows} className="controller-parts-container">
+                    <p className="controlls-text">Modo borrador</p>
+                    <p className="controlls-text">Flechas de movimiento</p>
                   </div>
                 </Grid>
 
+                <Grid item xs={3}>
+                  <div onClick={toCondProceRepet} className="controller-parts-container">
+                    <p className="controlls-text">Condiciones</p>
+                    <p className="controlls-text">Repeticiones</p>
+                    <p className="controlls-text">Procedimientos</p>
+                  </div>
+                </Grid>
               </Grid>
             </div>
           </Grid>
