@@ -165,7 +165,7 @@ const LevelSelection = () => {
                             <a href={`/level/${l.levelId}/${character}`}>
                               <div className="lvl-item">
                                 <div className="center">
-                                  {difficulty !== "General"
+                                  {difficulty !== "General" && !l.private
                                     ?
                                     <img
                                       href="/level"

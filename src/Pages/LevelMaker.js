@@ -45,6 +45,7 @@ const LevelMaker = () => {
   const [newIfEnable, setNewIfEnable] = useState(false);
   const [newProcedureEnable, setNewProcedureEnable] = useState(false);
   const [newRepeatEnable, setNewRepeatEnable] = useState(false);
+  const [newLevelPrivate, setNewLevelPrivate] = useState(false);
   const [level, setLevel] = useState(null);
   const [initialLevel, setInitialLevel] = useState(null);
   const history = useHistory();
@@ -255,6 +256,7 @@ const LevelMaker = () => {
               likes: 0,
               dislikes: 0,
               elements: paths.concat(objects),
+              private: newLevelPrivate,
               maxMovsBoard1: newMaxBoard1,
               maxMovsBoard2: newMaxBoard2,
               ifEnabled: newIfEnable,
@@ -393,6 +395,17 @@ const LevelMaker = () => {
             onClick={() => setNewRepeatEnable(!newRepeatEnable)}
           />
         </div>
+        <div className="radio-lm">
+          <div className="checkboxLabel"> Hacer mi nivel privado </div>
+          <input
+            className="checkbox"
+            type="checkbox"
+            id="privateid"
+            name="privateid"
+            value={newLevelPrivate}
+            onClick={() => setNewLevelPrivate(!newLevelPrivate)}
+          />
+        </div>
       </div>
 
       <Gameboard
@@ -407,7 +420,8 @@ const LevelMaker = () => {
 
       <div className="finished-level" onClick={onClickFinishLevel}> Resolver </div>
 
-      {showJoystick &&
+      {
+        showJoystick &&
         <div className="lm-joystick">
           <Joystick
             restrictions={{
