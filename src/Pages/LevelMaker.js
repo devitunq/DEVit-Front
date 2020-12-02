@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ParticlesBg from "particles-bg";
 import Navbar from "../Components/Generics/Navbar";
 import Logo from "../Components/Generics/Logo";
@@ -48,6 +48,11 @@ const LevelMaker = () => {
   const [level, setLevel] = useState(null);
   const [initialLevel, setInitialLevel] = useState(null);
   const history = useHistory();
+
+  useEffect(() => {
+    let isUser = localStorage.getItem("userName");
+    if (!isUser) history.push("/");
+  })
 
   const savePosition = (i, j) => {
     setCurrentPosition({ posX: i, posY: j })

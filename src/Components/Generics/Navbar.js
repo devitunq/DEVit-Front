@@ -2,7 +2,7 @@ import React from "react";
 import "./Navbar.css"
 
 const isAuthenticated = () => { return localStorage.getItem('accessToken') };
-const isUserName = () => { return localStorage.getItem("userName") != null }
+const isUser = () => { return localStorage.getItem("userName") != null }
 
 const Navbar = () => (
   <nav id="nav-wrap">
@@ -27,14 +27,14 @@ const Navbar = () => (
             Dificultades
         </a>
         </li>}
-      {isAuthenticated() && isUserName() &&
+      {isAuthenticated() && isUser() &&
         <li>
           <a href="/profile" id="navProfileLink">
             Perfil
         </a>
         </li>}
-      {isAuthenticated() &&
-        <li>
+      {isAuthenticated() && isUser() &&
+        < li >
           <a href="/levelMaker" id="navLevelMakerLink">
             Crear nivel
         </a>
@@ -46,7 +46,7 @@ const Navbar = () => (
         </a>
         </li>}
     </ul>
-  </nav>
+  </nav >
 );
 
 export default Navbar;
