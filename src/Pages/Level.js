@@ -33,6 +33,7 @@ const Level = () => {
   const [stars, setStars] = useState(0);
   const [levelRestrictions, setLevelRestrictions] = useState(null);
   const [actualMovementes, setActualMovements] = useState(0);
+  const [isPrivate, setIsPrivate] = useState(false);
   const { levelID } = useParams();
   const { character } = useParams();
   const characterObj = getCharacterByName(character);
@@ -53,6 +54,7 @@ const Level = () => {
           maxMovsBoard1: response.data.maxMovsBoard1,
           maxMovsBoard2: response.data.maxMovsBoard2
         });
+        setIsPrivate(response.data.private);
         setIsLoading(false);
       });
   });
@@ -69,7 +71,7 @@ const Level = () => {
     });
     setObjects(objectsTemp);
     setStars(starsWon);
-    postLevelSucces(localStorage.getItem("userName"), levelID, starsWon);
+    if (!isPrivate) postLevelSucces(localStorage.getItem("userName"), levelID, starsWon);
     setModal(true);
   };
 

@@ -8,7 +8,8 @@ import Toast from "../Components/Generics/Toast";
 import Joystick from "../Components/Joystick/Joystick";
 import LevelMakerModal from "../Components/LevelMaker/LevelMakerModal";
 import LevelMakerConcealModal from "../Components/LevelMaker/LevelMakerConcealModal";
-import { Grid, InputBase, TextareaAutosize } from "@material-ui/core";
+import LevelMakerPrivateModal from "../Components/LevelMaker/LevelMakerPrivateModal";
+import { Grid, InputBase } from "@material-ui/core";
 import { postNewLevel, isLevelExistent } from "../Utils/Api";
 import { useHistory } from "react-router-dom"
 import "./styles/LevelMaker.css";
@@ -29,6 +30,7 @@ const LevelMaker = () => {
   const [paths, setPaths] = useState([]);
   const [openSelection, setOpenSelection] = useState(false);
   const [openConcealSelection, setOpenConcealSelection] = useState(false);
+  const [openCopyLink, setOpenCopyLink] = useState(false);
   const [toast, setToast] = useState(false);
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -48,6 +50,7 @@ const LevelMaker = () => {
   const [newLevelPrivate, setNewLevelPrivate] = useState(false);
   const [level, setLevel] = useState(null);
   const [initialLevel, setInitialLevel] = useState(null);
+  const [levelLink, setLevelLink] = useState("");
   const history = useHistory();
 
   useEffect(() => {
@@ -221,12 +224,20 @@ const LevelMaker = () => {
     } else finishLevel(levelState === "Complete");
   };
 
+  const succesLevelSaved = () => {
+    setSuccessMessage("Nivel guardado exitosamente...")
+    setSuccessToast(true);
+    setTimeout(() => { history.push("/") }, 3000)
+  };
+
   const finishLevel = (success) => {
     if (success) {
       postNewLevel(initialLevel).then(() => {
-        setSuccessMessage("Nivel guardado exitosamente...")
-        setSuccessToast(true);
-        setTimeout(() => { history.push("/") }, 3000)
+        if (!newLevelPrivate) {
+          succesLevelSaved();
+        } else {
+          setOpenCopyLink(true);
+        }
       }).catch((e) => {
         setError("Nombre ya existente, intente con otro")
         setToast(true);
@@ -235,6 +246,9 @@ const LevelMaker = () => {
     };
   };
 
+  const generateLevelLink = (levelid) => {
+    return `localhost:3000/level/${levelid.replace(" ", "%20")}/Jorge`;
+  };
 
 
   const onClickFinishLevel = () => {
@@ -264,7 +278,7 @@ const LevelMaker = () => {
               callProceduresEnabled: newProcedureEnable,
               scoreFromAndLevel: []
             }
-            console.log(newLevel);
+            setLevelLink(generateLevelLink(newID));
             setInitialLevel(newLevel);
             setLevel(newLevel);
             setShowJoystick(true);
@@ -460,6 +474,13 @@ const LevelMaker = () => {
         handleClose={() => setOpenConcealSelection(false)}
         onClickKey={onSelectionKeyFromConcealModal}
         onClickNotKey={onSelectionNotKeyFromConcealModal}
+      />
+
+      <LevelMakerPrivateModal
+        open={openCopyLink}
+        handleClose={() => setOpenCopyLink(false)}
+        onClickContinue={succesLevelSaved}
+        link={levelLink}
       />
 
       <Toast

@@ -158,46 +158,47 @@ const LevelSelection = () => {
                 <Container maxWidth="xs">
                   {
                     levelsToShow.map((l) => {
-
-                      return (
-                        <div className="lvl-container" >
-                          <div key={`key_lvl_${l.levelId}`} data-testid={`selectLevel_${l.levelId}`}>
-                            <a href={`/level/${l.levelId}/${character}`}>
-                              <div className="lvl-item">
-                                <div className="center">
-                                  {difficulty !== "General" && !l.private
-                                    ?
-                                    <img
-                                      href="/level"
-                                      className="lvl-img"
-                                      src={levelNameToImg(l.levelId)}
-                                      alt={`${l.name}`}
-                                    />
-                                    : <div className="generalLevelName">{l.name}</div>
-                                  }
-                                  {
-                                    isUser() &&
-                                    <img
-                                      className={difficulty !== "General" ? "lvl-stars" : "lvl-stars"}
-                                      src={determinateStars(searchLevelStars(l.levelId))}
-                                    />
-                                  }
+                      if (!l.private) {
+                        return (
+                          <div className="lvl-container" >
+                            <div key={`key_lvl_${l.levelId}`} data-testid={`selectLevel_${l.levelId}`}>
+                              <a href={`/level/${l.levelId}/${character}`}>
+                                <div className="lvl-item">
+                                  <div className="center">
+                                    {difficulty !== "General"
+                                      ?
+                                      <img
+                                        href="/level"
+                                        className="lvl-img"
+                                        src={levelNameToImg(l.levelId)}
+                                        alt={`${l.name}`}
+                                      />
+                                      : <div className="generalLevelName">{l.name}</div>
+                                    }
+                                    {
+                                      isUser() &&
+                                      <img
+                                        className={difficulty !== "General" ? "lvl-stars" : "lvl-stars"}
+                                        src={determinateStars(searchLevelStars(l.levelId))}
+                                      />
+                                    }
+                                  </div>
                                 </div>
-                              </div>
-                            </a>
-                            {
-                              isUser() &&
-                              <LikeAndDislike
-                                likes={l.likes}
-                                dislikes={l.dislikes}
-                                onClickLike={() => onClickLike(l.levelId)}
-                                onClickDislike={() => onClickDislike(l.levelId)}
-                              />
-                            }
-                          </div>
+                              </a>
+                              {
+                                isUser() &&
+                                <LikeAndDislike
+                                  likes={l.likes}
+                                  dislikes={l.dislikes}
+                                  onClickLike={() => onClickLike(l.levelId)}
+                                  onClickDislike={() => onClickDislike(l.levelId)}
+                                />
+                              }
+                            </div>
 
-                        </div>
-                      );
+                          </div>
+                        );
+                      }
                     })
                   }
                   {difficulty === "General" &&
