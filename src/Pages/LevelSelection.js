@@ -46,14 +46,18 @@ const LevelSelection = () => {
   const levelsToShow = difficulty !== "General" ? levels : levels.slice(startingShowLevels, finishingShowLevels + 1)
 
   const setNextPage = () => {
-    setStartingShowLevels(startingShowLevels + 5);
-    setFinishShowLevels(finishingShowLevels + 5);
-  }
+    if (finishingShowLevels + 5 <= levels.length + 4) {
+      setStartingShowLevels(startingShowLevels + 5);
+      setFinishShowLevels(finishingShowLevels + 5);
+    };
+  };
 
   const setPreviusPage = () => {
-    setStartingShowLevels(startingShowLevels - 5);
-    setFinishShowLevels(finishingShowLevels - 5);
-  }
+    if (startingShowLevels - 5 >= 0) {
+      setStartingShowLevels(startingShowLevels - 5);
+      setFinishShowLevels(finishingShowLevels - 5);
+    };
+  };
 
   const levelNameToImg = (levelStr) => {
     switch (levelStr) {
@@ -90,7 +94,6 @@ const LevelSelection = () => {
   const searchLevelStars = (idLevel) => {
     let stars = 0;
     let level = levelsPlayed.find(levelData => levelData.levelID === idLevel)
-    console.log(level);
     if (level) stars = level.stars
     return stars;
   }
