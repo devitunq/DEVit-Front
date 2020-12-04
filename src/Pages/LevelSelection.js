@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import ParticlesBg from "particles-bg";
 import { Grid, Container, LinearProgress } from "@material-ui/core";
 import "./styles/LevelSelection.css";
@@ -6,7 +7,6 @@ import Navbar from "../Components/Generics/Navbar";
 import Logo from "../Components/Generics/Logo";
 import LikeAndDislike from "../Components/Others/LikeAndDislike";
 import { getAllByDifficulty, getUserLevelsCompleted, postLevelScore } from "../Utils/Api";
-import { useParams } from "react-router";
 import lvl1 from "../Assets/levelNames/Easy_Level One.png";
 import lvl2 from "../Assets/levelNames/Easy_Level Two.png";
 import lvl3 from "../Assets/levelNames/Easy_Level Three.png";

@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'Caviar Dreams';
-  src: url('../../Fonts/CaviarDreams.ttf') format('truetype');
-  font-weight: normal;   
-  font-style: normal; 
+  font-family: "Caviar Dreams";
+  src: url("../../Fonts/CaviarDreams.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
   font-display: swap;
- }
+}
 
 .lvl-container {
   margin-top: 5%;
@@ -17,10 +17,9 @@
   margin-bottom: 4%;
 }
 
-.center{
+.center {
   text-align: center;
 }
-
 
 .lvl-item {
   font-size: 300%;
@@ -43,21 +42,19 @@
   position: relative;
 }
 
-.lvl-stars{
-  margin-left: 2%;
+.lvl-stars {
   opacity: 0.9;
-  margin-bottom: 3%;
   width: 34%;
 }
 
-.lvl-stars-general{
+.lvl-stars-general {
   margin-top: 1%;
   margin-left: 7%;
   opacity: 0.9;
   width: 25%;
 }
 
-.contWelcome-lvlSelection{
+.contWelcome-lvlSelection {
   font-family: "opensans", sans-serif;
   text-align: center;
   align-content: center;
@@ -65,17 +62,18 @@
   color: white;
 }
 
-.generalLevelName{
+.generalLevelName {
   max-width: 200px;
   min-width: 200px;
-  display: inline-block;
+  display: inline-flex;
   color: black;
-  font-size: 0.8em;
+  font-size: 1em;
   margin-bottom: 5px;
-  font-family: 'Caviar Dreams';
+  font-family: "Caviar Dreams";
+  font-weight: 500;
 }
 
-.lsback{
+.lsback {
   font-size: 1.2em;
   cursor: pointer;
   display: inline;
@@ -84,7 +82,7 @@
   color: white;
 }
 
-.lsnext{
+.lsnext {
   font-size: 1.2em;
   cursor: pointer;
   display: inline;
