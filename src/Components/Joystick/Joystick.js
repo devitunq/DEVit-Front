@@ -347,7 +347,7 @@ const Joystick = (props) => {
                 : board.map((item, index) => {
                   return (
                     <MovableCard
-                      timesEnabled={props.restrictions.callProceduresEnabled}
+                      timesEnabled={props.restrictions.repeatEnabled}
                       key={`movable_key_${item.actionKey}`}
                       src={item.src}
                       alt={item.alt}
@@ -377,7 +377,7 @@ const Joystick = (props) => {
                 : boardSecondary.map((item, index) => {
                   return (
                     <MovableCard
-                      timesEnabled={props.restrictions.callProceduresEnabled}
+                      timesEnabled={props.restrictions.repeatEnabled}
                       key={`movable_key_${item.actionKey}`}
                       src={item.src}
                       alt={item.alt}
@@ -390,7 +390,7 @@ const Joystick = (props) => {
                 })}
             </JoystickDisplay>
           }
-          <p style={{color:'Black', fontWeight: 'bold' }}>{ numberOfInstr() }</p>
+          <p style={{ color: 'Black', fontWeight: 'bold' }}>{numberOfInstr()}</p>
           <Grid container direction="row">
             <Grid item xs={4}>
               <JositckArrows
