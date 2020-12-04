@@ -110,7 +110,6 @@ const LevelMaker = () => {
     let finish = newObjects.find(obj => obj.type === "Finish");
     if (!player && playersInGame !== 0) setPlayerSelected(playersInGame - 1);
     if (!finish && finishesInGame !== 0) setFinisheSelected(finishesInGame - 1);
-    console.log("players: " + playersInGame + "FINISH " + finishesInGame);
     setObjects(newObjects);
   }
 
@@ -156,7 +155,7 @@ const LevelMaker = () => {
       setOpenSelection(false);
     } else {
       setOpenSelection(false);
-      setError("Debe haber camino en la celda para colocar una puerta;");
+      setError("Debe haber camino en la celda para colocar una puerta.");
       setToast(true);
     }
   };
@@ -168,7 +167,7 @@ const LevelMaker = () => {
       setOpenSelection(false);
     } else {
       setOpenSelection(false);
-      setError("Debe haber camino en la celda para colocar una llave;");
+      setError("Debe haber camino en la celda para colocar una llave.");
       setToast(true);
     }
   };
@@ -179,7 +178,7 @@ const LevelMaker = () => {
       setOpenConcealSelection(true);
     } else {
       setOpenSelection(false);
-      setError("Debe haber camino en la celda para colocar tierra;");
+      setError("Debe haber camino en la celda para colocar tierra.");
       setToast(true);
     }
   };
