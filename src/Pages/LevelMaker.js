@@ -343,7 +343,7 @@ const LevelMaker = () => {
           value={newMovementsNumber}
           onChange={(event) => setMovementesNumber(event.target.value)}
         />
-        <div className="inputs-lm-header"> Cantidad maxima movimientos tablero 1. </div>
+        <div className="inputs-lm-header"> Cantidad maxima instrucciones tablero 1. </div>
         <InputBase
           id="maxBoard1"
           rowsMax={6}
@@ -354,7 +354,7 @@ const LevelMaker = () => {
           value={newMaxBoard1}
           onChange={(event) => setNewMaxBoard1(event.target.value)}
         />
-        <div className="inputs-lm-header"> Cantidad maxima movimientos tablero 2. </div>
+        <div className="inputs-lm-header"> Cantidad maxima instrucciones tablero 2. </div>
         <InputBase
           id="maxBoard2"
           required

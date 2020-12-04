@@ -390,7 +390,7 @@ const Joystick = (props) => {
                 })}
             </JoystickDisplay>
           }
-          <p style={{color:'Black', fontWeight: 'bold' }}>{ numberOfInstr() }</p>
+          <p style={{ color: 'Black', fontWeight: 'bold' }}>{numberOfInstr()}</p>
           <Grid container direction="row">
             <Grid item xs={4}>
               <JositckArrows
