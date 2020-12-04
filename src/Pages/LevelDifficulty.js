@@ -32,6 +32,13 @@ const LevelDifficulty = () => {
 
   // const difficultiesList = ["Easy", "Medium", "Hard", "General"];
 
+  const determinateDifficultiesToShow = () => {
+    const isUser = localStorage.getItem("userName")
+    let diffToShow = ["Easy"];
+    if (isUser) diffToShow = difficulties;
+    return diffToShow;
+  };
+
   useEffect(() => {
     if (isLoading)
       getDifficulties().then((response) => {
@@ -63,7 +70,7 @@ const LevelDifficulty = () => {
           </Grid>
 
           <Grid container direction="column">
-            {difficulties.map((diff) => {
+            {determinateDifficultiesToShow().map((diff) => {
               return (
                 <Container maxWidth="xs">
                   <div className="diff-container" key={`key_${diff}`} data-testid={`difSel_${diff}`}>
